@@ -47,7 +47,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         appBar: PreferredSize(
-            preferredSize: Size.fromHeight(10.0), // here the desired height
+            preferredSize: const Size.fromHeight(10.0), // here the desired height
             child: AppBar(
               backgroundColor: AppConstant.topHeaderClr,
               elevation: 0.0,

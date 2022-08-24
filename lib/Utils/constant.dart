@@ -6,7 +6,7 @@ class AppConstant {
 
   static Color submitBtnClr = Color.fromRGBO(214, 74, 76, 1);
   static Color topHeaderClr = Color.fromRGBO(87, 188, 223, 1);
-  static Color topHeaderBlueClr = Color.fromRGBO(20, 38, 101, 1);
+  static const Color topHeaderBlueClr = Color.fromRGBO(20, 38, 101, 1);
   static final String STORAGE_NAME = "shannon_storage";
 
 
@@ -16,9 +16,10 @@ class AppConstant {
   static final String ROUTE_LOGIN = "/login";
   static final String ROUTE_FORGOT_PASSWORD = "/forgotPwd";
   static final String ROUTE_BUY_SELL = "/buysell";
-  static final String ROUTE_FIRST_REGISTRATION = "/firstRegistration";
+  static final String ROUTE_FIRST_REGISTRATION = "/FirstRegistrationScreen";
   static final String ROUTE_SIGNUP_STEP_ONE = "/signUpStepOne";
-  static final String ROUTE_BUY_SEC_REG = "/buySecReg";
+  static final String ROUTE_BUY_SEC_REG = "/BuySecRegScreen";
+  static final String ROUTE_BUY_COMPLETE_REG = "/BuyCompleteRegView";
 
 
 

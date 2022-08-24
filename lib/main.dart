@@ -3,13 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:mlm/Utils/constant.dart';
-import 'package:mlm/screens/loginScreen/login_controller.dart';
+import 'package:mlm/screens/BuyComplateRegScreen/buy_complete_reg_view.dart';
+import 'package:mlm/screens/BuyFirstRegScreen/buy_first_reg_view.dart';
+import 'package:mlm/screens/BuySecondRegistrationScreen/buy_sec_reg_view.dart';
 import 'package:mlm/screens/loginScreen/login_screen.dart';
 import 'package:mlm/screens/BuyORSellScreen/buy_sell_screen.dart';
 import 'package:mlm/screens/FirstRegistrationScreen/first_registration_screen.dart';
 import 'package:mlm/screens/ForgotPasswordScreen/forgot_password_screen.dart';
-import 'package:mlm/screens/SignUpStepOne/signUp_step_one_screen.dart';
-import 'package:mlm/screens/BuySecondRegistrationScreen/buy_sec_reg_screen.dart';
 import 'Binding/app_binding.dart';
 
 Future<void> main() async {
@@ -37,26 +37,26 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: "/",
       getPages: [
-        GetPage(name: AppConstant.ROUTE, page: () => BuySellScreen()),
-        GetPage(name: AppConstant.ROUTE_LOGIN, page: () => LoginScreen()),
-        GetPage(name: AppConstant.ROUTE_FORGOT_PASSWORD, page: () => ForgotPasswordScreen()),
-        GetPage(name: AppConstant.ROUTE_BUY_SELL, page: () => BuySellScreen()),
-        GetPage(name: AppConstant.ROUTE_FIRST_REGISTRATION, page: () => FirstRegistrationScreen()),
-        GetPage(name: AppConstant.ROUTE_SIGNUP_STEP_ONE, page: () => SignUpStepOneScreen()),
-        GetPage(name: AppConstant.ROUTE_BUY_SEC_REG, page: () => BuySecRegScreen()),
-
-        // GetPage(
-        //     name: AppConstant.ROUTE_UPDATE_CONTACTDETAILS,
-        //     page: () => const UpdateContactDetailsScreen()),
-        // GetPage(
-        //     name: AppConstant.ROUTE_ACCOUNT_DETAILS,
-        //     page: () => const AccountDetailsPage()),
-        // GetPage(
-        //     name: AppConstant.ROUTE_CONTACT_DETAILS,
-        //     page: () => const ContactDetailsPage()),
-        // GetPage(
-        //     name: AppConstant.ROUTE_CONTACT_LIST,
-        //     page: () => ContactListPage()),
+        GetPage(name: AppConstant.ROUTE, page: () => const BuySellScreen()),
+        GetPage(name: AppConstant.ROUTE_LOGIN, page: () => const LoginScreen()),
+        GetPage(
+            name: AppConstant.ROUTE_FORGOT_PASSWORD,
+            page: () => ForgotPasswordScreen()),
+        GetPage(
+            name: AppConstant.ROUTE_BUY_SELL,
+            page: () => const BuySellScreen()),
+        GetPage(
+            name: AppConstant.ROUTE_FIRST_REGISTRATION,
+            page: () => FirstRegistrationScreen()),
+        GetPage(
+            name: AppConstant.ROUTE_SIGNUP_STEP_ONE,
+            page: () => const BuyFirstRegView()),
+        GetPage(
+            name: AppConstant.ROUTE_BUY_SEC_REG,
+            page: () => const BuySecRegScreen()),
+        GetPage(
+            name: AppConstant.ROUTE_BUY_COMPLETE_REG,
+            page: () => const BuyCompleteRegView()),
       ],
     );
   }
@@ -118,7 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
     for (int i = 1; i < 10; i++) {
       strengths.add(0.1 * i);
     }
-    strengths.forEach((strength) {
+    for (var strength in strengths) {
       final double ds = 0.5 - strength;
       swatch[(strength * 1000).round()] = Color.fromRGBO(
         r + ((ds < 0 ? r : (255 - r)) * ds).round(),
@@ -126,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
         b + ((ds < 0 ? b : (255 - b)) * ds).round(),
         1,
       );
-    });
+    }
     return MaterialColor(color.value, swatch);
   }
 }

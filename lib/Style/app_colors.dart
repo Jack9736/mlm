@@ -30,4 +30,5 @@ class AppColors {
   static const cartFormFieldBorderColor = Color.fromRGBO(197, 197, 197, 1.0);
   static const cartFormFieldTextColor = Color.fromRGBO(57, 57, 57, 1.0);
   static const headerColor = Color.fromRGBO(4, 24, 98, 1.0);
+    static const edtHintTextColor = Color.fromRGBO(20, 38, 101, 1.0);
 }

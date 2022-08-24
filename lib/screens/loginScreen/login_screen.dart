@@ -12,6 +12,8 @@ import '../../Utils/constant.dart';
 
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -48,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         appBar: PreferredSize(
-            preferredSize: Size.fromHeight(10.0), // here the desired height
+            preferredSize: const Size.fromHeight(10.0), // here the desired height
             child: AppBar(
               backgroundColor: AppConstant.topHeaderClr,
               elevation: 0.0,
@@ -80,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                       ),
 
-                      Center(
+                      const Center(
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
@@ -93,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 25, width: 25,),
+                      const SizedBox(height: 25, width: 25,),
 
                   ],
                   )
@@ -161,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
   /* Login Button */
   Container loginButton(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 40, left: 15, right: 15),
+      margin: const EdgeInsets.only(bottom: 40, left: 15, right: 15),
 
       height: 60,
       width: double.infinity,
@@ -180,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ],
           )
-          :  Text('NEXT',  style: TextStyle(
+          :  const Text('NEXT',  style: TextStyle(
               fontSize: 18.0,
               fontWeight: FontWeight.w600,
               fontFamily: 'Gibson',
@@ -188,11 +190,10 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
 
         style: TextButton.styleFrom(
-            shape: RoundedRectangleBorder(
+            foregroundColor: Colors.white, shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(13.0),
                 side: BorderSide(color: AppConstant.submitBtnClr)
             ),
-            primary: Colors.white,
             backgroundColor: AppConstant.submitBtnClr,
             textStyle:
             const TextStyle(fontSize: 18, fontFamily: 'Montserrat', fontWeight: FontWeight.bold)
@@ -212,30 +213,28 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   /* Forgot Password Button */
-  Container forgotButton(BuildContext context) {
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          TextButton(
-            onPressed: () {
-              Get.toNamed(AppConstant.ROUTE_FORGOT_PASSWORD);
-            },
-            child:  Align(
-              alignment: Alignment.bottomRight,
-              child: Text(
-                "Forgot your password?Tap here for assistance",
-                style: TextStyle(
-                    fontSize: 12.0,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: 'Gibson',
-                    color: AppConstant.topHeaderBlueClr),
-                //textAlign: TextAlign.center
-              ),
+  Column forgotButton(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        TextButton(
+          onPressed: () {
+            Get.toNamed(AppConstant.ROUTE_FORGOT_PASSWORD);
+          },
+          child:  Align(
+            alignment: Alignment.bottomRight,
+            child: Text(
+              "Forgot your password?Tap here for assistance",
+              style: TextStyle(
+                  fontSize: 12.0,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Gibson',
+                  color: AppConstant.topHeaderBlueClr),
+              //textAlign: TextAlign.center
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

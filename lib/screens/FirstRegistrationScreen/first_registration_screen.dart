@@ -1,18 +1,15 @@
-import 'dart:io';
-
-import 'package:connectivity/connectivity.dart';
-import 'package:dio/adapter.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:mlm/Utils/constant.dart';
-
 import 'package:mlm/screens/FirstRegistrationScreen/first_registration_controller.dart';
+import '../../Widget/widget_appbar.dart';
 
 class FirstRegistrationScreen extends StatefulWidget {
+  const FirstRegistrationScreen({Key? key}) : super(key: key);
+
   @override
-  State<FirstRegistrationScreen> createState() => _FirstRegistrationScreenState();
+  State<FirstRegistrationScreen> createState() =>
+      _FirstRegistrationScreenState();
 }
 
 class _FirstRegistrationScreenState extends State<FirstRegistrationScreen> {
@@ -41,37 +38,29 @@ class _FirstRegistrationScreenState extends State<FirstRegistrationScreen> {
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-
-        appBar: PreferredSize(
-            preferredSize: Size.fromHeight(10.0), // here the desired height
-            child: AppBar(
-              backgroundColor: AppConstant.topHeaderClr,
-              elevation: 0.0,
-              centerTitle: false,
-              titleSpacing: 0.0,
-
-            )
+        appBar: const CustomAppBar(
+          backgroundColor: Colors.white,
+          backIconColor: AppConstant.topHeaderBlueClr,
         ),
         body: Form(
           key: _formKey,
           child: Container(
-
             color: Colors.white,
             padding: const EdgeInsets.only(
-              left: 15.0, right: 15.0, top: 20.0,),
-
-
+              left: 15.0,
+              right: 15.0,
+              top: 20.0,
+            ),
             child: Center(
-
               child: ListView(
                 shrinkWrap: true,
                 children: [
-
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -92,22 +81,18 @@ class _FirstRegistrationScreenState extends State<FirstRegistrationScreen> {
                       ),
                     ],
                   ),
-
                   const SizedBox(height: 30),
                   loginBuyerButton(context),
                   const SizedBox(height: 30),
                   createAccountButton(context),
-
                 ],
               ),
-
             ),
           ),
         ),
       ),
     );
   }
-
 
   void _toggle() {
     setState(() {
@@ -116,100 +101,88 @@ class _FirstRegistrationScreenState extends State<FirstRegistrationScreen> {
   }
 
   /* Login as a Buyer Button */
-  Container loginBuyerButton(BuildContext context) {
-    return Container(
+  SizedBox loginBuyerButton(BuildContext context) {
+    return SizedBox(
       height: 60,
       child: Obx(() => TextButton(
-        child: controller.isApiRunning.value
-            ? Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            SizedBox(
-              height: 30,
-              width: 30,
-              child: CircularProgressIndicator(
-                backgroundColor: Colors.black,
-                strokeWidth: 2,
-              ),
+            child: controller.isApiRunning.value
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const <Widget>[
+                      SizedBox(
+                        height: 30,
+                        width: 30,
+                        child: CircularProgressIndicator(
+                          backgroundColor: Colors.black,
+                          strokeWidth: 2,
+                        ),
+                      ),
+                    ],
+                  )
+                : Text('Login as Buyer',
+                    style: TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Gibson',
+                        color: AppConstant.submitBtnClr)),
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(13.0),
+                  side: BorderSide(color: AppConstant.submitBtnClr)),
+              backgroundColor: Colors.white,
             ),
-          ],
-        )
-            :  Text('Login as Buyer',
-            style: TextStyle(
-                fontSize: 15.0,
-                fontWeight: FontWeight.w400,
-            fontFamily: 'Gibson',
-                color: AppConstant.submitBtnClr)
-        ),
-        style: TextButton.styleFrom(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(13.0),
-                side: BorderSide(color: AppConstant.submitBtnClr)
-            ),
-            primary: Colors.white,
-            backgroundColor: Colors.white,
-
-        ),
-        onPressed: () {
-          Get.toNamed(AppConstant.ROUTE_LOGIN);
-          // Navigator.of(context).pushNamed(AppConstant.ROUTE_FIRST_REGISTRATION);
-
-          //Get.to(FirstRegistrationsScreen());
-        },
-      )),
+            onPressed: () {
+              Get.toNamed(AppConstant.ROUTE_LOGIN);
+            },
+          )),
     );
   }
 
   /* Sell Pet Button */
-  Container createAccountButton(BuildContext context) {
-    return Container(
+  SizedBox createAccountButton(BuildContext context) {
+    return SizedBox(
       height: 60,
       child: Obx(() => TextButton(
-        child: controller.isApiRunning.value
-            ? Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            SizedBox(
-              height: 30,
-              width: 30,
-              child: CircularProgressIndicator(
-                backgroundColor: Colors.white,
-                strokeWidth: 2,
-              ),
+            child: controller.isApiRunning.value
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const <Widget>[
+                      SizedBox(
+                        height: 30,
+                        width: 30,
+                        child: CircularProgressIndicator(
+                          backgroundColor: Colors.white,
+                          strokeWidth: 2,
+                        ),
+                      ),
+                    ],
+                  )
+                : const Text('CREATE ACCOUNT',
+                    style: TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Gibson',
+                        color: Colors.white)),
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(13.0),
+                  side: BorderSide(color: AppConstant.submitBtnClr)),
+              backgroundColor: AppConstant.submitBtnClr,
             ),
-          ],
-        )
-            : Text('CREATE ACCOUNT',
-            style: TextStyle(
-                fontSize: 15.0,
-                fontWeight: FontWeight.w600,
-                fontFamily: 'Gibson',
-                color: Colors.white)
-        ),
-        style: TextButton.styleFrom(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(13.0),
-              side: BorderSide(color: AppConstant.submitBtnClr)
-          ),
-          primary: Colors.white,
-          backgroundColor: AppConstant.submitBtnClr,
+            onPressed: () {
+              Get.toNamed(AppConstant.ROUTE_SIGNUP_STEP_ONE);
+              if (_formKey.currentState!.validate()) {
+                _formKey.currentState!.save();
+                setState(() {
+                  // isApiRunning = true;
+                });
 
-        ),
-        onPressed: () {
-
-          Get.toNamed(AppConstant.ROUTE_SIGNUP_STEP_ONE);
-          if (_formKey.currentState!.validate()) {
-            _formKey.currentState!.save();
-            setState(() {
-              // isApiRunning = true;
-            });
-
-            // controller.getToken(userName,password);
-          }
-        },
-      )),
+                // controller.getToken(userName,password);
+              }
+            },
+          )),
     );
   }
-
-
 }
