@@ -79,7 +79,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           Navigator.of(context).pop();
                         },
                       ),
-
                       Center(
                         child: Align(
                           alignment: Alignment.center,
@@ -99,7 +98,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   )
                 ),
 
-                Expanded(child: Container(
+                Expanded(
+                    child: Container(
                   color: Colors.white,
                   padding: const EdgeInsets.only(
                     left: 15.0, right: 15.0, top: 20.0,),
