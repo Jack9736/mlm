@@ -51,115 +51,154 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
           bottom: true,
           child: Form(
               key: _formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  buildSignUpLabelText(),
-                  const SizedBox(height: 30),
-                  Expanded(
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: horizontalPadding),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          TextField(
-                              textCapitalization: TextCapitalization.sentences,
-                              textInputAction: TextInputAction.next,
-                              inputFormatters: [
-                                FilteringTextInputFormatter.digitsOnly
-                              ],
-                              keyboardType:
-                                  const TextInputType.numberWithOptions(
-                                      decimal: true),
-                              // Only numbers can be entered
-                              cursorColor: Colors.black,
-                              style: const TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500),
-                              decoration: InputDecoration(
-                                  suffixIcon: buildSendButton(context),
+              child: Container(
+                color: Colors.white,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    buildSignUpLabelText(),
+                    const SizedBox(height: 30),
+                    Expanded(
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: horizontalPadding),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextField(
+                                textCapitalization: TextCapitalization.sentences,
+                                textInputAction: TextInputAction.next,
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.digitsOnly
+                                ],
+                                keyboardType:
+                                    const TextInputType.numberWithOptions(
+                                        decimal: true),
+                                // Only numbers can be entered
+                                cursorColor: Colors.black,
+                                style: const TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w500),
+                                decoration: InputDecoration(
+                                    suffixIcon: buildSendButton(context),
 
-                                labelText: 'Phone Number',
-                                labelStyle: TextStyle(
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.w300,
-                                    fontFamily: 'Gibson',
-                                    color: AppConstant.topHeaderBlueClr
-                                ),
-                                  // hintStyle: TextStyle(
-                                  //     fontSize: 15.0,
-                                  //     fontWeight: FontWeight.w400,
-                                  //     fontFamily: 'Gibson',
-                                  //     color: AppConstant.topHeaderBlueClr),
-                                  // hintText: "Phone Number"
-                                )
-                          ),
-                          const SizedBox(height: 10),
-                          const Text("You can send another code in 30 seconds", style: TextStyle(
-                              fontSize: 14.0,
-                              fontWeight: FontWeight.w300,
-                              fontFamily: 'Gibson',
-                              color: AppConstant.topHeaderBlueClr),),
-                          const SizedBox(height: 40),
-                          const Text(
-                            "Phone Number Verification Code",
-                            style: TextStyle(
-                                fontSize: 15.0,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'Gibson',
-                                color: AppConstant.topHeaderBlueClr),
-                          ),
-                          TextField(
-                              textCapitalization: TextCapitalization.sentences,
-                              textInputAction: TextInputAction.next,
-                              inputFormatters: [
-                                FilteringTextInputFormatter.digitsOnly
-                              ],
-
-                              maxLength: 5,
-                              keyboardType:
-                                  const TextInputType.numberWithOptions(
-                                      decimal: true),
-                              // Only numbers can be entered
-                              cursorColor: Colors.black,
-
-                              decoration: const InputDecoration(
-                                  counterText: "",
-                                  labelText: '5 digit code here',
+                                  labelText: 'Phone Number',
                                   labelStyle: TextStyle(
                                       fontSize: 18.0,
                                       fontWeight: FontWeight.w300,
                                       fontFamily: 'Gibson',
                                       color: AppConstant.topHeaderBlueClr
                                   ),
-                                  // hintStyle: TextStyle(
-                                  //     fontSize: 15.0,
-                                  //     fontWeight: FontWeight.w300,
-                                  //     fontFamily: 'Gibson',
-                                  //     color: AppConstant.topHeaderBlueClr),
-                                  //hintText: "5 digit code here"
-                              ),
+                                    // hintStyle: TextStyle(
+                                    //     fontSize: 15.0,
+                                    //     fontWeight: FontWeight.w400,
+                                    //     fontFamily: 'Gibson',
+                                    //     color: AppConstant.topHeaderBlueClr),
+                                    // hintText: "Phone Number"
+                                  )
+                            ),
+                            const SizedBox(height: 10),
+                            const Text("You can send another code in 30 seconds", style: TextStyle(
+                                fontSize: 14.0,
+                                fontWeight: FontWeight.w300,
+                                fontFamily: 'Gibson',
+                                color: AppConstant.topHeaderBlueClr),),
+                            const SizedBox(height: 40),
+                            const Text(
+                              "Phone Number Verification Code",
+                              style: TextStyle(
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Gibson',
+                                  color: AppConstant.topHeaderBlueClr),
+                            ),
+                            TextField(
+                                textCapitalization: TextCapitalization.sentences,
+                                textInputAction: TextInputAction.next,
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.digitsOnly
+                                ],
 
-                          ),
-                        ],
+                                maxLength: 5,
+                                keyboardType:
+                                    const TextInputType.numberWithOptions(
+                                        decimal: true),
+                                // Only numbers can be entered
+                                cursorColor: Colors.black,
+
+                                decoration: const InputDecoration(
+                                    counterText: "",
+                                    labelText: '5 digit code here',
+                                    labelStyle: TextStyle(
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.w300,
+                                        fontFamily: 'Gibson',
+                                        color: AppConstant.topHeaderBlueClr
+                                    ),
+                                    // hintStyle: TextStyle(
+                                    //     fontSize: 15.0,
+                                    //     fontWeight: FontWeight.w300,
+                                    //     fontFamily: 'Gibson',
+                                    //     color: AppConstant.topHeaderBlueClr),
+                                    //hintText: "5 digit code here"
+                                ),
+
+                            ),
+                            const SizedBox(height: 40),
+                            //bodyContent(),
+
+
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: horizontalPadding,
-                        vertical: horizontalPadding),
-                    child: nextButton(context),
-                  ),
-                ],
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: horizontalPadding,
+                          vertical: horizontalPadding),
+                      child: nextButton(context),
+                    ),
+                  ],
+                ),
               )),
         ),
       ),
     );
   }
+  bodyContent(){
+    return Card(
+        elevation: 6,
+        margin: const EdgeInsets.all(12),
+        child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Container(
+                width: double.infinity,
+                height: 200,
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage("https://picsum.photos/600"),
+                        fit: BoxFit.cover
+                    )
+                ),
+                child: Container(
+                    alignment: Alignment.bottomRight,
+                    padding: const EdgeInsets.all(12),
+                    child: const Text(
+                        "Some Text",
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white70
+                        )
+                    )
+                )
+            )
+        )
+    );
+  }
+
 
   void _toggle() {
     setState(() {
