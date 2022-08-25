@@ -1,8 +1,8 @@
 
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import '../../Network/http_service.dart';
-import '../../Service/StorageService.dart';
+import 'package:mlm/Network/http_service.dart';
+import 'package:mlm/Service/StorageService.dart';
 
 class BuyCompleteRegController extends GetxController {
   Logger logger = Get.find();

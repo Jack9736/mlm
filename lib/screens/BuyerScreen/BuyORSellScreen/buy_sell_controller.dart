@@ -2,13 +2,8 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-
-
-import '../../Network/http_service.dart';
-import 'package:dio/dio.dart' as d;
-
-import '../../Service/StorageService.dart';
-import '../../Utils/constant.dart';
+import 'package:mlm/Network/http_service.dart';
+import 'package:mlm/Service/StorageService.dart';
 
 class BuySellController extends GetxController {
   Logger logger = Get.find();
@@ -21,6 +16,4 @@ class BuySellController extends GetxController {
   BuySellController({required this.httpService});
 
   final storage = Get.find<StorageService>();
-
-
 }

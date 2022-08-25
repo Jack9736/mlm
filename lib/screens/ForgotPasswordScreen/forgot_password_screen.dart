@@ -5,6 +5,7 @@ import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mlm/Style/app_colors.dart';
 import 'package:mlm/Widget/widget_appbar.dart';
 
 import 'package:mlm/screens/loginScreen/login_controller.dart';
@@ -97,8 +98,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   }
 
   /* Container Login Text */
-  Container forgotText() {
-    return Container(
+  SizedBox forgotText() {
+    return SizedBox(
         width: double.infinity,
         child: Center(
           child:  Align(
@@ -109,15 +110,15 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   fontSize: 40.0,
                   fontWeight: FontWeight.w300,
                   fontFamily: 'Gibson',
-                  color: AppConstant.topHeaderBlueClr),
+                  color: AppColors.topHeaderBlueClr),
             ),
           ),
         ));
   }
 
   /* Container Reset Link Text */
-  Container resetLinkText() {
-    return Container(
+  SizedBox resetLinkText() {
+    return SizedBox(
         width: double.infinity,
         child: Center(
           child:  Align(
@@ -128,7 +129,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   fontSize: 14.0,
                   fontWeight: FontWeight.w400,
                   fontFamily: 'Gibson',
-                  color: AppConstant.topHeaderBlueClr),
+                  color: AppColors.topHeaderBlueClr),
             ),
           ),
         ));
@@ -165,10 +166,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         style: TextButton.styleFrom(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(13.0),
-                side: BorderSide(color: AppConstant.submitBtnClr)
+                side: BorderSide(color: AppColors.submitBtnClr)
             ),
             primary: Colors.white,
-            backgroundColor: AppConstant.submitBtnClr,
+            backgroundColor: AppColors.submitBtnClr,
             textStyle:
             const TextStyle(fontSize: 18, fontFamily: 'Montserrat', fontWeight: FontWeight.bold)
         ),
@@ -190,9 +191,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
 
   /* Email TextFiled */
-  Container textEmailController(BuildContext context) {
+  SizedBox textEmailController(BuildContext context) {
 
-    return Container(
+    return SizedBox(
       width: 110,
       child: TextFormField(
         cursorColor: Colors.black,
@@ -211,7 +212,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             fontSize: 17.0,
             fontWeight: FontWeight.w400,
             fontFamily: 'Gibson',
-            color: AppConstant.topHeaderBlueClr),
+            color: AppColors.topHeaderBlueClr),
         decoration:  InputDecoration(
 
             // border: OutlineInputBorder(
@@ -232,10 +233,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 fontSize: 18.0,
                 fontWeight: FontWeight.w300,
                 fontFamily: 'Gibson',
-                color: AppConstant.topHeaderBlueClr
+                color: AppColors.topHeaderBlueClr
             ),
            // labelText: 'Email',
-            //labelStyle: TextStyle(color:AppConstant.topHeaderBlueClr),
+            //labelStyle: TextStyle(color:AppColors.topHeaderBlueClr),
 
             //contentPadding: const EdgeInsets.all(15),
            // hintText: 'Enter your email'

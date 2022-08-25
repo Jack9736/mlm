@@ -1,11 +1,18 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Widget/widget_appbar.dart';
 import 'package:mlm/screens/loginScreen/login_controller.dart';
 import 'package:mlm/Utils/constant.dart';
-import '../../Widget/widget_appbar.dart';
+
+import '../../../enum/Method.dart';
 
 class BuyCompleteRegView extends StatefulWidget {
   const BuyCompleteRegView({Key? key}) : super(key: key);
@@ -30,6 +37,8 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
 
   var token;
 
+  UserType _userType = UserType.buyer;
+
   @override
   void initState() {
     super.initState();
@@ -37,6 +46,12 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
     userNmController.addListener(() {
       setState(() {});
     });
+    readArgument();
+  }
+
+  void readArgument() {
+    var argumentData = Get.arguments;
+    _userType = argumentData[0][AppConstant.argUserType];
   }
 
   @override
@@ -80,29 +95,30 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
                                   color: Colors.black,
                                   fontWeight: FontWeight.w500),
                               decoration: InputDecoration(
-                                  suffixIcon: buildSendButton(context),
+                                suffixIcon: buildSendButton(context),
 
                                 labelText: 'Phone Number',
-                                labelStyle: TextStyle(
+                                labelStyle: const TextStyle(
                                     fontSize: 18.0,
                                     fontWeight: FontWeight.w300,
                                     fontFamily: 'Gibson',
-                                    color: AppConstant.topHeaderBlueClr
-                                ),
-                                  // hintStyle: TextStyle(
-                                  //     fontSize: 15.0,
-                                  //     fontWeight: FontWeight.w400,
-                                  //     fontFamily: 'Gibson',
-                                  //     color: AppConstant.topHeaderBlueClr),
-                                  // hintText: "Phone Number"
-                                )
-                          ),
+                                    color: AppColors.topHeaderBlueClr),
+                                // hintStyle: TextStyle(
+                                //     fontSize: 15.0,
+                                //     fontWeight: FontWeight.w400,
+                                //     fontFamily: 'Gibson',
+                                //     color: AppColors.topHeaderBlueClr),
+                                // hintText: "Phone Number"
+                              )),
                           const SizedBox(height: 10),
-                          const Text("You can send another code in 30 seconds", style: TextStyle(
-                              fontSize: 14.0,
-                              fontWeight: FontWeight.w300,
-                              fontFamily: 'Gibson',
-                              color: AppConstant.topHeaderBlueClr),),
+                          const Text(
+                            "You can send another code in 30 seconds",
+                            style: TextStyle(
+                                fontSize: 14.0,
+                                fontWeight: FontWeight.w300,
+                                fontFamily: 'Gibson',
+                                color: AppColors.topHeaderBlueClr),
+                          ),
                           const SizedBox(height: 40),
                           const Text(
                             "Phone Number Verification Code",
@@ -110,39 +126,36 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
                                 fontSize: 15.0,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: 'Gibson',
-                                color: AppConstant.topHeaderBlueClr),
+                                color: AppColors.topHeaderBlueClr),
                           ),
                           TextField(
-                              textCapitalization: TextCapitalization.sentences,
-                              textInputAction: TextInputAction.next,
-                              inputFormatters: [
-                                FilteringTextInputFormatter.digitsOnly
-                              ],
+                            textCapitalization: TextCapitalization.sentences,
+                            textInputAction: TextInputAction.next,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly
+                            ],
 
-                              maxLength: 5,
-                              keyboardType:
-                                  const TextInputType.numberWithOptions(
-                                      decimal: true),
-                              // Only numbers can be entered
-                              cursorColor: Colors.black,
+                            maxLength: 5,
+                            keyboardType: const TextInputType.numberWithOptions(
+                                decimal: true),
+                            // Only numbers can be entered
+                            cursorColor: Colors.black,
 
-                              decoration: const InputDecoration(
-                                  counterText: "",
-                                  labelText: '5 digit code here',
-                                  labelStyle: TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.w300,
-                                      fontFamily: 'Gibson',
-                                      color: AppConstant.topHeaderBlueClr
-                                  ),
-                                  // hintStyle: TextStyle(
-                                  //     fontSize: 15.0,
-                                  //     fontWeight: FontWeight.w300,
-                                  //     fontFamily: 'Gibson',
-                                  //     color: AppConstant.topHeaderBlueClr),
-                                  //hintText: "5 digit code here"
-                              ),
-
+                            decoration: const InputDecoration(
+                              counterText: "",
+                              labelText: '5 digit code here',
+                              labelStyle: TextStyle(
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.w300,
+                                  fontFamily: 'Gibson',
+                                  color: AppColors.topHeaderBlueClr),
+                              // hintStyle: TextStyle(
+                              //     fontSize: 15.0,
+                              //     fontWeight: FontWeight.w300,
+                              //     fontFamily: 'Gibson',
+                              //     color: AppColors.topHeaderBlueClr),
+                              //hintText: "5 digit code here"
+                            ),
                           ),
                         ],
                       ),
@@ -173,7 +186,7 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
         margin: const EdgeInsets.only(
             top: 30.0, bottom: 0.0, left: 30.0, right: 0.0),
         width: double.infinity,
-        child: Center(
+        child: const Center(
           child: Align(
             alignment: Alignment.topCenter,
             child: Text(
@@ -182,7 +195,7 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
                   fontSize: 36.0,
                   fontWeight: FontWeight.w300,
                   fontFamily: 'Gibson',
-                  color: AppConstant.topHeaderBlueClr),
+                  color: AppColors.topHeaderBlueClr),
             ),
           ),
         ));
@@ -209,24 +222,27 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
                     ],
                   )
                 : const Text(
-                    'VERIFY', style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.w600,
-                fontFamily: 'Gibson',
-                color: Colors.white),
+                    'VERIFY',
+                    style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Gibson',
+                        color: Colors.white),
                   ),
             style: TextButton.styleFrom(
                 //foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(13.0),
-                    side: BorderSide(color: AppConstant.submitBtnClr)),
-                backgroundColor: AppConstant.submitBtnClr,
+                    side: BorderSide(color: AppColors.submitBtnClr)),
+                backgroundColor: AppColors.submitBtnClr,
                 textStyle: const TextStyle(
                     fontSize: 13,
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold)),
             onPressed: () {
-              Get.toNamed(AppConstant.ROUTE_START_BROWSING);
+              Get.toNamed(AppConstant.ROUTE_START_BROWSING, arguments: [
+                {AppConstant.argUserType: _userType},
+              ]);
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
                 setState(() {
@@ -260,19 +276,20 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
                       ),
                     ],
                   )
-                : Text(
-                    'SEND', style: TextStyle(
-                fontSize: 14.0,
-                fontWeight: FontWeight.w600,
-                fontFamily: 'Gibson',
-                color: Colors.white),
+                : const Text(
+                    'SEND',
+                    style: TextStyle(
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Gibson',
+                        color: Colors.white),
                   ),
             style: TextButton.styleFrom(
                 //foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
-                    side: BorderSide(color: AppConstant.submitBtnClr)),
-                backgroundColor: AppConstant.submitBtnClr,
+                    side: BorderSide(color: AppColors.submitBtnClr)),
+                backgroundColor: AppColors.submitBtnClr,
                 textStyle: const TextStyle(
                     fontSize: 12,
                     fontFamily: 'Montserrat',

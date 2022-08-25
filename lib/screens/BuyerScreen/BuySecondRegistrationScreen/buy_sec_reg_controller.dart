@@ -2,12 +2,9 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:mlm/Network/http_service.dart';
+import 'package:mlm/Service/StorageService.dart';
 
-import '../../Network/http_service.dart';
-import 'package:dio/dio.dart' as d;
-
-import '../../Service/StorageService.dart';
-import '../../Utils/constant.dart';
 
 class BuySecRegController extends GetxController {
   Logger logger = Get.find();

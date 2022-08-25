@@ -35,8 +35,10 @@ class CustomImageWidget extends StatelessWidget {
           value: progress.progress,
         ),
       ),
-      errorWidget: (context, url, error) =>
-          const Icon(Icons.warning_amber_rounded),
+      errorWidget: (context, url, error) => Container(
+          height: 100,
+          width: 100,
+          child: const Card(child: Icon(Icons.warning_amber_rounded))),
     );
   }
 }
