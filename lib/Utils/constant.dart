@@ -4,24 +4,30 @@ class AppConstant {
 
   static const String BASE_URL = "https://crmshannon.awdweb.com.au/webservice.php?";
 
-  static Color submitBtnClr = Color.fromRGBO(214, 74, 76, 1);
-  static Color topHeaderClr = Color.fromRGBO(87, 188, 223, 1);
-  static const Color topHeaderBlueClr = Color.fromRGBO(20, 38, 101, 1);
-  static final String STORAGE_NAME = "shannon_storage";
+
+  static const String STORAGE_NAME = "shannon_storage";
 
 
   static const String tagHttpService = "tagHttpService";
 
-  static final String ROUTE = "/";
-  static final String ROUTE_LOGIN = "/login";
-  static final String ROUTE_FORGOT_PASSWORD = "/forgotPwd";
-  static final String ROUTE_BUY_SELL = "/buysell";
-  static final String ROUTE_FIRST_REGISTRATION = "/FirstRegistrationScreen";
-  static final String ROUTE_SIGNUP_STEP_ONE = "/signUpStepOne";
-  static final String ROUTE_BUY_SEC_REG = "/BuySecRegScreen";
-  static final String ROUTE_BUY_COMPLETE_REG = "/BuyCompleteRegView";
-  static final String ROUTE_START_BROWSING = "/startBrowsingView";
+  static const String ROUTE = "/";
+  static const String ROUTE_LOGIN = "/login";
+  static const String ROUTE_FORGOT_PASSWORD = "/forgotPwd";
+  static const String ROUTE_BUY_SELL = "/buysell";
 
+
+  static const String ROUTE_FIRST_REG = "/FirstRegScreen";
+
+  static const String ROUTE_BUY_FIRST_REG = "/BuyFirstRegView";
+  static const String ROUTE_BUY_SEC_REG = "/BuySecRegView";
+  static const String ROUTE_BUY_COMPLETE_REG = "/BuyCompleteRegView";
+  static const String ROUTE_START_BROWSING = "/startBrowsingView";
+
+  static const String ROUTE_SELL_FIRST_REG = "/SellFirstRegView";
+  static const String ROUTE_SELL_SEC_REG = "/SellSecRegScreen";
+
+  static const String ROUTE_BUY_HOME = "/BuyHomeScreen";
+  static const String ROUTE_BUY_DRAWER = "/SideDrawer";
 
 
   static const String prefUserDetail = "prefuserdetail";
@@ -31,6 +37,8 @@ class AppConstant {
   static const String prefCartItem = "prefcartitem";
   static const String prefUserName = "prefusername";
   static const String prefPassword = "prefpassword";
+
+  static const String argUserType = "userType";
 
   static var deviceType = "android";
 }

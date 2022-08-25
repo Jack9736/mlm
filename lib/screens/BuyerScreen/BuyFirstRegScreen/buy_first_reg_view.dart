@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Widget/widget_appbar.dart';
 import 'package:mlm/screens/loginScreen/login_controller.dart';
 import 'package:mlm/Utils/constant.dart';
-import '../../Widget/widget_appbar.dart';
 
 class BuyFirstRegView extends StatefulWidget {
   const BuyFirstRegView({Key? key}) : super(key: key);
@@ -42,7 +55,7 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        appBar: const CustomAppBar(title: "Create Account", ),
+        appBar: const CustomAppBar(title: "Create Account",),
         body: SafeArea(
           bottom: true,
           child: SingleChildScrollView(
@@ -66,7 +79,7 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                             fontSize: 17.0,
                             fontWeight: FontWeight.w400,
                             fontFamily: 'Gibson',
-                            color: AppConstant.topHeaderBlueClr),
+                            color: AppColors.topHeaderBlueClr),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Enter first name';
@@ -77,15 +90,15 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                           firstName = value!;
                         },
                         decoration: const InputDecoration(
-                            labelText: 'First Name*',
-                            labelStyle: TextStyle(
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'Gibson',
-                                color: AppConstant.topHeaderBlueClr
-                            ),
+                          labelText: 'First Name*',
+                          labelStyle: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Gibson',
+                              color: AppColors.topHeaderBlueClr
+                          ),
 
-                            //hintText: 'First Name'
+                          //hintText: 'First Name'
                         ),
                       ),
                     ),
@@ -102,7 +115,7 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                             fontSize: 17.0,
                             fontWeight: FontWeight.w400,
                             fontFamily: 'Gibson',
-                            color: AppConstant.topHeaderBlueClr),
+                            color: AppColors.topHeaderBlueClr),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Enter last name';
@@ -113,14 +126,14 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                           lastName = value!;
                         },
                         decoration: const InputDecoration(
-                            labelText: 'Last Name*',
-                            labelStyle: TextStyle(
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'Gibson',
-                                color: AppConstant.topHeaderBlueClr
-                            ),
-                            //hintText: 'Last Name'
+                          labelText: 'Last Name*',
+                          labelStyle: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Gibson',
+                              color: AppColors.topHeaderBlueClr
+                          ),
+                          //hintText: 'Last Name'
                         ),
                       ),
                     ),
@@ -142,7 +155,7 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                             fontSize: 17.0,
                             fontWeight: FontWeight.w400,
                             fontFamily: 'Gibson',
-                            color: AppConstant.topHeaderBlueClr),
+                            color: AppColors.topHeaderBlueClr),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Passcode(hidden to public)';
@@ -153,14 +166,14 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                           firstName = value!;
                         },
                         decoration: const InputDecoration(
-                            labelText: 'Passcode (hidden to public)*',
-                            labelStyle: TextStyle(
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'Gibson',
-                                color: AppConstant.topHeaderBlueClr
-                            ),
-                            //hintText: 'Passcode (hidden to public)'
+                          labelText: 'Passcode (hidden to public)*',
+                          labelStyle: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Gibson',
+                              color: AppColors.topHeaderBlueClr
+                          ),
+                          //hintText: 'Passcode (hidden to public)'
                         ),
                       ),
                     ),
@@ -180,10 +193,10 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                             fontSize: 17.0,
                             fontWeight: FontWeight.w400,
                             fontFamily: 'Gibson',
-                            color: AppConstant.topHeaderBlueClr),
+                            color: AppColors.topHeaderBlueClr),
                         validator: (value) {
                           bool validEmail = RegExp(
-                                  r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+                              r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
                               .hasMatch(value!);
                           if (value.isEmpty || !validEmail) {
                             return 'Enter your email address';
@@ -195,15 +208,15 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                         },
                         decoration: const InputDecoration(
 
-                            labelStyle: TextStyle(
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'Gibson',
-                                color: AppConstant.topHeaderBlueClr
-                            ),
-                            labelText: 'Enter your email address (hidden to public)*',
+                          labelStyle: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Gibson',
+                              color: AppColors.topHeaderBlueClr
+                          ),
+                          labelText: 'Enter your email address (hidden to public)*',
 
-                           // hintText: 'Enter your email address'
+                          // hintText: 'Enter your email address'
                         ),
                       ),
                     ),
@@ -220,7 +233,7 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                             fontSize: 17.0,
                             fontWeight: FontWeight.w400,
                             fontFamily: 'Gibson',
-                            color: AppConstant.topHeaderBlueClr),
+                            color: AppColors.topHeaderBlueClr),
                         validator: (value) {
                           confirmPass = value;
 
@@ -236,28 +249,28 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                           password = value!;
                         },
                         decoration: InputDecoration(
-                            suffixIcon: IconButton(
-                              icon: Icon(
-                                // Based on passwordVisible state choose the icon
-                                _obscureText
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                                color: Colors.grey[300],
-                              ),
-                              onPressed: () {
-                                // Update the state i.e. toogle the state of passwordVisible variable
-                                setState(() {
-                                  _toggle();
-                                });
-                              },
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              // Based on passwordVisible state choose the icon
+                              _obscureText
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.grey[300],
                             ),
+                            onPressed: () {
+                              // Update the state i.e. toogle the state of passwordVisible variable
+                              setState(() {
+                                _toggle();
+                              });
+                            },
+                          ),
 
-                            labelText: 'Create Password',
+                          labelText: 'Create Password',
                           labelStyle: TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.w400,
                               fontFamily: 'Gibson',
-                              color: AppConstant.topHeaderBlueClr
+                              color: AppColors.topHeaderBlueClr
                           ),
 
                         ),
@@ -276,7 +289,7 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                             fontSize: 17.0,
                             fontWeight: FontWeight.w400,
                             fontFamily: 'Gibson',
-                            color: AppConstant.topHeaderBlueClr),
+                            color: AppColors.topHeaderBlueClr),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Re-enter valid password';
@@ -291,28 +304,28 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                           confirmPwd = value!;
                         },
                         decoration: InputDecoration(
-                            suffixIcon: IconButton(
-                              icon: Icon(
-                                // Based on passwordVisible state choose the icon
-                                _obscureText
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                                color: Colors.grey[300],
-                              ),
-                              onPressed: () {
-                                // Update the state i.e. toogle the state of passwordVisible variable
-                                setState(() {
-                                  _toggle();
-                                });
-                              },
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              // Based on passwordVisible state choose the icon
+                              _obscureText
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.grey[300],
                             ),
+                            onPressed: () {
+                              // Update the state i.e. toogle the state of passwordVisible variable
+                              setState(() {
+                                _toggle();
+                              });
+                            },
+                          ),
 
-                            labelText: 'Confirm Password',
+                          labelText: 'Confirm Password',
                           labelStyle: TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.w400,
                               fontFamily: 'Gibson',
-                              color: AppConstant.topHeaderBlueClr
+                              color: AppColors.topHeaderBlueClr
                           ),
                         ),
                       ),
@@ -344,11 +357,11 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
             alignment: Alignment.topLeft,
             child: Text(
               "Sign Up",
-               style: TextStyle(
-                fontSize: 36.0,
-                fontWeight: FontWeight.w300,
-                fontFamily: 'Gibson',
-                color: AppConstant.topHeaderBlueClr),
+              style: TextStyle(
+                  fontSize: 36.0,
+                  fontWeight: FontWeight.w300,
+                  fontFamily: 'Gibson',
+                  color: AppColors.topHeaderBlueClr),
             ),
           ),
         ));
@@ -360,39 +373,41 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
       margin: const EdgeInsets.only(bottom: 40, left: 30, right: 30),
       height: 60,
       width: double.infinity,
-      child: Obx(() => TextButton(
+      child: Obx(() =>
+          TextButton(
             child: controller.isApiRunning.value
                 ? Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const <Widget>[
-                      SizedBox(
-                        height: 30,
-                        width: 30,
-                        child: CircularProgressIndicator(
-                          backgroundColor: Colors.white,
-                          strokeWidth: 2,
-                        ),
-                      ),
-                    ],
-                  )
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const <Widget>[
+                SizedBox(
+                  height: 30,
+                  width: 30,
+                  child: CircularProgressIndicator(
+                    backgroundColor: Colors.white,
+                    strokeWidth: 2,
+                  ),
+                ),
+              ],
+            )
                 : const Text(
-                    'NEXT', style: TextStyle(
+                'NEXT', style: TextStyle(
                 fontSize: 16.0,
                 fontWeight: FontWeight.w600,
                 fontFamily: 'Gibson',
                 color: Colors.white)
-                  ),
+            ),
             style: TextButton.styleFrom(
-                //foregroundColor: Colors.white,
+              //foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(13.0),
-                    side: BorderSide(color: AppConstant.submitBtnClr)),
-                backgroundColor: AppConstant.submitBtnClr,
+                    side: BorderSide(color: AppColors.submitBtnClr)),
+                backgroundColor: AppColors.submitBtnClr,
                 textStyle: const TextStyle(
                     fontSize: 18,
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold)),
             onPressed: () {
+
               Get.toNamed(AppConstant.ROUTE_BUY_SEC_REG);
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();

@@ -5,6 +5,7 @@ import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mlm/Style/app_colors.dart';
 import 'package:mlm/Widget/widget_appbar.dart';
 
 import 'package:mlm/screens/loginScreen/login_controller.dart';
@@ -113,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   fontSize: 38.0,
                   fontWeight: FontWeight.w300,
                   fontFamily: 'Gibson',
-                  color: AppConstant.topHeaderBlueClr),
+                  color: AppColors.topHeaderBlueClr),
             ),
           ),
         ));
@@ -152,9 +153,9 @@ class _LoginScreenState extends State<LoginScreen> {
             //foregroundColor: Colors.white,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(13.0),
-                side: BorderSide(color: AppConstant.submitBtnClr)
+                side: BorderSide(color: AppColors.submitBtnClr)
             ),
-            backgroundColor: AppConstant.submitBtnClr,
+            backgroundColor: AppColors.submitBtnClr,
             textStyle:
             const TextStyle(fontSize: 18, fontFamily: 'Montserrat', fontWeight: FontWeight.bold)
         ),
@@ -189,7 +190,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   fontSize: 12.0,
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Gibson',
-                  color: AppConstant.topHeaderBlueClr),
+                  color: AppColors.topHeaderBlueClr),
               //textAlign: TextAlign.center
             ),
           ),
@@ -221,7 +222,7 @@ class _LoginScreenState extends State<LoginScreen> {
             fontSize: 17.0,
             fontWeight: FontWeight.w400,
             fontFamily: 'Gibson',
-            color: AppConstant.topHeaderBlueClr),
+            color: AppColors.topHeaderBlueClr),
         decoration: const InputDecoration(
 
             labelText: 'Email',
@@ -229,7 +230,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 fontSize: 18.0,
                 fontWeight: FontWeight.w300,
                 fontFamily: 'Gibson',
-                color: AppConstant.topHeaderBlueClr
+                color: AppColors.topHeaderBlueClr
             ),
 
             // border: OutlineInputBorder(
@@ -278,7 +279,7 @@ class _LoginScreenState extends State<LoginScreen> {
             fontSize: 17.0,
             fontWeight: FontWeight.w400,
             fontFamily: 'Gibson',
-            color: AppConstant.topHeaderBlueClr),
+            color: AppColors.topHeaderBlueClr),
         decoration: InputDecoration(
             suffixIcon: IconButton(
               icon: Icon(
@@ -299,7 +300,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 fontSize: 18.0,
                 fontWeight: FontWeight.w300,
                 fontFamily: 'Gibson',
-                color: AppConstant.topHeaderBlueClr
+                color: AppColors.topHeaderBlueClr
             ),
 
             // border: const OutlineInputBorder(

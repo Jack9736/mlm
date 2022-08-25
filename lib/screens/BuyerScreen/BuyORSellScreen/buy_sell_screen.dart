@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import 'package:connectivity/connectivity.dart';
-import 'package:dio/adapter.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mlm/enum/Method.dart';
 
-import 'package:mlm/screens/BuyORSellScreen/buy_sell_controller.dart';
 import 'package:mlm/Utils/constant.dart';
+import 'package:mlm/screens/BuyerScreen/BuyORSellScreen/buy_sell_controller.dart';
+
+import '../../../Style/app_colors.dart';
 
 class BuySellScreen extends StatefulWidget {
   const BuySellScreen({Key? key}) : super(key: key);
@@ -29,6 +29,8 @@ class _BuySellScreenState extends State<BuySellScreen> {
 
   var token;
 
+  UserType _userType = UserType.buyer;
+
   @override
   void initState() {
     super.initState();
@@ -38,6 +40,7 @@ class _BuySellScreenState extends State<BuySellScreen> {
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
@@ -122,7 +125,7 @@ class _BuySellScreenState extends State<BuySellScreen> {
                   )
                 : const Text('I WANT TO BUY A PET',
                     style: TextStyle(
-                      color: Colors.white,
+                        color: Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                         fontFamily: 'Gibson')),
@@ -130,22 +133,24 @@ class _BuySellScreenState extends State<BuySellScreen> {
                 //foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(13.0),
-                    side: BorderSide(color: AppConstant.submitBtnClr)),
-                backgroundColor: AppConstant.submitBtnClr,
+                    side: BorderSide(color: AppColors.submitBtnClr)),
+                backgroundColor: AppColors.submitBtnClr,
                 textStyle: const TextStyle(
                     fontSize: 14,
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold)),
             onPressed: () {
-              Get.toNamed(AppConstant.ROUTE_FIRST_REGISTRATION);
+              Get.toNamed(AppConstant.ROUTE_FIRST_REG, arguments: [
+                {AppConstant.argUserType: UserType.buyer},
+              ]);
             },
           )),
     );
   }
 
   /* Sell Pet Button */
-  Container sellPetButton(BuildContext context) {
-    return Container(
+  SizedBox sellPetButton(BuildContext context) {
+    return SizedBox(
       height: 60,
       child: Obx(() => TextButton(
             child: controller.isApiRunning.value
@@ -170,16 +175,17 @@ class _BuySellScreenState extends State<BuySellScreen> {
             style: TextButton.styleFrom(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(13.0),
-                    side: BorderSide(color: AppConstant.submitBtnClr)),
+                    side: BorderSide(color: AppColors.submitBtnClr)),
                 primary: Colors.white,
-                backgroundColor: AppConstant.submitBtnClr,
+                backgroundColor: AppColors.submitBtnClr,
                 textStyle: const TextStyle(
                     fontSize: 14,
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold)),
             onPressed: () {
-              Get.toNamed(AppConstant.ROUTE_FIRST_REGISTRATION);
-
+              Get.toNamed(AppConstant.ROUTE_FIRST_REG, arguments: [
+                {AppConstant.argUserType: UserType.seller},
+              ]);
             },
           )),
     );

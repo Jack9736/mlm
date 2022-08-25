@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mlm/Style/app_colors.dart';
 
 import '../Utils/constant.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Color? backgroundColor;
   final Color? textIconColor;
   final Color? backIconColor;
@@ -13,11 +14,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? menuItem;
   final bool hideBack;
 
-  const CustomAppBar({
+  const MainAppBar({
     Key? key,
-    this.backgroundColor = AppColors.topHeaderBlueClr,
-    this.textIconColor = Colors.white,
-    this.backIconColor = Colors.white,
+    this.backgroundColor = AppColors.white,
+    this.textIconColor = AppColors.white,
+    this.backIconColor = AppColors.white,
     this.icon,
     this.title = '',
     this.menuItem,
@@ -37,22 +38,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       iconTheme: IconThemeData(
         color: textIconColor,
       ),
-      leading: hideBack
-          ? Container()
-          : icon == null
-              ? BackButton(
-                  color: backIconColor,
-                )
-              : IconButton(
-                  icon: Image.asset(
-                    icon!,
-                    height: 18,
-                    width: 18,
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context, true);
-                  },
-                ),
+      leading: IconButton(
+        icon: const Icon(
+          Icons.menu,
+          color: AppColors.appColor,
+        ),
+        onPressed: () {
+          Get.toNamed(AppConstant.ROUTE_BUY_DRAWER);
+        },
+      ),
       title: Text(
         title!,
         style: TextStyle(

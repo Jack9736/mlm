@@ -3,18 +3,22 @@ import 'package:flutter/services.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Style/app_colors.dart';
 import 'package:mlm/Utils/constant.dart';
-import 'package:mlm/screens/BuyComplateRegScreen/buy_complete_reg_view.dart';
-import 'package:mlm/screens/BuyFirstRegScreen/buy_first_reg_view.dart';
-import 'package:mlm/screens/BuySecondRegistrationScreen/buy_sec_reg_view.dart';
+import 'package:mlm/screens/BuyerScreen/BuyComplateRegScreen/buy_complete_reg_view.dart';
+import 'package:mlm/screens/BuyerScreen/BuyFirstRegScreen/buy_first_reg_view.dart';
+import 'package:mlm/screens/BuyerScreen/BuyHomeScreen/buy_home_screen.dart';
+import 'package:mlm/screens/BuyerScreen/BuyORSellScreen/buy_sell_screen.dart';
+import 'package:mlm/screens/BuyerScreen/BuySecondRegistrationScreen/buy_sec_reg_view.dart';
+import 'package:mlm/screens/BuyerScreen/DrawerScreen/SideDrawer.dart';
+import 'package:mlm/screens/FirstRegScreen/first_reg_screen.dart';
+import 'package:mlm/screens/SellerScreen/SellFirstRegScreen/sell_first_reg_view.dart';
+import 'package:mlm/screens/SellerScreen/SellSecRegScreen/sell_sec_reg_view.dart';
 import 'package:mlm/screens/loginScreen/login_screen.dart';
-import 'package:mlm/screens/BuyORSellScreen/buy_sell_screen.dart';
-import 'package:mlm/screens/FirstRegistrationScreen/first_registration_screen.dart';
 import 'package:mlm/screens/ForgotPasswordScreen/forgot_password_screen.dart';
 import 'package:mlm/screens/StartBrowsingScreen/start_browsing_view.dart';
 import 'Binding/app_binding.dart';
-
-
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,9 +38,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
-     FlutterStatusbarcolor.setStatusBarColor(AppConstant.topHeaderClr);
-    if (useWhiteForeground(AppConstant.topHeaderClr)) {
+    FlutterStatusbarcolor.setStatusBarColor(AppColors.topHeaderClr);
+    if (useWhiteForeground(AppColors.topHeaderClr)) {
       FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
     } else {
       FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
@@ -53,24 +56,50 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: AppConstant.ROUTE_FORGOT_PASSWORD,
             page: () => ForgotPasswordScreen()),
+
+        /*
+        * Start Buyer Registration Screen
+        * */
         GetPage(
-            name: AppConstant.ROUTE_BUY_SELL,
-            page: () => const BuySellScreen()),
-        GetPage(
-            name: AppConstant.ROUTE_FIRST_REGISTRATION,
-            page: () => FirstRegistrationScreen()),
-        GetPage(
-            name: AppConstant.ROUTE_SIGNUP_STEP_ONE,
+            name: AppConstant.ROUTE_BUY_FIRST_REG,
             page: () => const BuyFirstRegView()),
         GetPage(
             name: AppConstant.ROUTE_BUY_SEC_REG,
-            page: () => const BuySecRegScreen()),
+            page: () => const BuySecRegView()),
         GetPage(
             name: AppConstant.ROUTE_BUY_COMPLETE_REG,
             page: () => const BuyCompleteRegView()),
         GetPage(
             name: AppConstant.ROUTE_START_BROWSING,
             page: () => const StartBrowsingView()),
+        /*
+        * End Buyer Registration Screen
+        * */
+
+        GetPage(
+            name: AppConstant.ROUTE_FIRST_REG,
+            page: () => const FirstRegScreen()),
+
+        /*
+        * Start Seller Registration Screen
+        * */
+        GetPage(
+            name: AppConstant.ROUTE_SELL_FIRST_REG,
+            page: () => const SellFirstRegView()),
+        GetPage(
+            name: AppConstant.ROUTE_SELL_SEC_REG,
+            page: () => const SellSecRegView()),
+
+        /*
+        * End Seller Registration Screen
+        * */
+
+        GetPage(
+            name: AppConstant.ROUTE_BUY_HOME,
+            page: () => const BuyHomeScreen()),
+         GetPage(
+            name: AppConstant.ROUTE_BUY_DRAWER,
+            page: () => const SideDrawer()),
       ],
     );
   }
@@ -85,7 +114,7 @@ MaterialColor createMaterialColor(Color color) {
     strengths.add(0.1 * i);
   }
   //(20, 38, 101, 1)
-  strengths.forEach((strength) {
+  for (var strength in strengths) {
     final double ds = 0.5 - strength;
     swatch[(strength * 1000).round()] = Color.fromRGBO(
       r + ((ds < 0 ? r : (255 - r)) * ds).round(),
@@ -93,7 +122,7 @@ MaterialColor createMaterialColor(Color color) {
       b + ((ds < 0 ? b : (255 - b)) * ds).round(),
       1,
     );
-  });
+  }
   return MaterialColor(color.value, swatch);
 }
 

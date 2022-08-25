@@ -10,7 +10,7 @@ import 'package:dio/dio.dart' as d;
 import '../../Service/StorageService.dart';
 import '../../Utils/constant.dart';
 
-class FirstRegistrationController extends GetxController {
+class FirstRegController extends GetxController {
   Logger logger = Get.find();
 
   var isLoading = false.obs;
@@ -18,7 +18,7 @@ class FirstRegistrationController extends GetxController {
 
   HttpService httpService;
 
-  FirstRegistrationController({required this.httpService});
+  FirstRegController({required this.httpService});
 
   final storage = Get.find<StorageService>();
 

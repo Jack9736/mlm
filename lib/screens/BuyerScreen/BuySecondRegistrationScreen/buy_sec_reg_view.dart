@@ -1,26 +1,24 @@
 import 'dart:io';
 
-import 'package:connectivity/connectivity.dart';
-import 'package:dio/adapter.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:group_radio_button/group_radio_button.dart';
+import 'package:mlm/Style/app_colors.dart';
 
-import 'package:mlm/screens/BuySecondRegistrationScreen/buy_sec_reg_controller.dart';
 import 'package:mlm/Utils/constant.dart';
-import '../../Widget/widget_appbar.dart';
+import 'package:mlm/Widget/widget_appbar.dart';
+import 'package:mlm/enum/Method.dart';
+import 'package:mlm/screens/BuyerScreen/BuySecondRegistrationScreen/buy_sec_reg_controller.dart';
 
 enum BestTutorSite { javatpoint, w3schools, tutorialandexample }
 
-class BuySecRegScreen extends StatefulWidget {
-  const BuySecRegScreen({Key? key}) : super(key: key);
+class BuySecRegView extends StatefulWidget {
+  const BuySecRegView({Key? key}) : super(key: key);
 
   @override
-  State<BuySecRegScreen> createState() => _BuySecRegScreenState();
+  State<BuySecRegView> createState() => _BuySecRegViewState();
 }
 
-class _BuySecRegScreenState extends State<BuySecRegScreen> {
+class _BuySecRegViewState extends State<BuySecRegView> {
   final _formKey = GlobalKey<FormState>();
   bool _obscureText = true;
   late String userName, password, sessionName;
@@ -84,25 +82,28 @@ class _BuySecRegScreenState extends State<BuySecRegScreen> {
                                       bottom: 0.0,
                                       left: 30.0,
                                       right: 0.0),
-                                  child: const Text('Have you got kids?', style: TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: 'Gibson',
-                                      color: AppConstant.topHeaderBlueClr)),
+                                  child: const Text('Have you got kids?',
+                                      style: TextStyle(
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'Gibson',
+                                          color: AppColors.topHeaderBlueClr)),
                                 ),
                                 Column(children: [
                                   RadioListTile(
                                     dense: true,
                                     value: controller.kidsList[0],
                                     groupValue: kidsListObs.value,
-                                    activeColor: AppConstant.topHeaderBlueClr,
+                                    activeColor: AppColors.topHeaderBlueClr,
                                     title: Transform.translate(
                                         offset: const Offset(-20, 0),
                                         child: const Text('Kids under 5 years',
-                                            style: TextStyle(fontSize: 14,
+                                            style: TextStyle(
+                                                fontSize: 14,
                                                 fontWeight: FontWeight.w300,
                                                 fontFamily: 'Gibson',
-                                                color: AppConstant.topHeaderBlueClr))),
+                                                color: AppColors
+                                                    .topHeaderBlueClr))),
                                     onChanged: (String? value) {
                                       kidsListObs.value = value!;
                                     },
@@ -111,14 +112,16 @@ class _BuySecRegScreenState extends State<BuySecRegScreen> {
                                     dense: true,
                                     value: controller.kidsList[1],
                                     groupValue: kidsListObs.value,
-                                    activeColor: AppConstant.topHeaderBlueClr,
+                                    activeColor: AppColors.topHeaderBlueClr,
                                     title: Transform.translate(
                                         offset: const Offset(-20, 0),
                                         child: const Text('Kids 5-12 years',
-                                            style: TextStyle(fontSize: 14,
+                                            style: TextStyle(
+                                                fontSize: 14,
                                                 fontWeight: FontWeight.w300,
                                                 fontFamily: 'Gibson',
-                                                color: AppConstant.topHeaderBlueClr))),
+                                                color: AppColors
+                                                    .topHeaderBlueClr))),
                                     onChanged: (String? value) {
                                       kidsListObs.value = value!;
                                     },
@@ -127,14 +130,16 @@ class _BuySecRegScreenState extends State<BuySecRegScreen> {
                                     value: controller.kidsList[2],
                                     dense: true,
                                     groupValue: kidsListObs.value,
-                                    activeColor: AppConstant.topHeaderBlueClr,
+                                    activeColor: AppColors.topHeaderBlueClr,
                                     title: Transform.translate(
                                         offset: const Offset(-20, 0),
                                         child: const Text('Teenagers',
-                                            style: TextStyle(fontSize: 14,
+                                            style: TextStyle(
+                                                fontSize: 14,
                                                 fontWeight: FontWeight.w300,
                                                 fontFamily: 'Gibson',
-                                                color: AppConstant.topHeaderBlueClr))),
+                                                color: AppColors
+                                                    .topHeaderBlueClr))),
                                     onChanged: (String? value) {
                                       kidsListObs.value = value!;
                                     },
@@ -147,25 +152,28 @@ class _BuySecRegScreenState extends State<BuySecRegScreen> {
                                       left: 30.0,
                                       right: 0.0),
                                   child: const Text(
-                                      'What type of dwelling do you live in?', style: TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: 'Gibson',
-                                      color: AppConstant.topHeaderBlueClr)),
+                                      'What type of dwelling do you live in?',
+                                      style: TextStyle(
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'Gibson',
+                                          color: AppColors.topHeaderBlueClr)),
                                 ),
                                 Column(children: [
                                   RadioListTile(
                                     dense: true,
                                     value: controller.liveInTypeList[0],
                                     groupValue: liveInTypeListObs.value,
-                                    activeColor: AppConstant.topHeaderBlueClr,
+                                    activeColor: AppColors.topHeaderBlueClr,
                                     title: Transform.translate(
                                         offset: const Offset(-20, 0),
                                         child: const Text('House',
-                                            style: TextStyle(fontSize: 14,
+                                            style: TextStyle(
+                                                fontSize: 14,
                                                 fontWeight: FontWeight.w300,
                                                 fontFamily: 'Gibson',
-                                                color: AppConstant.topHeaderBlueClr))),
+                                                color: AppColors
+                                                    .topHeaderBlueClr))),
                                     onChanged: (String? value) {
                                       liveInTypeListObs.value = value!;
                                     },
@@ -174,14 +182,16 @@ class _BuySecRegScreenState extends State<BuySecRegScreen> {
                                     value: controller.liveInTypeList[1],
                                     dense: true,
                                     groupValue: liveInTypeListObs.value,
-                                    activeColor: AppConstant.topHeaderBlueClr,
+                                    activeColor: AppColors.topHeaderBlueClr,
                                     title: Transform.translate(
                                         offset: const Offset(-20, 0),
                                         child: const Text('Apartment',
-                                            style: TextStyle(fontSize: 14,
+                                            style: TextStyle(
+                                                fontSize: 14,
                                                 fontWeight: FontWeight.w300,
                                                 fontFamily: 'Gibson',
-                                                color: AppConstant.topHeaderBlueClr))),
+                                                color: AppColors
+                                                    .topHeaderBlueClr))),
                                     onChanged: (String? value) {
                                       liveInTypeListObs.value = value!;
                                     },
@@ -190,14 +200,16 @@ class _BuySecRegScreenState extends State<BuySecRegScreen> {
                                     value: controller.liveInTypeList[2],
                                     dense: true,
                                     groupValue: liveInTypeListObs.value,
-                                    activeColor: AppConstant.topHeaderBlueClr,
+                                    activeColor: AppColors.topHeaderBlueClr,
                                     title: Transform.translate(
                                         offset: const Offset(-20, 0),
                                         child: const Text('Acreage',
-                                            style: TextStyle(fontSize: 14,
+                                            style: TextStyle(
+                                                fontSize: 14,
                                                 fontWeight: FontWeight.w300,
                                                 fontFamily: 'Gibson',
-                                                color: AppConstant.topHeaderBlueClr))),
+                                                color: AppColors
+                                                    .topHeaderBlueClr))),
                                     onChanged: (String? value) {
                                       liveInTypeListObs.value = value!;
                                     },
@@ -209,25 +221,28 @@ class _BuySecRegScreenState extends State<BuySecRegScreen> {
                                       bottom: 0.0,
                                       left: 30.0,
                                       right: 0.0),
-                                  child: const Text('Any other pets', style: TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: 'Gibson',
-                                      color: AppConstant.topHeaderBlueClr)),
+                                  child: const Text('Any other pets',
+                                      style: TextStyle(
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'Gibson',
+                                          color: AppColors.topHeaderBlueClr)),
                                 ),
                                 Column(children: [
                                   RadioListTile(
                                     value: controller.otherPetsList[0],
                                     dense: true,
                                     groupValue: otherPetsListObs.value,
-                                    activeColor: AppConstant.topHeaderBlueClr,
+                                    activeColor: AppColors.topHeaderBlueClr,
                                     title: Transform.translate(
                                         offset: const Offset(-20, 0),
                                         child: const Text('Yes',
-                                            style: TextStyle(fontSize: 14,
+                                            style: TextStyle(
+                                                fontSize: 14,
                                                 fontWeight: FontWeight.w300,
                                                 fontFamily: 'Gibson',
-                                                color: AppConstant.topHeaderBlueClr))),
+                                                color: AppColors
+                                                    .topHeaderBlueClr))),
                                     onChanged: (String? value) {
                                       otherPetsListObs.value = value!;
                                     },
@@ -236,14 +251,16 @@ class _BuySecRegScreenState extends State<BuySecRegScreen> {
                                     value: controller.otherPetsList[1],
                                     dense: true,
                                     groupValue: otherPetsListObs.value,
-                                    activeColor: AppConstant.topHeaderBlueClr,
+                                    activeColor: AppColors.topHeaderBlueClr,
                                     title: Transform.translate(
                                         offset: const Offset(-20, 0),
                                         child: const Text('No',
-                                            style: TextStyle(fontSize: 14,
+                                            style: TextStyle(
+                                                fontSize: 14,
                                                 fontWeight: FontWeight.w300,
                                                 fontFamily: 'Gibson',
-                                                color: AppConstant.topHeaderBlueClr))),
+                                                color: AppColors
+                                                    .topHeaderBlueClr))),
                                     onChanged: (String? value) {
                                       otherPetsListObs.value = value!;
                                     },
@@ -255,26 +272,28 @@ class _BuySecRegScreenState extends State<BuySecRegScreen> {
                                       bottom: 0.0,
                                       left: 30.0,
                                       right: 0.0),
-                                  child:
-                                      const Text('Will you insure your pet?', style: TextStyle(
+                                  child: const Text('Will you insure your pet?',
+                                      style: TextStyle(
                                           fontSize: 18.0,
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'Gibson',
-                                          color: AppConstant.topHeaderBlueClr)),
+                                          color: AppColors.topHeaderBlueClr)),
                                 ),
                                 Column(children: [
                                   RadioListTile(
                                     value: controller.insurePetsList[0],
                                     dense: true,
                                     groupValue: insurePetsListObs.value,
-                                    activeColor: AppConstant.topHeaderBlueClr,
+                                    activeColor: AppColors.topHeaderBlueClr,
                                     title: Transform.translate(
                                         offset: const Offset(-20, 0),
                                         child: const Text('Yes',
-                                            style: TextStyle(fontSize: 14,
+                                            style: TextStyle(
+                                                fontSize: 14,
                                                 fontWeight: FontWeight.w300,
                                                 fontFamily: 'Gibson',
-                                                color: AppConstant.topHeaderBlueClr))),
+                                                color: AppColors
+                                                    .topHeaderBlueClr))),
                                     onChanged: (String? value) {
                                       insurePetsListObs.value = value!;
                                     },
@@ -283,14 +302,16 @@ class _BuySecRegScreenState extends State<BuySecRegScreen> {
                                     value: controller.insurePetsList[1],
                                     dense: true,
                                     groupValue: insurePetsListObs.value,
-                                    activeColor: AppConstant.topHeaderBlueClr,
+                                    activeColor: AppColors.topHeaderBlueClr,
                                     title: Transform.translate(
                                         offset: const Offset(-20, 0),
                                         child: const Text('No',
-                                            style: TextStyle(fontSize: 14,
+                                            style: TextStyle(
+                                                fontSize: 14,
                                                 fontWeight: FontWeight.w300,
                                                 fontFamily: 'Gibson',
-                                                color: AppConstant.topHeaderBlueClr))),
+                                                color: AppColors
+                                                    .topHeaderBlueClr))),
                                     onChanged: (String? value) {
                                       insurePetsListObs.value = value!;
                                     },
@@ -301,14 +322,16 @@ class _BuySecRegScreenState extends State<BuySecRegScreen> {
                                     value: controller.insurePetsList[2],
                                     dense: true,
                                     groupValue: insurePetsListObs.value,
-                                    activeColor: AppConstant.topHeaderBlueClr,
+                                    activeColor: AppColors.topHeaderBlueClr,
                                     title: Transform.translate(
                                         offset: const Offset(-20, 0),
                                         child: const Text('Not sure',
-                                            style: TextStyle(fontSize: 14,
+                                            style: TextStyle(
+                                                fontSize: 14,
                                                 fontWeight: FontWeight.w300,
                                                 fontFamily: 'Gibson',
-                                                color: AppConstant.topHeaderBlueClr))),
+                                                color: AppColors
+                                                    .topHeaderBlueClr))),
                                     onChanged: (String? value) {
                                       insurePetsListObs.value = value!;
                                     },
@@ -339,7 +362,7 @@ class _BuySecRegScreenState extends State<BuySecRegScreen> {
         margin: const EdgeInsets.only(
             top: 0.0, bottom: 0.0, left: 30.0, right: 0.0),
         width: double.infinity,
-        child: Align(
+        child: const Align(
           alignment: Alignment.topLeft,
           child: Text(
             "Sign Up",
@@ -347,7 +370,7 @@ class _BuySecRegScreenState extends State<BuySecRegScreen> {
                 fontSize: 36.0,
                 fontWeight: FontWeight.w300,
                 fontFamily: 'Gibson',
-                color: AppConstant.topHeaderBlueClr),
+                color: AppColors.topHeaderBlueClr),
           ),
         ));
   }
@@ -373,26 +396,27 @@ class _BuySecRegScreenState extends State<BuySecRegScreen> {
                       ),
                     ],
                   )
-                : const Text(
-                    'NEXT', style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.w600,
-                fontFamily: 'Gibson',
-                color: Colors.white)
-                  ),
+                : const Text('NEXT',
+                    style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Gibson',
+                        color: Colors.white)),
             style: TextButton.styleFrom(
                 //foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(13.0),
-                    side: BorderSide(color: AppConstant.submitBtnClr)),
-                backgroundColor: AppConstant.submitBtnClr,
-                textStyle:  TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.w600,
-                fontFamily: 'Gibson',
-                color: Colors.white)),
+                    side: BorderSide(color: AppColors.submitBtnClr)),
+                backgroundColor: AppColors.submitBtnClr,
+                textStyle: const TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Gibson',
+                    color: Colors.white)),
             onPressed: () {
-              Get.toNamed(AppConstant.ROUTE_BUY_COMPLETE_REG);
+              Get.toNamed(AppConstant.ROUTE_BUY_COMPLETE_REG, arguments: [
+                {AppConstant.argUserType: UserType.buyer},
+              ]);
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
                 setState(() {

@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mlm/Style/app_colors.dart';
 import 'package:mlm/Utils/constant.dart';
-import 'package:mlm/screens/FirstRegistrationScreen/first_registration_controller.dart';
+import 'package:mlm/enum/Method.dart';
 import '../../Widget/widget_appbar.dart';
+import 'first_reg_controller.dart';
 
-class FirstRegistrationScreen extends StatefulWidget {
-  const FirstRegistrationScreen({Key? key}) : super(key: key);
+class FirstRegScreen extends StatefulWidget {
+  const FirstRegScreen({Key? key}) : super(key: key);
 
   @override
-  State<FirstRegistrationScreen> createState() =>
-      _FirstRegistrationScreenState();
+  State<FirstRegScreen> createState() => _FirstRegScreenState();
 }
 
-class _FirstRegistrationScreenState extends State<FirstRegistrationScreen> {
+class _FirstRegScreenState extends State<FirstRegScreen> {
   final _formKey = GlobalKey<FormState>();
   bool _obscureText = true;
   late String userName, password, sessionName;
@@ -23,9 +24,11 @@ class _FirstRegistrationScreenState extends State<FirstRegistrationScreen> {
 
   bool _showClearButton = false;
 
-  FirstRegistrationController controller = Get.find();
+  FirstRegController controller = Get.find();
 
   var token;
+
+  UserType _userType = UserType.buyer;
 
   @override
   void initState() {
@@ -36,6 +39,13 @@ class _FirstRegistrationScreenState extends State<FirstRegistrationScreen> {
         _showClearButton = userNmController.text.isNotEmpty;
       });
     });
+
+    readArgument();
+  }
+
+  void readArgument() {
+    var argumentData = Get.arguments;
+    _userType = argumentData[0][AppConstant.argUserType];
   }
 
   @override
@@ -46,7 +56,7 @@ class _FirstRegistrationScreenState extends State<FirstRegistrationScreen> {
         resizeToAvoidBottomInset: true,
         appBar: const CustomAppBar(
           backgroundColor: Colors.white,
-          backIconColor: AppConstant.topHeaderBlueClr,
+          backIconColor: AppColors.topHeaderBlueClr,
         ),
         body: Form(
           key: _formKey,
@@ -119,17 +129,20 @@ class _FirstRegistrationScreenState extends State<FirstRegistrationScreen> {
                       ),
                     ],
                   )
-                : Text('Login as Buyer',
+                : Text(
+                    _userType == UserType.buyer
+                        ? 'Login as Buyer'
+                        : 'Login as Seller',
                     style: TextStyle(
                         fontSize: 15.0,
                         fontWeight: FontWeight.w400,
                         fontFamily: 'Gibson',
-                        color: AppConstant.submitBtnClr)),
+                        color: AppColors.submitBtnClr)),
             style: TextButton.styleFrom(
               //foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(13.0),
-                  side: BorderSide(color: AppConstant.submitBtnClr)),
+                  side: BorderSide(color: AppColors.submitBtnClr)),
               backgroundColor: Colors.white,
             ),
             onPressed: () {
@@ -168,18 +181,19 @@ class _FirstRegistrationScreenState extends State<FirstRegistrationScreen> {
               //foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(13.0),
-                  side: BorderSide(color: AppConstant.submitBtnClr)),
-              backgroundColor: AppConstant.submitBtnClr,
+                  side: BorderSide(color: AppColors.submitBtnClr)),
+              backgroundColor: AppColors.submitBtnClr,
             ),
             onPressed: () {
-              Get.toNamed(AppConstant.ROUTE_SIGNUP_STEP_ONE);
+              Get.toNamed(
+                  _userType == UserType.buyer
+                      ? AppConstant.ROUTE_BUY_FIRST_REG
+                      : AppConstant.ROUTE_SELL_FIRST_REG,
+                  arguments: [
+                    {AppConstant.argUserType: _userType},
+                  ]);
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
-                setState(() {
-                  // isApiRunning = true;
-                });
-
-                // controller.getToken(userName,password);
               }
             },
           )),

@@ -1,17 +1,20 @@
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import 'package:mlm/screens/BuyComplateRegScreen/buy_complete_reg_controller.dart';
+import 'package:mlm/screens/BuyerScreen/BuyComplateRegScreen/buy_complete_reg_controller.dart';
+import 'package:mlm/screens/BuyerScreen/BuyFirstRegScreen/buy_first_reg_controller.dart';
+import 'package:mlm/screens/BuyerScreen/BuyHomeScreen/buy_home_controller.dart';
+import 'package:mlm/screens/BuyerScreen/BuyORSellScreen/buy_sell_controller.dart';
+import 'package:mlm/screens/BuyerScreen/BuySecondRegistrationScreen/buy_sec_reg_controller.dart';
+import 'package:mlm/screens/FirstRegScreen/first_reg_controller.dart';
+import 'package:mlm/screens/ForgotPasswordScreen/forgot_password_controller.dart';
+import 'package:mlm/screens/SellerScreen/SellFirstRegScreen/sell_first_reg_controller.dart';
+import 'package:mlm/screens/SellerScreen/SellSecRegScreen/sell_sec_reg_controller.dart';
+import 'package:mlm/screens/StartBrowsingScreen/start_browsing_controller.dart';
 import '../Network/http_service.dart';
 import '../Service/StorageService.dart';
 import '../Utils/constant.dart';
 import 'package:mlm/screens/loginScreen/login_controller.dart';
-import 'package:mlm/screens/BuyORSellScreen/buy_sell_controller.dart';
-import 'package:mlm/screens/FirstRegistrationScreen/first_registration_controller.dart';
-import 'package:mlm/screens/ForgotPasswordScreen/forgot_password_controller.dart';
-import 'package:mlm/screens/BuySecondRegistrationScreen/buy_sec_reg_controller.dart';
 
-import '../screens/BuyFirstRegScreen/buy_first_reg_controller.dart';
-import 'package:mlm/screens/StartBrowsingScreen/start_browsing_controller.dart';
 class AppBinding extends Bindings {
   @override
   void dependencies() {
@@ -32,9 +35,14 @@ class AppBinding extends Bindings {
     Get.put(BuySellController(
         httpService: Get.find(tag: AppConstant.tagHttpService)));
 
-    Get.put(FirstRegistrationController(
+    Get.put(SellFirstRegController(
         httpService: Get.find(tag: AppConstant.tagHttpService)));
 
+    Get.put(SellSecRegController(
+        httpService: Get.find(tag: AppConstant.tagHttpService)));
+
+    Get.put(FirstRegController(
+        httpService: Get.find(tag: AppConstant.tagHttpService)));
 
     Get.put(BuyFirstRegController(
         httpService: Get.find(tag: AppConstant.tagHttpService)));
@@ -48,5 +56,7 @@ class AppBinding extends Bindings {
     Get.put(StartBrowsingController(
         httpService: Get.find(tag: AppConstant.tagHttpService)));
 
+    Get.put(BuyHomeController(
+        httpService: Get.find(tag: AppConstant.tagHttpService)));
   }
 }
