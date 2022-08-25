@@ -42,7 +42,7 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        appBar: const CustomAppBar(title: "Create Account"),
+        appBar: const CustomAppBar(title: "Create Account", ),
         body: SafeArea(
           bottom: true,
           child: SingleChildScrollView(
@@ -62,10 +62,11 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                         textCapitalization: TextCapitalization.sentences,
                         textInputAction: TextInputAction.next,
                         cursorColor: Colors.black,
-                        style: const TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                            fontSize: 17.0,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'Gibson',
+                            color: AppConstant.topHeaderBlueClr),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Enter first name';
@@ -76,16 +77,16 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                           firstName = value!;
                         },
                         decoration: const InputDecoration(
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.grey)),
-                            focusedBorder: OutlineInputBorder(
-                              // width: 0.0 produces a thin "hairline" border
-                              borderSide: BorderSide(color: Colors.grey),
-                            ),
                             labelText: 'First Name*',
-                            labelStyle:
-                                TextStyle(color: AppConstant.topHeaderBlueClr),
-                            hintText: 'First Name'),
+                            labelStyle: TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'Gibson',
+                                color: AppConstant.topHeaderBlueClr
+                            ),
+
+                            //hintText: 'First Name'
+                        ),
                       ),
                     ),
                     const SizedBox(height: 15),
@@ -97,10 +98,11 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                         textCapitalization: TextCapitalization.sentences,
                         textInputAction: TextInputAction.next,
                         cursorColor: Colors.black,
-                        style: const TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                            fontSize: 17.0,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'Gibson',
+                            color: AppConstant.topHeaderBlueClr),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Enter last name';
@@ -111,16 +113,15 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                           lastName = value!;
                         },
                         decoration: const InputDecoration(
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.grey)),
-                            focusedBorder: OutlineInputBorder(
-                              // width: 0.0 produces a thin "hairline" border
-                              borderSide: BorderSide(color: Colors.grey),
-                            ),
                             labelText: 'Last Name*',
-                            labelStyle:
-                                TextStyle(color: AppConstant.topHeaderBlueClr),
-                            hintText: 'Last Name'),
+                            labelStyle: TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'Gibson',
+                                color: AppConstant.topHeaderBlueClr
+                            ),
+                            //hintText: 'Last Name'
+                        ),
                       ),
                     ),
                     const SizedBox(height: 15),
@@ -137,10 +138,11 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                           FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                         ],
                         cursorColor: Colors.black,
-                        style: const TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                            fontSize: 17.0,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'Gibson',
+                            color: AppConstant.topHeaderBlueClr),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Passcode(hidden to public)';
@@ -151,16 +153,15 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                           firstName = value!;
                         },
                         decoration: const InputDecoration(
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.grey)),
-                            focusedBorder: OutlineInputBorder(
-                              // width: 0.0 produces a thin "hairline" border
-                              borderSide: BorderSide(color: Colors.grey),
-                            ),
                             labelText: 'Passcode (hidden to public)*',
-                            labelStyle:
-                                TextStyle(color: AppConstant.topHeaderBlueClr),
-                            hintText: 'Passcode (hidden to public)'),
+                            labelStyle: TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'Gibson',
+                                color: AppConstant.topHeaderBlueClr
+                            ),
+                            //hintText: 'Passcode (hidden to public)'
+                        ),
                       ),
                     ),
                     const SizedBox(height: 15),
@@ -175,10 +176,11 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                         ],
                         keyboardType: TextInputType.emailAddress,
                         textInputAction: TextInputAction.next,
-                        style: const TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                            fontSize: 17.0,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'Gibson',
+                            color: AppConstant.topHeaderBlueClr),
                         validator: (value) {
                           bool validEmail = RegExp(
                                   r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
@@ -192,16 +194,17 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                           email = value!;
                         },
                         decoration: const InputDecoration(
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.grey)),
-                            focusedBorder: OutlineInputBorder(
-                              // width: 0.0 produces a thin "hairline" border
-                              borderSide: BorderSide(color: Colors.grey),
+
+                            labelStyle: TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'Gibson',
+                                color: AppConstant.topHeaderBlueClr
                             ),
-                            labelText: 'Email (hidden to public)*',
-                            labelStyle:
-                                TextStyle(color: AppConstant.topHeaderBlueClr),
-                            hintText: 'Enter your email address'),
+                            labelText: 'Enter your email address (hidden to public)*',
+
+                           // hintText: 'Enter your email address'
+                        ),
                       ),
                     ),
                     const SizedBox(height: 15),
@@ -213,10 +216,11 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                         cursorColor: Colors.black,
                         obscureText: _obscureText,
                         textInputAction: TextInputAction.next,
-                        style: const TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                            fontSize: 17.0,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'Gibson',
+                            color: AppConstant.topHeaderBlueClr),
                         validator: (value) {
                           confirmPass = value;
 
@@ -247,16 +251,16 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                                 });
                               },
                             ),
-                            border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.grey)),
-                            focusedBorder: const OutlineInputBorder(
-                              // width: 0.0 produces a thin "hairline" border
-                              borderSide: BorderSide(color: Colors.grey),
-                            ),
+
                             labelText: 'Create Password',
-                            labelStyle: const TextStyle(
-                                color: AppConstant.topHeaderBlueClr),
-                            hintText: 'Create Password'),
+                          labelStyle: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Gibson',
+                              color: AppConstant.topHeaderBlueClr
+                          ),
+
+                        ),
                       ),
                     ),
                     const SizedBox(height: 15),
@@ -268,10 +272,11 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                         cursorColor: Colors.black,
                         obscureText: _obscureText,
                         //textInputAction: TextInputAction.next,
-                        style: const TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                            fontSize: 17.0,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'Gibson',
+                            color: AppConstant.topHeaderBlueClr),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Re-enter valid password';
@@ -301,16 +306,15 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                                 });
                               },
                             ),
-                            border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.grey)),
-                            focusedBorder: const OutlineInputBorder(
-                              // width: 0.0 produces a thin "hairline" border
-                              borderSide: const BorderSide(color: Colors.grey),
-                            ),
+
                             labelText: 'Confirm Password',
-                            labelStyle: const TextStyle(
-                                color: AppConstant.topHeaderBlueClr),
-                            hintText: 'Confirm Password'),
+                          labelStyle: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Gibson',
+                              color: AppConstant.topHeaderBlueClr
+                          ),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 55),
@@ -340,10 +344,11 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
             alignment: Alignment.topLeft,
             child: Text(
               "Sign Up",
-              style: TextStyle(
-                  fontSize: 40.0,
-                  color: AppConstant.topHeaderBlueClr,
-                  fontFamily: 'Barlow'),
+               style: TextStyle(
+                fontSize: 36.0,
+                fontWeight: FontWeight.w300,
+                fontFamily: 'Gibson',
+                color: AppConstant.topHeaderBlueClr),
             ),
           ),
         ));
@@ -371,10 +376,14 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                     ],
                   )
                 : const Text(
-                    'NEXT',
+                    'NEXT', style: TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.w600,
+                fontFamily: 'Gibson',
+                color: Colors.white)
                   ),
             style: TextButton.styleFrom(
-                foregroundColor: Colors.white,
+                //foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(13.0),
                     side: BorderSide(color: AppConstant.submitBtnClr)),

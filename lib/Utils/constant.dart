@@ -20,6 +20,7 @@ class AppConstant {
   static final String ROUTE_SIGNUP_STEP_ONE = "/signUpStepOne";
   static final String ROUTE_BUY_SEC_REG = "/BuySecRegScreen";
   static final String ROUTE_BUY_COMPLETE_REG = "/BuyCompleteRegView";
+  static final String ROUTE_START_BROWSING = "/startBrowsingView";
 
 
 

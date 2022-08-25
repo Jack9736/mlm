@@ -5,6 +5,7 @@ import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mlm/Widget/widget_appbar.dart';
 
 import 'package:mlm/screens/loginScreen/login_controller.dart';
 import '../../Utils/constant.dart';
@@ -49,16 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(10.0), // here the desired height
-            child: AppBar(
-              backgroundColor: AppConstant.topHeaderClr,
-              elevation: 0.0,
-              centerTitle: false,
-              titleSpacing: 0.0,
-
-            )
-        ),
+        appBar: const CustomAppBar(title: "Welcome"),
         body: Form(
 
           key: _formKey,
@@ -66,40 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
             color: Colors.white,
             child: Column(
               children: [
-                Container(
-                  width: double.infinity,
-                  height: 70,
-                  color:AppConstant.topHeaderBlueClr,
 
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    // crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.arrow_back, color: Colors.white),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-
-                      const Center(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Welcome',
-                            style: TextStyle(
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Gibson',
-                                color: Colors.white),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 25, width: 25,),
-
-                  ],
-                  )
-                ),
 
                 Expanded(child: Container(
                   color: Colors.white,
@@ -183,14 +142,15 @@ class _LoginScreenState extends State<LoginScreen> {
             ],
           )
           :  const Text('NEXT',  style: TextStyle(
-              fontSize: 18.0,
+              fontSize: 16.0,
               fontWeight: FontWeight.w600,
               fontFamily: 'Gibson',
               color: Colors.white)
           ),
 
         style: TextButton.styleFrom(
-            foregroundColor: Colors.white, shape: RoundedRectangleBorder(
+            //foregroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(13.0),
                 side: BorderSide(color: AppConstant.submitBtnClr)
             ),
@@ -264,23 +224,32 @@ class _LoginScreenState extends State<LoginScreen> {
             color: AppConstant.topHeaderBlueClr),
         decoration: const InputDecoration(
 
-            border: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey)),
-            focusedBorder: OutlineInputBorder(
-              // width: 0.0 produces a thin "hairline" border
-              borderSide: BorderSide(color: Colors.grey),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.grey,
-                width: 1.0,
-              ),
-            ),
             labelText: 'Email',
-            labelStyle: TextStyle(color:CtrPublic.blblTextColor),
+            labelStyle: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.w300,
+                fontFamily: 'Gibson',
+                color: AppConstant.topHeaderBlueClr
+            ),
+
+            // border: OutlineInputBorder(
+            //     borderSide: BorderSide(color: Colors.grey)),
+            // focusedBorder: OutlineInputBorder(
+            //   // width: 0.0 produces a thin "hairline" border
+            //   borderSide: BorderSide(color: Colors.grey),
+            // ),
+            // enabledBorder: OutlineInputBorder(
+            //   borderSide: BorderSide(
+            //     color: Colors.grey,
+            //     width: 1.0,
+            //   ),
+            // ),
+            // labelText: 'Email',
+            // labelStyle: TextStyle(color:CtrPublic.blblTextColor),
 
             //contentPadding: const EdgeInsets.all(15),
-            hintText: 'Enter your email'),
+           // hintText: 'Enter your email'
+        ),
       ),
     );
 
@@ -324,23 +293,33 @@ class _LoginScreenState extends State<LoginScreen> {
                 });
               },
             ),
-            border: const OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey)),
-            focusedBorder: const OutlineInputBorder(
-              // width: 0.0 produces a thin "hairline" border
-              borderSide: const BorderSide(color: Colors.grey),
-            ),
-            enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.grey,
-                width: 1.0,
-              ),
-            ),
+
             labelText: 'Password',
-            labelStyle: const TextStyle(color:CtrPublic.blblTextColor),
+            labelStyle: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.w300,
+                fontFamily: 'Gibson',
+                color: AppConstant.topHeaderBlueClr
+            ),
+
+            // border: const OutlineInputBorder(
+            //     borderSide: BorderSide(color: Colors.grey)),
+            // focusedBorder: const OutlineInputBorder(
+            //   // width: 0.0 produces a thin "hairline" border
+            //   borderSide: const BorderSide(color: Colors.grey),
+            // ),
+            // enabledBorder: const OutlineInputBorder(
+            //   borderSide: BorderSide(
+            //     color: Colors.grey,
+            //     width: 1.0,
+            //   ),
+            // ),
+           // labelText: 'Password',
+            //labelStyle: const TextStyle(color:CtrPublic.blblTextColor),
 
             //contentPadding: const EdgeInsets.all(15),
-            hintText: 'Enter your password'),
+           // hintText: 'Enter your password'
+        ),
       ),
     );
   }

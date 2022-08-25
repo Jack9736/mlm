@@ -81,20 +81,36 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
                                   fontWeight: FontWeight.w500),
                               decoration: InputDecoration(
                                   suffixIcon: buildSendButton(context),
-                                  hintStyle: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: AppColors.edtHintTextColor),
-                                  hintText: "Phone Number")),
+
+                                labelText: 'Phone Number',
+                                labelStyle: TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w300,
+                                    fontFamily: 'Gibson',
+                                    color: AppConstant.topHeaderBlueClr
+                                ),
+                                  // hintStyle: TextStyle(
+                                  //     fontSize: 15.0,
+                                  //     fontWeight: FontWeight.w400,
+                                  //     fontFamily: 'Gibson',
+                                  //     color: AppConstant.topHeaderBlueClr),
+                                  // hintText: "Phone Number"
+                                )
+                          ),
                           const SizedBox(height: 10),
-                          const Text("You can send another code in 30 seconds"),
+                          const Text("You can send another code in 30 seconds", style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w300,
+                              fontFamily: 'Gibson',
+                              color: AppConstant.topHeaderBlueClr),),
                           const SizedBox(height: 40),
                           const Text(
                             "Phone Number Verification Code",
                             style: TextStyle(
-                              fontSize: 14,
-                              color: AppColors.edtHintTextColor,
-                              fontWeight: FontWeight.bold,
-                            ),
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'Gibson',
+                                color: AppConstant.topHeaderBlueClr),
                           ),
                           TextField(
                               textCapitalization: TextCapitalization.sentences,
@@ -102,19 +118,32 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
                               inputFormatters: [
                                 FilteringTextInputFormatter.digitsOnly
                               ],
+
                               maxLength: 5,
                               keyboardType:
                                   const TextInputType.numberWithOptions(
                                       decimal: true),
                               // Only numbers can be entered
                               cursorColor: Colors.black,
-                              style: const TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500),
+
                               decoration: const InputDecoration(
                                   counterText: "",
-                                  hintText: "5 digit code here")),
+                                  labelText: '5 digit code here',
+                                  labelStyle: TextStyle(
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.w300,
+                                      fontFamily: 'Gibson',
+                                      color: AppConstant.topHeaderBlueClr
+                                  ),
+                                  // hintStyle: TextStyle(
+                                  //     fontSize: 15.0,
+                                  //     fontWeight: FontWeight.w300,
+                                  //     fontFamily: 'Gibson',
+                                  //     color: AppConstant.topHeaderBlueClr),
+                                  //hintText: "5 digit code here"
+                              ),
+
+                          ),
                         ],
                       ),
                     ),
@@ -146,13 +175,14 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
         width: double.infinity,
         child: Center(
           child: Align(
-            alignment: Alignment.topLeft,
+            alignment: Alignment.topCenter,
             child: Text(
               "Complete Sign Up",
               style: TextStyle(
-                  fontSize: 40.0,
-                  color: AppConstant.topHeaderBlueClr,
-                  fontFamily: 'Barlow'),
+                  fontSize: 36.0,
+                  fontWeight: FontWeight.w300,
+                  fontFamily: 'Gibson',
+                  color: AppConstant.topHeaderBlueClr),
             ),
           ),
         ));
@@ -179,10 +209,14 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
                     ],
                   )
                 : const Text(
-                    'VERIFY',
+                    'VERIFY', style: TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.w600,
+                fontFamily: 'Gibson',
+                color: Colors.white),
                   ),
             style: TextButton.styleFrom(
-                foregroundColor: Colors.white,
+                //foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(13.0),
                     side: BorderSide(color: AppConstant.submitBtnClr)),
@@ -192,7 +226,7 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold)),
             onPressed: () {
-              Get.toNamed(AppConstant.ROUTE_BUY_SEC_REG);
+              Get.toNamed(AppConstant.ROUTE_START_BROWSING);
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
                 setState(() {
@@ -227,10 +261,14 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
                     ],
                   )
                 : Text(
-                    'send'.toUpperCase().toString(),
+                    'SEND', style: TextStyle(
+                fontSize: 14.0,
+                fontWeight: FontWeight.w600,
+                fontFamily: 'Gibson',
+                color: Colors.white),
                   ),
             style: TextButton.styleFrom(
-                foregroundColor: Colors.white,
+                //foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                     side: BorderSide(color: AppConstant.submitBtnClr)),

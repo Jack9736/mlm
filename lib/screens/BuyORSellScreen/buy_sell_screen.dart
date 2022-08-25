@@ -43,12 +43,12 @@ class _BuySellScreenState extends State<BuySellScreen> {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(10.0),
-            // here the desired height
-            child: AppBar(
-              backgroundColor: AppConstant.topHeaderClr,
-            )),
+        // appBar: PreferredSize(
+        //     preferredSize: const Size.fromHeight(10.0),
+        //     // here the desired height
+        //     child: AppBar(
+        //       backgroundColor: AppConstant.topHeaderClr,
+        //     )),
         body: Form(
           key: _formKey,
           child: Container(
@@ -122,11 +122,12 @@ class _BuySellScreenState extends State<BuySellScreen> {
                   )
                 : const Text('I WANT TO BUY A PET',
                     style: TextStyle(
+                      color: Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                         fontFamily: 'Gibson')),
             style: TextButton.styleFrom(
-                foregroundColor: Colors.white,
+                //foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(13.0),
                     side: BorderSide(color: AppConstant.submitBtnClr)),
@@ -177,16 +178,8 @@ class _BuySellScreenState extends State<BuySellScreen> {
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold)),
             onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                setState(() {
-                  // isApiRunning = true;
-                });
-                setState(() {
-                  // getTokens();
-                });
-                // controller.getToken(userName,password);
-              }
+              Get.toNamed(AppConstant.ROUTE_FIRST_REGISTRATION);
+
             },
           )),
     );

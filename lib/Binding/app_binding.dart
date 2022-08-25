@@ -11,6 +11,7 @@ import 'package:mlm/screens/ForgotPasswordScreen/forgot_password_controller.dart
 import 'package:mlm/screens/BuySecondRegistrationScreen/buy_sec_reg_controller.dart';
 
 import '../screens/BuyFirstRegScreen/buy_first_reg_controller.dart';
+import 'package:mlm/screens/StartBrowsingScreen/start_browsing_controller.dart';
 class AppBinding extends Bindings {
   @override
   void dependencies() {
@@ -42,6 +43,9 @@ class AppBinding extends Bindings {
         httpService: Get.find(tag: AppConstant.tagHttpService)));
 
     Get.put(BuyCompleteRegController(
+        httpService: Get.find(tag: AppConstant.tagHttpService)));
+
+    Get.put(StartBrowsingController(
         httpService: Get.find(tag: AppConstant.tagHttpService)));
 
   }

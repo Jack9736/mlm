@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:mlm/Utils/constant.dart';
@@ -10,7 +11,10 @@ import 'package:mlm/screens/loginScreen/login_screen.dart';
 import 'package:mlm/screens/BuyORSellScreen/buy_sell_screen.dart';
 import 'package:mlm/screens/FirstRegistrationScreen/first_registration_screen.dart';
 import 'package:mlm/screens/ForgotPasswordScreen/forgot_password_screen.dart';
+import 'package:mlm/screens/StartBrowsingScreen/start_browsing_view.dart';
 import 'Binding/app_binding.dart';
+
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,6 +34,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
+     FlutterStatusbarcolor.setStatusBarColor(AppConstant.topHeaderClr);
+    if (useWhiteForeground(AppConstant.topHeaderClr)) {
+      FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
+    } else {
+      FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
+    }
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -57,6 +68,9 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: AppConstant.ROUTE_BUY_COMPLETE_REG,
             page: () => const BuyCompleteRegView()),
+        GetPage(
+            name: AppConstant.ROUTE_START_BROWSING,
+            page: () => const StartBrowsingView()),
       ],
     );
   }
@@ -70,6 +84,7 @@ MaterialColor createMaterialColor(Color color) {
   for (int i = 1; i < 10; i++) {
     strengths.add(0.1 * i);
   }
+  //(20, 38, 101, 1)
   strengths.forEach((strength) {
     final double ds = 0.5 - strength;
     swatch[(strength * 1000).round()] = Color.fromRGBO(

@@ -126,7 +126,7 @@ class _FirstRegistrationScreenState extends State<FirstRegistrationScreen> {
                         fontFamily: 'Gibson',
                         color: AppConstant.submitBtnClr)),
             style: TextButton.styleFrom(
-              foregroundColor: Colors.white,
+              //foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(13.0),
                   side: BorderSide(color: AppConstant.submitBtnClr)),
@@ -139,7 +139,7 @@ class _FirstRegistrationScreenState extends State<FirstRegistrationScreen> {
     );
   }
 
-  /* Sell Pet Button */
+  /* Create Account Button */
   SizedBox createAccountButton(BuildContext context) {
     return SizedBox(
       height: 60,
@@ -165,7 +165,7 @@ class _FirstRegistrationScreenState extends State<FirstRegistrationScreen> {
                         fontFamily: 'Gibson',
                         color: Colors.white)),
             style: TextButton.styleFrom(
-              foregroundColor: Colors.white,
+              //foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(13.0),
                   side: BorderSide(color: AppConstant.submitBtnClr)),
