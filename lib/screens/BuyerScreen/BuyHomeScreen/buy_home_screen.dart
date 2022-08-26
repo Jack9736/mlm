@@ -1,16 +1,13 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mlm/Style/app_colors.dart';
-import 'package:mlm/Style/app_colors.dart';
-import 'package:mlm/Style/app_colors.dart';
-import 'package:mlm/Style/app_colors.dart';
 import 'package:mlm/Widget/main_appbar.dart';
 import 'package:mlm/enum/Method.dart';
 
-import 'package:mlm/Utils/constant.dart';
-import 'package:mlm/screens/BuyerScreen/BuyORSellScreen/buy_sell_controller.dart';
+import 'package:mlm/screens/BuyerScreen/BuyHomeScreen/buy_home_controller.dart';
+import 'package:mlm/screens/BuyerScreen/DrawerScreen/BuySideDrawer.dart';
+
 
 class BuyHomeScreen extends StatefulWidget {
   const BuyHomeScreen({Key? key}) : super(key: key);
@@ -20,16 +17,13 @@ class BuyHomeScreen extends StatefulWidget {
 }
 
 class _BuyHomeScreenState extends State<BuyHomeScreen> {
-
-  bool _obscureText = true;
-
   late String userName, password, sessionName;
 
   var userType = '';
   TextEditingController userNmController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  BuySellController controller = Get.find();
+  BuyHomeController controller = Get.find();
 
   var token;
 
@@ -42,7 +36,6 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
     userNmController.addListener(() {
       setState(() {});
     });
-
   }
 
   @override
@@ -50,6 +43,7 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
+        key: controller.scaffoldKey,
         resizeToAvoidBottomInset: true,
         appBar: MainAppBar(
           menuItem: [
@@ -64,6 +58,9 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
             ),
           ],
         ),
+        drawer: SizedBox(
+            // width: MediaQuery.of(context).size.width * 0.8,
+            child: BuySideDrawer()),
         body: Container(),
       ),
     );

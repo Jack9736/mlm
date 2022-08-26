@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mlm/Style/app_colors.dart';
 
 import '../Utils/constant.dart';
+import '../screens/BuyerScreen/BuyHomeScreen/buy_home_controller.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Color? backgroundColor;
@@ -14,7 +15,9 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? menuItem;
   final bool hideBack;
 
-  const MainAppBar({
+  BuyHomeController controller = Get.find();
+
+  MainAppBar({
     Key? key,
     this.backgroundColor = AppColors.white,
     this.textIconColor = AppColors.white,
@@ -44,7 +47,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: AppColors.appColor,
         ),
         onPressed: () {
-          Get.toNamed(AppConstant.ROUTE_BUY_DRAWER);
+          controller.openDrawer();
         },
       ),
       title: Text(

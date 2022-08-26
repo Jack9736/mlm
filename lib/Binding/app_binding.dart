@@ -15,6 +15,8 @@ import '../Service/StorageService.dart';
 import '../Utils/constant.dart';
 import 'package:mlm/screens/loginScreen/login_controller.dart';
 
+import '../screens/RecentlyViewScreen/recently_view_controller.dart';
+
 class AppBinding extends Bindings {
   @override
   void dependencies() {
@@ -57,6 +59,9 @@ class AppBinding extends Bindings {
         httpService: Get.find(tag: AppConstant.tagHttpService)));
 
     Get.put(BuyHomeController(
+        httpService: Get.find(tag: AppConstant.tagHttpService)));
+
+    Get.put(RecentlyViewController(
         httpService: Get.find(tag: AppConstant.tagHttpService)));
   }
 }

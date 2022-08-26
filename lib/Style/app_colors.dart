@@ -22,8 +22,8 @@ class AppColors {
   static const drawerBgColor = Color.fromRGBO(4, 24, 98, 1);
   static const prDetailTitleColor = Color.fromRGBO(240, 139, 11, 1);
 
-  static const drawerMenuSelectedColor = Color.fromRGBO(255, 255, 255, 1);
-  static const drawerMenuUnSelectedColor = Color.fromRGBO(112, 112, 112, 1);
+  static const drawerMenuSelectedColor = Color.fromRGBO(20, 38, 101, 1.0);
+  static const drawerMenuUnSelectedColor = Color.fromRGBO(0, 0, 0, 1.0);
   static const blackTransparent = Color.fromRGBO(0, 0, 0, 0.2);
   static const prDetailImageColor = Color.fromRGBO(235, 238, 239, 1.0);
 
@@ -38,4 +38,5 @@ class AppColors {
   static Color topHeaderClr = const Color.fromRGBO(87, 188, 223, 1);
   static const Color topHeaderBlueClr = Color.fromRGBO(20, 38, 101, 1);
   static const Color topHeaderIconColor = Color.fromRGBO(20, 38, 101, 1.0);
+
 }

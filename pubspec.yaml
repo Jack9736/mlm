@@ -95,6 +95,7 @@ flutter:
      - family: Gibson
        fonts:
          - asset: fonts/Gibson-Light.ttf
+           weight: 300
          - asset: fonts/Gibson-SemiBold.ttf
            weight: 600
          - asset: fonts/Gibson-Regular.ttf
