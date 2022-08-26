@@ -100,18 +100,12 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
                                     suffixIcon: buildSendButton(context),
 
                                   labelText: 'Phone Number',
-                                  labelStyle: constTextStyle(
+                                  labelStyle: const TextStyle(
                                       fontSize: 18.0,
-                                      fontWeight: FontWeight.w300,
+                                      fontWeight: FontWeight.w400,
                                       fontFamily: 'Gibson',
                                       color: AppColors.topHeaderBlueClr),
 
-                                    // hintStyle: TextStyle(
-                                    //     fontSize: 15.0,
-                                    //     fontWeight: FontWeight.w400,
-                                    //     fontFamily: 'Gibson',
-                                    //     color: AppColors.topHeaderBlueClr),
-                                    // hintText: "Phone Number"
 
                             )),
                             const SizedBox(height: 10),
@@ -148,16 +142,11 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
                                     labelText: '5 digit code here',
                                     labelStyle: TextStyle(
                                         fontSize: 18.0,
-                                        fontWeight: FontWeight.w300,
+                                        fontWeight: FontWeight.w400,
                                         fontFamily: 'Gibson',
                                         color: AppColors.topHeaderBlueClr
                                     ),
-                                    // hintStyle: TextStyle(
-                                    //     fontSize: 15.0,
-                                    //     fontWeight: FontWeight.w300,
-                                    //     fontFamily: 'Gibson',
-                                    //     color: AppColors.topHeaderBlueClr),
-                                    //hintText: "5 digit code here"
+
 
                             ),
                             ),

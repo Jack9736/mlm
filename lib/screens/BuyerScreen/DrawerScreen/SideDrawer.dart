@@ -14,29 +14,50 @@ class SideDrawer extends StatelessWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.only(top:0.0, bottom: 20.0, left: 20.0, right: 20.0),
             child: SizedBox(
-              height: 150,
+              height: 210,
               child: Stack(
                 alignment: Alignment.centerLeft,
-                children: const [
+                children:  [
                   Padding(
-                    padding: EdgeInsets.only(left: 50.0),
+                    padding: EdgeInsets.only(left: 30.0),
                     child: SizedBox(
                       height: 144,
                       width: double.infinity,
                       child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
                         elevation: 5,
+                        child:  Padding(
+                          padding: const EdgeInsets.only(left: 100.0, top: 20),
+                          child: Column(
+
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children:[
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text('Jenifer Mark'),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top:8.0),
+                                  child: Text('jennifer.mark@gmail.com'),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top:8.0),
+                                  child: Text('Member since September, 2019'),
+                                )
+                              ]),
+                        ),
                       ),
                     ),
                   ),
                   CustomImageWidget(
-                    imgUrl: 'assets/lady.png',
-                    width: 120,
-                    height: 120,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        bottomLeft: Radius.circular(15)),
+                    imgUrl: 'https://i.pinimg.com/736x/55/f9/55/55f955717e64ddbae8e15a781fcd0043.jpg',
+                    width: 110,
+                    height: 110,
+                    borderRadius: BorderRadius.all(Radius.circular(10))
                   ),
                 ],
               ),
