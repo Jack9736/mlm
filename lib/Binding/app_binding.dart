@@ -16,6 +16,7 @@ import '../Utils/constant.dart';
 import 'package:mlm/screens/loginScreen/login_controller.dart';
 
 import '../screens/RecentlyViewScreen/recently_view_controller.dart';
+import 'package:mlm/screens/MyMessageScreen/my_messages_controller.dart';
 
 class AppBinding extends Bindings {
   @override
@@ -62,6 +63,9 @@ class AppBinding extends Bindings {
         httpService: Get.find(tag: AppConstant.tagHttpService)));
 
     Get.put(RecentlyViewController(
+        httpService: Get.find(tag: AppConstant.tagHttpService)));
+
+    Get.put(MymessagesController(
         httpService: Get.find(tag: AppConstant.tagHttpService)));
   }
 }

@@ -146,7 +146,7 @@ class BuySideDrawer extends StatelessWidget {
                       isSelected: controller.selectedDestination.value == 6,
                       onTap: () => selectDestination(6),
                     ),
-                    const SizedBox(height: 10)
+
                   ],
                 ),
               ),
@@ -216,12 +216,16 @@ class BuySideDrawer extends StatelessWidget {
         break;
       case 2:
         {
-          controller.selectedScreen.value = 0;
+          controller.selectedScreen.value = 2;
           controller.title.value = AppConstant.TITLE_RECENTLY_VIEW.tr;
           Get.toNamed(AppConstant.ROUTE_RECENTLY_VIEW);
         }
         break;
       case 3:
+        {
+          controller.title.value = AppConstant.TITLE_MY_MESSAGES.tr;
+          Get.toNamed(AppConstant.ROUTE_MY_MESSAGES);
+        }
         break;
       case 4:
         break;
@@ -255,7 +259,7 @@ class BuySideDrawer extends StatelessWidget {
               title,
               style: TextStyle(
                 fontSize: 16,
-                fontWeight: FontWeight.w300,
+                fontWeight: FontWeight.w400,
                 fontFamily: 'Gibson',
                 color: isSelected
                     ? AppColors.drawerMenuSelectedColor

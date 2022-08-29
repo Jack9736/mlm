@@ -18,6 +18,8 @@ import 'package:mlm/screens/SellerScreen/SellSecRegScreen/sell_sec_reg_view.dart
 import 'package:mlm/screens/loginScreen/login_screen.dart';
 import 'package:mlm/screens/ForgotPasswordScreen/forgot_password_screen.dart';
 import 'package:mlm/screens/StartBrowsingScreen/start_browsing_view.dart';
+import 'package:mlm/screens/MyMessageScreen/my_messages_screen.dart';
+
 import 'Binding/app_binding.dart';
 
 Future<void> main() async {
@@ -99,6 +101,9 @@ class MyApp extends StatelessWidget {
             page: () => const BuyHomeScreen()),
         GetPage(
             name: AppConstant.ROUTE_RECENTLY_VIEW, page: () => RecentlyView()),
+
+        GetPage(
+            name: AppConstant.ROUTE_MY_MESSAGES, page: () => MyMessagesScreen()),
       ],
     );
   }

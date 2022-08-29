@@ -15,7 +15,8 @@ class RecentlyView extends StatelessWidget {
     return Scaffold(
         backgroundColor: AppColors.appBgColor,
         appBar: const CustomAppBar(
-          title: "Recently View",
+          title: "Recently Viewed",
+
         ),
         body: ListView.builder(
             itemCount: 10, // the length
