@@ -41,39 +41,37 @@ class BuySideDrawer extends StatelessWidget {
                           elevation: 5,
                           child: Padding(
                             padding: const EdgeInsets.only(left: 100.0),
-                            child: Flexible(
-                              child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(vertical: 8.0),
-                                      child: Text('Jenifer Mark',
-                                          style: TextStyle(
-                                              fontFamily: 'Gibson',
-                                              fontWeight: FontWeight.w600),
-                                          overflow: TextOverflow.ellipsis),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(top: 8.0),
-                                      child: Text('jennifer.mark@gmail.com',
-                                          style: TextStyle(
-                                              fontFamily: 'Gibson',
-                                              fontWeight: FontWeight.w300),
-                                          overflow: TextOverflow.ellipsis),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(top: 8.0),
-                                      child: Text(
-                                          'Member since September, 2019',
-                                          style: TextStyle(
-                                              fontFamily: 'Gibson',
-                                              fontWeight: FontWeight.w300),
-                                          overflow: TextOverflow.ellipsis),
-                                    )
-                                  ]),
-                            ),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: const [
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(vertical: 8.0),
+                                    child: Text('Jenifer Mark',
+                                        style: TextStyle(
+                                            fontFamily: 'Gibson',
+                                            fontWeight: FontWeight.w600),
+                                        overflow: TextOverflow.ellipsis),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 8.0),
+                                    child: Text('jennifer.mark@gmail.com',
+                                        style: TextStyle(
+                                            fontFamily: 'Gibson',
+                                            fontWeight: FontWeight.w300),
+                                        overflow: TextOverflow.ellipsis),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 8.0),
+                                    child: Text(
+                                        'Member since September, 2019',
+                                        style: TextStyle(
+                                            fontFamily: 'Gibson',
+                                            fontWeight: FontWeight.w300),
+                                        overflow: TextOverflow.ellipsis),
+                                  )
+                                ]),
                           ),
                         ),
                       ),

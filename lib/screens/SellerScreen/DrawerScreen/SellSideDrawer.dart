@@ -5,10 +5,12 @@ import 'package:mlm/Widget/custom_image_widget.dart';
 import 'package:mlm/Widget/widget_appbar.dart';
 import 'package:mlm/screens/BuyerScreen/BuyHomeScreen/buy_home_controller.dart';
 
+import '../SellHomeScreen/sell_home_controller.dart';
+
 class SellSideDrawer extends StatelessWidget {
   SellSideDrawer({Key? key}) : super(key: key);
 
-  BuyHomeController controller = Get.find();
+  SellHomeController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,8 @@ class SellSideDrawer extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 20.0, left: 20.0,bottom: 20, right: 20.0),
+              padding: const EdgeInsets.only(
+                  top: 20.0, left: 20.0, bottom: 20, right: 20.0),
               child: SizedBox(
                 child: Stack(
                   alignment: Alignment.centerLeft,
@@ -38,28 +41,44 @@ class SellSideDrawer extends StatelessWidget {
                           ),
                           elevation: 5,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 100.0, top: 20),
-                            child: Flexible(
-                              child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: const [
-                                    Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: Text('jennifer.mark@gmail.com',
-                                          overflow: TextOverflow.ellipsis),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(top: 8.0),
-                                      child: Text('jennifer.mark@gmail.com',
-                                          overflow: TextOverflow.ellipsis),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(top: 8.0),
-                                      child: Text('Member since September, 2019',
-                                          overflow: TextOverflow.ellipsis),
-                                    )
-                                  ]),
-                            ),
+                            padding:
+                                const EdgeInsets.only(left: 100.0, top: 20),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Image.asset(
+                                    "assets/ic_non_verified.png",
+                                    fit: BoxFit.contain,
+                                    width: 16,
+                                    height: 16,
+                                  ),
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(vertical: 8.0),
+                                    child: Text('Jenifer Mark',
+                                        style: TextStyle(
+                                            fontFamily: 'Gibson',
+                                            fontWeight: FontWeight.w600),
+                                        overflow: TextOverflow.ellipsis),
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.only(top: 8.0),
+                                    child: Text('jennifer.mark@gmail.com',
+                                        style: TextStyle(
+                                            fontFamily: 'Gibson',
+                                            fontWeight: FontWeight.w300),
+                                        overflow: TextOverflow.ellipsis),
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.only(top: 8.0),
+                                    child: Text(
+                                        'Member since September, 2019',
+                                        style: TextStyle(
+                                            fontFamily: 'Gibson',
+                                            fontWeight: FontWeight.w300),
+                                        overflow: TextOverflow.ellipsis),
+                                  )
+                                ]),
                           ),
                         ),
                       ),
@@ -75,8 +94,8 @@ class SellSideDrawer extends StatelessWidget {
               ),
             ),
             Padding(
-              padding:
-                  const EdgeInsets.only(top:20,bottom: 30.0, left: 25.0, right: 25.0),
+              padding: const EdgeInsets.only(
+                  top: 20, bottom: 30.0, left: 25.0, right: 25.0),
               child: SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: Image.asset(
@@ -91,42 +110,35 @@ class SellSideDrawer extends StatelessWidget {
                 child: ListView(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-
                   children: [
                     const SizedBox(height: 10),
                     _createDrawerItem(
-                      title: 'Home'.tr,
+                      title: 'My Breeder Profile'.tr,
                       isSelected: controller.selectedDestination.value == 1,
                       onTap: () => selectDestination(1),
                     ),
                     buildDividerPadding(),
                     _createDrawerItem(
-                      title: 'Recently Viewed'.tr,
+                      title: 'Pet Manager'.tr,
                       isSelected: controller.selectedDestination.value == 2,
                       onTap: () => selectDestination(1),
                     ),
                     buildDividerPadding(),
                     _createDrawerItem(
-                      title: 'My Messages'.tr,
+                      title: 'Add Pet'.tr,
                       isSelected: controller.selectedDestination.value == 3,
                       onTap: () => selectDestination(1),
                     ),
                     buildDividerPadding(),
                     _createDrawerItem(
-                      title: 'My Profile'.tr,
+                      title: 'My Messages'.tr,
                       isSelected: controller.selectedDestination.value == 4,
                       onTap: () => selectDestination(1),
                     ),
                     buildDividerPadding(),
                     _createDrawerItem(
-                      title: 'Favourites'.tr,
-                      isSelected: controller.selectedDestination.value == 5,
-                      onTap: () => selectDestination(1),
-                    ),
-                    buildDividerPadding(),
-                    _createDrawerItem(
                       title: 'Help / Settings'.tr,
-                      isSelected: controller.selectedDestination.value == 6,
+                      isSelected: controller.selectedDestination.value == 5,
                       onTap: () => selectDestination(1),
                     ),
                     const SizedBox(height: 10)
@@ -217,21 +229,13 @@ class SellSideDrawer extends StatelessWidget {
         {}
         break;
       case 7:
-        {
-          // Get.toNamed(AppConstant.routeMyOrder);
-        }
         break;
       case 8:
-        // Get.toNamed(AppConstant.routeResetPassword);
         break;
       case 9:
-        // Get.toNamed(AppConstant.routeMyProfile);
         break;
       case 10:
-        {
-          // _logoutConfirmation(context);
-          break;
-        }
+        break;
     }
     controller.closeDrawer();
   }

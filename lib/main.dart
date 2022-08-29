@@ -14,6 +14,7 @@ import 'package:mlm/screens/BuyerScreen/BuySecondRegistrationScreen/buy_sec_reg_
 import 'package:mlm/screens/FirstRegScreen/first_reg_screen.dart';
 import 'package:mlm/screens/RecentlyViewScreen/recently_view_screen.dart';
 import 'package:mlm/screens/SellerScreen/SellFirstRegScreen/sell_first_reg_view.dart';
+import 'package:mlm/screens/SellerScreen/SellHomeScreen/sell_home_screen.dart';
 import 'package:mlm/screens/SellerScreen/SellSecRegScreen/sell_sec_reg_view.dart';
 import 'package:mlm/screens/loginScreen/login_screen.dart';
 import 'package:mlm/screens/ForgotPasswordScreen/forgot_password_screen.dart';
@@ -92,6 +93,10 @@ class MyApp extends StatelessWidget {
             name: AppConstant.ROUTE_SELL_SEC_REG,
             page: () => const SellSecRegView()),
 
+        GetPage(
+            name: AppConstant.ROUTE_SELL_HOME,
+            page: () => const SellHomeScreen()),
+
         /*
         * End Seller Registration Screen
         * */
@@ -101,9 +106,10 @@ class MyApp extends StatelessWidget {
             page: () => const BuyHomeScreen()),
         GetPage(
             name: AppConstant.ROUTE_RECENTLY_VIEW, page: () => RecentlyView()),
-
         GetPage(
-            name: AppConstant.ROUTE_MY_MESSAGES, page: () => MyMessagesScreen()),
+            name: AppConstant.ROUTE_MY_MESSAGES,
+            page: () => MyMessagesScreen()),
+
       ],
     );
   }

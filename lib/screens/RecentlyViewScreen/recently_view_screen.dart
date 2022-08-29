@@ -21,140 +21,134 @@ class RecentlyView extends StatelessWidget {
         body: ListView.builder(
             itemCount: 10, // the length
             itemBuilder: (context, index) {
-              return Container(
-                // padding: const EdgeInsets.only(bottom: 18, right: 18.0, left:78.0, ),
-                child: Container(
-                  // height: 120,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        top: 0.0, bottom: 20.0, left: 20.0, right: 10.0),
-                    child: SizedBox(
-                      // height: 210,
-                      child: Stack(
-                        clipBehavior: Clip.none,
-                        alignment: Alignment.centerLeft,
-                        children: [
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(left: 30.0, right: 20),
-                            child: SizedBox(
-                              height: 144,
-                              width: double.infinity,
-                              child: Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                ),
-                                elevation: 1,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 100.0),
-                                  child: Flexible(
-                                    child: Column(
+              return Padding(
+                padding: const EdgeInsets.only(
+                    top: 0.0, bottom: 20.0, left: 20.0, right: 10.0),
+                child: SizedBox(
+                  // height: 210,
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    alignment: Alignment.centerLeft,
+                    children: [
+                      Padding(
+                        padding:
+                            const EdgeInsets.only(left: 30.0, right: 20),
+                        child: SizedBox(
+                          height: 144,
+                          width: double.infinity,
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            elevation: 1,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 100.0),
+                              child: Flexible(
+                                child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.center,
+                                    children: [
+                                      Row(
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                            CrossAxisAlignment.center,
                                         children: [
-                                          Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              const Text('Jenifer Mark',
-                                                  style: TextStyle(
-                                                      fontFamily: 'Gibson',
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                                  overflow:
-                                                      TextOverflow.ellipsis),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 8.0),
-                                                child: Image.asset(
-                                                  "assets/ic_group.png",
-                                                  fit: BoxFit.contain,
-                                                  width: 16,
-                                                  height: 16,
-                                                ),
-                                              ),
-                                              Image.asset(
-                                                "assets/ic_non_verified.png",
-                                                fit: BoxFit.contain,
-                                                width: 16,
-                                                height: 16,
-                                              ),
-                                            ],
+                                          const Text('Jenifer Mark',
+                                              style: TextStyle(
+                                                  fontFamily: 'Gibson',
+                                                  fontWeight:
+                                                      FontWeight.w600),
+                                              overflow:
+                                                  TextOverflow.ellipsis),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.symmetric(
+                                                    horizontal: 8.0),
+                                            child: Image.asset(
+                                              "assets/ic_group.png",
+                                              fit: BoxFit.contain,
+                                              width: 16,
+                                              height: 16,
+                                            ),
                                           ),
-                                          const Padding(
-                                            padding: EdgeInsets.only(top: 5.0),
-                                            child: Text("\$1200",
-                                                style: TextStyle(
-                                                    fontFamily: 'Gibson',
-                                                    fontWeight:
-                                                        FontWeight.w300),
-                                                overflow:
-                                                    TextOverflow.ellipsis),
+                                          Image.asset(
+                                            "assets/ic_non_verified.png",
+                                            fit: BoxFit.contain,
+                                            width: 16,
+                                            height: 16,
                                           ),
-                                          const Padding(
-                                            padding: EdgeInsets.only(top: 10.0),
-                                            child: Text('Labrador',
-                                                style: TextStyle(
-                                                    fontFamily: 'Gibson',
-                                                    fontWeight:
-                                                        FontWeight.w300),
-                                                overflow:
-                                                    TextOverflow.ellipsis),
-                                          ),
-                                          const Padding(
-                                            padding: EdgeInsets.only(top: 3.0),
-                                            child: Text('3 months old',
-                                                style: TextStyle(
-                                                    fontFamily: 'Gibson',
-                                                    fontWeight:
-                                                        FontWeight.w300),
-                                                overflow:
-                                                    TextOverflow.ellipsis),
-                                          ),
-                                          const Padding(
-                                            padding: EdgeInsets.only(top: 3.0),
-                                            child: Text('Brisbane',
-                                                style: TextStyle(
-                                                    fontFamily: 'Gibson',
-                                                    fontWeight:
-                                                        FontWeight.w300),
-                                                overflow:
-                                                    TextOverflow.ellipsis),
-                                          )
-                                        ]),
-                                  ),
-                                ),
+                                        ],
+                                      ),
+                                      const Padding(
+                                        padding: EdgeInsets.only(top: 5.0),
+                                        child: Text("\$1200",
+                                            style: TextStyle(
+                                                fontFamily: 'Gibson',
+                                                fontWeight:
+                                                    FontWeight.w300),
+                                            overflow:
+                                                TextOverflow.ellipsis),
+                                      ),
+                                      const Padding(
+                                        padding: EdgeInsets.only(top: 10.0),
+                                        child: Text('Labrador',
+                                            style: TextStyle(
+                                                fontFamily: 'Gibson',
+                                                fontWeight:
+                                                    FontWeight.w300),
+                                            overflow:
+                                                TextOverflow.ellipsis),
+                                      ),
+                                      const Padding(
+                                        padding: EdgeInsets.only(top: 3.0),
+                                        child: Text('3 months old',
+                                            style: TextStyle(
+                                                fontFamily: 'Gibson',
+                                                fontWeight:
+                                                    FontWeight.w300),
+                                            overflow:
+                                                TextOverflow.ellipsis),
+                                      ),
+                                      const Padding(
+                                        padding: EdgeInsets.only(top: 3.0),
+                                        child: Text('Brisbane',
+                                            style: TextStyle(
+                                                fontFamily: 'Gibson',
+                                                fontWeight:
+                                                    FontWeight.w300),
+                                            overflow:
+                                                TextOverflow.ellipsis),
+                                      )
+                                    ]),
                               ),
                             ),
                           ),
-                          const CustomImageWidget(
-                              imgUrl:
-                                  'https://sparkonus.com/wp-content/uploads/2022/06/photo-1600804340584-c7db2eacf0bf-1.jpg',
-                              width: 120,
-                              height: 120,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(12))),
-                          Positioned(
-                            bottom: 10,
-                            right: 0,
-                            child: SizedBox(
-                              height: 50,
-                              width: 50,
-                              child: Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(50),
-                                ),
-                                elevation: 5,
-                                child: Image.asset('assets/ic_like_heart.png'),
-                              ),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
+                      const CustomImageWidget(
+                          imgUrl:
+                              'https://sparkonus.com/wp-content/uploads/2022/06/photo-1600804340584-c7db2eacf0bf-1.jpg',
+                          width: 120,
+                          height: 120,
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(12))),
+                      Positioned(
+                        bottom: 10,
+                        right: 0,
+                        child: SizedBox(
+                          height: 50,
+                          width: 50,
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            elevation: 5,
+                            child: Image.asset('assets/ic_like_heart.png'),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               );

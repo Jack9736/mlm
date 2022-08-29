@@ -31,6 +31,7 @@ class AppConstant {
 
   static const String ROUTE_SELL_FIRST_REG = "/SellFirstRegView";
   static const String ROUTE_SELL_SEC_REG = "/SellSecRegScreen";
+  static const String ROUTE_SELL_HOME = "/SellHomeScreen";
 
   static const String ROUTE_BUY_HOME = "/BuyHomeScreen";
   static const String ROUTE_BUY_DRAWER = "/SideDrawer";

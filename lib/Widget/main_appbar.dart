@@ -14,20 +14,21 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double? height;
   final List<Widget>? menuItem;
   final bool hideBack;
-
+  final Function()? onTap;
   BuyHomeController controller = Get.find();
 
-  MainAppBar({
-    Key? key,
-    this.backgroundColor = AppColors.white,
-    this.textIconColor = AppColors.white,
-    this.backIconColor = AppColors.white,
-    this.icon,
-    this.title = '',
-    this.menuItem,
-    this.height = kToolbarHeight,
-    this.hideBack = false,
-  }) : super(key: key);
+  MainAppBar(
+      {Key? key,
+      this.backgroundColor = AppColors.white,
+      this.textIconColor = AppColors.white,
+      this.backIconColor = AppColors.white,
+      this.icon,
+      this.title = '',
+      this.menuItem,
+      this.height = kToolbarHeight,
+      this.hideBack = false,
+      required this.onTap})
+      : super(key: key);
 
   @override
   Size get preferredSize => Size.fromHeight(height!);
@@ -46,9 +47,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
           Icons.menu,
           color: AppColors.appColor,
         ),
-        onPressed: () {
-          controller.openDrawer();
-        },
+        onPressed: onTap,
       ),
       title: Text(
         title!,
