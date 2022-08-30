@@ -29,6 +29,9 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
 
   var token;
 
+  int boxSize = 170;
+  int imageSize = 130;
+
   final UserType _userType = UserType.buyer;
   ListViewType _viewType = ListViewType.grid;
 
@@ -94,7 +97,7 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
                         controller: _textSearchController,
                         decoration: const InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Search query...',
+                          hintText: 'Search query',
                         ),
                         onChanged: onItemChanged,
                       ),
@@ -168,7 +171,7 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
 
   SizedBox buildGridViewItem() {
     return SizedBox(
-      height: MediaQuery.of(context).size.height / 3,
+       height: (boxSize + imageSize) - 30.toDouble(),
       child: Stack(
         clipBehavior: Clip.none,
         alignment: Alignment.centerLeft,
@@ -178,7 +181,7 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: SizedBox(
-                height: 170,
+                height: boxSize.toDouble(),
                 width: double.infinity,
                 child: Card(
                   shape: RoundedRectangleBorder(
@@ -282,15 +285,16 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
               ),
             ),
           ),
-          const Align(
+          Align(
             alignment: Alignment.topCenter,
             child: CustomImageWidget(
-                height: 130,
-                width: 130,
+                height: imageSize.toDouble(),
+                width: imageSize.toDouble(),
                 imgUrl:
-                    'https://sparkonus.com/wp-content/uploads/2022/06/photo-1600804340584-c7db2eacf0bf-1.jpg',
+                'https://sparkonus.com/wp-content/uploads/2022/06/photo-1600804340584-c7db2eacf0bf-1.jpg',
                 borderRadius: BorderRadius.all(Radius.circular(15))),
-          ),
+          )
+
         ],
       ),
     );
