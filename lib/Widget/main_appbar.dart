@@ -49,14 +49,19 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         onPressed: onTap,
       ),
-      title: Text(
-        title!,
-        style: TextStyle(
-            color: textIconColor,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'Barlow'),
-      ),
+      title: title?.isEmpty == true
+          ? Image.asset(
+              "assets/ic_text_puppy_scam.png",
+              fit: BoxFit.fitWidth,
+            )
+          : Text(
+              title!,
+              style: TextStyle(
+                  color: textIconColor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Barlow'),
+            ),
       backgroundColor: backgroundColor,
       centerTitle: true,
     );
