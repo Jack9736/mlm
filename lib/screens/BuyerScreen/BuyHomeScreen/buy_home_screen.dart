@@ -111,8 +111,9 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
                 child: GridView.count(
                   shrinkWrap: true,
                     crossAxisCount: _crossAxisCount,
-                    childAspectRatio:  (_viewType == ListViewType.list) ? (MediaQuery.of(context).size.width/2)/90 : (MediaQuery.of(context).size.width/2)/180,
-                    children: List.generate(50, (index) {
+                    childAspectRatio:  (_viewType == ListViewType.list) ? (MediaQuery.of(context).size.width/2)/90 :
+                    (MediaQuery.of(context).size.height/2)/550,
+                    children: List.generate(20, (index) {
                       return getGridItem();
                     }))),
           ],
@@ -129,118 +130,53 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
     );
   }
 
-  SizedBox buildGridViewItem() {
-    return SizedBox(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top:0.0),
-            child: SizedBox(
-              height: 180,
-              width: 180,
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0),
+  Padding buildGridViewItem() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      child: SizedBox(
+
+        child: Stack(
+          clipBehavior: Clip.none,
+          alignment: Alignment.centerLeft,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 30.0, right: 30, top: 50),
+              child: SizedBox(
+                height: double.infinity,
+                width: double.infinity,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  elevation: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 90.0),
+                    child: Flexible(
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+
+                          ]),
+                    ),
+                  ),
                 ),
-                elevation: 1,
-                child: Column(
-                    crossAxisAlignment:
-                    CrossAxisAlignment.start,
-                    mainAxisAlignment:
-                    MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        crossAxisAlignment:
-                        CrossAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10.0, top: 30),
-                            child: const Text('Jenifer Mark',
-                                style: TextStyle(
-                                    fontFamily: 'Gibson',
-                                    fontWeight:
-                                    FontWeight.w600),
-                                overflow:
-                                TextOverflow.ellipsis),
-                          ),
-                          Padding(
-                            padding:
-                            const EdgeInsets.only(top: 20, left: 10),
-                            child: Image.asset(
-                              "assets/ic_group.png",
-                              fit: BoxFit.contain,
-                              width: 16,
-                              height: 16,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 20.0, left: 10),
-                            child: Image.asset(
-                              "assets/ic_non_verified.png",
-                              fit: BoxFit.contain,
-                              width: 16,
-                              height: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 5.0, left: 10),
-                        child: Text("\$1200",
-                            style: TextStyle(
-                                fontFamily: 'Gibson',
-                                fontWeight:
-                                FontWeight.w300),
-                            overflow:
-                            TextOverflow.ellipsis),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 10.0, left: 10),
-                        child: Text('Labrador',
-                            style: TextStyle(
-                                fontFamily: 'Gibson',
-                                fontWeight:
-                                FontWeight.w300),
-                            overflow:
-                            TextOverflow.ellipsis),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 3.0, left: 10),
-                        child: Text('3 months old',
-                            style: TextStyle(
-                                fontFamily: 'Gibson',
-                                fontWeight:
-                                FontWeight.w300),
-                            overflow:
-                            TextOverflow.ellipsis),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 3.0, left: 10),
-                        child: Text('Brisbane',
-                            style: TextStyle(
-                                fontFamily: 'Gibson',
-                                fontWeight:
-                                FontWeight.w300),
-                            overflow:
-                            TextOverflow.ellipsis),
-                      )
-                    ]),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 30.0),
-            child: const CustomImageWidget(
-                imgUrl:
-                'https://sparkonus.com/wp-content/uploads/2022/06/photo-1600804340584-c7db2eacf0bf-1.jpg',
-                width: 100,
-                height: 100,
-                borderRadius:
-                BorderRadius.all(Radius.circular(12))),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 100.0, bottom: 0),
-            child: SizedBox(
+            Align(
+              alignment: Alignment.topCenter,
+             child: Padding(
+                padding: const EdgeInsets.only(left: 10.0,),
+                child: const CustomImageWidget(
+                    imgUrl:
+                    'https://sparkonus.com/wp-content/uploads/2022/06/photo-1600804340584-c7db2eacf0bf-1.jpg',
+                    width: 120,
+                    height: 120,
+                    borderRadius:
+                    BorderRadius.all(Radius.circular(12))),
+              ),
+            ),
+            SizedBox(
               height: 50,
               width: 50,
               child: Card(
@@ -251,8 +187,8 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
                 child: Image.asset('assets/ic_like_heart.png'),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
