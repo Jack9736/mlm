@@ -139,7 +139,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   Container loginButton(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 40, left: 15, right: 15),
-      height: 60,
+      height: AppConstant.appButtonSize,
       width: double.infinity,
       child: Obx(() => TextButton(
         child: controller.isApiRunning.value

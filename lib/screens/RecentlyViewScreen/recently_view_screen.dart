@@ -5,6 +5,8 @@ import 'package:mlm/Widget/custom_image_widget.dart';
 import 'package:mlm/Widget/widget_appbar.dart';
 import 'package:mlm/screens/RecentlyViewScreen/recently_view_controller.dart';
 
+import '../../Utils/constant.dart';
+
 class RecentlyView extends StatelessWidget {
   RecentlyView({Key? key}) : super(key: key);
 
@@ -157,7 +159,7 @@ class RecentlyView extends StatelessWidget {
 
   SizedBox buildBtnLogout(BuildContext context) {
     return SizedBox(
-      height: 50,
+      height: AppConstant.appButtonSize,
       width: double.infinity,
       child: Obx(() => TextButton(
             child: controller.isLoading.value

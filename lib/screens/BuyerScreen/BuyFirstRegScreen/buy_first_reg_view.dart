@@ -371,7 +371,7 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
   Container nextButton(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: 40, left: 30, right: 30),
-      height: 60,
+      height: AppConstant.appButtonSize,
       width: double.infinity,
       child: Obx(() =>
           TextButton(

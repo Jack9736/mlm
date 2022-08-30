@@ -161,7 +161,7 @@ class BuySideDrawer extends StatelessWidget {
 
   SizedBox buildBtnLogout(BuildContext context) {
     return SizedBox(
-      height: 50,
+      height: AppConstant.appButtonSize,
       width: double.infinity,
       child: Obx(() => TextButton(
             child: controller.isApiRunning.value

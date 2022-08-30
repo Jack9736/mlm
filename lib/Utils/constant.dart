@@ -51,5 +51,9 @@ class AppConstant {
 
   static const String argUserType = "userType";
 
+  static const double appButtonSize = 50;
+
   static var deviceType = "android";
+
+
 }

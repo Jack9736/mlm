@@ -61,10 +61,13 @@ class _SellSecRegViewState extends State<SellSecRegView> {
                                 ),
                                 signUpText(),
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 10.0, bottom: 30.0, right: 30.0, left:30.0),
+                                  padding: const EdgeInsets.only(
+                                      top: 10.0,
+                                      bottom: 30.0,
+                                      right: 30.0,
+                                      left: 30.0),
                                   child: Column(
                                     children: [
-                                     
                                       TextFormField(
                                         textCapitalization:
                                             TextCapitalization.sentences,
@@ -100,11 +103,10 @@ class _SellSecRegViewState extends State<SellSecRegView> {
                                           return null;
                                         },
                                         decoration: InputDecoration(
-                                            labelText: 'ABN (If applicable)',
-                                            labelStyle: buildTextStyle(18.0),
-                                            hintText: 'ABN Number',
-                                            hintStyle: buildRadioTextStyle(),
-
+                                          labelText: 'ABN (If applicable)',
+                                          labelStyle: buildTextStyle(18.0),
+                                          hintText: 'ABN Number',
+                                          hintStyle: buildRadioTextStyle(),
                                         ),
                                       ),
                                       const SizedBox(
@@ -123,9 +125,10 @@ class _SellSecRegViewState extends State<SellSecRegView> {
                                           return null;
                                         },
                                         decoration: InputDecoration(
-                                            labelText: 'Phone number (hidden to public)',
-                                            labelStyle: buildTextStyle(18.0),
-                                            hintText: 'Phone number',
+                                          labelText:
+                                              'Phone number (hidden to public)',
+                                          labelStyle: buildTextStyle(18.0),
+                                          hintText: 'Phone number',
                                           hintStyle: buildRadioTextStyle(),
                                         ),
                                       ),
@@ -144,12 +147,11 @@ class _SellSecRegViewState extends State<SellSecRegView> {
                                           }
                                           return null;
                                         },
-
-
                                         decoration: InputDecoration(
-                                            labelText: 'Breeder Identification Number (hidden to public)',
-                                            labelStyle: buildTextStyle(18.0),
-                                            hintText: 'BIN Number',
+                                          labelText:
+                                              'Breeder Identification Number (hidden to public)',
+                                          labelStyle: buildTextStyle(18.0),
+                                          hintText: 'BIN Number',
                                           hintStyle: buildRadioTextStyle(),
                                         ),
                                       ),
@@ -162,8 +164,7 @@ class _SellSecRegViewState extends State<SellSecRegView> {
                                         CrossAxisAlignment.start,
                                   ),
                                 ),
-                                Column(
-                                    children: [
+                                Column(children: [
                                   RadioListTile(
                                     value: controller.memberList[0],
                                     dense: true,
@@ -320,31 +321,33 @@ class _SellSecRegViewState extends State<SellSecRegView> {
                                       memberListObs.value = value!;
                                     },
                                   ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(right: 30.0, left: 50.0),
-                                        child: TextFormField(
-                                          textCapitalization:
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        right: 30.0, left: 50.0),
+                                    child: TextFormField(
+                                      textCapitalization:
                                           TextCapitalization.sentences,
-                                          textInputAction: TextInputAction.next,
-                                          cursorColor: Colors.black,
-                                          style: buildTextStyle(14),
-                                          validator: (value) {
-                                            if (value == null || value.isEmpty) {
-                                              return 'Others';
-                                            }
-                                            return null;
-                                          },
-                                          decoration: InputDecoration(
-                                            labelText: 'Others',
-                                            labelStyle: buildTextStyle(18.0),
-                                            hintText: 'Other',
-                                              hintStyle: buildRadioTextStyle(),
-                                          ),
-                                        ),
+                                      textInputAction: TextInputAction.next,
+                                      cursorColor: Colors.black,
+                                      style: buildTextStyle(14),
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Others';
+                                        }
+                                        return null;
+                                      },
+                                      decoration: InputDecoration(
+                                        labelText: 'Others',
+                                        labelStyle: buildTextStyle(18.0),
+                                        hintText: 'Other',
+                                        hintStyle: buildRadioTextStyle(),
                                       ),
+                                    ),
+                                  ),
                                 ]),
                                 Padding(
-                                  padding: const EdgeInsets.only(right: 30.0, left:30.0),
+                                  padding: const EdgeInsets.only(
+                                      right: 30.0, left: 30.0),
                                   child: Column(
                                     children: [
                                       const SizedBox(
@@ -363,12 +366,11 @@ class _SellSecRegViewState extends State<SellSecRegView> {
                                           return null;
                                         },
                                         decoration: InputDecoration(
-
-                                          labelText: 'Member Number (hidden to public)',
+                                          labelText:
+                                              'Member Number (hidden to public)',
                                           labelStyle: buildTextStyle(18.0),
                                           hintText: 'Number',
                                           hintStyle: buildRadioTextStyle(),
-
                                         ),
                                       ),
                                       const SizedBox(
@@ -459,7 +461,7 @@ class _SellSecRegViewState extends State<SellSecRegView> {
   Container nextButton(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: 0, left: 30, right: 30),
-      height: 60,
+      height: AppConstant.appButtonSize,
       width: double.infinity,
       child: Obx(() => TextButton(
             child: controller.isApiRunning.value

@@ -153,7 +153,7 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
               itemBuilder: (context, index) {
                 return getGridItem();
               },
-              itemCount: 200,
+              itemCount: 20,
             )),
           ],
         ),
@@ -171,7 +171,7 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
 
   SizedBox buildGridViewItem() {
     return SizedBox(
-       height: (boxSize + imageSize) - 30.toDouble(),
+      height: (boxSize + imageSize) - 30.toDouble(),
       child: Stack(
         clipBehavior: Clip.none,
         alignment: Alignment.centerLeft,
@@ -190,96 +190,109 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
                   elevation: 1,
                   child: Padding(
                     padding:
-                        const EdgeInsets.only(top: 30.0, left: 10, right: 10),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Text('Jenifer Mark',
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontFamily: 'Gibson',
-                                      fontWeight: FontWeight.w600),
-                                  overflow: TextOverflow.ellipsis),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Image.asset(
-                                  "assets/ic_group.png",
+                        const EdgeInsets.only(top: 30.0, left: 10, right: 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Flexible(
+                          child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    const Flexible(
+                                      child: Text('Jenifer Mark',
+                                          maxLines: 1,
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontFamily: 'Gibson',
+                                              fontWeight: FontWeight.w600),
+                                          overflow: TextOverflow.ellipsis),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 8.0),
+                                      child: Image.asset(
+                                        "assets/ic_group.png",
+                                        fit: BoxFit.contain,
+                                        width: 16,
+                                        height: 16,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Padding(
+                                      padding: EdgeInsets.only(top: 10.0),
+                                      child: Text("\$1200",
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              fontFamily: 'Gibson',
+                                              fontWeight: FontWeight.w300),
+                                          overflow: TextOverflow.ellipsis),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(top: 10.0),
+                                      child: Text('Labrador',
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontFamily: 'Gibson',
+                                              fontWeight: FontWeight.w300),
+                                          overflow: TextOverflow.ellipsis),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(top: 5.0),
+                                      child: Text('3 months old',
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontFamily: 'Gibson',
+                                              fontWeight: FontWeight.w300),
+                                          overflow: TextOverflow.ellipsis),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(top: 5.0),
+                                      child: Text('Brisbane',
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontFamily: 'Gibson',
+                                              fontWeight: FontWeight.w300),
+                                          overflow: TextOverflow.ellipsis),
+                                    ),
+                                  ],
+                                )
+                              ]),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 17),
+                          child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  "assets/ic_non_verified.png",
                                   fit: BoxFit.contain,
                                   width: 16,
                                   height: 16,
                                 ),
-                              ),
-                              Image.asset(
-                                "assets/ic_non_verified.png",
-                                fit: BoxFit.contain,
-                                width: 16,
-                                height: 16,
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Padding(
-                                    padding: EdgeInsets.only(top: 10.0),
-                                    child: Text("\$1200",
-                                        style: TextStyle(
-                                            fontSize: 14,
-                                            fontFamily: 'Gibson',
-                                            fontWeight: FontWeight.w300),
-                                        overflow: TextOverflow.ellipsis),
+                                const Spacer(),
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 10.0),
+                                  child: IconButton(
+                                    icon: Image.asset(
+                                      'assets/ic_unlike_heart.png',
+                                      height: 24,
+                                      width: 24,
+                                    ),
+                                    onPressed: () {},
                                   ),
-                                  const Padding(
-                                    padding: EdgeInsets.only(top: 10.0),
-                                    child: Text('Labrador',
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            fontFamily: 'Gibson',
-                                            fontWeight: FontWeight.w300),
-                                        overflow: TextOverflow.ellipsis),
-                                  ),
-                                  const Padding(
-                                    padding: EdgeInsets.only(top: 5.0),
-                                    child: Text('3 months old',
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            fontFamily: 'Gibson',
-                                            fontWeight: FontWeight.w300),
-                                        overflow: TextOverflow.ellipsis),
-                                  ),
-                                  const Padding(
-                                    padding: EdgeInsets.only(top: 5.0),
-                                    child: Text('Brisbane',
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            fontFamily: 'Gibson',
-                                            fontWeight: FontWeight.w300),
-                                        overflow: TextOverflow.ellipsis),
-                                  ),
-                                ],
-                              ),
-                              Align(
-                                alignment: Alignment.bottomRight,
-                                child: IconButton(
-                                  icon: Image.asset(
-                                    'assets/ic_like_heart.png',
-                                    color: AppColors.appColor,
-                                    height: 18,
-                                    width: 18,
-                                  ),
-                                  onPressed: () {},
                                 ),
-                              )
-                            ],
-                          )
-                        ]),
+                              ]),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -291,10 +304,9 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
                 height: imageSize.toDouble(),
                 width: imageSize.toDouble(),
                 imgUrl:
-                'https://sparkonus.com/wp-content/uploads/2022/06/photo-1600804340584-c7db2eacf0bf-1.jpg',
-                borderRadius: BorderRadius.all(Radius.circular(15))),
+                    'https://sparkonus.com/wp-content/uploads/2022/06/photo-1600804340584-c7db2eacf0bf-1.jpg',
+                borderRadius: const BorderRadius.all(Radius.circular(15))),
           )
-
         ],
       ),
     );
@@ -392,8 +404,7 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
                     'https://sparkonus.com/wp-content/uploads/2022/06/photo-1600804340584-c7db2eacf0bf-1.jpg',
                 width: 120,
                 height: 120,
-                borderRadius:
-                BorderRadius.all(Radius.circular(12))),
+                borderRadius: BorderRadius.all(Radius.circular(12))),
           ),
           Positioned(
             bottom: 25,

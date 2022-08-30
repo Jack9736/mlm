@@ -107,7 +107,7 @@ class _BuySellScreenState extends State<BuySellScreen> {
   /* Buy Pet Button */
   SizedBox buyPetButton(BuildContext context) {
     return SizedBox(
-      height: 60,
+      height: AppConstant.appButtonSize,
       child: Obx(() => TextButton(
             child: controller.isApiRunning.value
                 ? Row(
@@ -151,7 +151,7 @@ class _BuySellScreenState extends State<BuySellScreen> {
   /* Sell Pet Button */
   SizedBox sellPetButton(BuildContext context) {
     return SizedBox(
-      height: 60,
+      height: AppConstant.appButtonSize,
       child: Obx(() => TextButton(
             child: controller.isApiRunning.value
                 ? Row(

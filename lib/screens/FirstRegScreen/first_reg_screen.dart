@@ -113,7 +113,7 @@ class _FirstRegScreenState extends State<FirstRegScreen> {
   /* Login as a Buyer Button */
   SizedBox loginBuyerButton(BuildContext context) {
     return SizedBox(
-      height: 60,
+      height: AppConstant.appButtonSize,
       child: Obx(() => TextButton(
             child: controller.isApiRunning.value
                 ? Row(
@@ -155,7 +155,7 @@ class _FirstRegScreenState extends State<FirstRegScreen> {
   /* Create Account Button */
   SizedBox createAccountButton(BuildContext context) {
     return SizedBox(
-      height: 60,
+      height: AppConstant.appButtonSize,
       child: Obx(() => TextButton(
             child: controller.isApiRunning.value
                 ? Row(

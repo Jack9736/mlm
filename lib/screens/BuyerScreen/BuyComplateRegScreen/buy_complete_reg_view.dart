@@ -202,7 +202,7 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
   /* Next Button */
   SizedBox nextButton(BuildContext context) {
     return SizedBox(
-      height: 50,
+      height: AppConstant.appButtonSize,
       width: double.infinity,
       child: Obx(() => TextButton(
             child: controller.isApiRunning.value

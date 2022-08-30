@@ -5,6 +5,7 @@ import 'package:mlm/Widget/custom_image_widget.dart';
 import 'package:mlm/Widget/widget_appbar.dart';
 import 'package:mlm/screens/BuyerScreen/BuyHomeScreen/buy_home_controller.dart';
 
+import '../../../Utils/constant.dart';
 import '../SellHomeScreen/sell_home_controller.dart';
 
 class SellSideDrawer extends StatelessWidget {
@@ -158,7 +159,7 @@ class SellSideDrawer extends StatelessWidget {
 
   SizedBox buildBtnLogout(BuildContext context) {
     return SizedBox(
-      height: 50,
+      height: AppConstant.appButtonSize,
       width: double.infinity,
       child: Obx(() => TextButton(
             child: controller.isApiRunning.value
