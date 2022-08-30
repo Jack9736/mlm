@@ -38,6 +38,8 @@ class AppConstant {
   static const String ROUTE_RECENTLY_VIEW = "/RecentlyView";
   static const String ROUTE_MY_MESSAGES = "/MyMessagesView";
 
+  static const String ROUTE_PET_PROFILE_VIEW = "/PetProfileView";
+
 
   static const String prefUserDetail = "prefuserdetail";
   static const String prefIsInfoSeen = "prefisinfoseen";
