@@ -19,6 +19,7 @@ import '../screens/RecentlyViewScreen/recently_view_controller.dart';
 import 'package:mlm/screens/MyMessageScreen/my_messages_controller.dart';
 
 import '../screens/SellerScreen/SellHomeScreen/sell_home_controller.dart';
+import '../screens/BuyerScreen/BuySellerProfileScreen/buy_seller_profile_controller.dart';
 
 class AppBinding extends Bindings {
   @override
@@ -71,6 +72,9 @@ class AppBinding extends Bindings {
         httpService: Get.find(tag: AppConstant.tagHttpService)));
 
     Get.put(SellHomeController(
+        httpService: Get.find(tag: AppConstant.tagHttpService)));
+
+    Get.put(BuySellerProfileController(
         httpService: Get.find(tag: AppConstant.tagHttpService)));
   }
 }

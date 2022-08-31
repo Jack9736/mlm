@@ -30,7 +30,7 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
   var token;
 
   int boxSize = 170;
-  int imageSize = 130;
+  int imageSize = 145;
 
   final UserType _userType = UserType.buyer;
   ListViewType _viewType = ListViewType.grid;
@@ -72,11 +72,15 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
               ),
               onPressed: () {},
             ),
+
+
           ],
           onTap: () {
             controller.openDrawer();
           },
+
         ),
+
         drawer: SizedBox(
             // width: MediaQuery.of(context).size.width * 0.8,
             child: BuySideDrawer()),

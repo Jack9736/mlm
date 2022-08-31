@@ -142,7 +142,11 @@ class _BuySellScreenState extends State<BuySellScreen> {
             onPressed: () {
               Get.toNamed(AppConstant.ROUTE_FIRST_REG, arguments: [
                 {AppConstant.argUserType: UserType.buyer},
+
               ]);
+              //Get.toNamed(AppConstant.ROUTE_BUY_SELLER_PROFILE_VIEW);
+
+
             },
           )),
     );

@@ -15,6 +15,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? menuItem;
   final bool hideBack;
   final Function()? onTap;
+
   BuyHomeController controller = Get.find();
 
   MainAppBar(

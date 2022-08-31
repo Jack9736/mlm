@@ -21,7 +21,7 @@ import 'package:mlm/screens/loginScreen/login_screen.dart';
 import 'package:mlm/screens/ForgotPasswordScreen/forgot_password_screen.dart';
 import 'package:mlm/screens/StartBrowsingScreen/start_browsing_view.dart';
 import 'package:mlm/screens/MyMessageScreen/my_messages_screen.dart';
-
+import 'package:mlm/screens/BuyerScreen/BuySellerProfileScreen/buy_seller_profile_view.dart';
 import 'Binding/app_binding.dart';
 
 Future<void> main() async {
@@ -66,36 +66,36 @@ class MyApp extends StatelessWidget {
         * */
         GetPage(
             name: AppConstant.ROUTE_BUY_FIRST_REG,
-            page: () => const BuyFirstRegView()),
+            page: () =>  BuyFirstRegView()),
         GetPage(
             name: AppConstant.ROUTE_BUY_SEC_REG,
-            page: () => const BuySecRegView()),
+            page: () =>  BuySecRegView()),
         GetPage(
             name: AppConstant.ROUTE_BUY_COMPLETE_REG,
-            page: () => const BuyCompleteRegView()),
+            page: () =>  BuyCompleteRegView()),
         GetPage(
             name: AppConstant.ROUTE_START_BROWSING,
-            page: () => const StartBrowsingView()),
+            page: () =>  StartBrowsingView()),
         /*
         * End Buyer Registration Screen
         * */
 
         GetPage(
             name: AppConstant.ROUTE_FIRST_REG,
-            page: () => const FirstRegScreen()),
+            page: () =>  FirstRegScreen()),
 
         /*
         * Start Seller Registration Screen
         * */
         GetPage(
             name: AppConstant.ROUTE_SELL_FIRST_REG,
-            page: () => const SellFirstRegView()),
+            page: () =>  SellFirstRegView()),
         GetPage(
             name: AppConstant.ROUTE_SELL_SEC_REG,
-            page: () => const SellSecRegView()),
+            page: () =>  SellSecRegView()),
         GetPage(
             name: AppConstant.ROUTE_SELL_HOME,
-            page: () => const SellHomeScreen()),
+            page: () =>  SellHomeScreen()),
 
         /*
         * End Seller Registration Screen
@@ -103,7 +103,7 @@ class MyApp extends StatelessWidget {
 
         GetPage(
             name: AppConstant.ROUTE_BUY_HOME,
-            page: () => const BuyHomeScreen()),
+            page: () =>  BuyHomeScreen()),
 
         GetPage(
             name: AppConstant.ROUTE_RECENTLY_VIEW, page: () => RecentlyView()),
@@ -114,7 +114,11 @@ class MyApp extends StatelessWidget {
 
         GetPage(
             name: AppConstant.ROUTE_PET_PROFILE_VIEW,
-            page: () => const PetProfileView()),
+            page: () =>  PetProfileView()),
+
+        GetPage(
+            name: AppConstant.ROUTE_BUY_SELLER_PROFILE_VIEW,
+            page: () =>  BuySellerProfileView()),
       ],
     );
   }
