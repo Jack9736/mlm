@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mlm/Style/app_colors.dart';
@@ -7,66 +8,148 @@ import 'package:mlm/enum/Method.dart';
 import 'package:mlm/screens/BuyerScreen/BuyHomeScreen/buy_home_controller.dart';
 import 'package:mlm/screens/BuyerScreen/DrawerScreen/BuySideDrawer.dart';
 import 'package:mlm/screens/SellerScreen/SellHomeScreen/sell_home_controller.dart';
+import 'package:sticky_and_expandable_list/sticky_and_expandable_list.dart';
 
+import '../../../Widget/widget_appbar.dart';
 import '../DrawerScreen/SellSideDrawer.dart';
+import 'MockData.dart';
 
 class SellHomeScreen extends StatefulWidget {
-  const SellHomeScreen({Key? key}) : super(key: key);
-
   @override
-  State<SellHomeScreen> createState() => _SellHomeScreenState();
+  _SellHomeScreenState createState() => _SellHomeScreenState();
 }
 
 class _SellHomeScreenState extends State<SellHomeScreen> {
-  late String userName, password, sessionName;
+  var sectionList = MockData.getExampleSections(3, 3);
 
-  var userType = '';
-  TextEditingController userNmController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: MainAppBar(
+          onTap: () {
 
-  SellHomeController controller = Get.find();
+          },
+        ),
+        body: ExpandableListView(
+          builder: SliverExpandableChildDelegate<String, ExampleSection>(
+            sectionList: sectionList,
+            itemBuilder: (context, sectionIndex, itemIndex, index) {
+              String item = sectionList[sectionIndex].items[itemIndex];
+              return ListTile(
+                leading: CircleAvatar(
+                  child: Text("$index"),
+                ),
+                title: Text(item),
+              );
+            },
+            sectionBuilder: (context, containerInfo) => _SectionWidget(
+              section: sectionList[containerInfo.sectionIndex],
+              containerInfo: containerInfo,
+              onStateChanged: () {
+                //notify ExpandableListView that expand state has changed.
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  if (mounted) {
+                    setState(() {});
+                  }
+                });
+              },
+            ),
+          ),
+        ));
+  }
+}
 
-  var token;
+class _SectionWidget extends StatefulWidget {
+  final ExampleSection section;
+  final ExpandableSectionContainerInfo containerInfo;
+  final VoidCallback onStateChanged;
 
-  final UserType _userType = UserType.buyer;
+  _SectionWidget(
+      {required this.section,
+      required this.containerInfo,
+      required this.onStateChanged});
+
+  @override
+  __SectionWidgetState createState() => __SectionWidgetState();
+}
+
+class __SectionWidgetState extends State<_SectionWidget>
+    with SingleTickerProviderStateMixin {
+  static final Animatable<double> _halfTween =
+      Tween<double>(begin: 0.0, end: 0.5);
+  late AnimationController _controller;
+
+  late Animation _iconTurns;
+
+  late Animation<double> _heightFactor;
 
   @override
   void initState() {
     super.initState();
+    _controller =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 300));
+    _iconTurns =
+        _controller.drive(_halfTween.chain(CurveTween(curve: Curves.easeIn)));
+    _heightFactor = _controller.drive(CurveTween(curve: Curves.easeIn));
 
-    userNmController.addListener(() {
-      setState(() {});
-    });
+    if (widget.section.isSectionExpanded()) {
+      _controller.value = 1;
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: Scaffold(
-        key: controller.scaffoldKey,
-        resizeToAvoidBottomInset: true,
-        appBar: MainAppBar(
-          menuItem: [
-            IconButton(
-              icon: Image.asset(
-                'assets/ic_chat.png',
-                color: AppColors.appColor,
-                height: 18,
-                width: 18,
-              ),
-              onPressed: () {},
-            ),
-          ],
-          onTap: () {
-            controller.openDrawer();
-          },
+    widget.containerInfo
+      ..header = _buildHeader(context)
+      ..content = _buildContent(context);
+    return ExpandableSectionContainer(
+      info: widget.containerInfo,
+    );
+  }
+
+  Widget _buildHeader(BuildContext context) {
+    return Container(
+      color: Colors.lightBlue,
+      child: ListTile(
+        title: Text(
+          widget.section.header,
+          style: TextStyle(color: Colors.white),
         ),
-        drawer: SizedBox(
-            // width: MediaQuery.of(context).size.width * 0.8,
-            child: SellSideDrawer()),
-        body: Container(),
+        trailing: RotationTransition(
+          turns: _iconTurns as Animation<double>,
+          child: const Icon(
+            Icons.expand_more,
+            color: Colors.white70,
+          ),
+        ),
+        onTap: _onTap,
       ),
+    );
+  }
+
+  void _onTap() {
+    widget.section.setSectionExpanded(!widget.section.isSectionExpanded());
+    if (widget.section.isSectionExpanded()) {
+      widget.onStateChanged();
+      _controller.forward();
+    } else {
+      _controller.reverse().then((_) {
+        widget.onStateChanged();
+      });
+    }
+  }
+
+  Widget _buildContent(BuildContext context) {
+    return SizeTransition(
+      sizeFactor: _heightFactor,
+      child: SliverExpandableChildDelegate.buildDefaultContent(
+          context, widget.containerInfo),
     );
   }
 }

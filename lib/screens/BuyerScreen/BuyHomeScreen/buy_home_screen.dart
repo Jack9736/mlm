@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Utils/constant.dart';
 import 'package:mlm/Widget/main_appbar.dart';
 import 'package:mlm/enum/ListViewType.dart';
 import 'package:mlm/enum/Method.dart';
@@ -72,15 +73,11 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
               ),
               onPressed: () {},
             ),
-
-
           ],
           onTap: () {
             controller.openDrawer();
           },
-
         ),
-
         drawer: SizedBox(
             // width: MediaQuery.of(context).size.width * 0.8,
             child: BuySideDrawer()),
@@ -327,76 +324,81 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
             child: SizedBox(
               height: 160,
               width: double.infinity,
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                elevation: 1,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 90.0),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Text('Jenifer Mark',
-                                style: TextStyle(
-                                    fontFamily: 'Gibson',
-                                    fontWeight: FontWeight.w600),
-                                overflow: TextOverflow.ellipsis),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Image.asset(
-                                "assets/ic_group.png",
+              child: InkWell(
+                onTap: () {
+                  Get.toNamed(AppConstant.ROUTE_PET_PROFILE_VIEW);
+                },
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  elevation: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 90.0),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Text('Jenifer Mark',
+                                  style: TextStyle(
+                                      fontFamily: 'Gibson',
+                                      fontWeight: FontWeight.w600),
+                                  overflow: TextOverflow.ellipsis),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Image.asset(
+                                  "assets/ic_group.png",
+                                  fit: BoxFit.contain,
+                                  width: 16,
+                                  height: 16,
+                                ),
+                              ),
+                              Image.asset(
+                                "assets/ic_non_verified.png",
                                 fit: BoxFit.contain,
                                 width: 16,
                                 height: 16,
                               ),
-                            ),
-                            Image.asset(
-                              "assets/ic_non_verified.png",
-                              fit: BoxFit.contain,
-                              width: 16,
-                              height: 16,
-                            ),
-                          ],
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(top: 10.0),
-                          child: Text("\$1200",
-                              style: TextStyle(
-                                  fontFamily: 'Gibson',
-                                  fontWeight: FontWeight.w300),
-                              overflow: TextOverflow.ellipsis),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(top: 10.0),
-                          child: Text('Labrador',
-                              style: TextStyle(
-                                  fontFamily: 'Gibson',
-                                  fontWeight: FontWeight.w300),
-                              overflow: TextOverflow.ellipsis),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(top: 5.0),
-                          child: Text('3 months old',
-                              style: TextStyle(
-                                  fontFamily: 'Gibson',
-                                  fontWeight: FontWeight.w300),
-                              overflow: TextOverflow.ellipsis),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(top: 5.0),
-                          child: Text('Brisbane',
-                              style: TextStyle(
-                                  fontFamily: 'Gibson',
-                                  fontWeight: FontWeight.w300),
-                              overflow: TextOverflow.ellipsis),
-                        )
-                      ]),
+                            ],
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 10.0),
+                            child: Text("\$1200",
+                                style: TextStyle(
+                                    fontFamily: 'Gibson',
+                                    fontWeight: FontWeight.w300),
+                                overflow: TextOverflow.ellipsis),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 10.0),
+                            child: Text('Labrador',
+                                style: TextStyle(
+                                    fontFamily: 'Gibson',
+                                    fontWeight: FontWeight.w300),
+                                overflow: TextOverflow.ellipsis),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 5.0),
+                            child: Text('3 months old',
+                                style: TextStyle(
+                                    fontFamily: 'Gibson',
+                                    fontWeight: FontWeight.w300),
+                                overflow: TextOverflow.ellipsis),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 5.0),
+                            child: Text('Brisbane',
+                                style: TextStyle(
+                                    fontFamily: 'Gibson',
+                                    fontWeight: FontWeight.w300),
+                                overflow: TextOverflow.ellipsis),
+                          )
+                        ]),
+                  ),
                 ),
               ),
             ),

@@ -38,5 +38,8 @@ class AppColors {
   static Color topHeaderClr = const Color.fromRGBO(87, 188, 223, 1);
   static const Color topHeaderBlueClr = Color.fromRGBO(20, 38, 101, 1);
   static const Color topHeaderIconColor = Color.fromRGBO(20, 38, 101, 1.0);
+  static const Color locationMarkerColor = Color.fromRGBO(20, 38, 101, 1.0);
+  static const Color petProfileDetailLblColor = Color.fromRGBO(87, 188, 223, 1.0);
 
+  static const Color gray_text_color = Color.fromRGBO(96, 96, 96, 1.0);
 }
