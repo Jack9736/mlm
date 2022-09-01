@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
 import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Widget/widget_appbar.dart';
 import 'package:mlm/screens/PetProfileScreen/pet_profile_controller.dart';
 
 import '../../Utils/constant.dart';
@@ -16,25 +16,16 @@ class PetProfileView extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: ListView(
+      appBar: const CustomAppBar(title: AppConstant.TITLE_PET_PROFILE),
+      body: Column(
         children: [
           Stack(
             clipBehavior: Clip.none,
             children: <Widget>[
-              Container(
+              SizedBox(
                 width: size.width,
                 height: size.height * 0.3,
-                decoration: const BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(0),
-                        bottomRight: Radius.circular(0))),
-                child: Image(
-                  width: size.width,
-                  height: size.height * 0.3,
-                  fit: BoxFit.none,
-                  image: const AssetImage('assets/ic_puppy.jpeg'),
-                ),
+                child: Image.asset("assets/ic_puppy.jpeg", fit: BoxFit.none),
                 // child: Image.network(tutorImage),
               ),
               Positioned(
@@ -60,196 +51,207 @@ class PetProfileView extends StatelessWidget {
               ),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 18.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  "Logan",
-                  style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: 'Gibson',
-                      color: AppColors.black),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Image.asset(
-                    "assets/ic_group.png",
-                    fit: BoxFit.contain,
-                    width: 25,
-                    height: 25,
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 28.0),
+              child: ListView(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 18.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "Logan",
+                          style: TextStyle(
+                              fontSize: 26,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Gibson',
+                              color: AppColors.black),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Image.asset(
+                            "assets/ic_group.png",
+                            fit: BoxFit.contain,
+                            width: 25,
+                            height: 25,
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                )
-              ],
-            ),
-          ),
-          Column(
-            children: [
-              const Text(
-                "\$1200",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Gibson',
-                    color: AppColors.gray_text_color),
+                  Column(
+                    children: [
+                      const Text(
+                        "\$1200",
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Gibson',
+                            color: AppColors.gray_text_color),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Text(
+                              "1 year old • Labrador",
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w100,
+                                  fontFamily: 'Gibson',
+                                  color: AppColors.gray_text_color),
+                            ),
+                            Icon(
+                              Icons.location_pin,
+                              color: AppColors.locationMarkerColor,
+                            ),
+                            Text(
+                              "Brisbane, QLD",
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w100,
+                                  fontFamily: 'Gibson',
+                                  color: AppColors.gray_text_color),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  const Divider(),
+                  ListTile(
+                    title: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Perfect Pets",
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Gibson',
+                              color: AppColors.petProfileDetailLblColor),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Image.asset(
+                            "assets/ic_non_verified.png",
+                            fit: BoxFit.contain,
+                            width: 16,
+                            height: 16,
+                          ),
+                        )
+                      ],
+                    ),
+                    subtitle: const Text("Perfect Pets",
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w100,
+                            fontFamily: 'Gibson',
+                            color: AppColors.black)),
+                    leading: const SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: ClipOval(
+                        child: CustomImageWidget(
+                          width: 50,
+                          height: 50,
+                          imgUrl:
+                              'https://sparkonus.com/wp-content/uploads/2022/06/photo-1600804340584-c7db2eacf0bf-1.jpg',
+                        ),
+                      ),
+                    ),
+                    trailing: const SizedBox(
+                      height: double.infinity,
+                      child: Icon(Icons.arrow_forward_ios,
+                          size: 18, color: AppColors.black),
+                    ),
+                    onTap: () {
+                      Get.toNamed(AppConstant.ROUTE_BUY_SELLER_PROFILE_VIEW);
+                    },
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12.0, vertical: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: const [
+                        Text("ABOUT ME:",
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Gibson',
+                                color: AppColors.petProfileDetailLblColor)),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 12.0),
+                            child: Divider(
+                              color: AppColors.petProfileDetailLblColor,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 23.0),
+                    child: Text(
+                        "Logan is a really loyal Lab who loves to play catch! He also likes to cuddle and has quite an appetite. Do note that he is allergic to any kind of fish, other sources of protein is perfectly fine. He’ll be perfect for families cause he absolutely adores kids!",
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w100,
+                            fontFamily: 'Gibson',
+                            color: AppColors.black)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12.0, vertical: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: const [
+                        Text("PET DETAILS:",
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Gibson',
+                                color: AppColors.petProfileDetailLblColor)),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 12.0),
+                            child: Divider(
+                              color: AppColors.petProfileDetailLblColor,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  buildListTileForAboutMe("Breed", "Labrador"),
+                  buildAboutMeDividerLine(),
+                  buildListTileForAboutMe("Location", "Brisbane"),
+                  buildAboutMeDividerLine(),
+                  buildListTileForAboutMe("State", "Queensland"),
+                  buildAboutMeDividerLine(),
+                  buildListTileForAboutMe("Size", "Medium"),
+                  buildAboutMeDividerLine(),
+                  buildListTileForAboutMe("Age", "1 year old"),
+                  buildAboutMeDividerLine(),
+                  buildListTileForAboutMe("Gender", "Male"),
+                  buildAboutMeDividerLine(),
+                  buildListTileForAboutMe("Personality", "Good with kids"),
+                  buildListTileForAboutMe("", "Good with seniors"),
+                  buildListTileForAboutMe("", "Sleepy / Quiet"),
+                  buildListTileForAboutMe("", "Clever"),
+                  buildListTileForAboutMe("", "Very excitable \n Protective"),
+                  buildListTileForAboutMe("", "Protective"),
+                  buildAboutMeDividerLine(),
+                  loginButton(context)
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "1 year old • Labrador",
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w100,
-                          fontFamily: 'Gibson',
-                          color: AppColors.gray_text_color),
-                    ),
-                    Icon(
-                      Icons.location_pin,
-                      color: AppColors.locationMarkerColor,
-                    ),
-                    Text(
-                      "Brisbane, QLD",
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w100,
-                          fontFamily: 'Gibson',
-                          color: AppColors.gray_text_color),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
-          const Divider(),
-          ListTile(
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const Text(
-                  "Perfect Pets",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: 'Gibson',
-                      color: AppColors.petProfileDetailLblColor),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Image.asset(
-                    "assets/ic_non_verified.png",
-                    fit: BoxFit.contain,
-                    width: 16,
-                    height: 16,
-                  ),
-                )
-              ],
-            ),
-            subtitle: const Text("Perfect Pets",
-                style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w100,
-                    fontFamily: 'Gibson',
-                    color: AppColors.black)),
-            leading: Container(
-              width: 50,
-              height: 50,
-              child: const ClipOval(
-                child: CustomImageWidget(
-                  width: 50,
-                  height: 50,
-                  imgUrl:
-                      'https://sparkonus.com/wp-content/uploads/2022/06/photo-1600804340584-c7db2eacf0bf-1.jpg',
-                ),
-              ),
-            ),
-            trailing: const SizedBox(
-              height: double.infinity,
-              child: Icon(Icons.arrow_forward_ios,
-                  size: 18, color: AppColors.black),
-            ),
-            onTap: () {
-              Get.toNamed(AppConstant.ROUTE_BUY_SELLER_PROFILE_VIEW);
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
-                Text("ABOUT ME:",
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Gibson',
-                        color: AppColors.petProfileDetailLblColor)),
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 12.0),
-                    child: Divider(
-                      color: AppColors.petProfileDetailLblColor,
-                    ),
-                  ),
-                )
-              ],
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 23.0),
-            child: Text(
-                "Logan is a really loyal Lab who loves to play catch! He also likes to cuddle and has quite an appetite. Do note that he is allergic to any kind of fish, other sources of protein is perfectly fine. He’ll be perfect for families cause he absolutely adores kids!",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w100,
-                    fontFamily: 'Gibson',
-                    color: AppColors.black)),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
-                Text("PET DETAILS:",
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Gibson',
-                        color: AppColors.petProfileDetailLblColor)),
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 12.0),
-                    child: Divider(
-                      color: AppColors.petProfileDetailLblColor,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-          buildListTileForAboutMe("Breed", "Labrador"),
-          buildAboutMeDividerLine(),
-          buildListTileForAboutMe("Location", "Brisbane"),
-          buildAboutMeDividerLine(),
-          buildListTileForAboutMe("State", "Queensland"),
-          buildAboutMeDividerLine(),
-          buildListTileForAboutMe("Size", "Medium"),
-          buildAboutMeDividerLine(),
-          buildListTileForAboutMe("Age", "1 year old"),
-          buildAboutMeDividerLine(),
-          buildListTileForAboutMe("Gender", "Male"),
-          buildAboutMeDividerLine(),
-          buildListTileForAboutMe("Personality", "Good with kids"),
-          buildListTileForAboutMe("", "Good with seniors"),
-          buildListTileForAboutMe("", "Sleepy / Quiet"),
-          buildListTileForAboutMe("", "Clever"),
-          buildListTileForAboutMe("", "Very excitable \n Protective"),
-          buildListTileForAboutMe("", "Protective"),
-          buildAboutMeDividerLine(),
-          loginButton(context)
         ],
       ),
     );

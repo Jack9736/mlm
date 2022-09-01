@@ -40,6 +40,10 @@ class AppColors {
   static const Color topHeaderIconColor = Color.fromRGBO(20, 38, 101, 1.0);
   static const Color locationMarkerColor = Color.fromRGBO(20, 38, 101, 1.0);
   static const Color petProfileDetailLblColor = Color.fromRGBO(87, 188, 223, 1.0);
+  static const Color appTextColorBlue = Color.fromRGBO(20, 38, 101, 1.0);
+  static const Color popUpMenuTextColor = Color.fromRGBO(214, 74, 76, 1.0);
 
   static const Color gray_text_color = Color.fromRGBO(96, 96, 96, 1.0);
+  static const Color txt_field_border_color = Color.fromRGBO(180, 192, 217, 1.0);
+  static const Color txt_field_hint_color = Color.fromRGBO(149, 157, 173, 1.0);
 }

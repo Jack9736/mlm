@@ -6,6 +6,7 @@ class AppConstant {
 
   static const String TITLE_RECENTLY_VIEW = "RecentlyView";
   static const String TITLE_MY_MESSAGES = "My Messages";
+  static const String TITLE_PET_PROFILE = "Pet Profile";
 
 
   static const String BASE_URL = "https://crmshannon.awdweb.com.au/webservice.php?";
@@ -40,6 +41,7 @@ class AppConstant {
 
   static const String ROUTE_PET_PROFILE_VIEW = "/PetProfileView";
   static const String ROUTE_BUY_SELLER_PROFILE_VIEW = "/BuySellerProfileView";
+  static const String ROUTE_PET_ADD_VIEW = "/SellAddPetView";
 
 
   static const String prefUserDetail = "prefuserdetail";
