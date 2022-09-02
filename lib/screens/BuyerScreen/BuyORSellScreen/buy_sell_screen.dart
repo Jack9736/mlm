@@ -144,7 +144,7 @@ class _BuySellScreenState extends State<BuySellScreen> {
                 {AppConstant.argUserType: UserType.buyer},
 
               ]);
-              //Get.toNamed(AppConstant.ROUTE_BUY_SELLER_PROFILE_VIEW);
+              //Get.toNamed(AppConstant.ROUTE_SELL_PET_ADDED_VIEW);
 
 
             },

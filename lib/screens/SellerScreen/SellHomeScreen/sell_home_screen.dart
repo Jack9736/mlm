@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mlm/Style/app_colors.dart';
 import 'package:mlm/Widget/custom_app_button_widget.dart';
+import 'package:mlm/screens/SellerScreen/SellHomeScreen/MockData.dart';
 import 'package:mlm/screens/SellerScreen/SellHomeScreen/section_widget.dart';
 import 'package:mlm/screens/SellerScreen/SellHomeScreen/sell_home_controller.dart';
 import 'package:sticky_and_expandable_list/sticky_and_expandable_list.dart';
 import '../../../Utils/constant.dart';
 import '../../../Widget/custom_image_widget.dart';
 import '../../../Widget/main_appbar.dart';
-import 'MockData.dart';
+
 
 class SellHomeScreen extends StatefulWidget {
   const SellHomeScreen({Key? key}) : super(key: key);
@@ -29,7 +30,9 @@ class _SellHomeScreenState extends State<SellHomeScreen> {
           onTap: () {
             controller.openDrawer();
           },
+
         ),
+
         body: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -183,7 +186,7 @@ class _SellHomeScreenState extends State<SellHomeScreen> {
                     containerInfo: containerInfo,
                     onStateChanged: () {
                       //notify ExpandableListView that expand state has changed.
-                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                      WidgetsBinding.instance?.addPostFrameCallback((_) {
                         if (mounted) {
                           setState(() {});
                         }
@@ -211,7 +214,7 @@ PopupMenuButton<String> buildPopupMenuButton() {
           const PopupMenuItem<String>(
               child: SizedBox(
                   width: 100,
-                  // height: 30,
+                   //height: 30,
                   child: Text(
                     "Edit Pet Profile",
                     style: menuItemTextStyle,

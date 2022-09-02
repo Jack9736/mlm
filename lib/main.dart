@@ -23,6 +23,7 @@ import 'package:mlm/screens/ForgotPasswordScreen/forgot_password_screen.dart';
 import 'package:mlm/screens/StartBrowsingScreen/start_browsing_view.dart';
 import 'package:mlm/screens/MyMessageScreen/my_messages_screen.dart';
 import 'package:mlm/screens/BuyerScreen/BuySellerProfileScreen/buy_seller_profile_view.dart';
+import 'package:mlm/screens/SellerScreen/PetAddedScreen/sell_pet_added_view.dart';
 import 'Binding/app_binding.dart';
 
 Future<void> main() async {
@@ -123,6 +124,10 @@ class MyApp extends StatelessWidget {
       GetPage(
             name: AppConstant.ROUTE_PET_ADD_VIEW,
             page: () =>  SellAddPetView()),
+
+        GetPage(
+            name: AppConstant.ROUTE_SELL_PET_ADDED_VIEW,
+            page: () =>  PetAddedView()),
       ],
     );
   }

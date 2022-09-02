@@ -21,7 +21,7 @@ import 'package:mlm/screens/MyMessageScreen/my_messages_controller.dart';
 
 import '../screens/SellerScreen/SellHomeScreen/sell_home_controller.dart';
 import '../screens/BuyerScreen/BuySellerProfileScreen/buy_seller_profile_controller.dart';
-
+import 'package:mlm/screens/SellerScreen/PetAddedScreen/sell_pet_added_controller.dart';
 class AppBinding extends Bindings {
   @override
   void dependencies() {
@@ -79,6 +79,9 @@ class AppBinding extends Bindings {
         httpService: Get.find(tag: AppConstant.tagHttpService)));
 
     Get.put(ProfilePetController(
+        httpService: Get.find(tag: AppConstant.tagHttpService)));
+
+    Get.put(PetAddedController(
         httpService: Get.find(tag: AppConstant.tagHttpService)));
   }
 }

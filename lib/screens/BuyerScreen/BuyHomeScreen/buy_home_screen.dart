@@ -71,7 +71,10 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
                 height: 18,
                 width: 18,
               ),
-              onPressed: () {},
+              onPressed: () {
+
+                Get.toNamed(AppConstant.ROUTE_MY_MESSAGES);
+              },
             ),
           ],
           onTap: () {

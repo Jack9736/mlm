@@ -42,6 +42,7 @@ class AppConstant {
   static const String ROUTE_PET_PROFILE_VIEW = "/PetProfileView";
   static const String ROUTE_BUY_SELLER_PROFILE_VIEW = "/BuySellerProfileView";
   static const String ROUTE_PET_ADD_VIEW = "/SellAddPetView";
+  static const String ROUTE_SELL_PET_ADDED_VIEW = "/SellPetAddedView";
 
 
   static const String prefUserDetail = "prefuserdetail";
