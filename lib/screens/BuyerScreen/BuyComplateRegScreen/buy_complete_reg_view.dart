@@ -76,7 +76,8 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             TextField(
-                                textCapitalization: TextCapitalization.sentences,
+                                textCapitalization:
+                                    TextCapitalization.sentences,
                                 textInputAction: TextInputAction.next,
                                 inputFormatters: [
                                   FilteringTextInputFormatter.digitsOnly
@@ -91,24 +92,24 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
                                     color: Colors.black,
                                     fontWeight: FontWeight.w500),
                                 decoration: InputDecoration(
-                                    suffixIcon: buildSendButton(context),
-
+                                  suffixIcon: buildSendButton(context),
                                   labelText: 'Phone Number',
                                   labelStyle: const TextStyle(
                                       fontSize: 18.0,
                                       fontWeight: FontWeight.w400,
                                       fontFamily: 'Gibson',
                                       color: AppColors.topHeaderBlueClr),
-
-
-                            )),
+                                )),
                             const SizedBox(height: 10),
-                            const Text("You can send another code in 30 seconds", style: TextStyle(
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.w300,
-                                fontFamily: 'Gibson',
-                                color: AppColors.topHeaderBlueClr),
-                            ),const SizedBox(height: 40),
+                            const Text(
+                              "You can send another code in 30 seconds",
+                              style: TextStyle(
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.w300,
+                                  fontFamily: 'Gibson',
+                                  color: AppColors.topHeaderBlueClr),
+                            ),
+                            const SizedBox(height: 40),
                             const Text(
                               "Phone Number Verification Code",
                               style: TextStyle(
@@ -118,36 +119,30 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
                                   color: AppColors.topHeaderBlueClr),
                             ),
                             TextField(
-                                textCapitalization: TextCapitalization.sentences,
-                                textInputAction: TextInputAction.next,
-                                inputFormatters: [
-                                  FilteringTextInputFormatter.digitsOnly
-                                ],
+                              textCapitalization: TextCapitalization.sentences,
+                              textInputAction: TextInputAction.next,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
+                              keyboardType:
+                                  const TextInputType.numberWithOptions(
+                                      decimal: true),
+                              maxLength: 5,
+                              // Only numbers can be entered
+                              cursorColor: Colors.black,
 
-                                maxLength: 5,
-                                keyboardType:
-                                    const TextInputType.numberWithOptions(
-                                        decimal: true),
-                                // Only numbers can be entered
-                                cursorColor: Colors.black,
-
-                                decoration: const InputDecoration(
-                                    counterText: "",
-                                    labelText: '5 digit code here',
-                                    labelStyle: TextStyle(
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: 'Gibson',
-                                        color: AppColors.topHeaderBlueClr
-                                    ),
-
-
-                            ),
+                              decoration: const InputDecoration(
+                                counterText: "",
+                                labelText: '5 digit code here',
+                                labelStyle: TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Gibson',
+                                    color: AppColors.topHeaderBlueClr),
+                              ),
                             ),
                             const SizedBox(height: 40),
                             //bodyContent(),
-
-
                           ],
                         ),
                       ),

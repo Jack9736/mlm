@@ -68,44 +68,38 @@ class MyApp extends StatelessWidget {
         * */
         GetPage(
             name: AppConstant.ROUTE_BUY_FIRST_REG,
-            page: () =>  BuyFirstRegView()),
+            page: () => BuyFirstRegView()),
         GetPage(
-            name: AppConstant.ROUTE_BUY_SEC_REG,
-            page: () =>  BuySecRegView()),
+            name: AppConstant.ROUTE_BUY_SEC_REG, page: () => BuySecRegView()),
         GetPage(
             name: AppConstant.ROUTE_BUY_COMPLETE_REG,
-            page: () =>  BuyCompleteRegView()),
+            page: () => BuyCompleteRegView()),
         GetPage(
             name: AppConstant.ROUTE_START_BROWSING,
-            page: () =>  StartBrowsingView()),
+            page: () => StartBrowsingView()),
         /*
         * End Buyer Registration Screen
         * */
 
         GetPage(
-            name: AppConstant.ROUTE_FIRST_REG,
-            page: () =>  FirstRegScreen()),
+            name: AppConstant.ROUTE_FIRST_REG, page: () => FirstRegScreen()),
 
         /*
         * Start Seller Registration Screen
         * */
         GetPage(
             name: AppConstant.ROUTE_SELL_FIRST_REG,
-            page: () =>  SellFirstRegView()),
+            page: () => SellFirstRegView()),
         GetPage(
-            name: AppConstant.ROUTE_SELL_SEC_REG,
-            page: () =>  SellSecRegView()),
+            name: AppConstant.ROUTE_SELL_SEC_REG, page: () => SellSecRegView()),
         GetPage(
-            name: AppConstant.ROUTE_SELL_HOME,
-            page: () =>  SellHomeScreen()),
+            name: AppConstant.ROUTE_SELL_HOME, page: () => SellHomeScreen()),
 
         /*
         * End Seller Registration Screen
         * */
 
-        GetPage(
-            name: AppConstant.ROUTE_BUY_HOME,
-            page: () =>  BuyHomeScreen()),
+        GetPage(name: AppConstant.ROUTE_BUY_HOME, page: () => BuyHomeScreen()),
 
         GetPage(
             name: AppConstant.ROUTE_RECENTLY_VIEW, page: () => RecentlyView()),
@@ -116,18 +110,20 @@ class MyApp extends StatelessWidget {
 
         GetPage(
             name: AppConstant.ROUTE_PET_PROFILE_VIEW,
-            page: () =>  PetProfileView()),
+            page: () => PetProfileView()),
 
         GetPage(
             name: AppConstant.ROUTE_BUY_SELLER_PROFILE_VIEW,
-            page: () =>  BuySellerProfileView()),
-      GetPage(
-            name: AppConstant.ROUTE_PET_ADD_VIEW,
-            page: () =>  SellAddPetView()),
+            page: () => BuySellerProfileView()),
+        GetPage(
+              name: AppConstant.ROUTE_PET_ADD_VIEW,
+              page: () =>  SellAddPetView()),
+        // GetPage(
+        //     name: AppConstant.ROUTE_PET_ADD_VIEW, page: () => RadioButton()),
 
         GetPage(
             name: AppConstant.ROUTE_SELL_PET_ADDED_VIEW,
-            page: () =>  PetAddedView()),
+            page: () => PetAddedView()),
       ],
     );
   }

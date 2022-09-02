@@ -14,4 +14,7 @@ class KTextStyle {
 
   static const authButtonTextStyle = TextStyle(
       fontSize: 16, fontWeight: FontWeight.w600, color: AppColors.whiteshade);
+
+  static const noteTextStyle = TextStyle(
+      fontFamily: 'Gibson', fontWeight: FontWeight.w100, fontSize: 14,color: AppColors.txt_field_hint_color);
 }

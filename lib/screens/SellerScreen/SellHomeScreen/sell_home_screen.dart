@@ -9,7 +9,8 @@ import 'package:sticky_and_expandable_list/sticky_and_expandable_list.dart';
 import '../../../Utils/constant.dart';
 import '../../../Widget/custom_image_widget.dart';
 import '../../../Widget/main_appbar.dart';
-
+import '../../BuyerScreen/DrawerScreen/BuySideDrawer.dart';
+import '../DrawerScreen/SellSideDrawer.dart';
 
 class SellHomeScreen extends StatefulWidget {
   const SellHomeScreen({Key? key}) : super(key: key);
@@ -27,12 +28,26 @@ class _SellHomeScreenState extends State<SellHomeScreen> {
     return Scaffold(
         key: controller.scaffoldKey,
         appBar: MainAppBar(
+          menuItem: [
+            IconButton(
+              icon: Image.asset(
+                'assets/ic_chat.png',
+                color: AppColors.appColor,
+                height: 18,
+                width: 18,
+              ),
+              onPressed: () {
+                Get.toNamed(AppConstant.ROUTE_MY_MESSAGES);
+              },
+            ),
+          ],
           onTap: () {
             controller.openDrawer();
           },
-
         ),
-
+        drawer: SizedBox(
+            // width: MediaQuery.of(context).size.width * 0.8,
+            child: SellSideDrawer()),
         body: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -145,16 +160,37 @@ class _SellHomeScreenState extends State<SellHomeScreen> {
                                                       overflow: TextOverflow
                                                           .ellipsis),
                                                 ),
-                                                const Padding(
-                                                  padding:
-                                                      EdgeInsets.only(top: 5.0),
-                                                  child: Text('Brisbane',
-                                                      style: TextStyle(
-                                                          fontFamily: 'Gibson',
-                                                          fontWeight:
-                                                              FontWeight.w300),
-                                                      overflow: TextOverflow
-                                                          .ellipsis),
+                                                Row(
+                                                  children: [
+                                                    Padding(
+                                                      padding: EdgeInsets.only(
+                                                          top: 5.0),
+                                                      child: Text('Brisbane',
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  'Gibson',
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w300),
+                                                          overflow: TextOverflow
+                                                              .ellipsis),
+                                                    ),
+                                                    Spacer(),
+                                                    Padding(
+                                                      padding: EdgeInsets.only(
+                                                          top: 5.0, right: 8),
+                                                      child: Text('120 views',
+                                                          style: TextStyle(
+                                                              fontSize: 12,
+                                                              fontFamily:
+                                                                  'Gibson',
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w300),
+                                                          overflow: TextOverflow
+                                                              .ellipsis),
+                                                    ),
+                                                  ],
                                                 )
                                               ]),
                                         ),
@@ -186,7 +222,7 @@ class _SellHomeScreenState extends State<SellHomeScreen> {
                     containerInfo: containerInfo,
                     onStateChanged: () {
                       //notify ExpandableListView that expand state has changed.
-                      WidgetsBinding.instance?.addPostFrameCallback((_) {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
                         if (mounted) {
                           setState(() {});
                         }
@@ -201,45 +237,23 @@ class _SellHomeScreenState extends State<SellHomeScreen> {
   }
 }
 
+const menuItemTextStyle = TextStyle(
+    color: AppColors.popUpMenuTextColor,
+    fontSize: 12,
+    fontFamily: 'Gibson',
+    fontWeight: FontWeight.w100);
+
 PopupMenuButton<String> buildPopupMenuButton() {
   return PopupMenuButton(
       icon: const Icon(Icons.more_vert, color: Colors.black), // add this line
+
       itemBuilder: (_) {
-        const menuItemTextStyle = TextStyle(
-            color: AppColors.popUpMenuTextColor,
-            fontSize: 14,
-            fontFamily: 'Gibson',
-            fontWeight: FontWeight.w100);
         return [
-          const PopupMenuItem<String>(
-              child: SizedBox(
-                  width: 100,
-                   //height: 30,
-                  child: Text(
-                    "Edit Pet Profile",
-                    style: menuItemTextStyle,
-                  )),
-              value: 'Edit Pet Profile'),
+          buildPopupMenuItem("Edit Pet Profile"),
           const PopupMenuDivider(),
-          const PopupMenuItem<String>(
-              child: SizedBox(
-                  width: 100,
-                  // height: 30,
-                  child: Text(
-                    "Unlist",
-                    style: menuItemTextStyle,
-                  )),
-              value: 'Unlist'),
+          buildPopupMenuItem("Unlist"),
           const PopupMenuDivider(),
-          const PopupMenuItem<String>(
-              child: SizedBox(
-                  width: 100,
-                  // height: 30,
-                  child: Text(
-                    "Delete",
-                    style: menuItemTextStyle,
-                  )),
-              value: 'Delete'),
+          buildPopupMenuItem("Delete"),
         ];
       },
       onSelected: (index) async {
@@ -255,4 +269,16 @@ PopupMenuButton<String> buildPopupMenuButton() {
             break;
         }
       });
+}
+
+PopupMenuItem<String> buildPopupMenuItem(String title) {
+  return PopupMenuItem<String>(
+      height: 30,
+      child: SizedBox(
+          width: 100,
+          child: Text(
+            title,
+            style: menuItemTextStyle,
+          )),
+      value: title);
 }

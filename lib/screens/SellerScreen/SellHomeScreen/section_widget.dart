@@ -65,7 +65,11 @@ class _SectionWidgetState extends State<SectionWidget>
       child: ListTile(
         title: Text(
           widget.section.header,
-          style: const TextStyle(color: AppColors.appTextColorBlue),
+          style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.w600,
+             fontFamily: 'Gibson',
+              color: AppColors.appTextColorBlue),
         ),
         onTap: _onTap,
       ),

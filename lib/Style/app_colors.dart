@@ -4,6 +4,9 @@ class AppColors {
   static const white = Color.fromRGBO(255, 255, 255, 1.0);
   static const appColor = Color.fromRGBO(20, 38, 101, 1.0);
   static const appBgColor = Color.fromRGBO(247, 247, 250, 1.0);
+  static const appSecondaryColor = Color.fromRGBO(214, 74, 76, 1.0);
+
+
 
   static const lightsky = Color(0xFFA6C0FF);
   static const whiteshade = Color(0xFFF8F9FA);
@@ -39,11 +42,22 @@ class AppColors {
   static const Color topHeaderBlueClr = Color.fromRGBO(20, 38, 101, 1);
   static const Color topHeaderIconColor = Color.fromRGBO(20, 38, 101, 1.0);
   static const Color locationMarkerColor = Color.fromRGBO(20, 38, 101, 1.0);
-  static const Color petProfileDetailLblColor = Color.fromRGBO(87, 188, 223, 1.0);
+  static const Color petProfileDetailLblColor =
+      Color.fromRGBO(87, 188, 223, 1.0);
   static const Color appTextColorBlue = Color.fromRGBO(20, 38, 101, 1.0);
   static const Color popUpMenuTextColor = Color.fromRGBO(214, 74, 76, 1.0);
 
   static const Color gray_text_color = Color.fromRGBO(96, 96, 96, 1.0);
-  static const Color txt_field_border_color = Color.fromRGBO(180, 192, 217, 1.0);
+  static const Color txt_field_border_color =
+      Color.fromRGBO(180, 192, 217, 1.0);
   static const Color txt_field_hint_color = Color.fromRGBO(149, 157, 173, 1.0);
+
+  static const Color radio_button_text_color =
+      Color.fromRGBO(149, 157, 173, 1.0);
+
+  static const Color radio_un_selected_color =
+      Color.fromRGBO(180, 192, 217, 1.0);
+
+  static const Color radio_selected_color =
+      Color.fromRGBO(214, 74, 76, 1.0);
 }
