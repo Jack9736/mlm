@@ -44,8 +44,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(AppColors.topHeaderClr);
-    if (useWhiteForeground(AppColors.topHeaderClr)) {
+    FlutterStatusbarcolor.setStatusBarColor(Colors.black);
+    if (useWhiteForeground(Colors.black)) {
       FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
     } else {
       FlutterStatusbarcolor.setStatusBarWhiteForeground(false);

@@ -61,13 +61,13 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
 
 
-                Expanded(child: Container(
+                Expanded(
+                    child: Container(
                   color: Colors.white,
                   padding: const EdgeInsets.only(
                     left: 15.0, right: 15.0, top: 20.0,),
                   child: Center(
                     child: ListView(
-
                       shrinkWrap: true,
                       children: [
                         loginText(),

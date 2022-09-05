@@ -26,6 +26,9 @@ class _SellAddPetViewState extends State<SellAddPetView> {
   int radioGroup = 1;
   var userType = '';
 
+  final ImagePicker imagePicker = ImagePicker();
+  List<XFile>? imageFileList = [];
+
   XFile? galleryImgFirst;
   XFile? galleryImgSecond;
   XFile? galleryImgThree;
@@ -530,6 +533,8 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                         maxLines: 4,
                         decoration: InputDecoration(
                           isDense: true,
+                          filled: true,
+                          fillColor: Colors.white,
                           contentPadding:
                               const EdgeInsets.fromLTRB(15, 15, 15, 0),
                           hintText: "Type here…",
@@ -600,14 +605,14 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                     child: Align(
                       alignment: Alignment.center,
                       child: Text(
-                        "*Upload up to 5 images or videos. Max. Size 5MB",
+                        "*Upload up to 6 images or videos. Max. Size 5MB",
                         style: KTextStyle.noteTextStyle,
                       ),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
-                    child: loginBuyerButton(context),
+                    child: addPetButton(context),
                   )
                 ],
               ),
@@ -654,7 +659,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                     color: typeOptionObs.value == typeOptionList[position]
                         ? AppColors.white
                         : AppColors.radio_button_text_color,
-                    fontSize: 12),
+                    fontSize: 12, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -699,7 +704,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                     color: personalityOptionObs.value.contains(mList[position])
                         ? AppColors.white
                         : AppColors.radio_button_text_color,
-                    fontSize: 12),
+                    fontSize: 12, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -728,9 +733,9 @@ class _SellAddPetViewState extends State<SellAddPetView> {
   TextStyle buildRadioTextStyle() {
     return const TextStyle(
         fontSize: 12,
-        fontWeight: FontWeight.w300,
+        fontWeight: FontWeight.w600,
         fontFamily: 'Gibson',
-        color: AppColors.topHeaderBlueClr);
+        color: Colors.grey);
   }
 
   TextStyle buildHeaderTextStyle() {
@@ -839,6 +844,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                     ListTile(
                       onTap: () {
                         showImage(context, file);
+
                       },
                       title: const Text("View"),
                       leading: const Icon(
@@ -928,6 +934,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
         maxWidth: 640);
     if (pickedFile != null) {
       loadImages(index, pickedFile);
+
     }
   }
 
@@ -1031,7 +1038,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
         });
   }
 
-  SizedBox loginBuyerButton(BuildContext context) {
+  SizedBox addPetButton(BuildContext context) {
     return SizedBox(
       height: AppConstant.appButtonSize,
       child: Obx(() => TextButton(
@@ -1062,8 +1069,21 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                   side: BorderSide(color: AppColors.submitBtnClr)),
               backgroundColor: AppColors.submitBtnClr,
             ),
-            onPressed: () {},
+            onPressed: () {
+
+              Get.toNamed(AppConstant.ROUTE_SELL_PET_ADDED_VIEW);
+            },
           )),
     );
+  }
+
+  void selectImages() async {
+    final List<XFile>? selectedImages = await
+    imagePicker.pickMultiImage();
+    if (selectedImages!.isNotEmpty) {
+      imageFileList!.addAll(selectedImages);
+    }
+    print("Image List Length:" + imageFileList!.length.toString());
+    setState((){});
   }
 }

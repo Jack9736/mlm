@@ -239,9 +239,9 @@ class _SellHomeScreenState extends State<SellHomeScreen> {
 
 const menuItemTextStyle = TextStyle(
     color: AppColors.popUpMenuTextColor,
-    fontSize: 12,
+    fontSize: 13,
     fontFamily: 'Gibson',
-    fontWeight: FontWeight.w100);
+    fontWeight: FontWeight.w400);
 
 PopupMenuButton<String> buildPopupMenuButton() {
   return PopupMenuButton(

@@ -62,6 +62,7 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
       child: Scaffold(
         key: controller.scaffoldKey,
         resizeToAvoidBottomInset: true,
+        //backgroundColor: Colors.black,
         appBar: MainAppBar(
           menuItem: [
             IconButton(
@@ -72,7 +73,6 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
                 width: 18,
               ),
               onPressed: () {
-
                 Get.toNamed(AppConstant.ROUTE_MY_MESSAGES);
               },
             ),
@@ -84,82 +84,85 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
         drawer: SizedBox(
             // width: MediaQuery.of(context).size.width * 0.8,
             child: BuySideDrawer()),
-        body: Column(
-          children: [
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Row(children: [
-                    Flexible(
-                      child: TextField(
-                        controller: _textSearchController,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Search query',
+        body: Container(
+          color: Colors.white,
+          child: Column(
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Row(children: [
+                      Flexible(
+                        child: TextField(
+                          controller: _textSearchController,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'Search query',
+                          ),
+                          onChanged: onItemChanged,
                         ),
-                        onChanged: onItemChanged,
                       ),
-                    ),
-                    IconButton(
-                      icon: Image.asset("assets/ic_filter.png"),
-                      onPressed: () {},
-                    ),
-                  ]),
+                      IconButton(
+                        icon: Image.asset("assets/ic_filter.png"),
+                        onPressed: () {},
+                      ),
+                    ]),
+                  ),
                 ),
               ),
-            ),
-            Row(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 15),
-                  child: Text(
-                    "Based on users navigation",
-                    style: TextStyle(
-                        fontFamily: 'Gibson',
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20.0),
+              Row(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(left: 15),
+                    child: Text(
+                      "Based on users navigation",
+                      style: TextStyle(
+                          fontFamily: 'Gibson',
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20.0),
+                    ),
                   ),
-                ),
-                const Spacer(),
-                Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: IconButton(
-                    icon: Image.asset(_viewType == ListViewType.list
-                        ? "assets/ic_gridview.png"
-                        : "assets/ic_listview.png"),
-                    onPressed: () {
-                      if (_viewType == ListViewType.list) {
-                        _crossAxisCount = 2;
-                        _aspectRatio = 1.5;
-                        _viewType = ListViewType.grid;
-                      } else {
-                        _crossAxisCount = 1;
-                        _aspectRatio = 0.75;
-                        _viewType = ListViewType.list;
-                      }
-                      setState(() {});
-                    },
+                  const Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: IconButton(
+                      icon: Image.asset(_viewType == ListViewType.list
+                          ? "assets/ic_gridview.png"
+                          : "assets/ic_listview.png"),
+                      onPressed: () {
+                        if (_viewType == ListViewType.list) {
+                          _crossAxisCount = 2;
+                          _aspectRatio = 1.5;
+                          _viewType = ListViewType.grid;
+                        } else {
+                          _crossAxisCount = 1;
+                          _aspectRatio = 0.75;
+                          _viewType = ListViewType.list;
+                        }
+                        setState(() {});
+                      },
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Expanded(
-                child: AlignedGridView.count(
-              crossAxisCount: _crossAxisCount,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              itemBuilder: (context, index) {
-                return getGridItem();
-              },
-              itemCount: 20,
-            )),
-          ],
+                ],
+              ),
+              Expanded(
+                  child: AlignedGridView.count(
+                crossAxisCount: _crossAxisCount,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                itemBuilder: (context, index) {
+                  return getGridItem();
+                },
+                itemCount: 20,
+              )),
+            ],
+          ),
         ),
       ),
     );
@@ -187,118 +190,127 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
               child: SizedBox(
                 height: boxSize.toDouble(),
                 width: double.infinity,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  elevation: 1,
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.only(top: 30.0, left: 10, right: 0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Flexible(
-                          child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    const Flexible(
-                                      child: Text('Jenifer Mark',
-                                          maxLines: 1,
-                                          style: TextStyle(
-                                              fontSize: 16,
-                                              fontFamily: 'Gibson',
-                                              fontWeight: FontWeight.w600),
-                                          overflow: TextOverflow.ellipsis),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8.0),
-                                      child: Image.asset(
-                                        "assets/ic_group.png",
-                                        fit: BoxFit.contain,
-                                        width: 16,
-                                        height: 16,
+                child: InkWell(
+
+                  onTap: () {
+                    Get.toNamed(AppConstant.ROUTE_PET_PROFILE_VIEW);
+                  },
+                  child:  Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    elevation: 1,
+                    child: Padding(
+                      padding:
+                      const EdgeInsets.only(top: 30.0, left: 10, right: 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Flexible(
+                            child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      const Flexible(
+                                        child: Text('Jenifer Mark',
+                                            maxLines: 1,
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                fontFamily: 'Gibson',
+                                                fontWeight: FontWeight.w600),
+                                            overflow: TextOverflow.ellipsis),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: const [
-                                    Padding(
-                                      padding: EdgeInsets.only(top: 10.0),
-                                      child: Text("\$1200",
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontFamily: 'Gibson',
-                                              fontWeight: FontWeight.w300),
-                                          overflow: TextOverflow.ellipsis),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(top: 10.0),
-                                      child: Text('Labrador',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontFamily: 'Gibson',
-                                              fontWeight: FontWeight.w300),
-                                          overflow: TextOverflow.ellipsis),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(top: 5.0),
-                                      child: Text('3 months old',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontFamily: 'Gibson',
-                                              fontWeight: FontWeight.w300),
-                                          overflow: TextOverflow.ellipsis),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(top: 5.0),
-                                      child: Text('Brisbane',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontFamily: 'Gibson',
-                                              fontWeight: FontWeight.w300),
-                                          overflow: TextOverflow.ellipsis),
-                                    ),
-                                  ],
-                                )
-                              ]),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 17),
-                          child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Image.asset(
-                                  "assets/ic_non_verified.png",
-                                  fit: BoxFit.contain,
-                                  width: 16,
-                                  height: 16,
-                                ),
-                                const Spacer(),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 10.0),
-                                  child: IconButton(
-                                    icon: Image.asset(
-                                      'assets/ic_unlike_heart.png',
-                                      height: 24,
-                                      width: 24,
-                                    ),
-                                    onPressed: () {},
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 8.0),
+                                        child: Image.asset(
+                                          "assets/ic_group.png",
+                                          fit: BoxFit.contain,
+                                          width: 16,
+                                          height: 16,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ),
-                              ]),
-                        ),
-                      ],
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: const [
+                                      Padding(
+                                        padding: EdgeInsets.only(top: 10.0),
+                                        child: Text("\$1200",
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                fontFamily: 'Gibson',
+                                                fontWeight: FontWeight.w300),
+                                            overflow: TextOverflow.ellipsis),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(top: 10.0),
+                                        child: Text('Labrador',
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontFamily: 'Gibson',
+                                                fontWeight: FontWeight.w300),
+                                            overflow: TextOverflow.ellipsis),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(top: 5.0),
+                                        child: Text('3 months old',
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontFamily: 'Gibson',
+                                                fontWeight: FontWeight.w300),
+                                            overflow: TextOverflow.ellipsis),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(top: 5.0),
+                                        child: Text('Brisbane',
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontFamily: 'Gibson',
+                                                fontWeight: FontWeight.w300),
+                                            overflow: TextOverflow.ellipsis),
+                                      ),
+                                    ],
+                                  )
+                                ]),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 17),
+                            child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    "assets/ic_non_verified.png",
+                                    fit: BoxFit.contain,
+                                    width: 16,
+                                    height: 16,
+                                  ),
+                                  const Spacer(),
+                                  Padding(
+                                    padding: const EdgeInsets.only(bottom: 10.0),
+                                    child: IconButton(
+                                      icon: Image.asset(
+                                        'assets/ic_unlike_heart.png',
+                                        height: 24,
+                                        width: 24,
+                                      ),
+                                      onPressed: () {},
+                                    ),
+                                  ),
+                                ]),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
+                )
+
+
+
               ),
             ),
           ),

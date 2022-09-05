@@ -97,7 +97,7 @@ class PetProfileView extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const [
                             Text(
-                              "1 year old • Labrador",
+                              "1 year old • Labrador  ",
                               style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w100,
@@ -130,7 +130,7 @@ class PetProfileView extends StatelessWidget {
                           "Perfect Pets",
                           style: TextStyle(
                               fontSize: 16,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w500,
                               fontFamily: 'Gibson',
                               color: AppColors.petProfileDetailLblColor),
                         ),
@@ -145,10 +145,10 @@ class PetProfileView extends StatelessWidget {
                         )
                       ],
                     ),
-                    subtitle: const Text("Perfect Pets",
+                    subtitle: const Text("12 listings",
                         style: TextStyle(
                             fontSize: 12,
-                            fontWeight: FontWeight.w100,
+                            fontWeight: FontWeight.w500,
                             fontFamily: 'Gibson',
                             color: AppColors.black)),
                     leading: const SizedBox(
@@ -188,6 +188,7 @@ class PetProfileView extends StatelessWidget {
                           child: Padding(
                             padding: EdgeInsets.only(left: 12.0),
                             child: Divider(
+
                               color: AppColors.petProfileDetailLblColor,
                             ),
                           ),
@@ -201,7 +202,7 @@ class PetProfileView extends StatelessWidget {
                         "Logan is a really loyal Lab who loves to play catch! He also likes to cuddle and has quite an appetite. Do note that he is allergic to any kind of fish, other sources of protein is perfectly fine. He’ll be perfect for families cause he absolutely adores kids!",
                         style: TextStyle(
                             fontSize: 16,
-                            fontWeight: FontWeight.w100,
+                            fontWeight: FontWeight.w400,
                             fontFamily: 'Gibson',
                             color: AppColors.black)),
                   ),
@@ -275,10 +276,10 @@ class PetProfileView extends StatelessWidget {
     return Text(s,
         textAlign: TextAlign.right,
         style: const TextStyle(
-            letterSpacing: 1,
-            height: 1,
+            letterSpacing: 0.5,
+            height: 0,
             fontSize: 12,
-            fontWeight: FontWeight.w100,
+            fontWeight: FontWeight.w400,
             fontFamily: 'Gibson',
             color: AppColors.petProfileDetailLblColor));
   }
@@ -287,7 +288,7 @@ class PetProfileView extends StatelessWidget {
     return Text(s,
         style: const TextStyle(
             fontSize: 16,
-            fontWeight: FontWeight.w100,
+            fontWeight: FontWeight.w400,
             fontFamily: 'Gibson',
             color: AppColors.black));
   }

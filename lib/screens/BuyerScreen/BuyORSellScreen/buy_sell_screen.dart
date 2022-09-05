@@ -46,51 +46,46 @@ class _BuySellScreenState extends State<BuySellScreen> {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        // appBar: PreferredSize(
-        //     preferredSize: const Size.fromHeight(10.0),
-        //     // here the desired height
-        //     child: AppBar(
-        //       backgroundColor: AppConstant.topHeaderClr,
-        //     )),
         body: Form(
           key: _formKey,
           child: Container(
             color: Colors.white,
             padding: const EdgeInsets.only(
-              left: 15.0,
-              right: 15.0,
-              top: 20.0,
+              left: 35.0,
+              right: 35.0,
+              top: 0.0,
             ),
-            child: Center(
-              child: ListView(
-                shrinkWrap: true,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        "assets/lady.png",
-                        fit: BoxFit.contain,
-                        width: 175,
+            child: Column(
+              children: [
+                Expanded(
+                  child: Container(
+                    child: Center(
+                      child: ListView(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                "assets/logo.png",
+                                fit: BoxFit.none,
+                                width: double.infinity,
+                              ),
+                            ],
+                          ),
+
+                          // const SizedBox(height: 50),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        "assets/puppy.png",
-                        fit: BoxFit.contain,
-                        width: 175,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 30),
-                  buyPetButton(context),
-                  const SizedBox(height: 30),
-                  sellPetButton(context),
-                ],
-              ),
+                ),
+                buyPetButton(context),
+                const SizedBox(height: 30),
+                sellPetButton(context),
+                const SizedBox(height: 30),
+              ],
             ),
           ),
         ),
@@ -107,6 +102,8 @@ class _BuySellScreenState extends State<BuySellScreen> {
   /* Buy Pet Button */
   SizedBox buyPetButton(BuildContext context) {
     return SizedBox(
+
+      width: double.infinity,
       height: AppConstant.appButtonSize,
       child: Obx(() => TextButton(
             child: controller.isApiRunning.value
@@ -142,11 +139,8 @@ class _BuySellScreenState extends State<BuySellScreen> {
             onPressed: () {
               Get.toNamed(AppConstant.ROUTE_FIRST_REG, arguments: [
                 {AppConstant.argUserType: UserType.buyer},
-
               ]);
               //Get.toNamed(AppConstant.ROUTE_SELL_PET_ADDED_VIEW);
-
-
             },
           )),
     );
@@ -155,6 +149,7 @@ class _BuySellScreenState extends State<BuySellScreen> {
   /* Sell Pet Button */
   SizedBox sellPetButton(BuildContext context) {
     return SizedBox(
+      width: double.infinity,
       height: AppConstant.appButtonSize,
       child: Obx(() => TextButton(
             child: controller.isApiRunning.value
