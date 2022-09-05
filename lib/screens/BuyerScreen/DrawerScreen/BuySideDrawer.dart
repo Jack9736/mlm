@@ -14,7 +14,6 @@ class BuySideDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.appBgColor,
       appBar: const CustomAppBar(
         title: "Menu",
       ),

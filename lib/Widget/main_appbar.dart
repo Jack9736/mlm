@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:mlm/Style/app_colors.dart';
 
@@ -37,7 +38,8 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      elevation: 0,
+      systemOverlayStyle: SystemUiOverlayStyle.light,
+      elevation: 2,
       actions: menuItem,
       toolbarHeight: preferredSize.height,
       iconTheme: IconThemeData(

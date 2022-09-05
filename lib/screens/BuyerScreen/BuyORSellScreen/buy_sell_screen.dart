@@ -68,7 +68,7 @@ class _BuySellScreenState extends State<BuySellScreen> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Image.asset(
-                                "assets/logo.png",
+                                "assets/lady.png",
                                 fit: BoxFit.none,
                                 width: double.infinity,
                               ),

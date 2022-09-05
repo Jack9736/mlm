@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:mlm/Style/app_colors.dart';
 import 'package:mlm/Style/k_text_style.dart';
+import 'package:multi_image_picker/multi_image_picker.dart';
 import '../../../Style/ButtonTextStyle.dart';
 import '../../../Utils/constant.dart';
 import '../../../Widget/widget_appbar.dart';
@@ -27,7 +28,6 @@ class _SellAddPetViewState extends State<SellAddPetView> {
   var userType = '';
 
   final ImagePicker imagePicker = ImagePicker();
-  List<XFile>? imageFileList = [];
 
   XFile? galleryImgFirst;
   XFile? galleryImgSecond;
@@ -52,6 +52,11 @@ class _SellAddPetViewState extends State<SellAddPetView> {
   var requireTransportOptionObs = "".obs;
   var vetCheckedOptionObs = "".obs;
   var availableFromObs = "MM/DD/YYYY".obs;
+
+  // List<XFile> imageFileList = [];
+  // RxList<XFile> imageFileList = RxList<XFile>();
+  RxList<Asset> imageFileList = RxList<Asset>();
+  String _error = 'No Error Dectected';
 
   @override
   void initState() {
@@ -118,7 +123,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       SizedBox(
                         height: size.width / 3,
                         width: size.width / 3,
-                        child: galleryWidget(7, '', customerLogoImageFile),
+                        child: galleryWidget(7, customerLogoImageFile),
                       )),
                   buildColumn(
                       "TYPE",
@@ -548,55 +553,22 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       "GALLERY",
                       Column(
                         children: [
-                          Row(
-                            children: [
-                              Expanded(
-                                child: SizedBox(
-                                  height: size.width / 4,
-                                  width: size.width / 4,
-                                  child: galleryWidget(1, '', galleryImgFirst),
-                                ),
-                              ),
-                              Expanded(
-                                child: SizedBox(
-                                  height: size.width / 4,
-                                  width: size.width / 4,
-                                  child: galleryWidget(2, '', galleryImgSecond),
-                                ),
-                              ),
-                              Expanded(
-                                child: SizedBox(
-                                  height: size.width / 4,
-                                  width: size.width / 4,
-                                  child: galleryWidget(3, '', galleryImgThree),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: SizedBox(
-                                  height: size.width / 4,
-                                  width: size.width / 4,
-                                  child: galleryWidget(4, '', galleryImgFour),
-                                ),
-                              ),
-                              Expanded(
-                                child: SizedBox(
-                                  height: size.width / 4,
-                                  width: size.width / 4,
-                                  child: galleryWidget(5, '', galleryImgFive),
-                                ),
-                              ),
-                              Expanded(
-                                child: SizedBox(
-                                  height: size.width / 4,
-                                  width: size.width / 4,
-                                  child: galleryWidget(6, '', galleryImgSix),
-                                ),
-                              ),
-                            ],
+                          SizedBox(
+                            child: GridView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: 6,
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 3),
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Obx(() => galleryWidget(
+                                      index,
+                                      imageFileList.length > index
+                                          ? XFile(imageFileList[index].name!)
+                                          : null));
+                                }),
+                            width: double.infinity,
                           ),
                         ],
                       )),
@@ -655,11 +627,12 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
-                style:  const ButtonTextStyle().textStyle.copyWith(
+                style: const ButtonTextStyle().textStyle.copyWith(
                     color: typeOptionObs.value == typeOptionList[position]
                         ? AppColors.white
                         : AppColors.radio_button_text_color,
-                    fontSize: 12, fontWeight: FontWeight.w600),
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -670,12 +643,12 @@ class _SellAddPetViewState extends State<SellAddPetView> {
       List<String> mList, RxList<String> personalityOptionObs) {
     return Obx(() => Card(
           margin: const EdgeInsets.all(4),
-          color: personalityOptionObs.value.contains(mList[position])
+          color: personalityOptionObs.contains(mList[position])
               ? AppColors.radio_selected_color
               : AppColors.white,
           shape: OutlineInputBorder(
             borderSide: BorderSide(
-                color: personalityOptionObs.value.contains(mList[position])
+                color: personalityOptionObs.contains(mList[position])
                     ? AppColors.radio_selected_color
                     : AppColors.radio_un_selected_color,
                 width: 1),
@@ -704,7 +677,8 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                     color: personalityOptionObs.value.contains(mList[position])
                         ? AppColors.white
                         : AppColors.radio_button_text_color,
-                    fontSize: 12, fontWeight: FontWeight.w600),
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -746,7 +720,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
         color: AppColors.topHeaderBlueClr);
   }
 
-  Widget galleryWidget(int index, String name, XFile? file) {
+  Widget galleryWidget(int index, XFile? file) {
     return GestureDetector(
       onTap: () {
         _showImagePickerDialog(index, file);
@@ -771,7 +745,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                                 colorFilter: ColorFilter.mode(
                                     Colors.black.withOpacity(0.8),
                                     BlendMode.dstATop),
-                                image: FileImage(File(file.path))),
+                                image: FileImage(File(file.path))) ,
                           ),
                         )),
                   )
@@ -811,7 +785,12 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                   ),
                   ListTile(
                     onTap: () {
-                      _openGallery(index);
+                      if (index == 7) {
+                        _openGallery(index);
+                      } else {
+                        // _openGalleryForImages(index);
+                        loadAssets();
+                      }
                       Navigator.of(context).pop();
                     },
                     title: const Text("Gallery"),
@@ -844,7 +823,6 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                     ListTile(
                       onTap: () {
                         showImage(context, file);
-
                       },
                       title: const Text("View"),
                       leading: const Icon(
@@ -934,7 +912,19 @@ class _SellAddPetViewState extends State<SellAddPetView> {
         maxWidth: 640);
     if (pickedFile != null) {
       loadImages(index, pickedFile);
+    }
+  }
 
+  void _openGalleryForImages(int index) async {
+    final List<XFile>? selectedImages = await imagePicker.pickMultiImage();
+    if (selectedImages!.isNotEmpty) {
+      for (int i = 0; i < selectedImages.length; i++) {
+        if (imageFileList.length != 6) {
+          // imageFileList.add(selectedImages[i]);
+        } else {
+          break;
+        }
+      }
     }
   }
 
@@ -946,6 +936,44 @@ class _SellAddPetViewState extends State<SellAddPetView> {
         maxWidth: 640);
     if (pickedFile != null) {
       loadImages(index, pickedFile);
+    }
+  }
+
+  Future<void> loadAssets() async {
+    List<Asset> resultList = <Asset>[];
+    String error = 'No Error Detected';
+
+    try {
+      resultList = await MultiImagePicker.pickImages(
+        maxImages: 6,
+        enableCamera: true,
+        selectedAssets: imageFileList,
+        cupertinoOptions: const CupertinoOptions(takePhotoIcon: "chat"),
+        materialOptions: const MaterialOptions(
+          actionBarColor: "#abcdef",
+          actionBarTitle: "Example App",
+          allViewTitle: "All Photos",
+          useDetailsView: false,
+          selectCircleStrokeColor: "#000000",
+        ),
+      );
+    } on Exception catch (e) {
+      error = e.toString();
+    }
+
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+
+    if (resultList.isNotEmpty) {
+      for (int i = 0; i < resultList.length; i++) {
+        if (imageFileList.length != 6) {
+          imageFileList.add(resultList[i]);
+        } else {
+          break;
+        }
+      }
     }
   }
 
@@ -969,22 +997,35 @@ class _SellAddPetViewState extends State<SellAddPetView> {
     });
   }
 
+  loadImagesList(int index, List<XFile> pickedFile) {
+    setState(() {
+      for (int index = 1; index <= pickedFile.length; index++) {
+        var imagData = pickedFile[index];
+        if (index == 1) {
+          galleryImgFirst = imagData;
+        } else if (index == 2) {
+          galleryImgSecond = imagData;
+        } else if (index == 3) {
+          galleryImgThree = imagData;
+        } else if (index == 4) {
+          galleryImgFour = imagData;
+        } else if (index == 5) {
+          galleryImgFive = imagData;
+        } else if (index == 6) {
+          galleryImgSix = imagData;
+        }
+      }
+    });
+  }
+
   removeImageFile(int index) {
     setState(() {
-      if (index == 1) {
-        galleryImgFirst = null;
-      } else if (index == 2) {
-        galleryImgSecond = null;
-      } else if (index == 3) {
-        galleryImgThree = null;
-      } else if (index == 4) {
-        galleryImgFour = null;
-      } else if (index == 5) {
-        galleryImgFive = null;
-      } else if (index == 6) {
-        galleryImgSix = null;
-      } else if (index == 7) {
+      if (index == 7) {
         customerLogoImageFile = null;
+      } else {
+        setState(() {
+          imageFileList.removeAt(index);
+        });
       }
     });
   }
@@ -1070,20 +1111,9 @@ class _SellAddPetViewState extends State<SellAddPetView> {
               backgroundColor: AppColors.submitBtnClr,
             ),
             onPressed: () {
-
               Get.toNamed(AppConstant.ROUTE_SELL_PET_ADDED_VIEW);
             },
           )),
     );
-  }
-
-  void selectImages() async {
-    final List<XFile>? selectedImages = await
-    imagePicker.pickMultiImage();
-    if (selectedImages!.isNotEmpty) {
-      imageFileList!.addAll(selectedImages);
-    }
-    print("Image List Length:" + imageFileList!.length.toString());
-    setState((){});
   }
 }

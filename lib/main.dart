@@ -44,8 +44,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Colors.black);
-    if (useWhiteForeground(Colors.black)) {
+    FlutterStatusbarcolor.setStatusBarColor(AppColors.black);
+
+    if (useWhiteForeground(AppColors.black)) {
       FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
     } else {
       FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: createMaterialColor(Colors.black),
+        primarySwatch: createMaterialColor(AppColors.black),
       ),
       initialRoute: "/",
       getPages: [

@@ -85,7 +85,7 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
             // width: MediaQuery.of(context).size.width * 0.8,
             child: BuySideDrawer()),
         body: Container(
-          color: Colors.white,
+          color: AppColors.appBgColor,
           child: Column(
             children: [
               Padding(
@@ -188,130 +188,127 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: SizedBox(
-                height: boxSize.toDouble(),
-                width: double.infinity,
-                child: InkWell(
-
-                  onTap: () {
-                    Get.toNamed(AppConstant.ROUTE_PET_PROFILE_VIEW);
-                  },
-                  child:  Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    elevation: 1,
-                    child: Padding(
-                      padding:
-                      const EdgeInsets.only(top: 30.0, left: 10, right: 0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Flexible(
-                            child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      const Flexible(
-                                        child: Text('Jenifer Mark',
-                                            maxLines: 1,
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontFamily: 'Gibson',
-                                                fontWeight: FontWeight.w600),
-                                            overflow: TextOverflow.ellipsis),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 8.0),
-                                        child: Image.asset(
-                                          "assets/ic_group.png",
-                                          fit: BoxFit.contain,
-                                          width: 16,
-                                          height: 16,
+                  height: boxSize.toDouble(),
+                  width: double.infinity,
+                  child: InkWell(
+                    onTap: () {
+                      Get.toNamed(AppConstant.ROUTE_PET_PROFILE_VIEW);
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      elevation: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            top: 30.0, left: 10, right: 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Flexible(
+                              child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        const Flexible(
+                                          child: Text('Jenifer Mark',
+                                              maxLines: 1,
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontFamily: 'Gibson',
+                                                  fontWeight: FontWeight.w600),
+                                              overflow: TextOverflow.ellipsis),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: const [
-                                      Padding(
-                                        padding: EdgeInsets.only(top: 10.0),
-                                        child: Text("\$1200",
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                fontFamily: 'Gibson',
-                                                fontWeight: FontWeight.w300),
-                                            overflow: TextOverflow.ellipsis),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(top: 10.0),
-                                        child: Text('Labrador',
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                fontFamily: 'Gibson',
-                                                fontWeight: FontWeight.w300),
-                                            overflow: TextOverflow.ellipsis),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(top: 5.0),
-                                        child: Text('3 months old',
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                fontFamily: 'Gibson',
-                                                fontWeight: FontWeight.w300),
-                                            overflow: TextOverflow.ellipsis),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(top: 5.0),
-                                        child: Text('Brisbane',
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                fontFamily: 'Gibson',
-                                                fontWeight: FontWeight.w300),
-                                            overflow: TextOverflow.ellipsis),
-                                      ),
-                                    ],
-                                  )
-                                ]),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 17),
-                            child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Image.asset(
-                                    "assets/ic_non_verified.png",
-                                    fit: BoxFit.contain,
-                                    width: 16,
-                                    height: 16,
-                                  ),
-                                  const Spacer(),
-                                  Padding(
-                                    padding: const EdgeInsets.only(bottom: 10.0),
-                                    child: IconButton(
-                                      icon: Image.asset(
-                                        'assets/ic_unlike_heart.png',
-                                        height: 24,
-                                        width: 24,
-                                      ),
-                                      onPressed: () {},
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8.0),
+                                          child: Image.asset(
+                                            "assets/ic_group.png",
+                                            fit: BoxFit.contain,
+                                            width: 16,
+                                            height: 16,
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  ),
-                                ]),
-                          ),
-                        ],
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: const [
+                                        Padding(
+                                          padding: EdgeInsets.only(top: 10.0),
+                                          child: Text("\$1200",
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontFamily: 'Gibson',
+                                                  fontWeight: FontWeight.w300),
+                                              overflow: TextOverflow.ellipsis),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(top: 10.0),
+                                          child: Text('Labrador',
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontFamily: 'Gibson',
+                                                  fontWeight: FontWeight.w300),
+                                              overflow: TextOverflow.ellipsis),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(top: 5.0),
+                                          child: Text('3 months old',
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontFamily: 'Gibson',
+                                                  fontWeight: FontWeight.w300),
+                                              overflow: TextOverflow.ellipsis),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(top: 5.0),
+                                          child: Text('Brisbane',
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontFamily: 'Gibson',
+                                                  fontWeight: FontWeight.w300),
+                                              overflow: TextOverflow.ellipsis),
+                                        ),
+                                      ],
+                                    )
+                                  ]),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 17),
+                              child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Image.asset(
+                                      "assets/ic_non_verified.png",
+                                      fit: BoxFit.contain,
+                                      width: 16,
+                                      height: 16,
+                                    ),
+                                    const Spacer(),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 10.0),
+                                      child: IconButton(
+                                        icon: Image.asset(
+                                          'assets/ic_unlike_heart.png',
+                                          height: 24,
+                                          width: 24,
+                                        ),
+                                        onPressed: () {},
+                                      ),
+                                    ),
+                                  ]),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                )
-
-
-
-              ),
+                  )),
             ),
           ),
           Align(
