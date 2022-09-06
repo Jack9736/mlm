@@ -82,7 +82,7 @@ class _SellSecRegViewState extends State<SellSecRegView> {
                                         },
                                         decoration: InputDecoration(
                                           labelText: 'Breeder Business Name',
-                                          labelStyle: buildTextStyle(18.0),
+                                          labelStyle: buildTextStyle(16.0),
                                           hintText: 'Name',
                                           hintStyle: buildRadioTextStyle(),
                                         ),
@@ -104,7 +104,7 @@ class _SellSecRegViewState extends State<SellSecRegView> {
                                         },
                                         decoration: InputDecoration(
                                           labelText: 'ABN (If applicable)',
-                                          labelStyle: buildTextStyle(18.0),
+                                          labelStyle: buildTextStyle(16.0),
                                           hintText: 'ABN Number',
                                           hintStyle: buildRadioTextStyle(),
                                         ),
@@ -127,7 +127,7 @@ class _SellSecRegViewState extends State<SellSecRegView> {
                                         decoration: InputDecoration(
                                           labelText:
                                               'Phone number (hidden to public)',
-                                          labelStyle: buildTextStyle(18.0),
+                                          labelStyle: buildTextStyle(16.0),
                                           hintText: 'Phone number',
                                           hintStyle: buildRadioTextStyle(),
                                         ),
@@ -150,7 +150,7 @@ class _SellSecRegViewState extends State<SellSecRegView> {
                                         decoration: InputDecoration(
                                           labelText:
                                               'Breeder Identification Number (hidden to public)',
-                                          labelStyle: buildTextStyle(18.0),
+                                          labelStyle: buildTextStyle(16.0),
                                           hintText: 'BIN Number',
                                           hintStyle: buildRadioTextStyle(),
                                         ),
@@ -158,7 +158,7 @@ class _SellSecRegViewState extends State<SellSecRegView> {
                                       const SizedBox(height: 35),
                                       Text(
                                           'Member of (may select more than one)',
-                                          style: buildTextStyle(18.0)),
+                                          style: buildTextStyle(16.0)),
                                     ],
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,

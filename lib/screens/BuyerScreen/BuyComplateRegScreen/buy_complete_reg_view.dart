@@ -171,7 +171,7 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
   Container buildSignUpLabelText() {
     return Container(
         margin: const EdgeInsets.only(
-            top: 30.0, bottom: 0.0, left: 30.0, right: 0.0),
+            top: 30.0, bottom: 0.0, left: 0.0, right: 0.0),
         width: double.infinity,
         child: const Center(
           child: Align(

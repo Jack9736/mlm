@@ -43,7 +43,7 @@ class _StartBrowsingViewState extends State<StartBrowsingView> {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        appBar: const CustomAppBar(title: "Welcome"),
+        appBar: const CustomAppBar(title: "Welcome", hideBack: true),
         body: Form(
           key: _formKey,
           child: Container(
@@ -64,21 +64,12 @@ class _StartBrowsingViewState extends State<StartBrowsingView> {
                           children: [
                             Image.asset(
                               "assets/lady.png",
-                              fit: BoxFit.contain,
-                              width: 175,
+                              fit: BoxFit.none,
+                              width: double.infinity,
                             ),
                           ],
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "assets/puppy.png",
-                              fit: BoxFit.contain,
-                              width: 175,
-                            ),
-                          ],
-                        ),
+
                       ],
                     ),
                   ),
@@ -96,7 +87,7 @@ class _StartBrowsingViewState extends State<StartBrowsingView> {
   Container welcomeToText() {
     return Container(
         margin: const EdgeInsets.only(
-            top: 10.0, bottom: 0.0, left: 30.0, right: 0.0),
+            top: 20.0, bottom: 0.0, left: 30.0, right: 0.0),
         width: double.infinity,
         child: const Center(
           child: Align(

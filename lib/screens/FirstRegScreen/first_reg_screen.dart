@@ -63,9 +63,9 @@ class _FirstRegScreenState extends State<FirstRegScreen> {
           child: Container(
             color: Colors.white,
             padding: const EdgeInsets.only(
-              left: 15.0,
-              right: 15.0,
-              top: 20.0,
+              left: 35.0,
+              right: 35.0,
+              top: 0.0,
             ),
             child: Center(
               child: ListView(
@@ -76,21 +76,12 @@ class _FirstRegScreenState extends State<FirstRegScreen> {
                     children: [
                       Image.asset(
                         "assets/lady.png",
-                        fit: BoxFit.contain,
-                        width: 175,
+                        fit: BoxFit.none,
+                        width:double.infinity,
                       ),
                     ],
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        "assets/puppy.png",
-                        fit: BoxFit.contain,
-                        width: 175,
-                      ),
-                    ],
-                  ),
+
                   const SizedBox(height: 30),
                   loginBuyerButton(context),
                   const SizedBox(height: 30),

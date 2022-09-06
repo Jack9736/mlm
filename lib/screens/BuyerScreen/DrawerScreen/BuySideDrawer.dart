@@ -227,6 +227,10 @@ class BuySideDrawer extends StatelessWidget {
       case 4:
         break;
       case 5:
+        {
+          controller.title.value = AppConstant.TITLE_FAVOURITE.tr;
+          Get.toNamed(AppConstant.ROUTE_FAVOURIRE);
+        }
         break;
       case 6:
         break;

@@ -92,7 +92,7 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                         decoration: const InputDecoration(
                           labelText: 'First Name*',
                           labelStyle: TextStyle(
-                              fontSize: 18.0,
+                              fontSize: 17.0,
                               fontWeight: FontWeight.w400,
                               fontFamily: 'Gibson',
                               color: AppColors.topHeaderBlueClr
@@ -128,7 +128,7 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                         decoration: const InputDecoration(
                           labelText: 'Last Name*',
                           labelStyle: TextStyle(
-                              fontSize: 18.0,
+                              fontSize: 17.0,
                               fontWeight: FontWeight.w400,
                               fontFamily: 'Gibson',
                               color: AppColors.topHeaderBlueClr
@@ -168,7 +168,7 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                         decoration: const InputDecoration(
                           labelText: 'Passcode (hidden to public)*',
                           labelStyle: TextStyle(
-                              fontSize: 18.0,
+                              fontSize: 17.0,
                               fontWeight: FontWeight.w400,
                               fontFamily: 'Gibson',
                               color: AppColors.topHeaderBlueClr
@@ -209,7 +209,7 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                         decoration: const InputDecoration(
 
                           labelStyle: TextStyle(
-                              fontSize: 18.0,
+                              fontSize: 17.0,
                               fontWeight: FontWeight.w400,
                               fontFamily: 'Gibson',
                               color: AppColors.topHeaderBlueClr
@@ -267,7 +267,7 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
 
                           labelText: 'Create Password',
                           labelStyle: TextStyle(
-                              fontSize: 18.0,
+                              fontSize: 17.0,
                               fontWeight: FontWeight.w400,
                               fontFamily: 'Gibson',
                               color: AppColors.topHeaderBlueClr
@@ -322,7 +322,7 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
 
                           labelText: 'Confirm Password',
                           labelStyle: TextStyle(
-                              fontSize: 18.0,
+                              fontSize: 17.0,
                               fontWeight: FontWeight.w400,
                               fontFamily: 'Gibson',
                               color: AppColors.topHeaderBlueClr

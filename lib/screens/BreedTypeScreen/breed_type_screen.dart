@@ -3,12 +3,12 @@ import 'package:get/get.dart';
 import 'package:mlm/Style/app_colors.dart';
 import 'package:mlm/Widget/custom_image_widget.dart';
 import 'package:mlm/Widget/widget_appbar.dart';
-import 'package:mlm/screens/MyMessageScreen/my_messages_controller.dart';
+import 'package:mlm/screens/BreedTypeScreen/breed_type_controller.dart';
 
 class BreedTypeScreen extends StatelessWidget {
   BreedTypeScreen({Key? key}) : super(key: key);
 
-  MymessagesController controller = Get.find();
+  BreedTypeController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {

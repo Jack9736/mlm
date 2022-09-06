@@ -378,7 +378,7 @@ class _BuySecRegViewState extends State<BuySecRegView> {
   /* Next Button */
   Container nextButton(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 0, left: 30, right: 30),
+      margin: const EdgeInsets.only(bottom: 40, left: 10, right: 10),
       height: AppConstant.appButtonSize,
       width: double.infinity,
       child: Obx(() => TextButton(
