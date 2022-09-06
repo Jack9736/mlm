@@ -51,9 +51,13 @@ dependencies:
   flutter_custom_clippers: ^2.0.0
   sticky_and_expandable_list: ^1.1.2
   dotted_border: ^2.0.0
+
+#   https://pub:dev/packages/image_picker:  image_picker: ^0.8.5+3
   image_picker: ^0.8.5+3
-  multi_image_picker: ^4.8.1
-  flutter_absolute_path: ^1.0.6
+
+#  For multiple image selection
+#  https://pub.dev/packages/images_picker/example
+  images_picker: ^1.2.11
 
 
 dev_dependencies:

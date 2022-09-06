@@ -6,6 +6,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:mlm/Style/app_colors.dart';
 import 'package:mlm/Style/app_colors.dart';
 import 'package:mlm/Utils/constant.dart';
+import 'package:mlm/screens/BreedTypeScreen/breed_type_screen.dart';
 import 'package:mlm/screens/BuyerScreen/BuyComplateRegScreen/buy_complete_reg_view.dart';
 import 'package:mlm/screens/BuyerScreen/BuyFirstRegScreen/buy_first_reg_view.dart';
 import 'package:mlm/screens/BuyerScreen/BuyHomeScreen/buy_home_screen.dart';
@@ -118,8 +119,7 @@ class MyApp extends StatelessWidget {
             name: AppConstant.ROUTE_BUY_SELLER_PROFILE_VIEW,
             page: () => BuySellerProfileView()),
         GetPage(
-              name: AppConstant.ROUTE_PET_ADD_VIEW,
-              page: () =>  SellAddPetView()),
+            name: AppConstant.ROUTE_PET_ADD_VIEW, page: () => SellAddPetView()),
         // GetPage(
         //     name: AppConstant.ROUTE_PET_ADD_VIEW, page: () => RadioButton()),
 
@@ -127,9 +127,11 @@ class MyApp extends StatelessWidget {
             name: AppConstant.ROUTE_SELL_PET_ADDED_VIEW,
             page: () => PetAddedView()),
 
+        GetPage(name: AppConstant.ROUTE_FAVOURIRE, page: () => FavouriteView()),
+
         GetPage(
-            name: AppConstant.ROUTE_FAVOURIRE,
-            page: () => FavouriteView()),
+            name: AppConstant.ROUTE_BREED_TYPE_SCREEN,
+            page: () => BreedTypeScreen()),
       ],
     );
   }

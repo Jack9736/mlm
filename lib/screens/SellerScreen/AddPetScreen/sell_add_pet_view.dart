@@ -1,14 +1,17 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:dotted_border/dotted_border.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:images_picker/images_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:mlm/Style/app_colors.dart';
 import 'package:mlm/Style/k_text_style.dart';
-import 'package:multi_image_picker/multi_image_picker.dart';
+import 'package:mlm/screens/SellerScreen/AddPetScreen/sell_add_pet_controller.dart';
 import '../../../Style/ButtonTextStyle.dart';
 import '../../../Utils/constant.dart';
 import '../../../Widget/widget_appbar.dart';
@@ -40,7 +43,8 @@ class _SellAddPetViewState extends State<SellAddPetView> {
   TextEditingController userNmController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  SellSecRegController controller = Get.find();
+  SellSecRegController secRegController = Get.find();
+  SellAddPetController sellAddPetController = Get.find();
 
   var memberListObs = "".obs;
   var typeOptionObs = "".obs;
@@ -53,21 +57,19 @@ class _SellAddPetViewState extends State<SellAddPetView> {
   var vetCheckedOptionObs = "".obs;
   var availableFromObs = "MM/DD/YYYY".obs;
 
-  // List<XFile> imageFileList = [];
-  // RxList<XFile> imageFileList = RxList<XFile>();
-  RxList<Asset> imageFileList = RxList<Asset>();
-  String _error = 'No Error Dectected';
+  RxList<XFile> imageFileList = RxList<XFile>();
+
+  double sum = 0;
 
   @override
   void initState() {
     super.initState();
-    memberListObs.value = controller.memberList[0];
+    memberListObs.value = secRegController.memberList[0];
   }
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    var hrPadding = 20;
 
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
@@ -132,11 +134,11 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                           children: [
                             Expanded(
                               child: buildCustomRadioButton(context, 0,
-                                  controller.typeOptionList, typeOptionObs),
+                                  secRegController.typeOptionList, typeOptionObs),
                             ),
                             Expanded(
                               child: buildCustomRadioButton(context, 1,
-                                  controller.typeOptionList, typeOptionObs),
+                                  secRegController.typeOptionList, typeOptionObs),
                             ),
                           ],
                         ),
@@ -144,38 +146,43 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                           children: [
                             Expanded(
                               child: buildCustomRadioButton(context, 2,
-                                  controller.typeOptionList, typeOptionObs),
+                                  secRegController.typeOptionList, typeOptionObs),
                             ),
                             Expanded(
                               child: buildCustomRadioButton(context, 3,
-                                  controller.typeOptionList, typeOptionObs),
+                                  secRegController.typeOptionList, typeOptionObs),
                             ),
                           ],
                         )
                       ])),
                   buildColumn(
                     "BREED",
-                    TextFormField(
-                      enabled: false,
-                      textCapitalization: TextCapitalization.sentences,
-                      textInputAction: TextInputAction.next,
-                      cursorColor: Colors.black,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please select breed';
-                        }
-                        return null;
+                    InkWell(
+                      onTap: () =>  {
+                        Get.toNamed(AppConstant.ROUTE_BREED_TYPE_SCREEN)
                       },
-                      decoration: InputDecoration(
-                        isDense: true,
-                        contentPadding:
-                            const EdgeInsets.fromLTRB(15, 15, 15, 0),
-                        hintText: 'FIND BREED',
-                        hintStyle: buildRadioTextStyle(),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50.0),
+                      child: Obx(() => TextFormField(
+                        enabled: false,
+                        textCapitalization: TextCapitalization.sentences,
+                        textInputAction: TextInputAction.next,
+                        cursorColor: Colors.black,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please select breed';
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          isDense: true,
+                          contentPadding:
+                              const EdgeInsets.fromLTRB(15, 15, 15, 0),
+                          hintText: sellAddPetController.strBreedType.value,
+                          hintStyle: buildRadioTextStyle(),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(50.0),
+                          ),
                         ),
-                      ),
+                      )),
                     ),
                   ),
                   buildColumn(
@@ -184,20 +191,20 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           buildCustomRadioButton(context, 0,
-                              controller.ageOptionList, ageOptionObs),
+                              secRegController.ageOptionList, ageOptionObs),
                           buildCustomRadioButton(context, 1,
-                              controller.ageOptionList, ageOptionObs),
+                              secRegController.ageOptionList, ageOptionObs),
                           buildCustomRadioButton(context, 2,
-                              controller.ageOptionList, ageOptionObs),
+                              secRegController.ageOptionList, ageOptionObs),
                           Row(
                             children: [
                               Expanded(
                                 child: buildCustomRadioButton(context, 3,
-                                    controller.ageOptionList, ageOptionObs),
+                                    secRegController.ageOptionList, ageOptionObs),
                               ),
                               Expanded(
                                 child: buildCustomRadioButton(context, 4,
-                                    controller.ageOptionList, ageOptionObs),
+                                    secRegController.ageOptionList, ageOptionObs),
                               ),
                             ],
                           )
@@ -261,15 +268,15 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                         children: [
                           Expanded(
                             child: buildCustomRadioButton(context, 0,
-                                controller.sizeOptionList, sizeOptionObs),
+                                secRegController.sizeOptionList, sizeOptionObs),
                           ),
                           Expanded(
                             child: buildCustomRadioButton(context, 1,
-                                controller.sizeOptionList, sizeOptionObs),
+                                secRegController.sizeOptionList, sizeOptionObs),
                           ),
                           Expanded(
                             child: buildCustomRadioButton(context, 2,
-                                controller.sizeOptionList, sizeOptionObs),
+                                secRegController.sizeOptionList, sizeOptionObs),
                           ),
                         ],
                       ),
@@ -277,11 +284,11 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                         children: [
                           Expanded(
                             child: buildCustomRadioButton(context, 3,
-                                controller.sizeOptionList, sizeOptionObs),
+                                secRegController.sizeOptionList, sizeOptionObs),
                           ),
                           Expanded(
                             child: buildCustomRadioButton(context, 4,
-                                controller.sizeOptionList, sizeOptionObs),
+                                secRegController.sizeOptionList, sizeOptionObs),
                           ),
                         ],
                       )
@@ -294,11 +301,11 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                         children: [
                           Expanded(
                             child: buildCustomRadioButton(context, 0,
-                                controller.genderOptionList, genderOptionObs),
+                                secRegController.genderOptionList, genderOptionObs),
                           ),
                           Expanded(
                             child: buildCustomRadioButton(context, 1,
-                                controller.genderOptionList, genderOptionObs),
+                                secRegController.genderOptionList, genderOptionObs),
                           ),
                         ],
                       ),
@@ -313,14 +320,14 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                             child: buildCustomCheckBox(
                                 context,
                                 0,
-                                controller.personalityOptionList,
+                                secRegController.personalityOptionList,
                                 personalityOptionObs),
                           ),
                           Expanded(
                             child: buildCustomCheckBox(
                                 context,
                                 1,
-                                controller.personalityOptionList,
+                                secRegController.personalityOptionList,
                                 personalityOptionObs),
                           ),
                         ],
@@ -331,14 +338,14 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                             child: buildCustomCheckBox(
                                 context,
                                 2,
-                                controller.personalityOptionList,
+                                secRegController.personalityOptionList,
                                 personalityOptionObs),
                           ),
                           Expanded(
                             child: buildCustomCheckBox(
                                 context,
                                 3,
-                                controller.personalityOptionList,
+                                secRegController.personalityOptionList,
                                 personalityOptionObs),
                           ),
                         ],
@@ -349,14 +356,14 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                             child: buildCustomCheckBox(
                                 context,
                                 4,
-                                controller.personalityOptionList,
+                                secRegController.personalityOptionList,
                                 personalityOptionObs),
                           ),
                           Expanded(
                             child: buildCustomCheckBox(
                                 context,
                                 5,
-                                controller.personalityOptionList,
+                                secRegController.personalityOptionList,
                                 personalityOptionObs),
                           ),
                         ],
@@ -372,14 +379,14 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                             child: buildCustomRadioButton(
                                 context,
                                 0,
-                                controller.commonYesNoOptionList,
+                                secRegController.commonYesNoOptionList,
                                 crateTrainedOptionObs),
                           ),
                           Expanded(
                             child: buildCustomRadioButton(
                                 context,
                                 1,
-                                controller.commonYesNoOptionList,
+                                secRegController.commonYesNoOptionList,
                                 crateTrainedOptionObs),
                           ),
                         ],
@@ -395,14 +402,14 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                             child: buildCustomRadioButton(
                                 context,
                                 0,
-                                controller.commonYesNoOptionList,
+                                secRegController.commonYesNoOptionList,
                                 requireTransportOptionObs),
                           ),
                           Expanded(
                             child: buildCustomRadioButton(
                                 context,
                                 1,
-                                controller.commonYesNoOptionList,
+                                secRegController.commonYesNoOptionList,
                                 requireTransportOptionObs),
                           ),
                         ],
@@ -472,14 +479,14 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                             child: buildCustomRadioButton(
                                 context,
                                 0,
-                                controller.commonYesNoOptionList,
+                                secRegController.commonYesNoOptionList,
                                 vetCheckedOptionObs),
                           ),
                           Expanded(
                             child: buildCustomRadioButton(
                                 context,
                                 1,
-                                controller.commonYesNoOptionList,
+                                secRegController.commonYesNoOptionList,
                                 vetCheckedOptionObs),
                           ),
                         ],
@@ -565,7 +572,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                                   return Obx(() => galleryWidget(
                                       index,
                                       imageFileList.length > index
-                                          ? XFile(imageFileList[index].name!)
+                                          ? imageFileList[index]
                                           : null));
                                 }),
                             width: double.infinity,
@@ -674,7 +681,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
                 style: const ButtonTextStyle().textStyle.copyWith(
-                    color: personalityOptionObs.value.contains(mList[position])
+                    color: personalityOptionObs.contains(mList[position])
                         ? AppColors.white
                         : AppColors.radio_button_text_color,
                     fontSize: 12,
@@ -745,7 +752,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                                 colorFilter: ColorFilter.mode(
                                     Colors.black.withOpacity(0.8),
                                     BlendMode.dstATop),
-                                image: FileImage(File(file.path))) ,
+                                image: FileImage(File(file.path))),
                           ),
                         )),
                   )
@@ -788,8 +795,8 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       if (index == 7) {
                         _openGallery(index);
                       } else {
-                        // _openGalleryForImages(index);
-                        loadAssets();
+                        _openGalleryForImages(index);
+                        // loadAssets();
                       }
                       Navigator.of(context).pop();
                     },
@@ -916,16 +923,50 @@ class _SellAddPetViewState extends State<SellAddPetView> {
   }
 
   void _openGalleryForImages(int index) async {
-    final List<XFile>? selectedImages = await imagePicker.pickMultiImage();
-    if (selectedImages!.isNotEmpty) {
-      for (int i = 0; i < selectedImages.length; i++) {
+    ///storage/emulated/0/Android/data/com.example.mlm/files/Pictures/image_picker_crop_df00cfb7-2449-40f9-a05e-8e9a6f9bc759_20220906114226672.jpg
+    List<Media>? res = await ImagesPicker.pick(
+        count: 6,
+        pickType: PickType.image,
+        language: Language.System,
+        maxSize: 5);
+    if (kDebugMode) {
+      print(res);
+    }
+    if (res != null) {
+      if (kDebugMode) {
+        print(res.map((e) => e.path).toList());
+      }
+
+      for (int i = 0; i < res.length; i++) {
         if (imageFileList.length != 6) {
-          // imageFileList.add(selectedImages[i]);
+          XFile(res[i].path);
+          imageFileList.add(XFile(res[i].path));
+
+          var size2 = res[i].size;
+          var ii = (log(size2) / log(1024)).floor();
+          sum += (res[i].size / 1024);
+
+          print(getFileSize(size2, 2));
         } else {
           break;
         }
       }
+
+      if (sum > 5) {
+        print("Size is bigger " + sum.toString());
+      } else {
+        print("Size is smaller " + sum.toString());
+      }
     }
+  }
+
+  getFileSize(double bytes, int decimals) {
+    if (bytes <= 0) return "0 B";
+    const suffixes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+    var i = (log(bytes) / log(1024)).floor();
+    return ((bytes / pow(1024, i)).toStringAsFixed(decimals)) +
+        ' ' +
+        suffixes[i];
   }
 
   void _openCamera(int index) async {
@@ -936,44 +977,6 @@ class _SellAddPetViewState extends State<SellAddPetView> {
         maxWidth: 640);
     if (pickedFile != null) {
       loadImages(index, pickedFile);
-    }
-  }
-
-  Future<void> loadAssets() async {
-    List<Asset> resultList = <Asset>[];
-    String error = 'No Error Detected';
-
-    try {
-      resultList = await MultiImagePicker.pickImages(
-        maxImages: 6,
-        enableCamera: true,
-        selectedAssets: imageFileList,
-        cupertinoOptions: const CupertinoOptions(takePhotoIcon: "chat"),
-        materialOptions: const MaterialOptions(
-          actionBarColor: "#abcdef",
-          actionBarTitle: "Example App",
-          allViewTitle: "All Photos",
-          useDetailsView: false,
-          selectCircleStrokeColor: "#000000",
-        ),
-      );
-    } on Exception catch (e) {
-      error = e.toString();
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    if (resultList.isNotEmpty) {
-      for (int i = 0; i < resultList.length; i++) {
-        if (imageFileList.length != 6) {
-          imageFileList.add(resultList[i]);
-        } else {
-          break;
-        }
-      }
     }
   }
 
@@ -993,27 +996,6 @@ class _SellAddPetViewState extends State<SellAddPetView> {
         galleryImgSix = file;
       } else if (index == 7) {
         customerLogoImageFile = file;
-      }
-    });
-  }
-
-  loadImagesList(int index, List<XFile> pickedFile) {
-    setState(() {
-      for (int index = 1; index <= pickedFile.length; index++) {
-        var imagData = pickedFile[index];
-        if (index == 1) {
-          galleryImgFirst = imagData;
-        } else if (index == 2) {
-          galleryImgSecond = imagData;
-        } else if (index == 3) {
-          galleryImgThree = imagData;
-        } else if (index == 4) {
-          galleryImgFour = imagData;
-        } else if (index == 5) {
-          galleryImgFive = imagData;
-        } else if (index == 6) {
-          galleryImgSix = imagData;
-        }
       }
     });
   }
@@ -1083,7 +1065,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
     return SizedBox(
       height: AppConstant.appButtonSize,
       child: Obx(() => TextButton(
-            child: controller.isApiRunning.value
+            child: secRegController.isApiRunning.value
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const <Widget>[

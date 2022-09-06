@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:mlm/screens/BreedTypeScreen/breed_type_controller.dart';
 import 'package:mlm/screens/BuyerScreen/BuyComplateRegScreen/buy_complete_reg_controller.dart';
 import 'package:mlm/screens/BuyerScreen/BuyFirstRegScreen/buy_first_reg_controller.dart';
 import 'package:mlm/screens/BuyerScreen/BuyHomeScreen/buy_home_controller.dart';
@@ -7,6 +8,7 @@ import 'package:mlm/screens/BuyerScreen/BuyORSellScreen/buy_sell_controller.dart
 import 'package:mlm/screens/BuyerScreen/BuySecondRegistrationScreen/buy_sec_reg_controller.dart';
 import 'package:mlm/screens/FirstRegScreen/first_reg_controller.dart';
 import 'package:mlm/screens/ForgotPasswordScreen/forgot_password_controller.dart';
+import 'package:mlm/screens/SellerScreen/AddPetScreen/sell_add_pet_controller.dart';
 import 'package:mlm/screens/SellerScreen/SellFirstRegScreen/sell_first_reg_controller.dart';
 import 'package:mlm/screens/SellerScreen/SellSecRegScreen/sell_sec_reg_controller.dart';
 import 'package:mlm/screens/StartBrowsingScreen/start_browsing_controller.dart';
@@ -23,6 +25,7 @@ import '../screens/SellerScreen/SellHomeScreen/sell_home_controller.dart';
 import '../screens/BuyerScreen/BuySellerProfileScreen/buy_seller_profile_controller.dart';
 import 'package:mlm/screens/SellerScreen/PetAddedScreen/sell_pet_added_controller.dart';
 import 'package:mlm/screens/BuyerScreen/BuyFavouritesScreen/buy_favourites_controller.dart';
+
 class AppBinding extends Bindings {
   @override
   void dependencies() {
@@ -86,6 +89,12 @@ class AppBinding extends Bindings {
         httpService: Get.find(tag: AppConstant.tagHttpService)));
 
     Get.put(FavouriteViewController(
+        httpService: Get.find(tag: AppConstant.tagHttpService)));
+
+    Get.put(SellAddPetController(
+        httpService: Get.find(tag: AppConstant.tagHttpService)));
+
+    Get.put(BreedTypeController(
         httpService: Get.find(tag: AppConstant.tagHttpService)));
   }
 }
