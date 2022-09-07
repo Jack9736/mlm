@@ -60,6 +60,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
   RxList<XFile> imageFileList = RxList<XFile>();
 
   double sum = 0;
+  final TextEditingController _controller = TextEditingController();
 
   @override
   void initState() {
@@ -98,27 +99,9 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                 children: [
                   buildColumn(
                     "NAME",
-                    TextFormField(
-                      textCapitalization: TextCapitalization.sentences,
-                      textInputAction: TextInputAction.next,
-                      cursorColor: Colors.black,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please Enter name';
-                        }
-                        return null;
-                      },
-                      decoration: InputDecoration(
-                        isDense: true,
-                        contentPadding:
-                            const EdgeInsets.fromLTRB(15, 15, 15, 0),
-                        hintText: 'TYPE NAME HERE',
-                        hintStyle: buildRadioTextStyle(),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50.0),
-                        ),
-                      ),
-                    ),
+                    buildTextFormField(
+                        'TYPE NAME HERE', 'Please Enter name', true,
+                        controller: nameController),
                   ),
                   buildColumn(
                       "PROFILE PHOTO",
@@ -133,24 +116,36 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                         Row(
                           children: [
                             Expanded(
-                              child: buildCustomRadioButton(context, 0,
-                                  secRegController.typeOptionList, typeOptionObs),
+                              child: buildCustomRadioButton(
+                                  context,
+                                  0,
+                                  secRegController.typeOptionList,
+                                  typeOptionObs),
                             ),
                             Expanded(
-                              child: buildCustomRadioButton(context, 1,
-                                  secRegController.typeOptionList, typeOptionObs),
+                              child: buildCustomRadioButton(
+                                  context,
+                                  1,
+                                  secRegController.typeOptionList,
+                                  typeOptionObs),
                             ),
                           ],
                         ),
                         Row(
                           children: [
                             Expanded(
-                              child: buildCustomRadioButton(context, 2,
-                                  secRegController.typeOptionList, typeOptionObs),
+                              child: buildCustomRadioButton(
+                                  context,
+                                  2,
+                                  secRegController.typeOptionList,
+                                  typeOptionObs),
                             ),
                             Expanded(
-                              child: buildCustomRadioButton(context, 3,
-                                  secRegController.typeOptionList, typeOptionObs),
+                              child: buildCustomRadioButton(
+                                  context,
+                                  3,
+                                  secRegController.typeOptionList,
+                                  typeOptionObs),
                             ),
                           ],
                         )
@@ -158,31 +153,16 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                   buildColumn(
                     "BREED",
                     InkWell(
-                      onTap: () =>  {
-                        Get.toNamed(AppConstant.ROUTE_BREED_TYPE_SCREEN)
+                      onTap: () => {
+                        Get.toNamed(AppConstant.ROUTE_BREED_TYPE_SCREEN),
                       },
-                      child: Obx(() => TextFormField(
-                        enabled: false,
-                        textCapitalization: TextCapitalization.sentences,
-                        textInputAction: TextInputAction.next,
-                        cursorColor: Colors.black,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please select breed';
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                          isDense: true,
-                          contentPadding:
-                              const EdgeInsets.fromLTRB(15, 15, 15, 0),
-                          hintText: sellAddPetController.strBreedType.value,
-                          hintStyle: buildRadioTextStyle(),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(50.0),
-                          ),
-                        ),
-                      )),
+                      child: Obx(
+                        () => buildTextFormField(
+                            sellAddPetController.strBreedType.value,
+                            'Please select breed',
+                            false,
+                            controller: breedController),
+                      ),
                     ),
                   ),
                   buildColumn(
@@ -199,12 +179,18 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                           Row(
                             children: [
                               Expanded(
-                                child: buildCustomRadioButton(context, 3,
-                                    secRegController.ageOptionList, ageOptionObs),
+                                child: buildCustomRadioButton(
+                                    context,
+                                    3,
+                                    secRegController.ageOptionList,
+                                    ageOptionObs),
                               ),
                               Expanded(
-                                child: buildCustomRadioButton(context, 4,
-                                    secRegController.ageOptionList, ageOptionObs),
+                                child: buildCustomRadioButton(
+                                    context,
+                                    4,
+                                    secRegController.ageOptionList,
+                                    ageOptionObs),
                               ),
                             ],
                           )
@@ -212,55 +198,17 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                   ),
                   buildColumn(
                     "LOCATION",
-                    TextFormField(
-                      textCapitalization: TextCapitalization.sentences,
-                      textInputAction: TextInputAction.next,
-                      cursorColor: Colors.black,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please select breed';
-                        }
-                        return null;
-                      },
-                      decoration: InputDecoration(
-                        isDense: true,
-                        contentPadding:
-                            const EdgeInsets.fromLTRB(15, 15, 15, 0),
-                        hintText: 'FIND LOCATION',
-                        hintStyle: buildRadioTextStyle(),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50.0),
-                        ),
-                      ),
-                    ),
+                    buildTextFormField(
+                        'FIND LOCATION', 'Please select breed', true,
+                        controller: locationController),
                   ),
                   buildColumn(
-                    "PRICE",
-                    TextFormField(
-                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                      keyboardType:
-                          const TextInputType.numberWithOptions(decimal: true),
-                      textCapitalization: TextCapitalization.sentences,
-                      textInputAction: TextInputAction.next,
-                      cursorColor: Colors.black,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please select breed';
-                        }
-                        return null;
-                      },
-                      decoration: InputDecoration(
-                        isDense: true,
-                        contentPadding:
-                            const EdgeInsets.fromLTRB(15, 15, 15, 0),
-                        hintText: 'ENTER PRICE',
-                        hintStyle: buildRadioTextStyle(),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50.0),
-                        ),
-                      ),
-                    ),
-                  ),
+                      "PRICE",
+                      buildTextFormField(
+                          'ENTER PRICE', 'Please select breed', true,
+                          controller: priceController,
+                          keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true))),
                   buildColumn(
                     "AGE",
                     Column(children: [
@@ -300,12 +248,18 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       Row(
                         children: [
                           Expanded(
-                            child: buildCustomRadioButton(context, 0,
-                                secRegController.genderOptionList, genderOptionObs),
+                            child: buildCustomRadioButton(
+                                context,
+                                0,
+                                secRegController.genderOptionList,
+                                genderOptionObs),
                           ),
                           Expanded(
-                            child: buildCustomRadioButton(context, 1,
-                                secRegController.genderOptionList, genderOptionObs),
+                            child: buildCustomRadioButton(
+                                context,
+                                1,
+                                secRegController.genderOptionList,
+                                genderOptionObs),
                           ),
                         ],
                       ),
@@ -417,58 +371,19 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                     ]),
                   ),
                   buildColumn(
-                    "MICROCHIP (hidden to public)",
-                    TextFormField(
-                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                      keyboardType:
-                          const TextInputType.numberWithOptions(decimal: true),
-                      textCapitalization: TextCapitalization.sentences,
-                      textInputAction: TextInputAction.next,
-                      cursorColor: Colors.black,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter number';
-                        }
-                        return null;
-                      },
-                      decoration: InputDecoration(
-                        isDense: true,
-                        contentPadding:
-                            const EdgeInsets.fromLTRB(15, 15, 15, 0),
-                        hintText: 'ENTER NUMBER',
-                        hintStyle: buildRadioTextStyle(),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50.0),
-                        ),
-                      ),
-                    ),
-                  ),
+                      "MICROCHIP (hidden to public)",
+                      buildTextFormField(
+                          'ENTER NUMBER', 'Please enter number', true,
+                          controller: microchipController,
+                          keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true))),
                   buildColumn(
                     "REHOMING NUMBER (hidden to public)",
-                    TextFormField(
-                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                      keyboardType:
-                          const TextInputType.numberWithOptions(decimal: true),
-                      textCapitalization: TextCapitalization.sentences,
-                      textInputAction: TextInputAction.next,
-                      cursorColor: Colors.black,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter number';
-                        }
-                        return null;
-                      },
-                      decoration: InputDecoration(
-                        isDense: true,
-                        contentPadding:
-                            const EdgeInsets.fromLTRB(15, 15, 15, 0),
-                        hintText: 'ENTER NUMBER',
-                        hintStyle: buildRadioTextStyle(),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50.0),
-                        ),
-                      ),
-                    ),
+                    buildTextFormField(
+                        'ENTER NUMBER', 'Please enter number', true,
+                        controller: rehomingNumberController,
+                        keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true)),
                   ),
                   buildColumn(
                     "VET CHECKED",
@@ -494,34 +409,18 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                     ]),
                   ),
                   buildColumn(
-                      "AVAILABLE FROM",
-                      Obx(() => InkWell(
-                            onTap: () {
-                              _selectDate(context);
-                            },
-                            child: TextFormField(
-                              enabled: false,
-                              textCapitalization: TextCapitalization.sentences,
-                              textInputAction: TextInputAction.next,
-                              cursorColor: Colors.black,
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please Enter name';
-                                }
-                                return null;
-                              },
-                              decoration: InputDecoration(
-                                isDense: true,
-                                contentPadding:
-                                    const EdgeInsets.fromLTRB(15, 15, 15, 0),
-                                hintText: availableFromObs.value,
-                                hintStyle: buildRadioTextStyle(),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(50.0),
-                                ),
-                              ),
-                            ),
-                          ))),
+                    "AVAILABLE FROM",
+                    Obx(
+                      () => InkWell(
+                        onTap: () {
+                          _selectDate(context);
+                        },
+                        child: buildTextFormField(
+                            availableFromObs.value, 'Please Enter date', false,
+                            controller: availableFromController),
+                      ),
+                    ),
+                  ),
                   const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
@@ -530,32 +429,13 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                     ),
                   ),
                   buildColumn(
-                      "NOTES",
-                      TextFormField(
-                        textCapitalization: TextCapitalization.sentences,
-                        textInputAction: TextInputAction.next,
-                        cursorColor: Colors.black,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please Enter name';
-                          }
-                          return null;
-                        },
+                    "NOTES",
+                    buildTextFormField("Type here…", 'Please Enter note', true,
                         minLines: 4,
                         maxLines: 4,
-                        decoration: InputDecoration(
-                          isDense: true,
-                          filled: true,
-                          fillColor: Colors.white,
-                          contentPadding:
-                              const EdgeInsets.fromLTRB(15, 15, 15, 0),
-                          hintText: "Type here…",
-                          hintStyle: buildRadioTextStyle(),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                        ),
-                      )),
+                        radius: 10,
+                        controller: notesController),
+                  ),
                   buildColumn(
                       "GALLERY",
                       Column(
@@ -591,13 +471,73 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
-                    child: addPetButton(context),
+                    child: buildAddPetButton(context),
                   )
                 ],
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  TextEditingController nameController = TextEditingController();
+  TextEditingController breedController = TextEditingController();
+  TextEditingController locationController = TextEditingController();
+  TextEditingController priceController = TextEditingController();
+  TextEditingController microchipController = TextEditingController();
+  TextEditingController rehomingNumberController = TextEditingController();
+  TextEditingController availableFromController = TextEditingController();
+  TextEditingController notesController = TextEditingController();
+
+  TextFormField buildTextFormField(
+    String hintText,
+    String msg,
+    bool enabled, {
+    int minLines: 1,
+    int maxLines: 1,
+    int radius = 50,
+    keyboardType: TextInputType.text,
+    required TextEditingController controller,
+  }) {
+    var textStyle = const TextStyle(
+        fontSize: 16,
+        fontFamily: "Gibson",
+        fontWeight: FontWeight.w600,
+        color: AppColors.appSecondaryColor);
+    double mPadding = 10;
+    var outlineInputBorder = OutlineInputBorder(
+      borderSide:
+          const BorderSide(color: AppColors.txt_field_border_color, width: 1.0),
+      borderRadius: BorderRadius.circular(radius.toDouble()),
+    );
+    return TextFormField(
+      controller: controller,
+      enabled: enabled,
+      textCapitalization: TextCapitalization.sentences,
+      textInputAction: TextInputAction.next,
+      cursorColor: AppColors.appSecondaryColor,
+      style: textStyle,
+      minLines: minLines,
+      maxLines: maxLines,
+      keyboardType: keyboardType,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return msg;
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        isDense: true,
+        contentPadding:
+            EdgeInsets.fromLTRB(mPadding, mPadding, mPadding, mPadding),
+        hintText: hintText,
+        hintStyle: buildRadioTextStyle(),
+        disabledBorder: outlineInputBorder,
+        enabledBorder: outlineInputBorder,
+        border: outlineInputBorder,
+        focusedBorder: outlineInputBorder,
       ),
     );
   }
@@ -892,7 +832,8 @@ class _SellAddPetViewState extends State<SellAddPetView> {
     );
 
     if (picked != null) {
-      availableFromObs.value = getFormattedDate(picked.toString());
+      availableFromController.text=getFormattedDate(picked.toString());
+      availableFromObs.refresh();
     }
   }
 
@@ -925,7 +866,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
   void _openGalleryForImages(int index) async {
     ///storage/emulated/0/Android/data/com.example.mlm/files/Pictures/image_picker_crop_df00cfb7-2449-40f9-a05e-8e9a6f9bc759_20220906114226672.jpg
     List<Media>? res = await ImagesPicker.pick(
-        count: 6,
+        count: 6 - imageFileList.length,
         pickType: PickType.image,
         language: Language.System,
         maxSize: 5);
@@ -1032,7 +973,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                     Container(
                       height: MediaQuery.of(context).size.height / 1.5,
                       margin:
-                          const EdgeInsets.only(top: 15, left: 15, right: 20),
+                          const EdgeInsets.only(top: 16, left: 16, right: 20),
                       decoration: BoxDecoration(
                         color: Colors.black,
                         image: DecorationImage(
@@ -1061,7 +1002,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
         });
   }
 
-  SizedBox addPetButton(BuildContext context) {
+  SizedBox buildAddPetButton(BuildContext context) {
     return SizedBox(
       height: AppConstant.appButtonSize,
       child: Obx(() => TextButton(
@@ -1081,7 +1022,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                   )
                 : const Text('ADD PET',
                     style: TextStyle(
-                        fontSize: 15.0,
+                        fontSize: 16.0,
                         fontWeight: FontWeight.w600,
                         fontFamily: 'Gibson',
                         color: Colors.white)),

@@ -42,6 +42,7 @@ class AppConstant {
   static const String ROUTE_MY_MESSAGES = "/MyMessagesView";
   static const String ROUTE_FAVOURIRE = "/FavouriteView";
   static const String ROUTE_BREED_TYPE_SCREEN = "/BreedTypeScreen";
+  static const String ROUTE_SEARCHFILTER_SCREEN = "/SearchFilterView";
 
   static const String ROUTE_PET_PROFILE_VIEW = "/PetProfileView";
   static const String ROUTE_BUY_SELLER_PROFILE_VIEW = "/BuySellerProfileView";

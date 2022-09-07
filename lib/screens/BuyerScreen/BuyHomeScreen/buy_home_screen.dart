@@ -110,7 +110,9 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
                       ),
                       IconButton(
                         icon: Image.asset("assets/ic_filter.png"),
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed(AppConstant.ROUTE_SEARCHFILTER_SCREEN);
+                        },
                       ),
                     ]),
                   ),

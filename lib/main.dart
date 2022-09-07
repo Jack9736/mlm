@@ -15,6 +15,7 @@ import 'package:mlm/screens/BuyerScreen/BuySecondRegistrationScreen/buy_sec_reg_
 import 'package:mlm/screens/FirstRegScreen/first_reg_screen.dart';
 import 'package:mlm/screens/PetProfileScreen/pet_profile_screen.dart';
 import 'package:mlm/screens/RecentlyViewScreen/recently_view_screen.dart';
+import 'package:mlm/screens/SearchFilterScreen/search_filter_view.dart';
 import 'package:mlm/screens/SellerScreen/AddPetScreen/sell_add_pet_view.dart';
 import 'package:mlm/screens/SellerScreen/SellFirstRegScreen/sell_first_reg_view.dart';
 import 'package:mlm/screens/SellerScreen/SellHomeScreen/sell_home_screen.dart';
@@ -71,38 +72,44 @@ class MyApp extends StatelessWidget {
         * */
         GetPage(
             name: AppConstant.ROUTE_BUY_FIRST_REG,
-            page: () => BuyFirstRegView()),
+            page: () => const BuyFirstRegView()),
         GetPage(
-            name: AppConstant.ROUTE_BUY_SEC_REG, page: () => BuySecRegView()),
+            name: AppConstant.ROUTE_BUY_SEC_REG,
+            page: () => const BuySecRegView()),
         GetPage(
             name: AppConstant.ROUTE_BUY_COMPLETE_REG,
-            page: () => BuyCompleteRegView()),
+            page: () => const BuyCompleteRegView()),
         GetPage(
             name: AppConstant.ROUTE_START_BROWSING,
-            page: () => StartBrowsingView()),
+            page: () => const StartBrowsingView()),
         /*
         * End Buyer Registration Screen
         * */
 
         GetPage(
-            name: AppConstant.ROUTE_FIRST_REG, page: () => FirstRegScreen()),
+            name: AppConstant.ROUTE_FIRST_REG,
+            page: () => const FirstRegScreen()),
 
         /*
         * Start Seller Registration Screen
         * */
         GetPage(
             name: AppConstant.ROUTE_SELL_FIRST_REG,
-            page: () => SellFirstRegView()),
+            page: () => const SellFirstRegView()),
         GetPage(
-            name: AppConstant.ROUTE_SELL_SEC_REG, page: () => SellSecRegView()),
+            name: AppConstant.ROUTE_SELL_SEC_REG,
+            page: () => const SellSecRegView()),
         GetPage(
-            name: AppConstant.ROUTE_SELL_HOME, page: () => SellHomeScreen()),
+            name: AppConstant.ROUTE_SELL_HOME,
+            page: () => const SellHomeScreen()),
 
         /*
         * End Seller Registration Screen
         * */
 
-        GetPage(name: AppConstant.ROUTE_BUY_HOME, page: () => BuyHomeScreen()),
+        GetPage(
+            name: AppConstant.ROUTE_BUY_HOME,
+            page: () => const BuyHomeScreen()),
 
         GetPage(
             name: AppConstant.ROUTE_RECENTLY_VIEW, page: () => RecentlyView()),
@@ -118,20 +125,24 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: AppConstant.ROUTE_BUY_SELLER_PROFILE_VIEW,
             page: () => BuySellerProfileView()),
+
         GetPage(
-            name: AppConstant.ROUTE_PET_ADD_VIEW, page: () => SellAddPetView()),
-        // GetPage(
-        //     name: AppConstant.ROUTE_PET_ADD_VIEW, page: () => RadioButton()),
+            name: AppConstant.ROUTE_PET_ADD_VIEW,
+            page: () => const SellAddPetView()),
 
         GetPage(
             name: AppConstant.ROUTE_SELL_PET_ADDED_VIEW,
-            page: () => PetAddedView()),
+            page: () => const PetAddedView()),
 
         GetPage(name: AppConstant.ROUTE_FAVOURIRE, page: () => FavouriteView()),
 
         GetPage(
             name: AppConstant.ROUTE_BREED_TYPE_SCREEN,
             page: () => BreedTypeScreen()),
+
+        GetPage(
+            name: AppConstant.ROUTE_SEARCHFILTER_SCREEN,
+            page: () => const SearchFilterView()),
       ],
     );
   }
