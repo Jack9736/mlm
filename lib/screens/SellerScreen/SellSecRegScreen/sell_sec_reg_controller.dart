@@ -24,46 +24,6 @@ class SellSecRegController extends GetxController {
     "Others",
   ];
 
-  List<String> typeOptionList = [
-    "PURE BREED",
-    "CROSS BREED",
-    "STUD (SIRE/DAM)",
-    "RESCUE"
-  ];
-  List<String> ageOptionList = [
-    "8 WEEKS - 6 MONTHS",
-    "7 MONTHS - 12 MONTHS",
-    "13 MONTHS - 23 MONTHS",
-    "2 - 5 YEARS",
-    "OVER 5 YEARS"
-  ];
-
-  List<String> sizeOptionList = [
-    "MINIATURE",
-    "SMALL",
-    "MEDIUM",
-    "LARGE",
-    "EXTRA LARGE",
-  ];
-
-  List<String> genderOptionList = [
-    "MALE",
-    "FEMALE",
-  ];
-
-  List<String> personalityOptionList = [
-    "GOOD WITH KIDS",
-    "GOOD WITH SENIORS",
-    "SLEEPY /QUIET",
-    "CLEVER",
-    "VERY EXCITABLE",
-    "PROTECTIVE",
-  ];
-
-  List<String> commonYesNoOptionList = [
-    "YES",
-    "NO",
-  ];
 
   var isLoading = false.obs;
   var isApiRunning = false.obs;

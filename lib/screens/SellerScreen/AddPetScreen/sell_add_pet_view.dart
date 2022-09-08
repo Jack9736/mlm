@@ -11,6 +11,34 @@ import 'package:images_picker/images_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:mlm/Style/app_colors.dart';
 import 'package:mlm/Style/k_text_style.dart';
+import 'package:mlm/Widget/custom_check_box_widget.dart';
+import 'package:mlm/Widget/custom_check_box_widget.dart';
+import 'package:mlm/Widget/custom_check_box_widget.dart';
+import 'package:mlm/Widget/custom_check_box_widget.dart';
+import 'package:mlm/Widget/custom_check_box_widget.dart';
+import 'package:mlm/Widget/custom_check_box_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
+import 'package:mlm/Widget/custom_radio_button_widget.dart';
 import 'package:mlm/screens/SellerScreen/AddPetScreen/sell_add_pet_controller.dart';
 import '../../../Style/ButtonTextStyle.dart';
 import '../../../Utils/constant.dart';
@@ -116,17 +144,17 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                         Row(
                           children: [
                             Expanded(
-                              child: buildCustomRadioButton(
+                              child: CustomRadioButtonWidget(
                                   context,
                                   0,
-                                  secRegController.typeOptionList,
+                                  AppConstant().typeOptionList,
                                   typeOptionObs),
                             ),
                             Expanded(
-                              child: buildCustomRadioButton(
+                              child: CustomRadioButtonWidget(
                                   context,
                                   1,
-                                  secRegController.typeOptionList,
+                                  AppConstant().typeOptionList,
                                   typeOptionObs),
                             ),
                           ],
@@ -134,17 +162,17 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                         Row(
                           children: [
                             Expanded(
-                              child: buildCustomRadioButton(
+                              child: CustomRadioButtonWidget(
                                   context,
                                   2,
-                                  secRegController.typeOptionList,
+                                  AppConstant().typeOptionList,
                                   typeOptionObs),
                             ),
                             Expanded(
-                              child: buildCustomRadioButton(
+                              child: CustomRadioButtonWidget(
                                   context,
                                   3,
-                                  secRegController.typeOptionList,
+                                  AppConstant().typeOptionList,
                                   typeOptionObs),
                             ),
                           ],
@@ -170,26 +198,26 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                     Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          buildCustomRadioButton(context, 0,
-                              secRegController.ageOptionList, ageOptionObs),
-                          buildCustomRadioButton(context, 1,
-                              secRegController.ageOptionList, ageOptionObs),
-                          buildCustomRadioButton(context, 2,
-                              secRegController.ageOptionList, ageOptionObs),
+                          CustomRadioButtonWidget(context, 0,
+                              AppConstant().ageOptionList, ageOptionObs),
+                          CustomRadioButtonWidget(context, 1,
+                              AppConstant().ageOptionList, ageOptionObs),
+                          CustomRadioButtonWidget(context, 2,
+                              AppConstant().ageOptionList, ageOptionObs),
                           Row(
                             children: [
                               Expanded(
-                                child: buildCustomRadioButton(
+                                child: CustomRadioButtonWidget(
                                     context,
                                     3,
-                                    secRegController.ageOptionList,
+                                    AppConstant().ageOptionList,
                                     ageOptionObs),
                               ),
                               Expanded(
-                                child: buildCustomRadioButton(
+                                child: CustomRadioButtonWidget(
                                     context,
                                     4,
-                                    secRegController.ageOptionList,
+                                    AppConstant().ageOptionList,
                                     ageOptionObs),
                               ),
                             ],
@@ -210,33 +238,33 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                           keyboardType: const TextInputType.numberWithOptions(
                               decimal: true))),
                   buildColumn(
-                    "AGE",
+                    "SIZE",
                     Column(children: [
                       Row(
                         children: [
                           Expanded(
-                            child: buildCustomRadioButton(context, 0,
-                                secRegController.sizeOptionList, sizeOptionObs),
+                            child: CustomRadioButtonWidget(context, 0,
+                                AppConstant().sizeOptionList, sizeOptionObs),
                           ),
                           Expanded(
-                            child: buildCustomRadioButton(context, 1,
-                                secRegController.sizeOptionList, sizeOptionObs),
+                            child: CustomRadioButtonWidget(context, 1,
+                                AppConstant().sizeOptionList, sizeOptionObs),
                           ),
                           Expanded(
-                            child: buildCustomRadioButton(context, 2,
-                                secRegController.sizeOptionList, sizeOptionObs),
+                            child: CustomRadioButtonWidget(context, 2,
+                                AppConstant().sizeOptionList, sizeOptionObs),
                           ),
                         ],
                       ),
                       Row(
                         children: [
                           Expanded(
-                            child: buildCustomRadioButton(context, 3,
-                                secRegController.sizeOptionList, sizeOptionObs),
+                            child: CustomRadioButtonWidget(context, 3,
+                                AppConstant().sizeOptionList, sizeOptionObs),
                           ),
                           Expanded(
-                            child: buildCustomRadioButton(context, 4,
-                                secRegController.sizeOptionList, sizeOptionObs),
+                            child: CustomRadioButtonWidget(context, 4,
+                                AppConstant().sizeOptionList, sizeOptionObs),
                           ),
                         ],
                       )
@@ -248,17 +276,17 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       Row(
                         children: [
                           Expanded(
-                            child: buildCustomRadioButton(
+                            child: CustomRadioButtonWidget(
                                 context,
                                 0,
-                                secRegController.genderOptionList,
+                                AppConstant().genderOptionList,
                                 genderOptionObs),
                           ),
                           Expanded(
-                            child: buildCustomRadioButton(
+                            child: CustomRadioButtonWidget(
                                 context,
                                 1,
-                                secRegController.genderOptionList,
+                                AppConstant().genderOptionList,
                                 genderOptionObs),
                           ),
                         ],
@@ -271,17 +299,17 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       Row(
                         children: [
                           Expanded(
-                            child: buildCustomCheckBox(
+                            child: CustomCheckBoxWidget(
                                 context,
                                 0,
-                                secRegController.personalityOptionList,
+                                AppConstant().personalityOptionList,
                                 personalityOptionObs),
                           ),
                           Expanded(
-                            child: buildCustomCheckBox(
+                            child: CustomCheckBoxWidget(
                                 context,
                                 1,
-                                secRegController.personalityOptionList,
+                                AppConstant().personalityOptionList,
                                 personalityOptionObs),
                           ),
                         ],
@@ -289,17 +317,17 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       Row(
                         children: [
                           Expanded(
-                            child: buildCustomCheckBox(
+                            child: CustomCheckBoxWidget(
                                 context,
                                 2,
-                                secRegController.personalityOptionList,
+                                AppConstant().personalityOptionList,
                                 personalityOptionObs),
                           ),
                           Expanded(
-                            child: buildCustomCheckBox(
+                            child: CustomCheckBoxWidget(
                                 context,
                                 3,
-                                secRegController.personalityOptionList,
+                                AppConstant().personalityOptionList,
                                 personalityOptionObs),
                           ),
                         ],
@@ -307,17 +335,17 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       Row(
                         children: [
                           Expanded(
-                            child: buildCustomCheckBox(
+                            child: CustomCheckBoxWidget(
                                 context,
                                 4,
-                                secRegController.personalityOptionList,
+                                AppConstant().personalityOptionList,
                                 personalityOptionObs),
                           ),
                           Expanded(
-                            child: buildCustomCheckBox(
+                            child: CustomCheckBoxWidget(
                                 context,
                                 5,
-                                secRegController.personalityOptionList,
+                                AppConstant().personalityOptionList,
                                 personalityOptionObs),
                           ),
                         ],
@@ -330,17 +358,17 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       Row(
                         children: [
                           Expanded(
-                            child: buildCustomRadioButton(
+                            child: CustomRadioButtonWidget(
                                 context,
                                 0,
-                                secRegController.commonYesNoOptionList,
+                                AppConstant().commonYesNoOptionList,
                                 crateTrainedOptionObs),
                           ),
                           Expanded(
-                            child: buildCustomRadioButton(
+                            child: CustomRadioButtonWidget(
                                 context,
                                 1,
-                                secRegController.commonYesNoOptionList,
+                                AppConstant().commonYesNoOptionList,
                                 crateTrainedOptionObs),
                           ),
                         ],
@@ -353,17 +381,17 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       Row(
                         children: [
                           Expanded(
-                            child: buildCustomRadioButton(
+                            child: CustomRadioButtonWidget(
                                 context,
                                 0,
-                                secRegController.commonYesNoOptionList,
+                                AppConstant().commonYesNoOptionList,
                                 requireTransportOptionObs),
                           ),
                           Expanded(
-                            child: buildCustomRadioButton(
+                            child: CustomRadioButtonWidget(
                                 context,
                                 1,
-                                secRegController.commonYesNoOptionList,
+                                AppConstant().commonYesNoOptionList,
                                 requireTransportOptionObs),
                           ),
                         ],
@@ -391,17 +419,17 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       Row(
                         children: [
                           Expanded(
-                            child: buildCustomRadioButton(
+                            child: CustomRadioButtonWidget(
                                 context,
                                 0,
-                                secRegController.commonYesNoOptionList,
+                                AppConstant().commonYesNoOptionList,
                                 vetCheckedOptionObs),
                           ),
                           Expanded(
-                            child: buildCustomRadioButton(
+                            child: CustomRadioButtonWidget(
                                 context,
                                 1,
-                                secRegController.commonYesNoOptionList,
+                                AppConstant().commonYesNoOptionList,
                                 vetCheckedOptionObs),
                           ),
                         ],
@@ -540,96 +568,6 @@ class _SellAddPetViewState extends State<SellAddPetView> {
         focusedBorder: outlineInputBorder,
       ),
     );
-  }
-
-  Obx buildCustomRadioButton(BuildContext context, int position,
-      List<String> typeOptionList, RxString typeOptionObs) {
-    return Obx(() => Card(
-          margin: const EdgeInsets.all(4),
-          color: typeOptionObs.value == typeOptionList[position]
-              ? AppColors.radio_selected_color
-              : AppColors.white,
-          shape: OutlineInputBorder(
-            borderSide: BorderSide(
-                color: typeOptionObs.value == typeOptionList[position]
-                    ? AppColors.radio_selected_color
-                    : AppColors.radio_un_selected_color,
-                width: 1),
-            borderRadius: const BorderRadius.all(Radius.circular(50)),
-          ),
-          child: SizedBox(
-            height: 35,
-            child: MaterialButton(
-              shape: const OutlineInputBorder(
-                borderSide: BorderSide(color: AppColors.appBgColor, width: 1),
-                borderRadius: BorderRadius.zero,
-              ),
-              onPressed: () {
-                setState(() {
-                  typeOptionObs.value = typeOptionList[position];
-                });
-              },
-              child: Text(
-                typeOptionList[position],
-                textAlign: TextAlign.center,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-                style: const ButtonTextStyle().textStyle.copyWith(
-                    color: typeOptionObs.value == typeOptionList[position]
-                        ? AppColors.white
-                        : AppColors.radio_button_text_color,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600),
-              ),
-            ),
-          ),
-        ));
-  }
-
-  Obx buildCustomCheckBox(BuildContext context, int position,
-      List<String> mList, RxList<String> personalityOptionObs) {
-    return Obx(() => Card(
-          margin: const EdgeInsets.all(4),
-          color: personalityOptionObs.contains(mList[position])
-              ? AppColors.radio_selected_color
-              : AppColors.white,
-          shape: OutlineInputBorder(
-            borderSide: BorderSide(
-                color: personalityOptionObs.contains(mList[position])
-                    ? AppColors.radio_selected_color
-                    : AppColors.radio_un_selected_color,
-                width: 1),
-            borderRadius: const BorderRadius.all(Radius.circular(50)),
-          ),
-          child: SizedBox(
-            height: 35,
-            child: MaterialButton(
-              shape: const OutlineInputBorder(
-                borderSide: BorderSide(color: AppColors.appBgColor, width: 1),
-                borderRadius: BorderRadius.zero,
-              ),
-              onPressed: () {
-                setState(() {
-                  personalityOptionObs.contains(mList[position])
-                      ? personalityOptionObs.remove(mList[position])
-                      : personalityOptionObs.add(mList[position]);
-                });
-              },
-              child: Text(
-                mList[position],
-                textAlign: TextAlign.center,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-                style: const ButtonTextStyle().textStyle.copyWith(
-                    color: personalityOptionObs.contains(mList[position])
-                        ? AppColors.white
-                        : AppColors.radio_button_text_color,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600),
-              ),
-            ),
-          ),
-        ));
   }
 
   Column buildColumn(String header, Widget sizedBox) {

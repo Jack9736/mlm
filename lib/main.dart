@@ -15,6 +15,7 @@ import 'package:mlm/screens/BuyerScreen/BuySecondRegistrationScreen/buy_sec_reg_
 import 'package:mlm/screens/FirstRegScreen/first_reg_screen.dart';
 import 'package:mlm/screens/PetProfileScreen/pet_profile_screen.dart';
 import 'package:mlm/screens/RecentlyViewScreen/recently_view_screen.dart';
+import 'package:mlm/screens/SearchFilterScreen/location_filter_view.dart';
 import 'package:mlm/screens/SearchFilterScreen/search_filter_view.dart';
 import 'package:mlm/screens/SellerScreen/AddPetScreen/sell_add_pet_view.dart';
 import 'package:mlm/screens/SellerScreen/SellFirstRegScreen/sell_first_reg_view.dart';
@@ -148,6 +149,10 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: AppConstant.ROUTE_MY_PROFILE,
             page: () =>  BuyMyProfileView()),
+
+        GetPage(
+            name: AppConstant.ROUTE_LOCATION_FILTER_VIEW,
+            page: () =>  const LocationFilterView()),
       ],
     );
   }

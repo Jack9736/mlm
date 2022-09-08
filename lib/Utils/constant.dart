@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
 class AppConstant {
+  static final AppConstant _singleton = AppConstant._internal();
 
+  factory AppConstant() {
+    return _singleton;
+  }
 
+  AppConstant._internal();
 
   static const String TITLE_RECENTLY_VIEW = "RecentlyView";
   static const String TITLE_MY_MESSAGES = "My Messages";
@@ -10,13 +15,10 @@ class AppConstant {
   static const String TITLE_FAVOURITE = "Favourites";
   static const String TITLE_MYPROFILE = "My Profile";
 
-
-
-  static const String BASE_URL = "https://crmshannon.awdweb.com.au/webservice.php?";
-
+  static const String BASE_URL =
+      "https://crmshannon.awdweb.com.au/webservice.php?";
 
   static const String STORAGE_NAME = "shannon_storage";
-
 
   static const String tagHttpService = "tagHttpService";
 
@@ -24,7 +26,6 @@ class AppConstant {
   static const String ROUTE_LOGIN = "/login";
   static const String ROUTE_FORGOT_PASSWORD = "/forgotPwd";
   static const String ROUTE_BUY_SELL = "/buysell";
-
 
   static const String ROUTE_FIRST_REG = "/FirstRegScreen";
 
@@ -52,7 +53,7 @@ class AppConstant {
   static const String ROUTE_BUY_SELLER_PROFILE_VIEW = "/BuySellerProfileView";
   static const String ROUTE_PET_ADD_VIEW = "/SellAddPetView";
   static const String ROUTE_SELL_PET_ADDED_VIEW = "/SellPetAddedView";
-
+  static const String ROUTE_LOCATION_FILTER_VIEW = "/LocationFilterView";
 
   static const String prefUserDetail = "prefuserdetail";
   static const String prefIsInfoSeen = "prefisinfoseen";
@@ -68,5 +69,66 @@ class AppConstant {
 
   static var deviceType = "android";
 
+  List<String> filterTypeStringList = [
+    "TYPE",
+    "BREED",
+    "AGE",
+    "LOCATION",
+    "SIZE",
+    "GENDER",
+    "PERSONALITY",
+    "CRAATE TRAINED",
+    "TRANSPORT",
+    "VET CHECKED",
+  ];
 
+  List<String> typeOptionList = [
+    "PURE BREED",
+    "CROSS BREED",
+    "STUD (SIRE/DAM)",
+    "RESCUE"
+  ];
+
+ List<String> distanceOptionList = [
+    "5 KM",
+    "10 KM",
+    "20 KM",
+    "50 - 100 KM",
+    "+ 100 KM"
+  ];
+
+  List<String> ageOptionList = [
+    "8 WEEKS - 6 MONTHS",
+    "7 MONTHS - 12 MONTHS",
+    "13 MONTHS - 23 MONTHS",
+    "2 - 5 YEARS",
+    "OVER 5 YEARS"
+  ];
+
+  List<String> sizeOptionList = [
+    "MINIATURE",
+    "SMALL",
+    "MEDIUM",
+    "LARGE",
+    "EXTRA LARGE",
+  ];
+
+  List<String> genderOptionList = [
+    "MALE",
+    "FEMALE",
+  ];
+
+  List<String> personalityOptionList = [
+    "GOOD WITH KIDS",
+    "GOOD WITH SENIORS",
+    "SLEEPY /QUIET",
+    "CLEVER",
+    "VERY EXCITABLE",
+    "PROTECTIVE",
+  ];
+
+  List<String> commonYesNoOptionList = [
+    "YES",
+    "NO",
+  ];
 }

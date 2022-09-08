@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mlm/Style/app_colors.dart';
+import 'package:mlm/Widget/custom_check_box_widget.dart';
 import 'package:mlm/Widget/widget_appbar.dart';
 import 'package:mlm/enum/SearchMenuType.dart';
 import 'package:mlm/screens/SearchFilterScreen/model/SearchMainModel.dart';
 import 'package:mlm/screens/SearchFilterScreen/search_filter_controller.dart';
-
-import 'package:mlm/screens/loginScreen/login_controller.dart';
 import '../../Utils/constant.dart';
+import '../../Widget/custom_radio_button_widget.dart';
 import '../../enum/Method.dart';
 
 class SearchFilterView extends StatefulWidget {
@@ -30,11 +30,12 @@ class _SearchFilterViewState extends State<SearchFilterView> {
 
   bool isShowAdvanceMenu = false;
 
+  TextEditingController locationController = TextEditingController();
+  TextEditingController breedController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
-
-    // readArgument();
   }
 
   void readArgument() {
@@ -46,14 +47,13 @@ class _SearchFilterViewState extends State<SearchFilterView> {
   Widget build(BuildContext context) {
     tempSearchTypeList.addAll(controller.searchType.map((e) {
       return SearchMainModel()
-        ..menuType = searchStringToMenu(e.replaceAll(" ", "").toUpperCase())
+        ..menuType = searchStringToMenu(e)
         ..menuName = e
-        ..isAdvanceMenu =
-            controller.searchStringToLevel(e.replaceAll(" ", "").toUpperCase());
+        ..isAdvanceMenu = controller.searchStringToLevel(e);
     }).toList());
 
-    controller.searchTypeList.addAll(
-        tempSearchTypeList.where((element) => !element.isAdvanceMenu).toList());
+    controller.searchTypeList.value =
+        tempSearchTypeList.where((element) => !element.isAdvanceMenu).toList();
 
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
@@ -134,11 +134,11 @@ class _SearchFilterViewState extends State<SearchFilterView> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: applyFiltersButton(context),
+                child: buildApplyFiltersButton(context),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: clearFiltersButton(context),
+                child: buildClearFiltersButton(context),
               )
             ],
           ),
@@ -154,8 +154,10 @@ class _SearchFilterViewState extends State<SearchFilterView> {
   @override
   void dispose() {
     controller.dispose();
+
     super.dispose();
   }
+
   Widget _buildList(SearchMainModel searchTypeList) {
     return ExpansionTile(
       title: Text(
@@ -166,14 +168,359 @@ class _SearchFilterViewState extends State<SearchFilterView> {
           fontWeight: FontWeight.w600,
         ),
       ),
-      children: [Container()],
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          child: buildSubWidget(searchTypeList.menuName),
+        )
+      ],
     );
   }
 
+  Widget buildSubWidget(String time) {
+    var menu = searchStringToMenu(time);
 
+    var commonYesNoOptionList = AppConstant().commonYesNoOptionList;
 
-  /* Apply filters Button */
-  SizedBox applyFiltersButton(BuildContext context) {
+    switch (menu) {
+      case SearchMenuType.type:
+        {
+          return buildTypeWidget();
+        }
+      case SearchMenuType.breed:
+        {
+          return buildBreedWidget();
+        }
+      case SearchMenuType.age:
+        {
+          return buildAgeWidget();
+        }
+      case SearchMenuType.location:
+        {
+          return buildLocationWidget();
+        }
+      case SearchMenuType.size:
+        {
+          var optionList = AppConstant().sizeOptionList;
+          var optionObs = controller.sizeOptionObs;
+          return buildSizeWidget(optionList, optionObs);
+        }
+      case SearchMenuType.gender:
+        {
+          return buildGenderWidget();
+        }
+      case SearchMenuType.personality:
+        {
+          var list = AppConstant().personalityOptionList;
+          var obs = controller.personalityOptionObs;
+          return buildPersonalityWidget(list, obs);
+        }
+      case SearchMenuType.craatetrained:
+        {
+          return buildCraatetrainedWidget(commonYesNoOptionList);
+        }
+      case SearchMenuType.transport:
+        {
+          return buildTransportWidget(commonYesNoOptionList);
+        }
+      case SearchMenuType.vetChecked:
+        {
+          return buildVetCheckedWidget(commonYesNoOptionList);
+        }
+      default:
+        {
+          return Container();
+        }
+    }
+  }
+
+  InkWell buildBreedWidget() {
+    return InkWell(
+      onTap: () => {
+        Get.toNamed(AppConstant.ROUTE_BREED_TYPE_SCREEN),
+      },
+      child: Obx(
+        () => buildTextFormField(
+            controller.strBreedType.value, 'Please select breed', false,
+            controller: breedController),
+      ),
+    );
+  }
+
+  Padding buildLocationWidget() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      child: Column(
+        children: [
+          InkWell(
+            onTap: () {
+              Get.toNamed(AppConstant.ROUTE_LOCATION_FILTER_VIEW);
+            },
+            child: buildTextFormField(
+                'FIND LOCATION', 'Please select breed', false,
+                controller: locationController),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 25.0, bottom: 10, left: 10),
+            child: Row(
+              children: const [
+                Text("DISTANCE",
+                    style: TextStyle(
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Gibson',
+                        color: AppColors.black)),
+                Text("\t(select location first)",
+                    style: TextStyle(
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w100,
+                        fontFamily: 'Gibson',
+                        color: AppColors.black)),
+              ],
+            ),
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: CustomRadioButtonWidget(context, 0,
+                    AppConstant().distanceOptionList, controller.distanceObs),
+              ),
+              Expanded(
+                child: CustomRadioButtonWidget(context, 1,
+                    AppConstant().distanceOptionList, controller.distanceObs),
+              ),
+              Expanded(
+                child: CustomRadioButtonWidget(context, 2,
+                    AppConstant().distanceOptionList, controller.distanceObs),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: CustomRadioButtonWidget(context, 3,
+                    AppConstant().distanceOptionList, controller.distanceObs),
+              ),
+              Expanded(
+                child: CustomRadioButtonWidget(context, 4,
+                    AppConstant().distanceOptionList, controller.distanceObs),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Padding buildTypeWidget() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      child: Column(children: [
+        Row(
+          children: [
+            Expanded(
+              child: CustomRadioButtonWidget(context, 0,
+                  AppConstant().typeOptionList, controller.typeOptionObs),
+            ),
+            Expanded(
+              child: CustomRadioButtonWidget(context, 1,
+                  AppConstant().typeOptionList, controller.typeOptionObs),
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: CustomRadioButtonWidget(context, 2,
+                  AppConstant().typeOptionList, controller.typeOptionObs),
+            ),
+            Expanded(
+              child: CustomRadioButtonWidget(context, 3,
+                  AppConstant().typeOptionList, controller.typeOptionObs),
+            ),
+          ],
+        )
+      ]),
+    );
+  }
+
+  Padding buildVetCheckedWidget(List<String> commonYesNoOptionList) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      child: Column(children: [
+        Row(
+          children: [
+            Expanded(
+              child: CustomRadioButtonWidget(
+                  context, 0, commonYesNoOptionList, controller.vetCheckedObs),
+            ),
+            Expanded(
+              child: CustomRadioButtonWidget(
+                  context, 1, commonYesNoOptionList, controller.vetCheckedObs),
+            ),
+          ],
+        ),
+      ]),
+    );
+  }
+
+  Padding buildTransportWidget(List<String> commonYesNoOptionList) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      child: Column(children: [
+        Row(
+          children: [
+            Expanded(
+              child: CustomRadioButtonWidget(
+                  context, 0, commonYesNoOptionList, controller.transportObs),
+            ),
+            Expanded(
+              child: CustomRadioButtonWidget(
+                  context, 1, commonYesNoOptionList, controller.transportObs),
+            ),
+          ],
+        ),
+      ]),
+    );
+  }
+
+  Padding buildCraatetrainedWidget(List<String> commonYesNoOptionList) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      child: Column(children: [
+        Row(
+          children: [
+            Expanded(
+              child: CustomRadioButtonWidget(context, 0, commonYesNoOptionList,
+                  controller.crateTrainedOptionObs),
+            ),
+            Expanded(
+              child: CustomRadioButtonWidget(context, 1, commonYesNoOptionList,
+                  controller.crateTrainedOptionObs),
+            ),
+          ],
+        ),
+      ]),
+    );
+  }
+
+  Padding buildPersonalityWidget(List<String> list, RxList<String> obs) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      child: Column(children: [
+        Row(
+          children: [
+            Expanded(
+              child: CustomCheckBoxWidget(context, 0, list, obs),
+            ),
+            Expanded(
+              child: CustomCheckBoxWidget(context, 1, list, obs),
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: CustomCheckBoxWidget(context, 2, list, obs),
+            ),
+            Expanded(
+              child: CustomCheckBoxWidget(context, 3, list, obs),
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: CustomCheckBoxWidget(context, 4, list, obs),
+            ),
+            Expanded(
+              child: CustomCheckBoxWidget(context, 5, list, obs),
+            ),
+          ],
+        ),
+      ]),
+    );
+  }
+
+  Padding buildGenderWidget() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      child: Column(children: [
+        Row(
+          children: [
+            Expanded(
+              child: CustomRadioButtonWidget(context, 0,
+                  AppConstant().genderOptionList, controller.genderOptionObs),
+            ),
+            Expanded(
+              child: CustomRadioButtonWidget(context, 1,
+                  AppConstant().genderOptionList, controller.genderOptionObs),
+            ),
+          ],
+        ),
+      ]),
+    );
+  }
+
+  Padding buildSizeWidget(List<String> optionList, RxString optionObs) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      child: Column(children: [
+        Row(
+          children: [
+            Expanded(
+              child: CustomRadioButtonWidget(context, 0, optionList, optionObs),
+            ),
+            Expanded(
+              child: CustomRadioButtonWidget(context, 1, optionList, optionObs),
+            ),
+            Expanded(
+              child: CustomRadioButtonWidget(context, 2, optionList, optionObs),
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: CustomRadioButtonWidget(context, 3, optionList, optionObs),
+            ),
+            Expanded(
+              child: CustomRadioButtonWidget(context, 4, optionList, optionObs),
+            ),
+          ],
+        )
+      ]),
+    );
+  }
+
+  Padding buildAgeWidget() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        CustomRadioButtonWidget(
+            context, 0, AppConstant().ageOptionList, controller.ageOptionObs),
+        CustomRadioButtonWidget(
+            context, 1, AppConstant().ageOptionList, controller.ageOptionObs),
+        CustomRadioButtonWidget(
+            context, 2, AppConstant().ageOptionList, controller.ageOptionObs),
+        Row(
+          children: [
+            Expanded(
+              child: CustomRadioButtonWidget(context, 3,
+                  AppConstant().ageOptionList, controller.ageOptionObs),
+            ),
+            Expanded(
+              child: CustomRadioButtonWidget(context, 4,
+                  AppConstant().ageOptionList, controller.ageOptionObs),
+            ),
+          ],
+        )
+      ]),
+    );
+  }
+
+/* Apply filters Button */
+  SizedBox buildApplyFiltersButton(BuildContext context) {
     return SizedBox(
       height: AppConstant.appButtonSize,
       width: double.infinity,
@@ -225,7 +572,8 @@ class _SearchFilterViewState extends State<SearchFilterView> {
     );
   }
 
-  SizedBox clearFiltersButton(BuildContext context) {
+/* Clear filters Button */
+  SizedBox buildClearFiltersButton(BuildContext context) {
     return SizedBox(
       height: AppConstant.appButtonSize,
       width: double.infinity,
@@ -262,5 +610,64 @@ class _SearchFilterViewState extends State<SearchFilterView> {
             },
           )),
     );
+  }
+
+  TextFormField buildTextFormField(
+    String hintText,
+    String msg,
+    bool enabled, {
+    int minLines: 1,
+    int maxLines: 1,
+    int radius = 50,
+    keyboardType: TextInputType.text,
+    required TextEditingController controller,
+  }) {
+    var textStyle = const TextStyle(
+        fontSize: 16,
+        fontFamily: "Gibson",
+        fontWeight: FontWeight.w600,
+        color: AppColors.appSecondaryColor);
+    double mPadding = 10;
+    var outlineInputBorder = OutlineInputBorder(
+      borderSide:
+          const BorderSide(color: AppColors.txt_field_border_color, width: 1.0),
+      borderRadius: BorderRadius.circular(radius.toDouble()),
+    );
+    return TextFormField(
+      controller: controller,
+      enabled: enabled,
+      textCapitalization: TextCapitalization.sentences,
+      textInputAction: TextInputAction.next,
+      cursorColor: AppColors.appSecondaryColor,
+      style: textStyle,
+      minLines: minLines,
+      maxLines: maxLines,
+      keyboardType: keyboardType,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return msg;
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        isDense: true,
+        contentPadding:
+            EdgeInsets.fromLTRB(mPadding, mPadding, mPadding, mPadding),
+        hintText: hintText,
+        hintStyle: buildRadioTextStyle(),
+        disabledBorder: outlineInputBorder,
+        enabledBorder: outlineInputBorder,
+        border: outlineInputBorder,
+        focusedBorder: outlineInputBorder,
+      ),
+    );
+  }
+
+  TextStyle buildRadioTextStyle() {
+    return const TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+        fontFamily: 'Gibson',
+        color: Colors.grey);
   }
 }

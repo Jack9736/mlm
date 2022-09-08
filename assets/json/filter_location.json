@@ -1,0 +1,176 @@
+{
+  "item": [
+    {
+      "l_id": 1,
+      "l_name": "AUSTRALIA CAPITAL TERRITORY,"
+    },
+    {
+      "l_id": 2,
+      "l_name": "NEW SOUTH WALES,"
+    },
+    {
+      "l_id": 3,
+      "l_name": "NORTHERN TERRITORY,"
+    },
+    {
+      "l_id": 4,
+      "l_name": "QUEENSLAND,"
+    },
+    {
+      "l_id": 5,
+      "l_name": "SOUTH AUSTRALIA,"
+    },
+    {
+      "l_id": 6,
+      "l_name": "TASMANIA,",
+      "sub": []
+    },
+    {
+      "l_id": 7,
+      "l_name": "VICTORIA,",
+      "sub": [
+        {
+          "l_id": 7,
+          "s_id": 1,
+          "l_name": "BALLART"
+        },
+        {
+          "l_id": 7,
+          "s_id": 2,
+          "l_name": "BENDIGO"
+        },
+        {
+          "l_id": 7,
+          "s_id": 3,
+          "l_name": "GEELONG"
+        },
+        {
+          "l_id": 7,
+          "s_id": 4,
+          "l_name": "HORSHAM"
+        },
+        {
+          "l_id": 7,
+          "s_id": 5,
+          "l_name": "LA TROBE"
+        },
+        {
+          "l_id": 7,
+          "s_id": 6,
+          "l_name": "MELBOURNE",
+          "sub": [
+            {
+              "l_id": 6,
+              "s_id": 1,
+              "l_name": "BANYULE"
+            },
+            {
+              "l_id": 6,
+              "s_id": 2,
+              "l_name": "BAYSIDE",
+              "sub": [
+                {
+                  "l_id": 2,
+                  "s_id": 1,
+                  "l_name": "BEAUMARIS"
+                },
+                {
+                  "l_id": 2,
+                  "s_id": 2,
+                  "l_name": "BLACK ROCK"
+                },
+                {
+                  "l_id": 2,
+                  "s_id": 3,
+                  "l_name": "BRIGHTON"
+                },
+                {
+                  "l_id": 2,
+                  "s_id": 4,
+                  "l_name": "BRIGHTON EAST"
+                },
+                {
+                  "l_id": 2,
+                  "s_id": 5,
+                  "l_name": "HAMPTON"
+                },
+                {
+                  "l_id": 2,
+                  "s_id": 6,
+                  "l_name": "HAMPTON EAST"
+                },
+                {
+                  "l_id": 2,
+                  "s_id": 7,
+                  "l_name": "HIGHETTGHAM"
+                },
+                {
+                  "l_id": 2,
+                  "s_id": 8,
+                  "l_name": "SANDRIN"
+                }
+              ]
+            },
+            {
+              "l_id": 6,
+              "s_id": 3,
+              "l_name": "BOROONDARA"
+            },
+            {
+              "l_id": 6,
+              "s_id": 4,
+              "l_name": "CARDINIA"
+            },
+            {
+              "l_id": 6,
+              "s_id": 5,
+              "l_name": "LA CASEY"
+            },
+            {
+              "l_id": 6,
+              "s_id": 6,
+              "l_name": "DAREBIN"
+            },
+            {
+              "l_id": 6,
+              "s_id": 7,
+              "l_name": "FRANKSTON"
+            },
+            {
+              "l_id": 6,
+              "s_id": 8,
+              "l_name": "GLEN EIRA"
+            },
+            {
+              "l_id": 6,
+              "s_id": 9,
+              "l_name": "GREATER DANDENONG"
+            }
+          ]
+        },
+        {
+          "l_id": 7,
+          "s_id": 6,
+          "l_name": "MILDURA"
+        },
+        {
+          "l_id": 7,
+          "s_id": 7,
+          "l_name": "SHEPPARTON"
+        },
+        {
+          "l_id": 7,
+          "s_id": 8,
+          "l_name": "WARRNAMBOOL"
+        },
+        {
+          "l_id": 7,
+          "s_id": 9,
+          "l_name": "WODONGA"
+        }
+      ]
+    }
+  ]
+}
+
+

@@ -2,7 +2,7 @@ import 'package:mlm/enum/SearchMenuType.dart';
 
 class SearchMainModel {
   String menuName = "";
-  SearchMenuType menuType = SearchMenuType.TYPE;
+  SearchMenuType menuType = SearchMenuType.type;
   bool isAdvanceMenu = false;
   bool isAdvanceShow = false;
 }

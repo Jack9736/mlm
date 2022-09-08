@@ -1,80 +1,75 @@
+import 'package:mlm/Utils/constant.dart';
+
 enum SearchMenuType {
-  TYPE,
-  BREED,
-  AGE,
-  LOCATION,
-  SIZE,
-  GENDER,
-  PERSONALITY,
-  CRAATETRAINED,
-  TRANSPORT,
-  VETCHECKED,
+  type,
+  breed,
+  age,
+  location,
+  size,
+  gender,
+  personality,
+  craatetrained,
+  transport,
+  vetChecked,
 }
 
-SearchMenuToString(SearchMenuType time) {
+searchMenuToString(SearchMenuType time) {
+  var list = AppConstant().filterTypeStringList;
   switch (time) {
-    case SearchMenuType.TYPE:
-      return "TYPE";
+    case SearchMenuType.type:
+      return list[0];
 
-    case SearchMenuType.BREED:
-      return "BREED";
+    case SearchMenuType.breed:
+      return list[1];
 
-    case SearchMenuType.AGE:
-      return "AGE";
+    case SearchMenuType.age:
+      return list[2];
 
-    case SearchMenuType.LOCATION:
-      return "LOCATION";
+    case SearchMenuType.location:
+      return list[3];
 
-    case SearchMenuType.SIZE:
-      return "SIZE";
+    case SearchMenuType.size:
+      return list[4];
 
-    case SearchMenuType.GENDER:
-      return "GENDER";
+    case SearchMenuType.gender:
+      return list[5];
 
-    case SearchMenuType.PERSONALITY:
-      return "PERSONALITY";
+    case SearchMenuType.personality:
+      return list[6];
 
-    case SearchMenuType.CRAATETRAINED:
-      return "CRAATE TRAINED";
+    case SearchMenuType.craatetrained:
+      return list[7];
 
-    case SearchMenuType.TRANSPORT:
-      return "TRANSPORT";
+    case SearchMenuType.transport:
+      return list[8];
 
-    case SearchMenuType.VETCHECKED:
-      return "VET CHECKED";
+    case SearchMenuType.vetChecked:
+      return list[9];
   }
 }
 
 searchStringToMenu(String time) {
-  switch (time) {
-    case "TYPE":
-      return SearchMenuType.TYPE;
-
-    case "BREED":
-      return SearchMenuType.BREED;
-
-    case "AGE":
-      return SearchMenuType.AGE;
-
-    case "LOCATION":
-      return SearchMenuType.LOCATION;
-
-    case "SIZE":
-      return SearchMenuType.SIZE;
-
-    case "GENDER":
-      return SearchMenuType.GENDER;
-
-    case "PERSONALITY":
-      return SearchMenuType.PERSONALITY;
-
-    case "CRAATETRAINED":
-      return SearchMenuType.CRAATETRAINED;
-
-    case "TRANSPORT":
-      return SearchMenuType.TRANSPORT;
-
-    case "VETCHECKED":
-      return SearchMenuType.VETCHECKED;
+  time = time.toUpperCase();
+  var list = AppConstant().filterTypeStringList;
+  if (list[0] == time) {
+    return SearchMenuType.type;
+  } else if (list[1] == time) {
+    return SearchMenuType.breed;
+  } else if (list[2] == time) {
+    return SearchMenuType.age;
+  } else if (list[3] == time) {
+    return SearchMenuType.location;
+  } else if (list[4] == time) {
+    return SearchMenuType.size;
+  } else if (list[5] == time) {
+    return SearchMenuType.gender;
+  } else if (list[6] == time) {
+    return SearchMenuType.personality;
+  } else if (list[7] == time) {
+    return SearchMenuType.craatetrained;
+  } else if (list[8] == time) {
+    return SearchMenuType.transport;
+  } else if (list[9] == time) {
+    return SearchMenuType.vetChecked;
   }
 }
