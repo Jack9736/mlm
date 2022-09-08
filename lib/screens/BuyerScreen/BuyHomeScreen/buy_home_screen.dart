@@ -96,7 +96,7 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    padding: const EdgeInsets.only(left: 15.0, right: 0),
                     child: Row(children: [
                       Flexible(
                         child: TextField(

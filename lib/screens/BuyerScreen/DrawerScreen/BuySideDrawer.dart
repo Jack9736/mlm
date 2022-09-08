@@ -225,6 +225,10 @@ class BuySideDrawer extends StatelessWidget {
         }
         break;
       case 4:
+        {
+          controller.title.value = AppConstant.ROUTE_MY_PROFILE.tr;
+          Get.toNamed(AppConstant.ROUTE_MY_PROFILE);
+        }
         break;
       case 5:
         {

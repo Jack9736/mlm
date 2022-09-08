@@ -817,7 +817,8 @@ class _SellAddPetViewState extends State<SellAddPetView> {
             colorScheme: const ColorScheme.light(
               primary: AppColors.appSecondaryColor, // header background color
               onPrimary: AppColors.white, // header text color
-              onSurface: AppColors.appSecondaryColor, // body text color
+              onSurface: AppColors.appSecondaryColor, //body text color
+              // body text color
             ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(

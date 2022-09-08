@@ -122,25 +122,25 @@ class SellSideDrawer extends StatelessWidget {
                     _createDrawerItem(
                       title: 'Pet Manager'.tr,
                       isSelected: controller.selectedDestination.value == 2,
-                      onTap: () => selectDestination(1),
+                      onTap: () => selectDestination(2),
                     ),
                     buildDividerPadding(),
                     _createDrawerItem(
                       title: 'Add Pet'.tr,
                       isSelected: controller.selectedDestination.value == 3,
-                      onTap: () => selectDestination(1),
+                      onTap: () => selectDestination(3),
                     ),
                     buildDividerPadding(),
                     _createDrawerItem(
                       title: 'My Messages'.tr,
                       isSelected: controller.selectedDestination.value == 4,
-                      onTap: () => selectDestination(1),
+                      onTap: () => selectDestination(4),
                     ),
                     buildDividerPadding(),
                     _createDrawerItem(
                       title: 'Help / Settings'.tr,
                       isSelected: controller.selectedDestination.value == 5,
-                      onTap: () => selectDestination(1),
+                      onTap: () => selectDestination(5),
                     ),
                     const SizedBox(height: 10)
                   ],
@@ -217,26 +217,22 @@ class SellSideDrawer extends StatelessWidget {
         }
         break;
       case 3:
-        // controller.title.value = 'menu_dealers'.tr;
+        {
+         // controller.title.value = AppConstant.ROUTE_MY_PROFILE.tr;
+          Get.toNamed(AppConstant.ROUTE_PET_ADD_VIEW);
+        }
         break;
       case 4:
-        // Get.toNamed(AppConstant.routeDownload);
+        {
+          controller.title.value = AppConstant.TITLE_MY_MESSAGES.tr;
+          Get.toNamed(AppConstant.ROUTE_MY_MESSAGES);
+        }
         break;
       case 5:
         controller.title.value = 'menu_contact_us'.tr;
         controller.selectedScreen.value = 2;
         break;
-      case 6:
-        {}
-        break;
-      case 7:
-        break;
-      case 8:
-        break;
-      case 9:
-        break;
-      case 10:
-        break;
+
     }
     controller.closeDrawer();
   }

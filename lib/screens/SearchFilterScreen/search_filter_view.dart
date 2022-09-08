@@ -134,11 +134,11 @@ class _SearchFilterViewState extends State<SearchFilterView> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: startBrowsingButton(context),
+                child: applyFiltersButton(context),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: buildBtnLogout(context),
+                child: clearFiltersButton(context),
               )
             ],
           ),
@@ -170,49 +170,10 @@ class _SearchFilterViewState extends State<SearchFilterView> {
     );
   }
 
-  /* Container Welcome Text */
-  Container welcomeToText() {
-    return Container(
-        margin: const EdgeInsets.only(
-            top: 20.0, bottom: 0.0, left: 30.0, right: 0.0),
-        width: double.infinity,
-        child: const Center(
-          child: Align(
-            alignment: Alignment.topCenter,
-            child: Text(
-              "Welcome to",
-              style: TextStyle(
-                  fontSize: 40.0,
-                  fontWeight: FontWeight.w300,
-                  fontFamily: 'Gibson',
-                  color: AppColors.topHeaderBlueClr),
-            ),
-          ),
-        ));
-  }
 
-  Container welcomeText() {
-    return Container(
-        margin: const EdgeInsets.only(
-            top: 10.0, bottom: 20.0, left: 30.0, right: 0.0),
-        width: double.infinity,
-        child: const Center(
-          child: Align(
-            alignment: Alignment.topCenter,
-            child: Text(
-              "My Little Mate",
-              style: TextStyle(
-                  fontSize: 40.0,
-                  fontWeight: FontWeight.w300,
-                  fontFamily: 'Gibson',
-                  color: AppColors.topHeaderBlueClr),
-            ),
-          ),
-        ));
-  }
 
-  /* Start Browsing Button */
-  SizedBox startBrowsingButton(BuildContext context) {
+  /* Apply filters Button */
+  SizedBox applyFiltersButton(BuildContext context) {
     return SizedBox(
       height: AppConstant.appButtonSize,
       width: double.infinity,
@@ -264,7 +225,7 @@ class _SearchFilterViewState extends State<SearchFilterView> {
     );
   }
 
-  SizedBox buildBtnLogout(BuildContext context) {
+  SizedBox clearFiltersButton(BuildContext context) {
     return SizedBox(
       height: AppConstant.appButtonSize,
       width: double.infinity,
@@ -283,7 +244,7 @@ class _SearchFilterViewState extends State<SearchFilterView> {
                       ),
                     ],
                   )
-                : Text('Log Out'.toUpperCase(),
+                : Text('CLEAR FILTERS'.toUpperCase(),
                     style: TextStyle(
                         fontSize: 15.0,
                         fontWeight: FontWeight.w400,

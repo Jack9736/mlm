@@ -56,28 +56,72 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         appBar: const CustomAppBar(title: "Create Account"),
-        body: SafeArea(
-          bottom: true,
-          child: Form(
-              key: _formKey,
-              child: Container(
-                color: Colors.white,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    buildSignUpLabelText(),
-                    const SizedBox(height: 30),
-                    Expanded(
-                      child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: horizontalPadding),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            TextField(
-                                textCapitalization:
-                                    TextCapitalization.sentences,
+        body: Container(
+          color: Colors.white,
+          child: SafeArea(
+            bottom: true,
+            child: Form(
+                key: _formKey,
+                child: Container(
+                  color: Colors.white,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      buildSignUpLabelText(),
+                      const SizedBox(height: 30),
+                      Expanded(
+                        child: Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: horizontalPadding),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TextField(
+                                  textCapitalization:
+                                      TextCapitalization.sentences,
+                                  textInputAction: TextInputAction.next,
+                                  inputFormatters: [
+                                    FilteringTextInputFormatter.digitsOnly
+                                  ],
+                                  keyboardType:
+                                      const TextInputType.numberWithOptions(
+                                          decimal: true),
+                                  // Only numbers can be entered
+                                  cursorColor: Colors.black,
+                                  style: const TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w500),
+                                  decoration: InputDecoration(
+                                    suffixIcon: buildSendButton(context),
+                                    labelText: 'Phone Number',
+                                    labelStyle: const TextStyle(
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'Gibson',
+                                        color: AppColors.topHeaderBlueClr),
+                                  )),
+                              const SizedBox(height: 10),
+                              const Text(
+                                "You can send another code in 30 seconds",
+                                style: TextStyle(
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.w300,
+                                    fontFamily: 'Gibson',
+                                    color: AppColors.topHeaderBlueClr),
+                              ),
+                              const SizedBox(height: 40),
+                              const Text(
+                                "Phone Number Verification Code",
+                                style: TextStyle(
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Gibson',
+                                    color: AppColors.topHeaderBlueClr),
+                              ),
+                              TextField(
+                                textCapitalization: TextCapitalization.sentences,
                                 textInputAction: TextInputAction.next,
                                 inputFormatters: [
                                   FilteringTextInputFormatter.digitsOnly
@@ -85,77 +129,36 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
                                 keyboardType:
                                     const TextInputType.numberWithOptions(
                                         decimal: true),
+                                maxLength: 5,
                                 // Only numbers can be entered
                                 cursorColor: Colors.black,
-                                style: const TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w500),
-                                decoration: InputDecoration(
-                                  suffixIcon: buildSendButton(context),
-                                  labelText: 'Phone Number',
-                                  labelStyle: const TextStyle(
+
+                                decoration: const InputDecoration(
+                                  counterText: "",
+                                  labelText: '5 digit code here',
+                                  labelStyle: TextStyle(
                                       fontSize: 18.0,
                                       fontWeight: FontWeight.w400,
                                       fontFamily: 'Gibson',
                                       color: AppColors.topHeaderBlueClr),
-                                )),
-                            const SizedBox(height: 10),
-                            const Text(
-                              "You can send another code in 30 seconds",
-                              style: TextStyle(
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.w300,
-                                  fontFamily: 'Gibson',
-                                  color: AppColors.topHeaderBlueClr),
-                            ),
-                            const SizedBox(height: 40),
-                            const Text(
-                              "Phone Number Verification Code",
-                              style: TextStyle(
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'Gibson',
-                                  color: AppColors.topHeaderBlueClr),
-                            ),
-                            TextField(
-                              textCapitalization: TextCapitalization.sentences,
-                              textInputAction: TextInputAction.next,
-                              inputFormatters: [
-                                FilteringTextInputFormatter.digitsOnly
-                              ],
-                              keyboardType:
-                                  const TextInputType.numberWithOptions(
-                                      decimal: true),
-                              maxLength: 5,
-                              // Only numbers can be entered
-                              cursorColor: Colors.black,
-
-                              decoration: const InputDecoration(
-                                counterText: "",
-                                labelText: '5 digit code here',
-                                labelStyle: TextStyle(
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'Gibson',
-                                    color: AppColors.topHeaderBlueClr),
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 40),
-                            //bodyContent(),
-                          ],
+                              const SizedBox(height: 40),
+                              //bodyContent(),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: horizontalPadding,
-                          vertical: horizontalPadding),
-                      child: nextButton(context),
-                    ),
-                  ],
-                ),
-              )),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: horizontalPadding,
+                            vertical: horizontalPadding),
+                        child: nextButton(context),
+                      ),
+                    ],
+                  ),
+                )),
+          ),
         ),
       ),
     );

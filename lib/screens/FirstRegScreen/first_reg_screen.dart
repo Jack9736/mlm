@@ -54,10 +54,7 @@ class _FirstRegScreenState extends State<FirstRegScreen> {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        // appBar: const CustomAppBar(
-        //   backgroundColor: Colors.white,
-        //   backIconColor: AppColors.topHeaderBlueClr,
-        // ),
+
         body: Form(
           key: _formKey,
           child: Container(
@@ -67,27 +64,34 @@ class _FirstRegScreenState extends State<FirstRegScreen> {
               right: 35.0,
               top: 0.0,
             ),
-            child: Center(
-              child: ListView(
-                shrinkWrap: true,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+            child: Column(
+              children: [
+
+                Expanded(
+                  child: Center(
+                  child: ListView(
+                    shrinkWrap: true,
                     children: [
-                      Image.asset(
-                        "assets/lady.png",
-                        fit: BoxFit.none,
-                        width:double.infinity,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            "assets/lady.png",
+                            fit: BoxFit.none,
+                            width:double.infinity,
+                          ),
+                        ],
                       ),
                     ],
                   ),
-
-                  const SizedBox(height: 30),
-                  loginBuyerButton(context),
-                  const SizedBox(height: 30),
-                  createAccountButton(context),
-                ],
-              ),
+                ),
+                ),
+                const SizedBox(height: 30),
+                loginBuyerButton(context),
+                const SizedBox(height: 30),
+                createAccountButton(context),
+                const SizedBox(height: 30),
+              ],
             ),
           ),
         ),
@@ -104,6 +108,7 @@ class _FirstRegScreenState extends State<FirstRegScreen> {
   /* Login as a Buyer Button */
   SizedBox loginBuyerButton(BuildContext context) {
     return SizedBox(
+      width: double.infinity,
       height: AppConstant.appButtonSize,
       child: Obx(() => TextButton(
             child: controller.isApiRunning.value
@@ -146,6 +151,7 @@ class _FirstRegScreenState extends State<FirstRegScreen> {
   /* Create Account Button */
   SizedBox createAccountButton(BuildContext context) {
     return SizedBox(
+      width: double.infinity,
       height: AppConstant.appButtonSize,
       child: Obx(() => TextButton(
             child: controller.isApiRunning.value

@@ -245,7 +245,7 @@ class PetProfileView extends StatelessWidget {
                   buildListTileForAboutMe("", "Good with seniors"),
                   buildListTileForAboutMe("", "Sleepy / Quiet"),
                   buildListTileForAboutMe("", "Clever"),
-                  buildListTileForAboutMe("", "Very excitable \n Protective"),
+                  buildListTileForAboutMe("", "Very excitable"),
                   buildListTileForAboutMe("", "Protective"),
                   buildAboutMeDividerLine(),
                   loginButton(context)

@@ -8,6 +8,7 @@ class AppConstant {
   static const String TITLE_MY_MESSAGES = "My Messages";
   static const String TITLE_PET_PROFILE = "Pet Profile";
   static const String TITLE_FAVOURITE = "Favourites";
+  static const String TITLE_MYPROFILE = "My Profile";
 
 
 
@@ -41,6 +42,9 @@ class AppConstant {
   static const String ROUTE_RECENTLY_VIEW = "/RecentlyView";
   static const String ROUTE_MY_MESSAGES = "/MyMessagesView";
   static const String ROUTE_FAVOURIRE = "/FavouriteView";
+  static const String ROUTE_MY_PROFILE = "/MyProfileView";
+  static const String ROUTE_ADD_PET = "/AddPetView";
+
   static const String ROUTE_BREED_TYPE_SCREEN = "/BreedTypeScreen";
   static const String ROUTE_SEARCHFILTER_SCREEN = "/SearchFilterView";
 
