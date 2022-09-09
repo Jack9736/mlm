@@ -8,6 +8,7 @@ import 'package:mlm/screens/BuyerScreen/BuyORSellScreen/buy_sell_controller.dart
 import 'package:mlm/screens/BuyerScreen/BuySecondRegistrationScreen/buy_sec_reg_controller.dart';
 import 'package:mlm/screens/FirstRegScreen/first_reg_controller.dart';
 import 'package:mlm/screens/ForgotPasswordScreen/forgot_password_controller.dart';
+import 'package:mlm/screens/SearchFilterScreen/location_controller.dart';
 import 'package:mlm/screens/SellerScreen/AddPetScreen/sell_add_pet_controller.dart';
 import 'package:mlm/screens/SellerScreen/SellFirstRegScreen/sell_first_reg_controller.dart';
 import 'package:mlm/screens/SellerScreen/SellSecRegScreen/sell_sec_reg_controller.dart';
@@ -16,12 +17,9 @@ import '../Network/http_service.dart';
 import '../Service/StorageService.dart';
 import '../Utils/constant.dart';
 import 'package:mlm/screens/loginScreen/login_controller.dart';
-
 import '../screens/PetProfileScreen/pet_profile_controller.dart';
 import '../screens/RecentlyViewScreen/recently_view_controller.dart';
 import 'package:mlm/screens/MyMessageScreen/my_messages_controller.dart';
-
-import '../screens/SearchFilterScreen/location_filter_controller.dart';
 import '../screens/SearchFilterScreen/search_filter_controller.dart';
 import '../screens/SellerScreen/SellHomeScreen/sell_home_controller.dart';
 import '../screens/BuyerScreen/BuySellerProfileScreen/buy_seller_profile_controller.dart';
@@ -107,7 +105,7 @@ class AppBinding extends Bindings {
     Get.put(BuyMyProfileController(
         httpService: Get.find(tag: AppConstant.tagHttpService)));
 
-    Get.put(LocationFilterController(
+    Get.put(LocationController(
         httpService: Get.find(tag: AppConstant.tagHttpService)));
 
     Get.put(SellMyProfileController(

@@ -1,29 +1,29 @@
 import 'dart:convert';
 
-import 'package:mlm/screens/SearchFilterScreen/model/location_Item.dart';
+import 'location_sub.dart';
 
-LocationFilter welcomeFromJson(String str) =>
-    LocationFilter.fromJson(json.decode(str));
+LocationFilterModel welcomeFromJson(String str) =>
+    LocationFilterModel.fromJson(json.decode(str));
 
-String welcomeToJson(LocationFilter data) => json.encode(data.toJson());
+String welcomeToJson(LocationFilterModel data) => json.encode(data.toJson());
 
-class LocationFilter {
-  List<LocationItem>? item;
+class LocationFilterModel {
+  List<LocationSub>? item;
 
-  LocationFilter({
+  LocationFilterModel({
     this.item,
   });
 
-  LocationFilter.fromJson(Map<String, dynamic> json) {
+  LocationFilterModel.fromJson(Map<String, dynamic> json) {
     if (json['item'] != null) {
-      item = <LocationItem>[];
+      item = <LocationSub>[];
       json['item'].forEach((v) {
-        item?.add(LocationItem.fromJson(v));
+        item?.add(LocationSub.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() => {
-        "item": List<LocationItem>.from(item!.map((x) => x.toJson())),
+        "item": List<LocationSub>.from(item!.map((x) => x.toJson())),
       };
 }

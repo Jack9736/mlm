@@ -1,29 +1,34 @@
 class LocationSub {
   LocationSub({
-    required this.lId,
-    required this.sId,
-    required this.lName,
+    required this.pId,
+    required this.pName,
+    required this.id,
+    required this.name,
     required this.sub,
   });
 
-  int lId;
-  int sId;
-  String lName;
+  int pId;
+  String pName;
+  int id;
+  String name;
   List<LocationSub>? sub;
 
   factory LocationSub.fromJson(Map<String, dynamic> json) => LocationSub(
-        lId: json["l_id"],
-        sId: json["s_id"],
-        lName: json["l_name"],
+        pId: json["p_id"],
+        pName: json["p_name"],
+        id: json["id"],
+        name: json["name"],
         sub: json["sub"] == null
             ? null
-            : List<LocationSub>.from(json["sub"].map((x) => LocationSub.fromJson(x))),
+            : List<LocationSub>.from(
+                json["sub"].map((x) => LocationSub.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "l_id": lId,
-        "s_id": sId,
-        "l_name": lName,
+        "p_id": pId,
+        "p_name": pName,
+        "id": id,
+        "name": name,
         "sub": sub == null
             ? null
             : List<dynamic>.from(sub!.map((x) => x.toJson())),

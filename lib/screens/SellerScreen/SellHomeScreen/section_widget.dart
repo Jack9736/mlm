@@ -45,7 +45,7 @@ class _SectionWidgetState extends State<SectionWidget>
 
   @override
   void dispose() {
-    _controller.dispose();
+    // _controller.dispose();
     super.dispose();
   }
 

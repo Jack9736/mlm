@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mlm/Style/app_colors.dart';
-import 'package:mlm/Widget/custom_check_box_widget.dart';
+import 'package:mlm/Widget/rounded_cb_widget.dart';
+import 'package:mlm/Widget/rounded_rb_widget.dart';
 import 'package:mlm/Widget/widget_appbar.dart';
 import 'package:mlm/enum/SearchMenuType.dart';
 import 'package:mlm/screens/SearchFilterScreen/model/SearchMainModel.dart';
 import 'package:mlm/screens/SearchFilterScreen/search_filter_controller.dart';
 import '../../Utils/constant.dart';
-import '../../Widget/custom_radio_button_widget.dart';
+import '../../Widget/rounded_form_field_widget.dart';
 import '../../enum/Method.dart';
 
 class SearchFilterView extends StatefulWidget {
@@ -28,7 +29,9 @@ class _SearchFilterViewState extends State<SearchFilterView> {
 
   List<SearchMainModel> tempSearchTypeList = [];
 
-  bool isShowAdvanceMenu = false;
+  var isShowAdvanceMenu = false.obs;
+
+  var verticalPadding = 15.0;
 
   TextEditingController locationController = TextEditingController();
   TextEditingController breedController = TextEditingController();
@@ -101,29 +104,31 @@ class _SearchFilterViewState extends State<SearchFilterView> {
                   padding: const EdgeInsets.symmetric(vertical: 18.0),
                   child: InkWell(
                     onTap: () {
-                      if (!isShowAdvanceMenu) {
+                      if (!isShowAdvanceMenu.value) {
                         controller.searchTypeList.value = tempSearchTypeList;
                       } else {
                         controller.searchTypeList.value = tempSearchTypeList
                             .where((element) => !element.isAdvanceMenu)
                             .toList();
                       }
-                      isShowAdvanceMenu = !isShowAdvanceMenu;
+                      isShowAdvanceMenu.value = !isShowAdvanceMenu.value;
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text(
-                          "SHOW ADVANCED FILTERS",
-                          style: TextStyle(
-                            color: AppColors.appSecondaryColor,
-                            fontFamily: "Gibson",
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                            decoration: TextDecoration.underline,
-                          ),
-                        ),
-                        Icon(
+                      children: [
+                        Obx(() => Text(
+                              isShowAdvanceMenu.value
+                                  ? "HIDE ADVANCED FILTERS"
+                                  : "SHOW ADVANCED FILTERS",
+                              style: const TextStyle(
+                                color: AppColors.appSecondaryColor,
+                                fontFamily: "Gibson",
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                                decoration: TextDecoration.underline,
+                              ),
+                            )),
+                        const Icon(
                           Icons.expand_more,
                           color: AppColors.appSecondaryColor,
                         )
@@ -153,7 +158,7 @@ class _SearchFilterViewState extends State<SearchFilterView> {
 
   @override
   void dispose() {
-    controller.dispose();
+    // controller.dispose();
 
     super.dispose();
   }
@@ -234,29 +239,32 @@ class _SearchFilterViewState extends State<SearchFilterView> {
     }
   }
 
-  InkWell buildBreedWidget() {
-    return InkWell(
-      onTap: () => {
-        Get.toNamed(AppConstant.ROUTE_BREED_TYPE_SCREEN),
-      },
-      child: Obx(
-        () => buildTextFormField(
-            controller.strBreedType.value, 'Please select breed', false,
-            controller: breedController),
+  Padding buildBreedWidget() {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: verticalPadding),
+      child: InkWell(
+        onTap: () => {
+          Get.toNamed(AppConstant.ROUTE_BREED_TYPE_SCREEN),
+        },
+        child: Obx(
+          () => RoundedTextFormFieldWidget(
+              controller.strBreedType.value, 'Please select breed', false,
+              controller: breedController),
+        ),
       ),
     );
   }
 
   Padding buildLocationWidget() {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      padding: EdgeInsets.symmetric(vertical: verticalPadding),
       child: Column(
         children: [
           InkWell(
             onTap: () {
-              Get.toNamed(AppConstant.ROUTE_LOCATION_FILTER_VIEW);
+              Get.toNamed(AppConstant.ROUTE_LOCATION_STATE_VIEW);
             },
-            child: buildTextFormField(
+            child: RoundedTextFormFieldWidget(
                 'FIND LOCATION', 'Please select breed', false,
                 controller: locationController),
           ),
@@ -282,15 +290,15 @@ class _SearchFilterViewState extends State<SearchFilterView> {
           Row(
             children: [
               Expanded(
-                child: CustomRadioButtonWidget(context, 0,
+                child: RoundedRadioButtonWidget(context, 0,
                     AppConstant().distanceOptionList, controller.distanceObs),
               ),
               Expanded(
-                child: CustomRadioButtonWidget(context, 1,
+                child: RoundedRadioButtonWidget(context, 1,
                     AppConstant().distanceOptionList, controller.distanceObs),
               ),
               Expanded(
-                child: CustomRadioButtonWidget(context, 2,
+                child: RoundedRadioButtonWidget(context, 2,
                     AppConstant().distanceOptionList, controller.distanceObs),
               ),
             ],
@@ -298,11 +306,11 @@ class _SearchFilterViewState extends State<SearchFilterView> {
           Row(
             children: [
               Expanded(
-                child: CustomRadioButtonWidget(context, 3,
+                child: RoundedRadioButtonWidget(context, 3,
                     AppConstant().distanceOptionList, controller.distanceObs),
               ),
               Expanded(
-                child: CustomRadioButtonWidget(context, 4,
+                child: RoundedRadioButtonWidget(context, 4,
                     AppConstant().distanceOptionList, controller.distanceObs),
               ),
             ],
@@ -314,16 +322,16 @@ class _SearchFilterViewState extends State<SearchFilterView> {
 
   Padding buildTypeWidget() {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      padding: EdgeInsets.symmetric(vertical: verticalPadding),
       child: Column(children: [
         Row(
           children: [
             Expanded(
-              child: CustomRadioButtonWidget(context, 0,
+              child: RoundedRadioButtonWidget(context, 0,
                   AppConstant().typeOptionList, controller.typeOptionObs),
             ),
             Expanded(
-              child: CustomRadioButtonWidget(context, 1,
+              child: RoundedRadioButtonWidget(context, 1,
                   AppConstant().typeOptionList, controller.typeOptionObs),
             ),
           ],
@@ -331,11 +339,11 @@ class _SearchFilterViewState extends State<SearchFilterView> {
         Row(
           children: [
             Expanded(
-              child: CustomRadioButtonWidget(context, 2,
+              child: RoundedRadioButtonWidget(context, 2,
                   AppConstant().typeOptionList, controller.typeOptionObs),
             ),
             Expanded(
-              child: CustomRadioButtonWidget(context, 3,
+              child: RoundedRadioButtonWidget(context, 3,
                   AppConstant().typeOptionList, controller.typeOptionObs),
             ),
           ],
@@ -346,16 +354,16 @@ class _SearchFilterViewState extends State<SearchFilterView> {
 
   Padding buildVetCheckedWidget(List<String> commonYesNoOptionList) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      padding: EdgeInsets.symmetric(vertical: verticalPadding),
       child: Column(children: [
         Row(
           children: [
             Expanded(
-              child: CustomRadioButtonWidget(
+              child: RoundedRadioButtonWidget(
                   context, 0, commonYesNoOptionList, controller.vetCheckedObs),
             ),
             Expanded(
-              child: CustomRadioButtonWidget(
+              child: RoundedRadioButtonWidget(
                   context, 1, commonYesNoOptionList, controller.vetCheckedObs),
             ),
           ],
@@ -366,16 +374,16 @@ class _SearchFilterViewState extends State<SearchFilterView> {
 
   Padding buildTransportWidget(List<String> commonYesNoOptionList) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      padding: EdgeInsets.symmetric(vertical: verticalPadding),
       child: Column(children: [
         Row(
           children: [
             Expanded(
-              child: CustomRadioButtonWidget(
+              child: RoundedRadioButtonWidget(
                   context, 0, commonYesNoOptionList, controller.transportObs),
             ),
             Expanded(
-              child: CustomRadioButtonWidget(
+              child: RoundedRadioButtonWidget(
                   context, 1, commonYesNoOptionList, controller.transportObs),
             ),
           ],
@@ -386,16 +394,16 @@ class _SearchFilterViewState extends State<SearchFilterView> {
 
   Padding buildCraatetrainedWidget(List<String> commonYesNoOptionList) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      padding: EdgeInsets.symmetric(vertical: verticalPadding),
       child: Column(children: [
         Row(
           children: [
             Expanded(
-              child: CustomRadioButtonWidget(context, 0, commonYesNoOptionList,
+              child: RoundedRadioButtonWidget(context, 0, commonYesNoOptionList,
                   controller.crateTrainedOptionObs),
             ),
             Expanded(
-              child: CustomRadioButtonWidget(context, 1, commonYesNoOptionList,
+              child: RoundedRadioButtonWidget(context, 1, commonYesNoOptionList,
                   controller.crateTrainedOptionObs),
             ),
           ],
@@ -406,35 +414,35 @@ class _SearchFilterViewState extends State<SearchFilterView> {
 
   Padding buildPersonalityWidget(List<String> list, RxList<String> obs) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      padding: EdgeInsets.symmetric(vertical: verticalPadding),
       child: Column(children: [
         Row(
           children: [
             Expanded(
-              child: CustomCheckBoxWidget(context, 0, list, obs),
+              child: RoundedCheckBoxWidget(context, 0, list, obs),
             ),
             Expanded(
-              child: CustomCheckBoxWidget(context, 1, list, obs),
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            Expanded(
-              child: CustomCheckBoxWidget(context, 2, list, obs),
-            ),
-            Expanded(
-              child: CustomCheckBoxWidget(context, 3, list, obs),
+              child: RoundedCheckBoxWidget(context, 1, list, obs),
             ),
           ],
         ),
         Row(
           children: [
             Expanded(
-              child: CustomCheckBoxWidget(context, 4, list, obs),
+              child: RoundedCheckBoxWidget(context, 2, list, obs),
             ),
             Expanded(
-              child: CustomCheckBoxWidget(context, 5, list, obs),
+              child: RoundedCheckBoxWidget(context, 3, list, obs),
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: RoundedCheckBoxWidget(context, 4, list, obs),
+            ),
+            Expanded(
+              child: RoundedCheckBoxWidget(context, 5, list, obs),
             ),
           ],
         ),
@@ -444,16 +452,16 @@ class _SearchFilterViewState extends State<SearchFilterView> {
 
   Padding buildGenderWidget() {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      padding: EdgeInsets.symmetric(vertical: verticalPadding),
       child: Column(children: [
         Row(
           children: [
             Expanded(
-              child: CustomRadioButtonWidget(context, 0,
+              child: RoundedRadioButtonWidget(context, 0,
                   AppConstant().genderOptionList, controller.genderOptionObs),
             ),
             Expanded(
-              child: CustomRadioButtonWidget(context, 1,
+              child: RoundedRadioButtonWidget(context, 1,
                   AppConstant().genderOptionList, controller.genderOptionObs),
             ),
           ],
@@ -464,28 +472,33 @@ class _SearchFilterViewState extends State<SearchFilterView> {
 
   Padding buildSizeWidget(List<String> optionList, RxString optionObs) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      padding: EdgeInsets.symmetric(vertical: verticalPadding),
       child: Column(children: [
         Row(
           children: [
             Expanded(
-              child: CustomRadioButtonWidget(context, 0, optionList, optionObs),
+              child:
+                  RoundedRadioButtonWidget(context, 0, optionList, optionObs),
             ),
             Expanded(
-              child: CustomRadioButtonWidget(context, 1, optionList, optionObs),
+              child:
+                  RoundedRadioButtonWidget(context, 1, optionList, optionObs),
             ),
             Expanded(
-              child: CustomRadioButtonWidget(context, 2, optionList, optionObs),
+              child:
+                  RoundedRadioButtonWidget(context, 2, optionList, optionObs),
             ),
           ],
         ),
         Row(
           children: [
             Expanded(
-              child: CustomRadioButtonWidget(context, 3, optionList, optionObs),
+              child:
+                  RoundedRadioButtonWidget(context, 3, optionList, optionObs),
             ),
             Expanded(
-              child: CustomRadioButtonWidget(context, 4, optionList, optionObs),
+              child:
+                  RoundedRadioButtonWidget(context, 4, optionList, optionObs),
             ),
           ],
         )
@@ -495,22 +508,22 @@ class _SearchFilterViewState extends State<SearchFilterView> {
 
   Padding buildAgeWidget() {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      padding: EdgeInsets.symmetric(vertical: verticalPadding),
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-        CustomRadioButtonWidget(
+        RoundedRadioButtonWidget(
             context, 0, AppConstant().ageOptionList, controller.ageOptionObs),
-        CustomRadioButtonWidget(
+        RoundedRadioButtonWidget(
             context, 1, AppConstant().ageOptionList, controller.ageOptionObs),
-        CustomRadioButtonWidget(
+        RoundedRadioButtonWidget(
             context, 2, AppConstant().ageOptionList, controller.ageOptionObs),
         Row(
           children: [
             Expanded(
-              child: CustomRadioButtonWidget(context, 3,
+              child: RoundedRadioButtonWidget(context, 3,
                   AppConstant().ageOptionList, controller.ageOptionObs),
             ),
             Expanded(
-              child: CustomRadioButtonWidget(context, 4,
+              child: RoundedRadioButtonWidget(context, 4,
                   AppConstant().ageOptionList, controller.ageOptionObs),
             ),
           ],

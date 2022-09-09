@@ -4,22 +4,17 @@ import 'dart:math';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:images_picker/images_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:mlm/Style/app_colors.dart';
 import 'package:mlm/Style/k_text_style.dart';
-import 'package:mlm/Widget/custom_check_box_widget.dart';
-
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-
-
-
 import 'package:mlm/screens/SellerScreen/AddPetScreen/sell_add_pet_controller.dart';
-import '../../../Style/ButtonTextStyle.dart';
 import '../../../Utils/constant.dart';
+import '../../../Widget/rounded_cb_widget.dart';
+import '../../../Widget/rounded_form_field_widget.dart';
+import '../../../Widget/rounded_rb_widget.dart';
 import '../../../Widget/widget_appbar.dart';
 import '../SellSecRegScreen/sell_sec_reg_controller.dart';
 
@@ -105,7 +100,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                 children: [
                   buildColumn(
                     "NAME",
-                    buildTextFormField(
+                    RoundedTextFormFieldWidget(
                         'TYPE NAME HERE', 'Please Enter name', true,
                         controller: nameController),
                   ),
@@ -122,36 +117,24 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                         Row(
                           children: [
                             Expanded(
-                              child: CustomRadioButtonWidget(
-                                  context,
-                                  0,
-                                  AppConstant().typeOptionList,
-                                  typeOptionObs),
+                              child: RoundedRadioButtonWidget(context, 0,
+                                  AppConstant().typeOptionList, typeOptionObs),
                             ),
                             Expanded(
-                              child: CustomRadioButtonWidget(
-                                  context,
-                                  1,
-                                  AppConstant().typeOptionList,
-                                  typeOptionObs),
+                              child: RoundedRadioButtonWidget(context, 1,
+                                  AppConstant().typeOptionList, typeOptionObs),
                             ),
                           ],
                         ),
                         Row(
                           children: [
                             Expanded(
-                              child: CustomRadioButtonWidget(
-                                  context,
-                                  2,
-                                  AppConstant().typeOptionList,
-                                  typeOptionObs),
+                              child: RoundedRadioButtonWidget(context, 2,
+                                  AppConstant().typeOptionList, typeOptionObs),
                             ),
                             Expanded(
-                              child: CustomRadioButtonWidget(
-                                  context,
-                                  3,
-                                  AppConstant().typeOptionList,
-                                  typeOptionObs),
+                              child: RoundedRadioButtonWidget(context, 3,
+                                  AppConstant().typeOptionList, typeOptionObs),
                             ),
                           ],
                         )
@@ -163,7 +146,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                         Get.toNamed(AppConstant.ROUTE_BREED_TYPE_SCREEN),
                       },
                       child: Obx(
-                        () => buildTextFormField(
+                        () => RoundedTextFormFieldWidget(
                             sellAddPetController.strBreedType.value,
                             'Please select breed',
                             false,
@@ -176,27 +159,21 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                     Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          CustomRadioButtonWidget(context, 0,
+                          RoundedRadioButtonWidget(context, 0,
                               AppConstant().ageOptionList, ageOptionObs),
-                          CustomRadioButtonWidget(context, 1,
+                          RoundedRadioButtonWidget(context, 1,
                               AppConstant().ageOptionList, ageOptionObs),
-                          CustomRadioButtonWidget(context, 2,
+                          RoundedRadioButtonWidget(context, 2,
                               AppConstant().ageOptionList, ageOptionObs),
                           Row(
                             children: [
                               Expanded(
-                                child: CustomRadioButtonWidget(
-                                    context,
-                                    3,
-                                    AppConstant().ageOptionList,
-                                    ageOptionObs),
+                                child: RoundedRadioButtonWidget(context, 3,
+                                    AppConstant().ageOptionList, ageOptionObs),
                               ),
                               Expanded(
-                                child: CustomRadioButtonWidget(
-                                    context,
-                                    4,
-                                    AppConstant().ageOptionList,
-                                    ageOptionObs),
+                                child: RoundedRadioButtonWidget(context, 4,
+                                    AppConstant().ageOptionList, ageOptionObs),
                               ),
                             ],
                           )
@@ -204,13 +181,13 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                   ),
                   buildColumn(
                     "LOCATION",
-                    buildTextFormField(
+                    RoundedTextFormFieldWidget(
                         'FIND LOCATION', 'Please select breed', true,
                         controller: locationController),
                   ),
                   buildColumn(
                       "PRICE",
-                      buildTextFormField(
+                      RoundedTextFormFieldWidget(
                           'ENTER PRICE', 'Please select breed', true,
                           controller: priceController,
                           keyboardType: const TextInputType.numberWithOptions(
@@ -221,15 +198,15 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       Row(
                         children: [
                           Expanded(
-                            child: CustomRadioButtonWidget(context, 0,
+                            child: RoundedRadioButtonWidget(context, 0,
                                 AppConstant().sizeOptionList, sizeOptionObs),
                           ),
                           Expanded(
-                            child: CustomRadioButtonWidget(context, 1,
+                            child: RoundedRadioButtonWidget(context, 1,
                                 AppConstant().sizeOptionList, sizeOptionObs),
                           ),
                           Expanded(
-                            child: CustomRadioButtonWidget(context, 2,
+                            child: RoundedRadioButtonWidget(context, 2,
                                 AppConstant().sizeOptionList, sizeOptionObs),
                           ),
                         ],
@@ -237,11 +214,11 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       Row(
                         children: [
                           Expanded(
-                            child: CustomRadioButtonWidget(context, 3,
+                            child: RoundedRadioButtonWidget(context, 3,
                                 AppConstant().sizeOptionList, sizeOptionObs),
                           ),
                           Expanded(
-                            child: CustomRadioButtonWidget(context, 4,
+                            child: RoundedRadioButtonWidget(context, 4,
                                 AppConstant().sizeOptionList, sizeOptionObs),
                           ),
                         ],
@@ -254,14 +231,14 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       Row(
                         children: [
                           Expanded(
-                            child: CustomRadioButtonWidget(
+                            child: RoundedRadioButtonWidget(
                                 context,
                                 0,
                                 AppConstant().genderOptionList,
                                 genderOptionObs),
                           ),
                           Expanded(
-                            child: CustomRadioButtonWidget(
+                            child: RoundedRadioButtonWidget(
                                 context,
                                 1,
                                 AppConstant().genderOptionList,
@@ -277,14 +254,14 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       Row(
                         children: [
                           Expanded(
-                            child: CustomCheckBoxWidget(
+                            child: RoundedCheckBoxWidget(
                                 context,
                                 0,
                                 AppConstant().personalityOptionList,
                                 personalityOptionObs),
                           ),
                           Expanded(
-                            child: CustomCheckBoxWidget(
+                            child: RoundedCheckBoxWidget(
                                 context,
                                 1,
                                 AppConstant().personalityOptionList,
@@ -295,14 +272,14 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       Row(
                         children: [
                           Expanded(
-                            child: CustomCheckBoxWidget(
+                            child: RoundedCheckBoxWidget(
                                 context,
                                 2,
                                 AppConstant().personalityOptionList,
                                 personalityOptionObs),
                           ),
                           Expanded(
-                            child: CustomCheckBoxWidget(
+                            child: RoundedCheckBoxWidget(
                                 context,
                                 3,
                                 AppConstant().personalityOptionList,
@@ -313,14 +290,14 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       Row(
                         children: [
                           Expanded(
-                            child: CustomCheckBoxWidget(
+                            child: RoundedCheckBoxWidget(
                                 context,
                                 4,
                                 AppConstant().personalityOptionList,
                                 personalityOptionObs),
                           ),
                           Expanded(
-                            child: CustomCheckBoxWidget(
+                            child: RoundedCheckBoxWidget(
                                 context,
                                 5,
                                 AppConstant().personalityOptionList,
@@ -336,14 +313,14 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       Row(
                         children: [
                           Expanded(
-                            child: CustomRadioButtonWidget(
+                            child: RoundedRadioButtonWidget(
                                 context,
                                 0,
                                 AppConstant().commonYesNoOptionList,
                                 crateTrainedOptionObs),
                           ),
                           Expanded(
-                            child: CustomRadioButtonWidget(
+                            child: RoundedRadioButtonWidget(
                                 context,
                                 1,
                                 AppConstant().commonYesNoOptionList,
@@ -359,14 +336,14 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       Row(
                         children: [
                           Expanded(
-                            child: CustomRadioButtonWidget(
+                            child: RoundedRadioButtonWidget(
                                 context,
                                 0,
                                 AppConstant().commonYesNoOptionList,
                                 requireTransportOptionObs),
                           ),
                           Expanded(
-                            child: CustomRadioButtonWidget(
+                            child: RoundedRadioButtonWidget(
                                 context,
                                 1,
                                 AppConstant().commonYesNoOptionList,
@@ -378,14 +355,14 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                   ),
                   buildColumn(
                       "MICROCHIP (hidden to public)",
-                      buildTextFormField(
+                      RoundedTextFormFieldWidget(
                           'ENTER NUMBER', 'Please enter number', true,
                           controller: microchipController,
                           keyboardType: const TextInputType.numberWithOptions(
                               decimal: true))),
                   buildColumn(
                     "REHOMING NUMBER (hidden to public)",
-                    buildTextFormField(
+                    RoundedTextFormFieldWidget(
                         'ENTER NUMBER', 'Please enter number', true,
                         controller: rehomingNumberController,
                         keyboardType: const TextInputType.numberWithOptions(
@@ -397,14 +374,14 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       Row(
                         children: [
                           Expanded(
-                            child: CustomRadioButtonWidget(
+                            child: RoundedRadioButtonWidget(
                                 context,
                                 0,
                                 AppConstant().commonYesNoOptionList,
                                 vetCheckedOptionObs),
                           ),
                           Expanded(
-                            child: CustomRadioButtonWidget(
+                            child: RoundedRadioButtonWidget(
                                 context,
                                 1,
                                 AppConstant().commonYesNoOptionList,
@@ -421,7 +398,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                         onTap: () {
                           _selectDate(context);
                         },
-                        child: buildTextFormField(
+                        child: RoundedTextFormFieldWidget(
                             availableFromObs.value, 'Please Enter date', false,
                             controller: availableFromController),
                       ),
@@ -436,7 +413,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                   ),
                   buildColumn(
                     "NOTES",
-                    buildTextFormField("Type here…", 'Please Enter note', true,
+                    RoundedTextFormFieldWidget("Type here…", 'Please Enter note', true,
                         minLines: 4,
                         maxLines: 4,
                         radius: 10,
@@ -496,57 +473,6 @@ class _SellAddPetViewState extends State<SellAddPetView> {
   TextEditingController rehomingNumberController = TextEditingController();
   TextEditingController availableFromController = TextEditingController();
   TextEditingController notesController = TextEditingController();
-
-  TextFormField buildTextFormField(
-    String hintText,
-    String msg,
-    bool enabled, {
-    int minLines: 1,
-    int maxLines: 1,
-    int radius = 50,
-    keyboardType: TextInputType.text,
-    required TextEditingController controller,
-  }) {
-    var textStyle = const TextStyle(
-        fontSize: 16,
-        fontFamily: "Gibson",
-        fontWeight: FontWeight.w600,
-        color: AppColors.appSecondaryColor);
-    double mPadding = 10;
-    var outlineInputBorder = OutlineInputBorder(
-      borderSide:
-          const BorderSide(color: AppColors.txt_field_border_color, width: 1.0),
-      borderRadius: BorderRadius.circular(radius.toDouble()),
-    );
-    return TextFormField(
-      controller: controller,
-      enabled: enabled,
-      textCapitalization: TextCapitalization.sentences,
-      textInputAction: TextInputAction.next,
-      cursorColor: AppColors.appSecondaryColor,
-      style: textStyle,
-      minLines: minLines,
-      maxLines: maxLines,
-      keyboardType: keyboardType,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return msg;
-        }
-        return null;
-      },
-      decoration: InputDecoration(
-        isDense: true,
-        contentPadding:
-            EdgeInsets.fromLTRB(mPadding, mPadding, mPadding, mPadding),
-        hintText: hintText,
-        hintStyle: buildRadioTextStyle(),
-        disabledBorder: outlineInputBorder,
-        enabledBorder: outlineInputBorder,
-        border: outlineInputBorder,
-        focusedBorder: outlineInputBorder,
-      ),
-    );
-  }
 
   Column buildColumn(String header, Widget sizedBox) {
     return Column(
@@ -749,7 +675,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
     );
 
     if (picked != null) {
-      availableFromController.text=getFormattedDate(picked.toString());
+      availableFromController.text = getFormattedDate(picked.toString());
       availableFromObs.refresh();
     }
   }

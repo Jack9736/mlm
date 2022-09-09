@@ -4,7 +4,6 @@ import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:mlm/Style/app_colors.dart';
-import 'package:mlm/Style/app_colors.dart';
 import 'package:mlm/Utils/constant.dart';
 import 'package:mlm/screens/BreedTypeScreen/breed_type_screen.dart';
 import 'package:mlm/screens/BuyerScreen/BuyComplateRegScreen/buy_complete_reg_view.dart';
@@ -16,6 +15,7 @@ import 'package:mlm/screens/FirstRegScreen/first_reg_screen.dart';
 import 'package:mlm/screens/PetProfileScreen/pet_profile_screen.dart';
 import 'package:mlm/screens/RecentlyViewScreen/recently_view_screen.dart';
 import 'package:mlm/screens/SearchFilterScreen/location_filter_view.dart';
+import 'package:mlm/screens/SearchFilterScreen/location_state_view.dart';
 import 'package:mlm/screens/SearchFilterScreen/search_filter_view.dart';
 import 'package:mlm/screens/SellerScreen/AddPetScreen/sell_add_pet_view.dart';
 import 'package:mlm/screens/SellerScreen/SellFirstRegScreen/sell_first_reg_view.dart';
@@ -113,51 +113,41 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: AppConstant.ROUTE_BUY_HOME,
             page: () => const BuyHomeScreen()),
-
         GetPage(
             name: AppConstant.ROUTE_RECENTLY_VIEW, page: () => RecentlyView()),
-
         GetPage(
             name: AppConstant.ROUTE_MY_MESSAGES,
             page: () => MyMessagesScreen()),
-
         GetPage(
             name: AppConstant.ROUTE_PET_PROFILE_VIEW,
             page: () => PetProfileView()),
-
         GetPage(
             name: AppConstant.ROUTE_BUY_SELLER_PROFILE_VIEW,
             page: () => BuySellerProfileView()),
-
         GetPage(
             name: AppConstant.ROUTE_PET_ADD_VIEW,
             page: () => const SellAddPetView()),
-
         GetPage(
             name: AppConstant.ROUTE_SELL_PET_ADDED_VIEW,
             page: () => const PetAddedView()),
-
         GetPage(name: AppConstant.ROUTE_FAVOURIRE, page: () => FavouriteView()),
-
         GetPage(
             name: AppConstant.ROUTE_BREED_TYPE_SCREEN,
             page: () => BreedTypeScreen()),
-
         GetPage(
             name: AppConstant.ROUTE_SEARCHFILTER_SCREEN,
             page: () => const SearchFilterView()),
-
         GetPage(
-            name: AppConstant.ROUTE_MY_PROFILE,
-            page: () =>  BuyMyProfileView()),
-
+            name: AppConstant.ROUTE_MY_PROFILE, page: () => BuyMyProfileView()),
+        GetPage(
+            name: AppConstant.ROUTE_LOCATION_STATE_VIEW,
+            page: () => const LocationStateView()),
         GetPage(
             name: AppConstant.ROUTE_LOCATION_FILTER_VIEW,
-            page: () =>  const LocationFilterView()),
-
+            page: () => const LocationFilterView()),
         GetPage(
             name: AppConstant.ROUTE_SELLER_MY_PROFILE,
-            page: () =>  SellMyProfileView()),
+            page: () => SellMyProfileView()),
       ],
     );
   }

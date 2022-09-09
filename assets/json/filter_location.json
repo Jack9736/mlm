@@ -1,176 +1,249 @@
 {
   "item": [
     {
-      "l_id": 1,
-      "l_name": "AUSTRALIA CAPITAL TERRITORY,"
-    },
-    {
-      "l_id": 2,
-      "l_name": "NEW SOUTH WALES,"
-    },
-    {
-      "l_id": 3,
-      "l_name": "NORTHERN TERRITORY,"
-    },
-    {
-      "l_id": 4,
-      "l_name": "QUEENSLAND,"
-    },
-    {
-      "l_id": 5,
-      "l_name": "SOUTH AUSTRALIA,"
-    },
-    {
-      "l_id": 6,
-      "l_name": "TASMANIA,",
+      "p_id": 1,
+      "p_name": "AUSTRALIA CAPITAL TERRITORY",
+      "id": 4,
+      "name": "AUSTRALIA CAPITAL TERRITORY",
       "sub": []
     },
     {
-      "l_id": 7,
-      "l_name": "VICTORIA,",
+      "p_id": 2,
+      "p_name": "NEW SOUTH WALES",
+      "id": 4,
+      "name": "NEW SOUTH WALES",
+      "sub": []
+    },
+    {
+      "p_id": 3,
+      "p_name": "NORTHERN TERRITORY",
+      "id": 4,
+      "name": "NORTHERN TERRITORY",
+      "sub": []
+    },
+    {
+      "p_id": 4,
+      "p_name": "QUEENSLAND",
+      "id": 4,
+      "name": "QUEENSLAND",
+      "sub": []
+    },
+    {
+      "p_id": 5,
+      "p_name": "SOUTH AUSTRALIA",
+      "id": 4,
+      "name": "SOUTH AUSTRALIA",
+      "sub": []
+    },
+    {
+      "p_id": 6,
+      "p_name": "TASMANIA",
+      "id": 4,
+      "name": "TASMANIA",
+      "sub": []
+    },
+    {
+      "p_id": 7,
+      "p_name": "VICTORIA",
+      "id": 4,
+      "name": "VICTORIA",
       "sub": [
         {
-          "l_id": 7,
-          "s_id": 1,
-          "l_name": "BALLART"
+          "p_id": 7,
+          "p_name": "VICTORIA",
+          "id": 1,
+          "name": "BALLART",
+          "sub": []
         },
         {
-          "l_id": 7,
-          "s_id": 2,
-          "l_name": "BENDIGO"
+          "p_id": 7,
+          "p_name": "VICTORIA",
+          "id": 2,
+          "name": "BENDIGO",
+          "sub": []
         },
         {
-          "l_id": 7,
-          "s_id": 3,
-          "l_name": "GEELONG"
+          "p_id": 7,
+          "p_name": "VICTORIA",
+          "id": 3,
+          "name": "GEELONG",
+          "sub": []
         },
         {
-          "l_id": 7,
-          "s_id": 4,
-          "l_name": "HORSHAM"
+          "p_id": 7,
+          "p_name": "VICTORIA",
+          "id": 4,
+          "name": "HORSHAM",
+          "sub": []
         },
         {
-          "l_id": 7,
-          "s_id": 5,
-          "l_name": "LA TROBE"
+          "p_id": 7,
+          "p_name": "VICTORIA",
+          "id": 5,
+          "name": "LA TROBE",
+          "sub": []
         },
         {
-          "l_id": 7,
-          "s_id": 6,
-          "l_name": "MELBOURNE",
+          "p_id": 7,
+          "p_name": "VICTORIA",
+          "id": 6,
+          "name": "MELBOURNE",
           "sub": [
             {
-              "l_id": 6,
-              "s_id": 1,
-              "l_name": "BANYULE"
+              "p_id": 6,
+              "p_name": "MELBOURNE",
+              "id": 1,
+              "name": "BANYULE",
+              "sub": []
             },
             {
-              "l_id": 6,
-              "s_id": 2,
-              "l_name": "BAYSIDE",
+              "p_id": 6,
+              "p_name": "MELBOURNE",
+              "id": 2,
+              "name": "BAYSIDE",
               "sub": [
                 {
-                  "l_id": 2,
-                  "s_id": 1,
-                  "l_name": "BEAUMARIS"
+                  "p_id": 2,
+                  "p_name": "BAYSIDE",
+                  "id": 1,
+                  "name": "BEAUMARIS",
+                  "sub": []
                 },
                 {
-                  "l_id": 2,
-                  "s_id": 2,
-                  "l_name": "BLACK ROCK"
+                  "p_id": 2,
+                  "p_name": "BAYSIDE",
+                  "id": 2,
+                  "name": "BLACK ROCK",
+                  "sub": []
                 },
                 {
-                  "l_id": 2,
-                  "s_id": 3,
-                  "l_name": "BRIGHTON"
+                  "p_id": 2,
+                  "p_name": "BAYSIDE",
+                  "id": 3,
+                  "name": "BRIGHTON",
+                  "sub": []
                 },
                 {
-                  "l_id": 2,
-                  "s_id": 4,
-                  "l_name": "BRIGHTON EAST"
+                  "p_id": 2,
+                  "p_name": "BAYSIDE",
+                  "id": 4,
+                  "name": "BRIGHTON EAST",
+                  "sub": []
                 },
                 {
-                  "l_id": 2,
-                  "s_id": 5,
-                  "l_name": "HAMPTON"
+                  "p_id": 2,
+                  "p_name": "BAYSIDE",
+                  "id": 5,
+                  "name": "HAMPTON",
+                  "sub": []
                 },
                 {
-                  "l_id": 2,
-                  "s_id": 6,
-                  "l_name": "HAMPTON EAST"
+                  "p_id": 2,
+                  "p_name": "BAYSIDE",
+                  "id": 6,
+                  "name": "HAMPTON EAST",
+                  "sub": []
                 },
                 {
-                  "l_id": 2,
-                  "s_id": 7,
-                  "l_name": "HIGHETTGHAM"
+                  "p_id": 2,
+                  "p_name": "BAYSIDE",
+                  "id": 7,
+                  "name": "HIGHETTGHAM",
+                  "sub": []
                 },
                 {
-                  "l_id": 2,
-                  "s_id": 8,
-                  "l_name": "SANDRIN"
+                  "p_id": 2,
+                  "p_name": "BAYSIDE",
+                  "id": 8,
+                  "name": "SANDRIN",
+                  "sub": []
                 }
               ]
             },
             {
-              "l_id": 6,
-              "s_id": 3,
-              "l_name": "BOROONDARA"
+              "p_id": 6,
+              "p_name": "MELBOURNE",
+              "id": 3,
+              "name": "BOROONDARA",
+              "sub": []
             },
             {
-              "l_id": 6,
-              "s_id": 4,
-              "l_name": "CARDINIA"
+              "p_id": 6,
+              "p_name": "MELBOURNE",
+              "id": 4,
+              "name": "CARDINIA",
+              "sub": []
             },
             {
-              "l_id": 6,
-              "s_id": 5,
-              "l_name": "LA CASEY"
+              "p_id": 6,
+              "p_name": "MELBOURNE",
+              "id": 5,
+              "name": "LA CASEY",
+              "sub": []
             },
             {
-              "l_id": 6,
-              "s_id": 6,
-              "l_name": "DAREBIN"
+              "p_id": 6,
+              "p_name": "MELBOURNE",
+              "id": 6,
+              "name": "DAREBIN",
+              "sub": []
             },
             {
-              "l_id": 6,
-              "s_id": 7,
-              "l_name": "FRANKSTON"
+              "p_id": 6,
+              "p_name": "MELBOURNE",
+              "id": 7,
+              "name": "FRANKSTON",
+              "sub": []
             },
             {
-              "l_id": 6,
-              "s_id": 8,
-              "l_name": "GLEN EIRA"
+              "p_id": 6,
+              "p_name": "MELBOURNE",
+              "id": 8,
+              "name": "GLEN EIRA",
+              "sub": []
             },
             {
-              "l_id": 6,
-              "s_id": 9,
-              "l_name": "GREATER DANDENONG"
+              "p_id": 6,
+              "p_name": "MELBOURNE",
+              "id": 9,
+              "name": "GREATER DANDENONG",
+              "sub": []
             }
           ]
         },
         {
-          "l_id": 7,
-          "s_id": 6,
-          "l_name": "MILDURA"
+          "p_id": 7,
+          "p_name": "VICTORIA",
+          "id": 6,
+          "name": "MILDURA",
+          "sub": []
         },
         {
-          "l_id": 7,
-          "s_id": 7,
-          "l_name": "SHEPPARTON"
+          "p_id": 7,
+          "p_name": "VICTORIA",
+          "id": 7,
+          "name": "SHEPPARTON",
+          "sub": []
         },
         {
-          "l_id": 7,
-          "s_id": 8,
-          "l_name": "WARRNAMBOOL"
+          "p_id": 7,
+          "p_name": "VICTORIA",
+          "id": 8,
+          "name": "WARRNAMBOOL",
+          "sub": []
         },
         {
-          "l_id": 7,
-          "s_id": 9,
-          "l_name": "WODONGA"
+          "p_id": 7,
+          "p_name": "VICTORIA",
+          "id": 9,
+          "name": "WODONGA",
+          "sub": []
         }
       ]
     }
   ]
 }
+
+
 
 

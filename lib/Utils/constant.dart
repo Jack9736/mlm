@@ -54,6 +54,7 @@ class AppConstant {
   static const String ROUTE_BUY_SELLER_PROFILE_VIEW = "/BuySellerProfileView";
   static const String ROUTE_PET_ADD_VIEW = "/SellAddPetView";
   static const String ROUTE_SELL_PET_ADDED_VIEW = "/SellPetAddedView";
+  static const String ROUTE_LOCATION_STATE_VIEW = "/LocationStateView";
   static const String ROUTE_LOCATION_FILTER_VIEW = "/LocationFilterView";
 
   static const String prefUserDetail = "prefuserdetail";
@@ -65,6 +66,8 @@ class AppConstant {
   static const String prefPassword = "prefpassword";
 
   static const String argUserType = "userType";
+
+  static const String argLocationId = "argLocationId";
 
   static const double appButtonSize = 50;
 
@@ -90,7 +93,7 @@ class AppConstant {
     "RESCUE"
   ];
 
- List<String> distanceOptionList = [
+  List<String> distanceOptionList = [
     "5 KM",
     "10 KM",
     "20 KM",

@@ -7,6 +7,8 @@ import 'package:mlm/Widget/widget_appbar.dart';
 import 'package:mlm/screens/BreedTypeScreen/breed_type_controller.dart';
 
 import '../../Utils/constant.dart';
+import '../SearchFilterScreen/search_filter_controller.dart';
+import '../SearchFilterScreen/search_filter_controller.dart';
 import '../SellerScreen/AddPetScreen/sell_add_pet_controller.dart';
 
 class BreedTypeScreen extends StatelessWidget {
@@ -16,6 +18,7 @@ class BreedTypeScreen extends StatelessWidget {
 
   BreedTypeController controller = Get.find();
   SellAddPetController sellAddPetController = Get.find();
+  SearchFilterController searchFilterController = Get.find();
   final TextEditingController _textSearchController = TextEditingController();
 
   @override
@@ -158,8 +161,10 @@ class BreedTypeScreen extends StatelessWidget {
 
               if (list.isNotEmpty) {
                 sellAddPetController.strBreedType.value = list[0].breedName;
+                searchFilterController.strBreedType.value = list[0].breedName;
               } else {
                 sellAddPetController.strBreedType.value = "FIND BREED";
+                searchFilterController.strBreedType.value = "FIND BREED";
               }
 
               Get.back();
