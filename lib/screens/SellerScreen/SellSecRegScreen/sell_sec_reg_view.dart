@@ -40,320 +40,293 @@ class _SellSecRegViewState extends State<SellSecRegView> {
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         appBar: const CustomAppBar(title: "Create Account"),
-        body: SafeArea(
-          bottom: true,
-          child: Form(
-            key: _formKey,
-            child: Container(
-              color: Colors.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Expanded(
-                      child: Container(
-                          color: Colors.white,
-                          child: Obx(
-                            () {
-                              return ListView(children: [
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                signUpText(),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 10.0,
-                                      bottom: 30.0,
-                                      right: 30.0,
-                                      left: 30.0),
-                                  child: Column(
-                                    children: [
-                                      TextFormField(
-                                        textCapitalization:
-                                            TextCapitalization.sentences,
-                                        textInputAction: TextInputAction.next,
-                                        cursorColor: Colors.black,
-                                        style: buildTextStyle(14),
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return 'Enter Business Name';
-                                          }
-                                          return null;
-                                        },
-                                        decoration: InputDecoration(
-                                          labelText: 'Breeder Business Name',
-                                          labelStyle: buildTextStyle(16.0),
-                                          hintText: 'Name',
-                                          hintStyle: buildRadioTextStyle(),
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        height: 15,
-                                      ),
-                                      TextFormField(
-                                        textCapitalization:
-                                            TextCapitalization.sentences,
-                                        textInputAction: TextInputAction.next,
-                                        cursorColor: Colors.black,
-                                        style: buildTextStyle(14),
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return 'Enter ABN Number';
-                                          }
-                                          return null;
-                                        },
-                                        decoration: InputDecoration(
-                                          labelText: 'ABN (If applicable)',
-                                          labelStyle: buildTextStyle(16.0),
-                                          hintText: 'ABN Number',
-                                          hintStyle: buildRadioTextStyle(),
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        height: 15,
-                                      ),
-                                      TextFormField(
-                                        textCapitalization:
-                                            TextCapitalization.sentences,
-                                        textInputAction: TextInputAction.next,
-                                        cursorColor: Colors.black,
-                                        style: buildTextStyle(14),
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return 'Enter Phone number';
-                                          }
-                                          return null;
-                                        },
-                                        decoration: InputDecoration(
-                                          labelText:
-                                              'Phone number (hidden to public)',
-                                          labelStyle: buildTextStyle(16.0),
-                                          hintText: 'Phone number',
-                                          hintStyle: buildRadioTextStyle(),
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        height: 15,
-                                      ),
-                                      TextFormField(
-                                        textCapitalization:
-                                            TextCapitalization.sentences,
-                                        textInputAction: TextInputAction.next,
-                                        cursorColor: Colors.black,
-                                        style: buildTextStyle(14),
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return 'Enter BIN Number';
-                                          }
-                                          return null;
-                                        },
-                                        decoration: InputDecoration(
-                                          labelText:
-                                              'Breeder Identification Number (hidden to public)',
-                                          labelStyle: buildTextStyle(16.0),
-                                          hintText: 'BIN Number',
-                                          hintStyle: buildRadioTextStyle(),
-                                        ),
-                                      ),
-                                      const SizedBox(height: 35),
-                                      Text(
-                                          'Member of (may select more than one)',
-                                          style: buildTextStyle(16.0)),
-                                    ],
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+        body: Container(
+          color: Colors.white,
+          child: SafeArea(
+            bottom: true,
+            child: Form(
+              key: _formKey,
+              child: Container(
+                color: Colors.white,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Expanded(
+                        child: Container(
+                            color: Colors.white,
+                            child: Obx(
+                              () {
+                                return ListView(children: [
+                                  const SizedBox(
+                                    height: 20,
                                   ),
-                                ),
-                                Column(children: [
-                                  RadioListTile(
-                                    value: controller.memberList[0],
-                                    dense: true,
-                                    groupValue: memberListObs.value,
-                                    activeColor: AppColors.topHeaderBlueClr,
-                                    title: Transform.translate(
-                                        offset: const Offset(-20, 0),
-                                        child: Text(controller.memberList[0],
-                                            style: buildRadioTextStyle())),
-                                    onChanged: (String? value) {
-                                      memberListObs.value = value!;
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    value: controller.memberList[1],
-                                    dense: true,
-                                    groupValue: memberListObs.value,
-                                    activeColor: AppColors.topHeaderBlueClr,
-                                    title: Transform.translate(
-                                        offset: const Offset(-20, 0),
-                                        child: Text(controller.memberList[1],
-                                            style: buildRadioTextStyle())),
-                                    onChanged: (String? value) {
-                                      memberListObs.value = value!;
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    value: controller.memberList[2],
-                                    dense: true,
-                                    groupValue: memberListObs.value,
-                                    activeColor: AppColors.topHeaderBlueClr,
-                                    title: Transform.translate(
-                                        offset: const Offset(-20, 0),
-                                        child: Text(controller.memberList[2],
-                                            style: buildRadioTextStyle())),
-                                    onChanged: (String? value) {
-                                      memberListObs.value = value!;
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    value: controller.memberList[3],
-                                    dense: true,
-                                    groupValue: memberListObs.value,
-                                    activeColor: AppColors.topHeaderBlueClr,
-                                    title: Transform.translate(
-                                        offset: const Offset(-20, 0),
-                                        child: Text(controller.memberList[3],
-                                            style: buildRadioTextStyle())),
-                                    onChanged: (String? value) {
-                                      memberListObs.value = value!;
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    value: controller.memberList[4],
-                                    dense: true,
-                                    groupValue: memberListObs.value,
-                                    activeColor: AppColors.topHeaderBlueClr,
-                                    title: Transform.translate(
-                                        offset: const Offset(-20, 0),
-                                        child: Text(controller.memberList[4],
-                                            style: buildRadioTextStyle())),
-                                    onChanged: (String? value) {
-                                      memberListObs.value = value!;
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    value: controller.memberList[5],
-                                    dense: true,
-                                    groupValue: memberListObs.value,
-                                    activeColor: AppColors.topHeaderBlueClr,
-                                    title: Transform.translate(
-                                        offset: const Offset(-20, 0),
-                                        child: Text(controller.memberList[5],
-                                            style: buildRadioTextStyle())),
-                                    onChanged: (String? value) {
-                                      memberListObs.value = value!;
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    value: controller.memberList[6],
-                                    dense: true,
-                                    groupValue: memberListObs.value,
-                                    activeColor: AppColors.topHeaderBlueClr,
-                                    title: Transform.translate(
-                                        offset: const Offset(-20, 0),
-                                        child: Text(controller.memberList[6],
-                                            style: buildRadioTextStyle())),
-                                    onChanged: (String? value) {
-                                      memberListObs.value = value!;
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    value: controller.memberList[7],
-                                    dense: true,
-                                    groupValue: memberListObs.value,
-                                    activeColor: AppColors.topHeaderBlueClr,
-                                    title: Transform.translate(
-                                        offset: const Offset(-20, 0),
-                                        child: Text(controller.memberList[7],
-                                            style: buildRadioTextStyle())),
-                                    onChanged: (String? value) {
-                                      memberListObs.value = value!;
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    value: controller.memberList[8],
-                                    dense: true,
-                                    groupValue: memberListObs.value,
-                                    activeColor: AppColors.topHeaderBlueClr,
-                                    title: Transform.translate(
-                                        offset: const Offset(-20, 0),
-                                        child: Text(controller.memberList[8],
-                                            style: buildRadioTextStyle())),
-                                    onChanged: (String? value) {
-                                      memberListObs.value = value!;
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    value: controller.memberList[9],
-                                    dense: true,
-                                    groupValue: memberListObs.value,
-                                    activeColor: AppColors.topHeaderBlueClr,
-                                    title: Transform.translate(
-                                        offset: const Offset(-20, 0),
-                                        child: Text(controller.memberList[9],
-                                            style: buildRadioTextStyle())),
-                                    onChanged: (String? value) {
-                                      memberListObs.value = value!;
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    value: controller.memberList[10],
-                                    dense: true,
-                                    groupValue: memberListObs.value,
-                                    activeColor: AppColors.topHeaderBlueClr,
-                                    title: Transform.translate(
-                                        offset: const Offset(-20, 0),
-                                        child: Text(controller.memberList[10],
-                                            style: buildRadioTextStyle())),
-                                    onChanged: (String? value) {
-                                      memberListObs.value = value!;
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    value: controller.memberList[11],
-                                    dense: true,
-                                    groupValue: memberListObs.value,
-                                    activeColor: AppColors.topHeaderBlueClr,
-                                    title: Transform.translate(
-                                        offset: const Offset(-20, 0),
-                                        child: Text(controller.memberList[11],
-                                            style: buildRadioTextStyle())),
-                                    onChanged: (String? value) {
-                                      memberListObs.value = value!;
-                                    },
-                                  ),
+                                  signUpText(),
                                   Padding(
                                     padding: const EdgeInsets.only(
-                                        right: 30.0, left: 50.0),
-                                    child: TextFormField(
-                                      textCapitalization:
-                                          TextCapitalization.sentences,
-                                      textInputAction: TextInputAction.next,
-                                      cursorColor: Colors.black,
-                                      style: buildTextStyle(14),
-                                      validator: (value) {
-                                        if (value == null || value.isEmpty) {
-                                          return 'Others';
-                                        }
-                                        return null;
-                                      },
-                                      decoration: InputDecoration(
-                                        labelText: 'Others',
-                                        labelStyle: buildTextStyle(18.0),
-                                        hintText: 'Other',
-                                        hintStyle: buildRadioTextStyle(),
-                                      ),
+                                        top: 10.0,
+                                        bottom: 30.0,
+                                        right: 30.0,
+                                        left: 30.0),
+                                    child: Column(
+                                      children: [
+                                        TextFormField(
+                                          textCapitalization:
+                                              TextCapitalization.sentences,
+                                          textInputAction: TextInputAction.next,
+                                          cursorColor: Colors.black,
+                                          style: buildTextStyle(14),
+                                          validator: (value) {
+                                            if (value == null || value.isEmpty) {
+                                              return 'Enter Business Name';
+                                            }
+                                            return null;
+                                          },
+                                          decoration: InputDecoration(
+                                            labelText: 'Breeder Business Name',
+                                            labelStyle: buildTextStyle(16.0),
+                                            hintText: 'Name',
+                                            hintStyle: buildRadioTextStyle(),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 15,
+                                        ),
+                                        TextFormField(
+                                          textCapitalization:
+                                              TextCapitalization.sentences,
+                                          textInputAction: TextInputAction.next,
+                                          cursorColor: Colors.black,
+                                          style: buildTextStyle(14),
+                                          validator: (value) {
+                                            if (value == null || value.isEmpty) {
+                                              return 'Enter ABN Number';
+                                            }
+                                            return null;
+                                          },
+                                          decoration: InputDecoration(
+                                            labelText: 'ABN (If applicable)',
+                                            labelStyle: buildTextStyle(16.0),
+                                            hintText: 'ABN Number',
+                                            hintStyle: buildRadioTextStyle(),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 15,
+                                        ),
+                                        TextFormField(
+                                          textCapitalization:
+                                              TextCapitalization.sentences,
+                                          textInputAction: TextInputAction.next,
+                                          cursorColor: Colors.black,
+                                          style: buildTextStyle(14),
+                                          validator: (value) {
+                                            if (value == null || value.isEmpty) {
+                                              return 'Enter Phone number';
+                                            }
+                                            return null;
+                                          },
+                                          decoration: InputDecoration(
+                                            labelText:
+                                                'Phone number (hidden to public)',
+                                            labelStyle: buildTextStyle(16.0),
+                                            hintText: 'Phone number',
+                                            hintStyle: buildRadioTextStyle(),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 15,
+                                        ),
+                                        TextFormField(
+                                          textCapitalization:
+                                              TextCapitalization.sentences,
+                                          textInputAction: TextInputAction.next,
+                                          cursorColor: Colors.black,
+                                          style: buildTextStyle(14),
+                                          validator: (value) {
+                                            if (value == null || value.isEmpty) {
+                                              return 'Enter BIN Number';
+                                            }
+                                            return null;
+                                          },
+                                          decoration: InputDecoration(
+                                            labelText:
+                                                'Breeder Identification Number (hidden to public)',
+                                            labelStyle: buildTextStyle(16.0),
+                                            hintText: 'BIN Number',
+                                            hintStyle: buildRadioTextStyle(),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 35),
+                                        Text(
+                                            'Member of (may select more than one)',
+                                            style: buildTextStyle(16.0)),
+                                      ],
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                     ),
                                   ),
-                                ]),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      right: 30.0, left: 30.0),
-                                  child: Column(
-                                    children: [
-                                      const SizedBox(
-                                        height: 15,
-                                      ),
-                                      TextFormField(
+                                  Column(children: [
+                                    RadioListTile(
+                                      value: controller.memberList[0],
+                                      dense: true,
+                                      groupValue: memberListObs.value,
+                                      activeColor: AppColors.topHeaderBlueClr,
+                                      title: Transform.translate(
+                                          offset: const Offset(-20, 0),
+                                          child: Text(controller.memberList[0],
+                                              style: buildRadioTextStyle())),
+                                      onChanged: (String? value) {
+                                        memberListObs.value = value!;
+                                      },
+                                    ),
+                                    RadioListTile(
+                                      value: controller.memberList[1],
+                                      dense: true,
+                                      groupValue: memberListObs.value,
+                                      activeColor: AppColors.topHeaderBlueClr,
+                                      title: Transform.translate(
+                                          offset: const Offset(-20, 0),
+                                          child: Text(controller.memberList[1],
+                                              style: buildRadioTextStyle())),
+                                      onChanged: (String? value) {
+                                        memberListObs.value = value!;
+                                      },
+                                    ),
+                                    RadioListTile(
+                                      value: controller.memberList[2],
+                                      dense: true,
+                                      groupValue: memberListObs.value,
+                                      activeColor: AppColors.topHeaderBlueClr,
+                                      title: Transform.translate(
+                                          offset: const Offset(-20, 0),
+                                          child: Text(controller.memberList[2],
+                                              style: buildRadioTextStyle())),
+                                      onChanged: (String? value) {
+                                        memberListObs.value = value!;
+                                      },
+                                    ),
+                                    RadioListTile(
+                                      value: controller.memberList[3],
+                                      dense: true,
+                                      groupValue: memberListObs.value,
+                                      activeColor: AppColors.topHeaderBlueClr,
+                                      title: Transform.translate(
+                                          offset: const Offset(-20, 0),
+                                          child: Text(controller.memberList[3],
+                                              style: buildRadioTextStyle())),
+                                      onChanged: (String? value) {
+                                        memberListObs.value = value!;
+                                      },
+                                    ),
+                                    RadioListTile(
+                                      value: controller.memberList[4],
+                                      dense: true,
+                                      groupValue: memberListObs.value,
+                                      activeColor: AppColors.topHeaderBlueClr,
+                                      title: Transform.translate(
+                                          offset: const Offset(-20, 0),
+                                          child: Text(controller.memberList[4],
+                                              style: buildRadioTextStyle())),
+                                      onChanged: (String? value) {
+                                        memberListObs.value = value!;
+                                      },
+                                    ),
+                                    RadioListTile(
+                                      value: controller.memberList[5],
+                                      dense: true,
+                                      groupValue: memberListObs.value,
+                                      activeColor: AppColors.topHeaderBlueClr,
+                                      title: Transform.translate(
+                                          offset: const Offset(-20, 0),
+                                          child: Text(controller.memberList[5],
+                                              style: buildRadioTextStyle())),
+                                      onChanged: (String? value) {
+                                        memberListObs.value = value!;
+                                      },
+                                    ),
+                                    RadioListTile(
+                                      value: controller.memberList[6],
+                                      dense: true,
+                                      groupValue: memberListObs.value,
+                                      activeColor: AppColors.topHeaderBlueClr,
+                                      title: Transform.translate(
+                                          offset: const Offset(-20, 0),
+                                          child: Text(controller.memberList[6],
+                                              style: buildRadioTextStyle())),
+                                      onChanged: (String? value) {
+                                        memberListObs.value = value!;
+                                      },
+                                    ),
+                                    RadioListTile(
+                                      value: controller.memberList[7],
+                                      dense: true,
+                                      groupValue: memberListObs.value,
+                                      activeColor: AppColors.topHeaderBlueClr,
+                                      title: Transform.translate(
+                                          offset: const Offset(-20, 0),
+                                          child: Text(controller.memberList[7],
+                                              style: buildRadioTextStyle())),
+                                      onChanged: (String? value) {
+                                        memberListObs.value = value!;
+                                      },
+                                    ),
+                                    RadioListTile(
+                                      value: controller.memberList[8],
+                                      dense: true,
+                                      groupValue: memberListObs.value,
+                                      activeColor: AppColors.topHeaderBlueClr,
+                                      title: Transform.translate(
+                                          offset: const Offset(-20, 0),
+                                          child: Text(controller.memberList[8],
+                                              style: buildRadioTextStyle())),
+                                      onChanged: (String? value) {
+                                        memberListObs.value = value!;
+                                      },
+                                    ),
+                                    RadioListTile(
+                                      value: controller.memberList[9],
+                                      dense: true,
+                                      groupValue: memberListObs.value,
+                                      activeColor: AppColors.topHeaderBlueClr,
+                                      title: Transform.translate(
+                                          offset: const Offset(-20, 0),
+                                          child: Text(controller.memberList[9],
+                                              style: buildRadioTextStyle())),
+                                      onChanged: (String? value) {
+                                        memberListObs.value = value!;
+                                      },
+                                    ),
+                                    RadioListTile(
+                                      value: controller.memberList[10],
+                                      dense: true,
+                                      groupValue: memberListObs.value,
+                                      activeColor: AppColors.topHeaderBlueClr,
+                                      title: Transform.translate(
+                                          offset: const Offset(-20, 0),
+                                          child: Text(controller.memberList[10],
+                                              style: buildRadioTextStyle())),
+                                      onChanged: (String? value) {
+                                        memberListObs.value = value!;
+                                      },
+                                    ),
+                                    RadioListTile(
+                                      value: controller.memberList[11],
+                                      dense: true,
+                                      groupValue: memberListObs.value,
+                                      activeColor: AppColors.topHeaderBlueClr,
+                                      title: Transform.translate(
+                                          offset: const Offset(-20, 0),
+                                          child: Text(controller.memberList[11],
+                                              style: buildRadioTextStyle())),
+                                      onChanged: (String? value) {
+                                        memberListObs.value = value!;
+                                      },
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          right: 30.0, left: 50.0),
+                                      child: TextFormField(
                                         textCapitalization:
                                             TextCapitalization.sentences,
                                         textInputAction: TextInputAction.next,
@@ -361,51 +334,84 @@ class _SellSecRegViewState extends State<SellSecRegView> {
                                         style: buildTextStyle(14),
                                         validator: (value) {
                                           if (value == null || value.isEmpty) {
-                                            return 'Enter Member Number';
+                                            return 'Others';
                                           }
                                           return null;
                                         },
                                         decoration: InputDecoration(
-                                          labelText:
-                                              'Member Number (hidden to public)',
+                                          labelText: 'Others',
                                           labelStyle: buildTextStyle(18.0),
-                                          hintText: 'Number',
+                                          hintText: 'Other',
                                           hintStyle: buildRadioTextStyle(),
                                         ),
                                       ),
-                                      const SizedBox(
-                                        height: 15,
-                                      ),
-                                      TextFormField(
-                                        textCapitalization:
-                                            TextCapitalization.sentences,
-                                        textInputAction: TextInputAction.next,
-                                        cursorColor: Colors.black,
-                                        style: buildTextStyle(14),
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return 'Enter PSAA Number';
-                                          }
-                                          return null;
-                                        },
-                                        decoration: InputDecoration(
-                                          labelText: 'PSAA Number',
-                                          labelStyle: buildTextStyle(18.0),
-                                          hintText: 'Number',
-                                          hintStyle: buildRadioTextStyle(),
+                                    ),
+                                  ]),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        right: 30.0, left: 30.0),
+                                    child: Column(
+                                      children: [
+                                        const SizedBox(
+                                          height: 15,
                                         ),
-                                      ),
-                                      const SizedBox(
-                                        height: 25,
-                                      ),
-                                    ],
+                                        TextFormField(
+                                          textCapitalization:
+                                              TextCapitalization.sentences,
+                                          textInputAction: TextInputAction.next,
+                                          cursorColor: Colors.black,
+                                          style: buildTextStyle(14),
+                                          validator: (value) {
+                                            if (value == null || value.isEmpty) {
+                                              return 'Enter Member Number';
+                                            }
+                                            return null;
+                                          },
+                                          decoration: InputDecoration(
+                                            labelText:
+                                                'Member Number (hidden to public)',
+                                            labelStyle: buildTextStyle(18.0),
+                                            hintText: 'Number',
+                                            hintStyle: buildRadioTextStyle(),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 15,
+                                        ),
+                                        TextFormField(
+                                          textCapitalization:
+                                              TextCapitalization.sentences,
+                                          textInputAction: TextInputAction.next,
+                                          cursorColor: Colors.black,
+                                          style: buildTextStyle(14),
+                                          validator: (value) {
+                                            if (value == null || value.isEmpty) {
+                                              return 'Enter PSAA Number';
+                                            }
+                                            return null;
+                                          },
+                                          decoration: InputDecoration(
+                                            labelText: 'PSAA Number',
+                                            labelStyle: buildTextStyle(18.0),
+                                            hintText: 'Number',
+                                            hintStyle: buildRadioTextStyle(),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 25,
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                nextButton(context),
-                              ]);
-                            },
-                          )))
-                ],
+
+                                ]);
+                              },
+                            )
+                        )
+                    ),
+                    nextButton(context),
+                  ],
+                ),
               ),
             ),
           ),

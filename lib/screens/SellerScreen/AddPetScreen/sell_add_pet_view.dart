@@ -12,33 +12,11 @@ import 'package:intl/intl.dart';
 import 'package:mlm/Style/app_colors.dart';
 import 'package:mlm/Style/k_text_style.dart';
 import 'package:mlm/Widget/custom_check_box_widget.dart';
-import 'package:mlm/Widget/custom_check_box_widget.dart';
-import 'package:mlm/Widget/custom_check_box_widget.dart';
-import 'package:mlm/Widget/custom_check_box_widget.dart';
-import 'package:mlm/Widget/custom_check_box_widget.dart';
-import 'package:mlm/Widget/custom_check_box_widget.dart';
+
 import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
-import 'package:mlm/Widget/custom_radio_button_widget.dart';
+
+
+
 import 'package:mlm/screens/SellerScreen/AddPetScreen/sell_add_pet_controller.dart';
 import '../../../Style/ButtonTextStyle.dart';
 import '../../../Utils/constant.dart';

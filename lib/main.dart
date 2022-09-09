@@ -29,6 +29,7 @@ import 'package:mlm/screens/BuyerScreen/BuySellerProfileScreen/buy_seller_profil
 import 'package:mlm/screens/SellerScreen/PetAddedScreen/sell_pet_added_view.dart';
 import 'package:mlm/screens/BuyerScreen/BuyFavouritesScreen/buy_favourites_view.dart';
 import 'package:mlm/screens/BuyerScreen/BuyMyProfileScreen/buy_myprofile_view.dart';
+import 'package:mlm/screens/SellerScreen/SellMyProfileScreen/sell_myprofile_view.dart';
 import 'Binding/app_binding.dart';
 
 Future<void> main() async {
@@ -153,6 +154,10 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: AppConstant.ROUTE_LOCATION_FILTER_VIEW,
             page: () =>  const LocationFilterView()),
+
+        GetPage(
+            name: AppConstant.ROUTE_SELLER_MY_PROFILE,
+            page: () =>  SellMyProfileView()),
       ],
     );
   }

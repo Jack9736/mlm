@@ -50,7 +50,7 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
 
   @override
   Widget build(BuildContext context) {
-    var horizontalPadding = 38.0;
+    var horizontalPadding = 30.0;
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
@@ -152,7 +152,7 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
                       Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal: horizontalPadding,
-                            vertical: horizontalPadding),
+                            ),
                         child: nextButton(context),
                       ),
                     ],

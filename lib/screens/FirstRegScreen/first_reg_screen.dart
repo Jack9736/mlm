@@ -54,7 +54,11 @@ class _FirstRegScreenState extends State<FirstRegScreen> {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-
+        appBar: const CustomAppBar(
+          hideBack: false,
+          backgroundColor: Colors.white,
+            backIconColor: Colors.black
+        ),
         body: Form(
           key: _formKey,
           child: Container(

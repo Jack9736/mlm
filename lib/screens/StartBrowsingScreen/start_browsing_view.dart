@@ -127,7 +127,7 @@ class _StartBrowsingViewState extends State<StartBrowsingView> {
   /* Start Browsing Button */
   Container startBrowsingButton(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 38, left: 38, right: 38,),
+      margin: const EdgeInsets.only(bottom: 38, left: 30, right: 30,),
       height: AppConstant.appButtonSize,
       width: double.infinity,
       child: Obx(() => TextButton(

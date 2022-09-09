@@ -4,12 +4,12 @@ import 'package:mlm/Style/app_colors.dart';
 import 'package:mlm/Widget/custom_image_widget.dart';
 import 'package:mlm/Widget/widget_appbar.dart';
 import 'package:mlm/Utils/constant.dart';
-import 'package:mlm/screens/BuyerScreen/BuyMyProfileScreen/buy_myprofile_controller.dart';
+import 'package:mlm/screens/SellerScreen/SellMyProfileScreen/sell_myprofile_controller.dart';
 
-class BuyMyProfileView extends StatelessWidget {
-  BuyMyProfileView({Key? key}) : super(key: key);
+class SellMyProfileView extends StatelessWidget {
+  SellMyProfileView({Key? key}) : super(key: key);
 
-  BuyMyProfileController controller = Get.find();
+  SellMyProfileController controller = Get.find();
 
   bool isObscure = false;
 
@@ -18,11 +18,10 @@ class BuyMyProfileView extends StatelessWidget {
     return Scaffold(
         backgroundColor: AppColors.appBgColor,
         appBar: const CustomAppBar(
-          title: "My Profile",
+          title: "My Profile Seller",
         ),
         body: Padding(
-          padding:
-          const EdgeInsets.only(top: 15,  bottom: 20),
+          padding: const EdgeInsets.only(top: 15, bottom: 20),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -50,7 +49,7 @@ class BuyMyProfileView extends StatelessWidget {
                                   children: const [
                                     Padding(
                                       padding:
-                                      EdgeInsets.symmetric(vertical: 8.0),
+                                          EdgeInsets.symmetric(vertical: 8.0),
                                       child: Text('Jenifer Mark',
                                           style: TextStyle(
                                               fontFamily: 'Gibson',
@@ -67,7 +66,8 @@ class BuyMyProfileView extends StatelessWidget {
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(top: 8.0),
-                                      child: Text('Member since September, 2019',
+                                      child: Text(
+                                          'Member since September, 2019',
                                           style: TextStyle(
                                               fontFamily: 'Gibson',
                                               fontWeight: FontWeight.w300),
@@ -80,7 +80,7 @@ class BuyMyProfileView extends StatelessWidget {
                       ),
                       const CustomImageWidget(
                           imgUrl:
-                          'https://i.pinimg.com/736x/55/f9/55/55f955717e64ddbae8e15a781fcd0043.jpg',
+                              'https://i.pinimg.com/736x/55/f9/55/55f955717e64ddbae8e15a781fcd0043.jpg',
                           width: 110,
                           height: 110,
                           borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -108,35 +108,73 @@ class BuyMyProfileView extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  child: ListView(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
+              Expanded(
+                child: ListView(
                     children: [
-                      const SizedBox(height: 10),
-
-                      _createDrawerItem(
-                        title: 'PROFILE'.tr,
-
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
                       ),
-
-                      buildDividerPadding(),
-                      buildListTileForAboutMe("Name", "Jennifer Mark"),
-                      buildDividerPadding(),
-                      buildListTileForAboutMe("Email", "jennifer.mark@gmail.com"),
-                      buildDividerPadding(),
-                      buildListTileForAboutMe("Password", "123456"),
-                      buildDividerPadding(),
-                      buildListTileForAboutMe("Phone Number", "1234567890"),
-
-                    ],
+                      child: ListView(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        children: [
+                          const SizedBox(height: 10),
+                          _createDrawerItem(
+                            title: 'PROFILE'.tr,
+                          ),
+                          buildDividerPadding(),
+                          buildListTileForAboutMe("Name", "Jennifer Mark"),
+                          buildDividerPadding(),
+                          buildListTileForAboutMe(
+                              "Email", "jennifer.mark@gmail.com"),
+                          buildDividerPadding(),
+                          buildListTileForAboutMe("Password", "123456"),
+                          buildDividerPadding(),
+                          buildListTileForAboutMe("Phone Number", "1234567890"),
+                          const SizedBox(height: 10),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
+                      SizedBox(height: 20,),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: ListView(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            children: [
+                              const SizedBox(height: 10),
+                              _createDrawerItem(
+                                title: 'BREEDER PROFILE'.tr,
+                              ),
+                              buildDividerPadding(),
+                              buildListTileForAboutMe("Business Name", "Perfect Pets"),
+                              buildDividerPadding(),
+                              buildListTileForAboutMe(
+                                  "Breeder Number", "1234567"),
+                              buildDividerPadding(),
+                              buildListTileForAboutMe("Display Name", "Jennifer"),
+                              buildDividerPadding(),
+                              buildListTileForAboutMe("Association No.:", "1234567890"),
+                              buildListTileForAboutMe("", "1234567890"),
+                              buildListTileForAboutMe("", "1234567890"),
+                              buildDividerPadding(),
+                              buildListTileForAboutMe("Post Code", "4163"),
+                              buildDividerPadding(),
+                              buildListTileForAboutMe("Email", "jennifer.mark@gmail.com"),
+                              const SizedBox(height: 10),
+                            ],
+                          ),
+                        ),
+                      ),
+                ]),
               ),
 
             ],
@@ -151,8 +189,7 @@ class BuyMyProfileView extends StatelessWidget {
     );
   }
 
-  Widget _createDrawerItem(
-      {required String title}) {
+  Widget _createDrawerItem({required String title}) {
     return Ink(
       child: ListTile(
         selected: true,
@@ -163,16 +200,18 @@ class BuyMyProfileView extends StatelessWidget {
               title,
               style: TextStyle(
                 fontSize: 16,
-                fontWeight: (title == "PROFILE") ? FontWeight.w600 : FontWeight.w400,
+                fontWeight:
+                    (title == "PROFILE") || (title == "BREEDER PROFILE") ? FontWeight.w600 : FontWeight.w400,
                 fontFamily: 'Gibson',
-
               ),
             )
           ],
         ),
-        trailing:  SizedBox(
+        trailing: SizedBox(
           height: double.infinity,
-          child: (title == "PROFILE") ? Icon(Icons.edit, size: 18, color: AppColors.appSecondaryColor) : null ,
+          child: (title == "PROFILE") || (title == "BREEDER PROFILE")
+              ? Icon(Icons.edit, size: 18, color: AppColors.appSecondaryColor)
+              : null,
         ),
       ),
     );
@@ -180,6 +219,8 @@ class BuyMyProfileView extends StatelessWidget {
 
   ListTile buildListTileForAboutMe(String lbl, String value) {
     return ListTile(
+        dense: true,
+        visualDensity: VisualDensity(vertical: -1),
       leading: buildAboutMeLbl(lbl),
       trailing: buildAboutMeValue(value),
     );
@@ -196,8 +237,6 @@ class BuyMyProfileView extends StatelessWidget {
             fontFamily: 'Gibson',
             color: AppColors.petProfileDetailLblColor));
   }
-
-
 
   Text buildAboutMeLbl(String s) {
     return Text(s,

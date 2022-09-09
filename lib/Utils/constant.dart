@@ -44,6 +44,7 @@ class AppConstant {
   static const String ROUTE_MY_MESSAGES = "/MyMessagesView";
   static const String ROUTE_FAVOURIRE = "/FavouriteView";
   static const String ROUTE_MY_PROFILE = "/MyProfileView";
+  static const String ROUTE_SELLER_MY_PROFILE = "/SellerMyProfileView";
   static const String ROUTE_ADD_PET = "/AddPetView";
 
   static const String ROUTE_BREED_TYPE_SCREEN = "/BreedTypeScreen";
@@ -65,7 +66,7 @@ class AppConstant {
 
   static const String argUserType = "userType";
 
-  static const double appButtonSize = 60;
+  static const double appButtonSize = 50;
 
   static var deviceType = "android";
 

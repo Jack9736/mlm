@@ -28,6 +28,7 @@ import '../screens/BuyerScreen/BuySellerProfileScreen/buy_seller_profile_control
 import 'package:mlm/screens/SellerScreen/PetAddedScreen/sell_pet_added_controller.dart';
 import 'package:mlm/screens/BuyerScreen/BuyFavouritesScreen/buy_favourites_controller.dart';
 import 'package:mlm/screens/BuyerScreen/BuyMyProfileScreen/buy_myprofile_controller.dart';
+import 'package:mlm/screens/SellerScreen/SellMyProfileScreen/sell_myprofile_controller.dart';
 
 class AppBinding extends Bindings {
   @override
@@ -107,6 +108,9 @@ class AppBinding extends Bindings {
         httpService: Get.find(tag: AppConstant.tagHttpService)));
 
     Get.put(LocationFilterController(
+        httpService: Get.find(tag: AppConstant.tagHttpService)));
+
+    Get.put(SellMyProfileController(
         httpService: Get.find(tag: AppConstant.tagHttpService)));
   }
 }

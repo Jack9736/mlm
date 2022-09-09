@@ -207,8 +207,10 @@ class SellSideDrawer extends StatelessWidget {
     controller.selectedDestination.value = index;
     switch (index) {
       case 1:
-        controller.title.value = 'menu_about_us'.tr;
-        controller.selectedScreen.value = 1;
+        // controller.title.value = 'menu_about_us'.tr;
+        // controller.selectedScreen.value = 1;
+
+        Get.toNamed(AppConstant.ROUTE_SELLER_MY_PROFILE);
         break;
       case 2:
         {
