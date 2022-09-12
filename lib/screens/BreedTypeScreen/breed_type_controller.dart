@@ -74,10 +74,15 @@ class BreedTypeController extends GetxController {
 
   @override
   void onInit() {
+    super.onInit();
+  }
+
+  void onLoad() {
+    tempBreedTypeList.clear();
+    breedTypeList.clear();
     var list = breedTypeArray.map((e) => BreedType(e, false)).toList();
     tempBreedTypeList.addAll(list);
-    breedTypeList.addAll(list);
-    super.onInit();
+    breedTypeList.value.addAll(list);
   }
 
   void openDrawer() {

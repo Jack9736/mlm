@@ -14,8 +14,6 @@ import '../SellerScreen/AddPetScreen/sell_add_pet_controller.dart';
 class BreedTypeScreen extends StatelessWidget {
   BreedTypeScreen({Key? key}) : super(key: key);
 
-  final _formKey = GlobalKey<FormState>();
-
   BreedTypeController controller = Get.find();
   SellAddPetController sellAddPetController = Get.find();
   SearchFilterController searchFilterController = Get.find();
@@ -23,6 +21,9 @@ class BreedTypeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    controller.onLoad();
+
     const textStyle = TextStyle(
         fontFamily: "Gibson", fontWeight: FontWeight.w600, fontSize: 14);
 
@@ -163,8 +164,12 @@ class BreedTypeScreen extends StatelessWidget {
 
               sellAddPetController.breedController.text = data;
               searchFilterController.breedController.text = data;
+
               sellAddPetController.strBreedType.refresh();
               searchFilterController.strBreedType.refresh();
+
+              controller.onLoad();
+
               Get.back();
             },
           )),
