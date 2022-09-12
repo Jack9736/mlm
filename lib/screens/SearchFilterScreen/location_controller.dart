@@ -2,13 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:logger/logger.dart';
-import 'package:mlm/Utils/constant.dart';
-import 'package:mlm/screens/SearchFilterScreen/model/SearchMainModel.dart';
 import '../../Network/http_service.dart';
 import '../../Service/StorageService.dart';
-import 'model/location_Item.dart';
 import 'model/location_filter.dart';
 import 'model/location_sub.dart';
 

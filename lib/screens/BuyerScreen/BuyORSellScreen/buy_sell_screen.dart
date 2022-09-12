@@ -36,7 +36,7 @@ class _BuySellScreenState extends State<BuySellScreen> {
     super.initState();
 
     userNmController.addListener(() {
-      setState(() {});
+
     });
   }
 

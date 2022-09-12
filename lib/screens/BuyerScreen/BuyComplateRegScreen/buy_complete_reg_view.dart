@@ -37,9 +37,6 @@ class _BuyCompleteRegViewState extends State<BuyCompleteRegView> {
   void initState() {
     super.initState();
 
-    userNmController.addListener(() {
-      setState(() {});
-    });
     readArgument();
   }
 

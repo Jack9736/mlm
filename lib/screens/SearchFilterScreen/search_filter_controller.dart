@@ -1,13 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:mlm/Utils/constant.dart';
-import 'package:mlm/screens/SearchFilterScreen/model/SearchMainModel.dart';
 import '../../Network/http_service.dart';
 import '../../Service/StorageService.dart';
+import 'model/search_main_model.dart';
 
 class SearchFilterController extends GetxController {
   Logger logger = Get.find();
 
+  TextEditingController breedController = TextEditingController();
   var isLoading = false.obs;
   var isApiRunning = false.obs;
 

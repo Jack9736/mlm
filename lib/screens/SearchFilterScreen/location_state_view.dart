@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:mlm/Widget/widget_appbar.dart';
-import 'package:mlm/screens/SearchFilterScreen/model/SearchMainModel.dart';
 import '../../Style/app_colors.dart';
 import '../../Utils/constant.dart';
 import '../../enum/Method.dart';
 import 'location_controller.dart';
 import 'model/location_filter.dart';
+import 'model/search_main_model.dart';
 
 class LocationStateView extends StatefulWidget {
   const LocationStateView({Key? key}) : super(key: key);

@@ -91,11 +91,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   }
 
 
-  void _toggle() {
-    setState(() {
-      _obscureText = !_obscureText;
-    });
-  }
+
 
   /* Container Login Text */
   SizedBox forgotText() {
@@ -176,12 +172,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         onPressed: () {
           if (_formKey.currentState!.validate()) {
             _formKey.currentState!.save();
-            setState(() {
-              // isApiRunning = true;
-            });
-            setState(() {
-              // getTokens();
-            });
+
           }
         },
       )),

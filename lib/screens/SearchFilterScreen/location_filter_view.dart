@@ -1,15 +1,11 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:mlm/Widget/widget_appbar.dart';
-import 'package:mlm/screens/SearchFilterScreen/model/SearchMainModel.dart';
 import '../../Style/app_colors.dart';
 import '../../Utils/constant.dart';
 import '../../enum/Method.dart';
 import 'location_controller.dart';
-import 'model/location_filter.dart';
+import 'model/search_main_model.dart';
 
 class LocationFilterView extends StatefulWidget {
   const LocationFilterView({Key? key}) : super(key: key);
@@ -19,8 +15,6 @@ class LocationFilterView extends StatefulWidget {
 }
 
 class _LocationFilterViewState extends State<LocationFilterView> {
-  final _formKey = GlobalKey<FormState>();
-
   final _textSearchController = TextEditingController();
 
   LocationController controller = Get.find();
@@ -30,15 +24,6 @@ class _LocationFilterViewState extends State<LocationFilterView> {
   List<SearchMainModel> tempSearchTypeList = [];
 
   bool isShowAdvanceMenu = false;
-  final Rxn<LocationFilterModel> _items = Rxn<LocationFilterModel>();
-
-  // Fetch content from the json file
-  Future<void> readJson() async {
-    final String response =
-        await rootBundle.loadString('assets/json/filter_location.json');
-    final data = await json.decode(response);
-    _items.value = LocationFilterModel.fromJson(data);
-  }
 
   @override
   void initState() {
@@ -52,7 +37,6 @@ class _LocationFilterViewState extends State<LocationFilterView> {
 
   @override
   Widget build(BuildContext context) {
-    readJson();
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
@@ -99,18 +83,18 @@ class _LocationFilterViewState extends State<LocationFilterView> {
             Row(
               children: [
                 Obx(() => Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                  child: Text(
+                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                      child: Text(
                         controller
                             .itemSubAll[controller.itemSubAll.length - 1].name,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontFamily: 'Gibson',
                             fontWeight: FontWeight.w600,
                             fontSize: 14,
                             color: AppColors.black),
                       ),
-                )),
-                Spacer(),
+                    )),
+                const Spacer(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 18.0),
                   child: Image.asset('assets/ic_noun_check.png'),
@@ -119,8 +103,9 @@ class _LocationFilterViewState extends State<LocationFilterView> {
             ),
             Expanded(
               child: Obx(() => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 18.0,vertical: 18),
-                child: ListView.separated(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 18.0, vertical: 18),
+                    child: ListView.separated(
                       physics: const BouncingScrollPhysics(),
                       itemCount: controller
                               .itemSubAll[controller.itemSubAll.length - 1]
@@ -146,8 +131,8 @@ class _LocationFilterViewState extends State<LocationFilterView> {
                               child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 8.0),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8.0),
                                   child: Text(
                                     searchTypeList?.name ?? '',
                                     style: const TextStyle(
@@ -169,7 +154,7 @@ class _LocationFilterViewState extends State<LocationFilterView> {
                         );
                       },
                     ),
-              )),
+                  )),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -230,17 +215,7 @@ class _LocationFilterViewState extends State<LocationFilterView> {
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold)),
             onPressed: () {
-              _userType == UserType.buyer
-                  ? Get.toNamed(AppConstant.ROUTE_BUY_HOME)
-                  : Get.toNamed(AppConstant.ROUTE_SELL_HOME);
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                setState(() {
-                  // isApiRunning = true;
-                });
-                //Get.toNamed(AppConstant.ROUTE_FORGOT_PASSWORD);
-              }
-              //Get.toNamed(AppConstant.ROUTE_FORGOT_PASSWORD);
+              Get.back();
             },
           )),
     );

@@ -35,7 +35,7 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
     super.initState();
 
     userNmController.addListener(() {
-      setState(() {});
+
     });
   }
 

@@ -5,11 +5,11 @@ import 'package:mlm/Widget/rounded_cb_widget.dart';
 import 'package:mlm/Widget/rounded_rb_widget.dart';
 import 'package:mlm/Widget/widget_appbar.dart';
 import 'package:mlm/enum/SearchMenuType.dart';
-import 'package:mlm/screens/SearchFilterScreen/model/SearchMainModel.dart';
 import 'package:mlm/screens/SearchFilterScreen/search_filter_controller.dart';
 import '../../Utils/constant.dart';
 import '../../Widget/rounded_form_field_widget.dart';
 import '../../enum/Method.dart';
+import 'model/search_main_model.dart';
 
 class SearchFilterView extends StatefulWidget {
   const SearchFilterView({Key? key}) : super(key: key);
@@ -19,8 +19,6 @@ class SearchFilterView extends StatefulWidget {
 }
 
 class _SearchFilterViewState extends State<SearchFilterView> {
-  final _formKey = GlobalKey<FormState>();
-
   final _textSearchController = TextEditingController();
 
   SearchFilterController controller = Get.find();
@@ -249,7 +247,7 @@ class _SearchFilterViewState extends State<SearchFilterView> {
         child: Obx(
           () => RoundedTextFormFieldWidget(
               controller.strBreedType.value, 'Please select breed', false,
-              controller: breedController),
+              controller: controller.breedController,isRightIcons: true),
         ),
       ),
     );
@@ -266,7 +264,7 @@ class _SearchFilterViewState extends State<SearchFilterView> {
             },
             child: RoundedTextFormFieldWidget(
                 'FIND LOCATION', 'Please select breed', false,
-                controller: locationController),
+                controller: locationController, isRightIcons: true),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 25.0, bottom: 10, left: 10),
@@ -569,17 +567,7 @@ class _SearchFilterViewState extends State<SearchFilterView> {
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold)),
             onPressed: () {
-              _userType == UserType.buyer
-                  ? Get.toNamed(AppConstant.ROUTE_BUY_HOME)
-                  : Get.toNamed(AppConstant.ROUTE_SELL_HOME);
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                setState(() {
-                  // isApiRunning = true;
-                });
-                //Get.toNamed(AppConstant.ROUTE_FORGOT_PASSWORD);
-              }
-              //Get.toNamed(AppConstant.ROUTE_FORGOT_PASSWORD);
+              Get.back();
             },
           )),
     );

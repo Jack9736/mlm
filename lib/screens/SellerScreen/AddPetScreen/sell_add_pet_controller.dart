@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 
@@ -12,6 +13,7 @@ class SellAddPetController extends GetxController {
   var isLoading = false.obs;
   var isApiRunning = false.obs;
   var strBreedType = "FIND BREED".obs;
+  TextEditingController breedController = TextEditingController();
 
   HttpService httpService;
 

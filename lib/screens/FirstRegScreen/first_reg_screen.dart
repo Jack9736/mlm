@@ -103,12 +103,6 @@ class _FirstRegScreenState extends State<FirstRegScreen> {
     );
   }
 
-  void _toggle() {
-    setState(() {
-      _obscureText = !_obscureText;
-    });
-  }
-
   /* Login as a Buyer Button */
   SizedBox loginBuyerButton(BuildContext context) {
     return SizedBox(

@@ -18,9 +18,7 @@ class BuyHomeController extends GetxController {
   var selectedDestination = 0.obs;
   var title = "menu_products".obs;
 
-  var scaffoldKey = GlobalKey<ScaffoldState>();
-
-  final storage = Get.find<StorageService>();
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   void openDrawer() {
     scaffoldKey.currentState?.openDrawer();

@@ -163,8 +163,8 @@ class _StartBrowsingViewState extends State<StartBrowsingView> {
                     fontWeight: FontWeight.bold)),
             onPressed: () {
               _userType == UserType.buyer
-                  ? Get.toNamed(AppConstant.ROUTE_BUY_HOME)
-                  : Get.toNamed(AppConstant.ROUTE_SELL_HOME);
+                  ? Get.offAllNamed(AppConstant.ROUTE_BUY_HOME)
+                  : Get.offAllNamed(AppConstant.ROUTE_SELL_HOME);
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
                 setState(() {

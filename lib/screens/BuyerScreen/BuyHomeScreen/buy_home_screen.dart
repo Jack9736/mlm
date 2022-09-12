@@ -34,7 +34,7 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
   int imageSize = 145;
 
   final UserType _userType = UserType.buyer;
-  ListViewType _viewType = ListViewType.grid;
+  final Rx<ListViewType> _viewType = ListViewType.grid.obs;
 
   int _crossAxisCount = 2;
   double _aspectRatio = 2;
@@ -44,10 +44,6 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
   @override
   void initState() {
     super.initState();
-
-    userNmController.addListener(() {
-      setState(() {});
-    });
   }
 
   onItemChanged(String value) {}
@@ -62,7 +58,6 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
       child: Scaffold(
         key: controller.scaffoldKey,
         resizeToAvoidBottomInset: true,
-        //backgroundColor: Colors.black,
         appBar: MainAppBar(
           menuItem: [
             IconButton(
@@ -134,18 +129,19 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
                   Padding(
                     padding: const EdgeInsets.only(right: 8.0),
                     child: IconButton(
-                      icon: Image.asset(_viewType == ListViewType.list
-                          ? "assets/ic_gridview.png"
-                          : "assets/ic_listview.png"),
+                      icon: Obx(() => Image.asset(
+                          _viewType.value == ListViewType.list
+                              ? "assets/ic_gridview.png"
+                              : "assets/ic_listview.png")),
                       onPressed: () {
-                        if (_viewType == ListViewType.list) {
+                        if (_viewType.value == ListViewType.list) {
                           _crossAxisCount = 2;
                           _aspectRatio = 1.5;
-                          _viewType = ListViewType.grid;
+                          _viewType.value = ListViewType.grid;
                         } else {
                           _crossAxisCount = 1;
                           _aspectRatio = 0.75;
-                          _viewType = ListViewType.list;
+                          _viewType.value = ListViewType.list;
                         }
                         setState(() {});
                       },
@@ -172,10 +168,11 @@ class _BuyHomeScreenState extends State<BuyHomeScreen> {
 
   GridTile getGridItem() {
     return GridTile(
-      child: (_viewType == ListViewType.list)
+        child: Obx(
+      () => (_viewType.value == ListViewType.list)
           ? buildListViewItem()
           : buildGridViewItem(),
-    );
+    ));
   }
 
   SizedBox buildGridViewItem() {

@@ -64,14 +64,14 @@ class BreedTypeScreen extends StatelessWidget {
                       itemCount: controller.breedTypeList.length, // the length
                       itemBuilder: (context, index) {
                         var breedTypeList = controller.breedTypeList[index];
-                        print("Status--->"+breedTypeList.isSelect.toString());
+                        print("Status--->" + breedTypeList.isSelect.toString());
                         return Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 15.0, vertical: 10),
                           child: InkWell(
                             onTap: () {
-                              controller.onSelectListener(
-                                  breedTypeList.breedName);
+                              controller
+                                  .onSelectListener(breedTypeList.breedName);
                             },
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -159,14 +159,12 @@ class BreedTypeScreen extends StatelessWidget {
                   .where((data) => data.isSelect)
                   .toList();
 
-              if (list.isNotEmpty) {
-                sellAddPetController.strBreedType.value = list[0].breedName;
-                searchFilterController.strBreedType.value = list[0].breedName;
-              } else {
-                sellAddPetController.strBreedType.value = "FIND BREED";
-                searchFilterController.strBreedType.value = "FIND BREED";
-              }
+              var data = list.isNotEmpty ? list[0].breedName : "";
 
+              sellAddPetController.breedController.text = data;
+              searchFilterController.breedController.text = data;
+              sellAddPetController.strBreedType.refresh();
+              searchFilterController.strBreedType.refresh();
               Get.back();
             },
           )),

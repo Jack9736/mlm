@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:mlm/Style/app_colors.dart';
 import 'package:mlm/Widget/custom_image_widget.dart';
 import 'package:mlm/Widget/widget_appbar.dart';
-import 'package:mlm/screens/BuyerScreen/BuyHomeScreen/buy_home_controller.dart';
-
 import '../../../Utils/constant.dart';
 import '../SellHomeScreen/sell_home_controller.dart';
 
@@ -16,7 +14,6 @@ class SellSideDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: const CustomAppBar(
         title: "Menu",
       ),

@@ -5,6 +5,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:images_picker/images_picker.dart';
 import 'package:intl/intl.dart';
@@ -33,12 +34,6 @@ class _SellAddPetViewState extends State<SellAddPetView> {
 
   final ImagePicker imagePicker = ImagePicker();
 
-  XFile? galleryImgFirst;
-  XFile? galleryImgSecond;
-  XFile? galleryImgThree;
-  XFile? galleryImgFour;
-  XFile? galleryImgFive;
-  XFile? galleryImgSix;
   XFile? customerLogoImageFile;
 
   TextEditingController userNmController = TextEditingController();
@@ -150,7 +145,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                             sellAddPetController.strBreedType.value,
                             'Please select breed',
                             false,
-                            controller: breedController),
+                            controller: sellAddPetController.breedController),
                       ),
                     ),
                   ),
@@ -413,7 +408,8 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                   ),
                   buildColumn(
                     "NOTES",
-                    RoundedTextFormFieldWidget("Type here…", 'Please Enter note', true,
+                    RoundedTextFormFieldWidget(
+                        "Type here…", 'Please Enter note', true,
                         minLines: 4,
                         maxLines: 4,
                         radius: 10,
@@ -466,7 +462,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
   }
 
   TextEditingController nameController = TextEditingController();
-  TextEditingController breedController = TextEditingController();
+
   TextEditingController locationController = TextEditingController();
   TextEditingController priceController = TextEditingController();
   TextEditingController microchipController = TextEditingController();
@@ -766,19 +762,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
 
   loadImages(int index, XFile file) {
     setState(() {
-      if (index == 1) {
-        galleryImgFirst = file;
-      } else if (index == 2) {
-        galleryImgSecond = file;
-      } else if (index == 3) {
-        galleryImgThree = file;
-      } else if (index == 4) {
-        galleryImgFour = file;
-      } else if (index == 5) {
-        galleryImgFive = file;
-      } else if (index == 6) {
-        galleryImgSix = file;
-      } else if (index == 7) {
+      if (index == 7) {
         customerLogoImageFile = file;
       }
     });
@@ -789,9 +773,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
       if (index == 7) {
         customerLogoImageFile = null;
       } else {
-        setState(() {
-          imageFileList.removeAt(index);
-        });
+        imageFileList.removeAt(index);
       }
     });
   }

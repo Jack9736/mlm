@@ -358,11 +358,6 @@ class _BuySecRegViewState extends State<BuySecRegView> {
     );
   }
 
-  void _toggle() {
-    setState(() {
-      _obscureText = !_obscureText;
-    });
-  }
 
   /* Container Sign Up Text */
   Container signUpText() {
@@ -427,12 +422,6 @@ class _BuySecRegViewState extends State<BuySecRegView> {
               ]);
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
-                setState(() {
-                  // isApiRunning = true;
-                });
-                setState(() {
-                  // getTokens();
-                });
               }
             },
           )),

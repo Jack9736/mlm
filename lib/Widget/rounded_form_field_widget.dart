@@ -6,6 +6,7 @@ class RoundedTextFormFieldWidget extends StatelessWidget {
   String hintText;
   String msg;
   bool enabled;
+  bool isRightIcons;
   int? minLines;
   int? maxLines;
   int? radius;
@@ -27,8 +28,9 @@ class RoundedTextFormFieldWidget extends StatelessWidget {
     Key? key,
     this.maxLines,
     this.minLines,
-    this.radius=50,
+    this.radius = 50,
     this.keyboardType = TextInputType.text,
+    this.isRightIcons = false,
     required this.controller,
   }) : super(key: key);
 
@@ -79,16 +81,18 @@ class RoundedTextFormFieldWidget extends StatelessWidget {
             return null;
           },
           decoration: InputDecoration(
-            isDense: true,
-            hintText: hintText,
-            contentPadding:
-                EdgeInsets.fromLTRB(mPadding, mPadding+10, mPadding, mPadding-5),
-            hintStyle: buildRadioTextStyle(),
-            disabledBorder: outlineInputBorder,
-            enabledBorder: outlineInputBorder,
-            border: outlineInputBorder,
-            focusedBorder: outlineInputBorder,
-          ),
+              isDense: true,
+              hintText: hintText,
+              contentPadding: EdgeInsets.fromLTRB(
+                  mPadding, mPadding + 10, mPadding, mPadding - 5),
+              hintStyle: buildRadioTextStyle(),
+              disabledBorder: outlineInputBorder,
+              enabledBorder: outlineInputBorder,
+              border: outlineInputBorder,
+              focusedBorder: outlineInputBorder,
+              suffixIcon: isRightIcons
+                  ? const Icon(Icons.arrow_forward_ios_outlined)
+                  :  null),
         ),
       ),
     );
