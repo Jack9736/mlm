@@ -96,10 +96,10 @@ class AppBinding extends Bindings {
     Get.put(SellAddPetController(
         httpService: Get.find(tag: AppConstant.tagHttpService)));
 
-    Get.put(BreedTypeController(
+    Get.put(SearchFilterController(
         httpService: Get.find(tag: AppConstant.tagHttpService)));
 
-    Get.put(SearchFilterController(
+    Get.put(BreedTypeController(
         httpService: Get.find(tag: AppConstant.tagHttpService)));
 
     Get.put(BuyMyProfileController(

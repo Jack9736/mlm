@@ -12,7 +12,10 @@ class SellAddPetController extends GetxController {
 
   var isLoading = false.obs;
   var isApiRunning = false.obs;
-  var strBreedType = "FIND BREED".obs;
+
+  var strBreedTypeHint = "FIND BREED".obs;
+  var selectedBreedType = "".obs;
+
   TextEditingController breedController = TextEditingController();
 
   HttpService httpService;

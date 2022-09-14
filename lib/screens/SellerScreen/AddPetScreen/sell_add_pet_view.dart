@@ -138,11 +138,17 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                     "BREED",
                     InkWell(
                       onTap: () => {
-                        Get.toNamed(AppConstant.ROUTE_BREED_TYPE_SCREEN),
+                        Get.toNamed(AppConstant.ROUTE_BREED_TYPE_SCREEN,
+                            arguments: [
+                              {
+                                AppConstant.argScreenName:
+                                    (SellAddPetView).toString()
+                              },
+                            ])
                       },
                       child: Obx(
                         () => RoundedTextFormFieldWidget(
-                            sellAddPetController.strBreedType.value,
+                            sellAddPetController.strBreedTypeHint.value,
                             'Please select breed',
                             false,
                             controller: sellAddPetController.breedController),

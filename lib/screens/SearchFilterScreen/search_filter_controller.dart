@@ -27,6 +27,7 @@ class SearchFilterController extends GetxController {
   var vetCheckedOptionObs = "".obs;
   var availableFromObs = "MM/DD/YYYY".obs;
   var strBreedType = "FIND BREED".obs;
+  var selectedBreedType = "".obs;
 
   var searchType = [
     'TYPE',

@@ -3,7 +3,11 @@ import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:mlm/Network/http_service.dart';
 import 'package:mlm/Service/StorageService.dart';
+import 'package:mlm/screens/SearchFilterScreen/search_filter_view.dart';
+import 'package:mlm/screens/SellerScreen/AddPetScreen/sell_add_pet_view.dart';
 
+import '../SearchFilterScreen/search_filter_controller.dart';
+import '../SellerScreen/AddPetScreen/sell_add_pet_controller.dart';
 import 'model/breed_type_model.dart';
 
 class BreedTypeController extends GetxController {
@@ -23,6 +27,9 @@ class BreedTypeController extends GetxController {
 
   final storage = Get.find<StorageService>();
 
+  SellAddPetController sellAddPetController = Get.find();
+  SearchFilterController searchFilterController = Get.find();
+
   var breedTypeArray = [
     "LABRADOR HUSKY",
     "LABRADOR RETRIEVER",
@@ -38,26 +45,24 @@ class BreedTypeController extends GetxController {
   List<BreedType> tempBreedTypeList = [];
   RxList<BreedType> breedTypeList = RxList<BreedType>();
 
-  onSelectListener(String index) {
-    List<BreedType> tempList = [];
-    tempList.addAll(tempBreedTypeList);
-
-    List<BreedType> originalList = [];
-    originalList.addAll(breedTypeList.value);
-
-    for (var element in originalList) {
-      var indexOf = originalList.indexOf(element);
-      originalList[indexOf].isSelect = element.breedName == index;
+  onSelectListener(String index, String screenName) {
+    for (var element in breedTypeList.value) {
+      if (element.breedName == index) {
+        if (screenName == (SellAddPetView).toString()) {
+          sellAddPetController.selectedBreedType.value =
+              sellAddPetController.selectedBreedType.value == element.breedName
+                  ? ""
+                  : element.breedName;
+        } else if (screenName == (SearchFilterView).toString()) {
+          searchFilterController.selectedBreedType.value =
+              searchFilterController.selectedBreedType.value ==
+                      element.breedName
+                  ? ""
+                  : element.breedName;
+        }
+      }
     }
-    breedTypeList.clear();
-    breedTypeList.value = originalList;
-
-    for (var element in tempList) {
-      var indexOf = tempList.indexOf(element);
-      tempList[indexOf].isSelect = element.breedName == index;
-    }
-    tempBreedTypeList.clear();
-    tempBreedTypeList.addAll(tempList);
+    breedTypeList.refresh();
   }
 
   onSearch(String index) {
@@ -74,15 +79,19 @@ class BreedTypeController extends GetxController {
 
   @override
   void onInit() {
+    initBreedTypeList();
     super.onInit();
   }
 
+  void initBreedTypeList() {
+    for (var value in breedTypeArray) {
+      tempBreedTypeList.add(BreedType(value, false));
+      breedTypeList.add(BreedType(value, false));
+    }
+  }
+
   void onLoad() {
-    tempBreedTypeList.clear();
-    breedTypeList.clear();
-    var list = breedTypeArray.map((e) => BreedType(e, false)).toList();
-    tempBreedTypeList.addAll(list);
-    breedTypeList.value.addAll(list);
+    onSearch("");
   }
 
   void openDrawer() {

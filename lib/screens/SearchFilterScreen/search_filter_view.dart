@@ -242,12 +242,18 @@ class _SearchFilterViewState extends State<SearchFilterView> {
       padding: EdgeInsets.symmetric(vertical: verticalPadding),
       child: InkWell(
         onTap: () => {
-          Get.toNamed(AppConstant.ROUTE_BREED_TYPE_SCREEN),
+          Get.toNamed(AppConstant.ROUTE_BREED_TYPE_SCREEN,
+              arguments: [
+                {
+                  AppConstant.argScreenName:
+                  (SearchFilterView).toString()
+                },
+              ])
         },
         child: Obx(
           () => RoundedTextFormFieldWidget(
               controller.strBreedType.value, 'Please select breed', false,
-              controller: controller.breedController,isRightIcons: true),
+              controller: controller.breedController, isRightIcons: true),
         ),
       ),
     );

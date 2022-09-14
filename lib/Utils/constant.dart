@@ -66,6 +66,7 @@ class AppConstant {
   static const String prefPassword = "prefpassword";
 
   static const String argUserType = "userType";
+  static const String argScreenName = "argScreenName";
 
   static const String argLocationId = "argLocationId";
 
