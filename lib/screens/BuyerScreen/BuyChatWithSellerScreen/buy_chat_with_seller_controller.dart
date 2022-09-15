@@ -4,7 +4,7 @@ import 'package:logger/logger.dart';
 import 'package:mlm/Network/http_service.dart';
 import 'package:mlm/Service/StorageService.dart';
 
-class BuyMyProfileController extends GetxController {
+class BuyChatWithSellerController extends GetxController {
   Logger logger = Get.find();
 
   var isLoading = false.obs;
@@ -13,7 +13,7 @@ class BuyMyProfileController extends GetxController {
 
   HttpService httpService;
 
-  BuyMyProfileController({required this.httpService});
+  BuyChatWithSellerController({required this.httpService});
 
 
   var scaffoldKey = GlobalKey<ScaffoldState>();

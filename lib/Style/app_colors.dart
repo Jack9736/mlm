@@ -58,6 +58,9 @@ class AppColors {
   static const Color radio_un_selected_color =
       Color.fromRGBO(180, 192, 217, 1.0);
 
+ static const Color chat_attach_icon_color =
+      Color.fromRGBO(76, 82, 100, 1.0);
+
   static const Color radio_selected_color =
       Color.fromRGBO(214, 74, 76, 1.0);
 }

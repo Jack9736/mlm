@@ -11,6 +11,24 @@ import 'package:images_picker/images_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:mlm/Style/app_colors.dart';
 import 'package:mlm/Style/k_text_style.dart';
+import 'package:mlm/Utils/helper.dart';
+import 'package:mlm/Utils/helper.dart';
+import 'package:mlm/Utils/helper.dart';
+import 'package:mlm/Utils/helper.dart';
+import 'package:mlm/Utils/helper.dart';
+import 'package:mlm/Utils/helper.dart';
+import 'package:mlm/Utils/helper.dart';
+import 'package:mlm/Utils/helper.dart';
+import 'package:mlm/Utils/helper.dart';
+import 'package:mlm/Utils/helper.dart';
+import 'package:mlm/Utils/helper.dart';
+import 'package:mlm/Utils/helper.dart';
+import 'package:mlm/Utils/helper.dart';
+import 'package:mlm/Utils/helper.dart';
+import 'package:mlm/Utils/helper.dart';
+import 'package:mlm/Utils/helper.dart';
+import 'package:mlm/Utils/helper.dart';
+import 'package:mlm/Utils/helper.dart';
 import 'package:mlm/screens/SellerScreen/AddPetScreen/sell_add_pet_controller.dart';
 import '../../../Utils/constant.dart';
 import '../../../Widget/rounded_cb_widget.dart';
@@ -93,20 +111,20 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                 physics: const BouncingScrollPhysics(),
                 shrinkWrap: true,
                 children: [
-                  buildColumn(
+                  Helper().buildColumn(
                     "NAME",
                     RoundedTextFormFieldWidget(
                         'TYPE NAME HERE', 'Please Enter name', true,
                         controller: nameController),
                   ),
-                  buildColumn(
+                  Helper().buildColumn(
                       "PROFILE PHOTO",
                       SizedBox(
                         height: size.width / 3,
                         width: size.width / 3,
                         child: galleryWidget(7, customerLogoImageFile),
                       )),
-                  buildColumn(
+                  Helper().buildColumn(
                       "TYPE",
                       Column(children: [
                         Row(
@@ -134,7 +152,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                           ],
                         )
                       ])),
-                  buildColumn(
+                  Helper().buildColumn(
                     "BREED",
                     InkWell(
                       onTap: () => {
@@ -155,7 +173,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       ),
                     ),
                   ),
-                  buildColumn(
+                  Helper().buildColumn(
                     "AGE",
                     Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -180,20 +198,20 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                           )
                         ]),
                   ),
-                  buildColumn(
+                  Helper().buildColumn(
                     "LOCATION",
                     RoundedTextFormFieldWidget(
                         'FIND LOCATION', 'Please select breed', true,
                         controller: locationController),
                   ),
-                  buildColumn(
+                  Helper().buildColumn(
                       "PRICE",
                       RoundedTextFormFieldWidget(
                           'ENTER PRICE', 'Please select breed', true,
                           controller: priceController,
                           keyboardType: const TextInputType.numberWithOptions(
                               decimal: true))),
-                  buildColumn(
+                  Helper().buildColumn(
                     "SIZE",
                     Column(children: [
                       Row(
@@ -226,7 +244,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       )
                     ]),
                   ),
-                  buildColumn(
+                  Helper().buildColumn(
                     "GENDER",
                     Column(children: [
                       Row(
@@ -249,7 +267,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       ),
                     ]),
                   ),
-                  buildColumn(
+                  Helper().buildColumn(
                     "PERSONALITY",
                     Column(children: [
                       Row(
@@ -308,7 +326,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       ),
                     ]),
                   ),
-                  buildColumn(
+                  Helper().buildColumn(
                     "CRATE TRAINED",
                     Column(children: [
                       Row(
@@ -331,7 +349,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       ),
                     ]),
                   ),
-                  buildColumn(
+                  Helper().buildColumn(
                     "REQUIRE TRANSPORT",
                     Column(children: [
                       Row(
@@ -354,14 +372,14 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       ),
                     ]),
                   ),
-                  buildColumn(
+                  Helper().buildColumn(
                       "MICROCHIP (hidden to public)",
                       RoundedTextFormFieldWidget(
                           'ENTER NUMBER', 'Please enter number', true,
                           controller: microchipController,
                           keyboardType: const TextInputType.numberWithOptions(
                               decimal: true))),
-                  buildColumn(
+                  Helper().buildColumn(
                     "REHOMING NUMBER (hidden to public)",
                     RoundedTextFormFieldWidget(
                         'ENTER NUMBER', 'Please enter number', true,
@@ -369,7 +387,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                         keyboardType: const TextInputType.numberWithOptions(
                             decimal: true)),
                   ),
-                  buildColumn(
+                  Helper().buildColumn(
                     "VET CHECKED",
                     Column(children: [
                       Row(
@@ -392,7 +410,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       ),
                     ]),
                   ),
-                  buildColumn(
+                  Helper().buildColumn(
                     "AVAILABLE FROM",
                     Obx(
                       () => InkWell(
@@ -412,7 +430,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       style: KTextStyle.noteTextStyle,
                     ),
                   ),
-                  buildColumn(
+                  Helper().buildColumn(
                     "NOTES",
                     RoundedTextFormFieldWidget(
                         "Type here…", 'Please Enter note', true,
@@ -421,7 +439,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                         radius: 10,
                         controller: notesController),
                   ),
-                  buildColumn(
+                  Helper().buildColumn(
                       "GALLERY",
                       Column(
                         children: [
@@ -476,24 +494,6 @@ class _SellAddPetViewState extends State<SellAddPetView> {
   TextEditingController availableFromController = TextEditingController();
   TextEditingController notesController = TextEditingController();
 
-  Column buildColumn(String header, Widget sizedBox) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const SizedBox(height: 20),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
-          child: Text(header, style: buildHeaderTextStyle()),
-        ),
-        const Divider(),
-        Padding(
-          padding: const EdgeInsets.only(top: 10.0),
-          child: sizedBox,
-        )
-      ],
-    );
-  }
 
   TextStyle buildRadioTextStyle() {
     return const TextStyle(

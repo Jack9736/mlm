@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../Style/app_colors.dart';
+
 class AppConstant {
   static final AppConstant _singleton = AppConstant._internal();
 
@@ -45,6 +47,8 @@ class AppConstant {
   static const String ROUTE_FAVOURIRE = "/FavouriteView";
   static const String ROUTE_MY_PROFILE = "/MyProfileView";
   static const String ROUTE_SELLER_MY_PROFILE = "/SellerMyProfileView";
+  static const String ROUTE_BUY_EDIT_PROFILE = "/BuyEditProfileView";
+  static const String ROUTE_BUY_CHAT_WITH_SALLER = "/BuyChatWithSellerView";
   static const String ROUTE_ADD_PET = "/AddPetView";
 
   static const String ROUTE_BREED_TYPE_SCREEN = "/BreedTypeScreen";
@@ -136,4 +140,12 @@ class AppConstant {
     "YES",
     "NO",
   ];
+
+  TextStyle formFieldHeaderTextStyle() {
+    return const TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+        fontFamily: 'Gibson',
+        color: AppColors.topHeaderBlueClr);
+  }
 }

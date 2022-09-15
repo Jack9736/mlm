@@ -6,9 +6,11 @@ import 'package:get_storage/get_storage.dart';
 import 'package:mlm/Style/app_colors.dart';
 import 'package:mlm/Utils/constant.dart';
 import 'package:mlm/screens/BreedTypeScreen/breed_type_screen.dart';
+import 'package:mlm/screens/BuyerScreen/BuyChatWithSellerScreen/buy_chat_with_seller_view.dart';
 import 'package:mlm/screens/BuyerScreen/BuyComplateRegScreen/buy_complete_reg_view.dart';
 import 'package:mlm/screens/BuyerScreen/BuyFirstRegScreen/buy_first_reg_view.dart';
 import 'package:mlm/screens/BuyerScreen/BuyHomeScreen/buy_home_screen.dart';
+import 'package:mlm/screens/BuyerScreen/BuyMyProfileScreen/buy_edit_profile_view.dart';
 import 'package:mlm/screens/BuyerScreen/BuyORSellScreen/buy_sell_screen.dart';
 import 'package:mlm/screens/BuyerScreen/BuySecondRegistrationScreen/buy_sec_reg_view.dart';
 import 'package:mlm/screens/FirstRegScreen/first_reg_screen.dart';
@@ -148,6 +150,12 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: AppConstant.ROUTE_SELLER_MY_PROFILE,
             page: () => SellMyProfileView()),
+        GetPage(
+            name: AppConstant.ROUTE_BUY_EDIT_PROFILE,
+            page: () => BuyEditProfileView()),
+        GetPage(
+            name: AppConstant.ROUTE_BUY_CHAT_WITH_SALLER,
+            page: () => BuyChatWithSellerView()),
       ],
     );
   }

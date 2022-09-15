@@ -21,8 +21,7 @@ class BuyMyProfileView extends StatelessWidget {
           title: "My Profile",
         ),
         body: Padding(
-          padding:
-          const EdgeInsets.only(top: 15,  bottom: 20),
+          padding: const EdgeInsets.only(top: 15, bottom: 20),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -50,7 +49,7 @@ class BuyMyProfileView extends StatelessWidget {
                                   children: const [
                                     Padding(
                                       padding:
-                                      EdgeInsets.symmetric(vertical: 8.0),
+                                          EdgeInsets.symmetric(vertical: 8.0),
                                       child: Text('Jenifer Mark',
                                           style: TextStyle(
                                               fontFamily: 'Gibson',
@@ -67,7 +66,8 @@ class BuyMyProfileView extends StatelessWidget {
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(top: 8.0),
-                                      child: Text('Member since September, 2019',
+                                      child: Text(
+                                          'Member since September, 2019',
                                           style: TextStyle(
                                               fontFamily: 'Gibson',
                                               fontWeight: FontWeight.w300),
@@ -80,7 +80,7 @@ class BuyMyProfileView extends StatelessWidget {
                       ),
                       const CustomImageWidget(
                           imgUrl:
-                          'https://i.pinimg.com/736x/55/f9/55/55f955717e64ddbae8e15a781fcd0043.jpg',
+                              'https://i.pinimg.com/736x/55/f9/55/55f955717e64ddbae8e15a781fcd0043.jpg',
                           width: 110,
                           height: 110,
                           borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -119,26 +119,22 @@ class BuyMyProfileView extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
                       const SizedBox(height: 10),
-
                       _createDrawerItem(
                         title: 'PROFILE'.tr,
-
                       ),
-
                       buildDividerPadding(),
                       buildListTileForAboutMe("Name", "Jennifer Mark"),
                       buildDividerPadding(),
-                      buildListTileForAboutMe("Email", "jennifer.mark@gmail.com"),
+                      buildListTileForAboutMe(
+                          "Email", "jennifer.mark@gmail.com"),
                       buildDividerPadding(),
-                      buildListTileForAboutMe("Password", "123456"),
+                      buildListTileForAboutMe("Password", "123456".replaceAll(RegExp(r"."), "*")),
                       buildDividerPadding(),
                       buildListTileForAboutMe("Phone Number", "1234567890"),
-
                     ],
                   ),
                 ),
               ),
-
             ],
           ),
         ));
@@ -151,8 +147,7 @@ class BuyMyProfileView extends StatelessWidget {
     );
   }
 
-  Widget _createDrawerItem(
-      {required String title}) {
+  Widget _createDrawerItem({required String title}) {
     return Ink(
       child: ListTile(
         selected: true,
@@ -163,16 +158,23 @@ class BuyMyProfileView extends StatelessWidget {
               title,
               style: TextStyle(
                 fontSize: 16,
-                fontWeight: (title == "PROFILE") ? FontWeight.w600 : FontWeight.w400,
+                fontWeight:
+                    (title == "PROFILE") ? FontWeight.w600 : FontWeight.w400,
                 fontFamily: 'Gibson',
-
               ),
             )
           ],
         ),
-        trailing:  SizedBox(
+        trailing: SizedBox(
           height: double.infinity,
-          child: (title == "PROFILE") ? Icon(Icons.edit, size: 18, color: AppColors.appSecondaryColor) : null ,
+          child: (title == "PROFILE")
+              ? InkWell(
+                  onTap: () {
+                    Get.toNamed(AppConstant.ROUTE_BUY_EDIT_PROFILE);
+                  },
+                  child: const Icon(Icons.edit,
+                      size: 18, color: AppColors.appSecondaryColor))
+              : null,
         ),
       ),
     );
@@ -196,8 +198,6 @@ class BuyMyProfileView extends StatelessWidget {
             fontFamily: 'Gibson',
             color: AppColors.petProfileDetailLblColor));
   }
-
-
 
   Text buildAboutMeLbl(String s) {
     return Text(s,

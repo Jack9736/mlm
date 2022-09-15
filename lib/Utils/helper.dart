@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../Service/StorageService.dart';
 import 'constant.dart';
@@ -78,4 +79,25 @@ class Helper {
     return storage.getBool(AppConstant.prefIsLogin) ?? false;
   }
 
+  /*
+  * Build column widget for for filed with header
+  * */
+  Column buildColumn(String header, Widget mWidget, [bool? divider]) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const SizedBox(height: 20),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Text(header, style: AppConstant().formFieldHeaderTextStyle()),
+        ),
+        divider == true ? const Divider() : Container(),
+        Padding(
+          padding: const EdgeInsets.only(top: 5.0),
+          child: mWidget,
+        )
+      ],
+    );
+  }
 }

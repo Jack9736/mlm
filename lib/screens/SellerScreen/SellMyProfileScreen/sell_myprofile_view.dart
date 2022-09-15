@@ -109,8 +109,7 @@ class SellMyProfileView extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: ListView(
-                    children: [
+                child: ListView(children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: Card(
@@ -131,7 +130,8 @@ class SellMyProfileView extends StatelessWidget {
                           buildListTileForAboutMe(
                               "Email", "jennifer.mark@gmail.com"),
                           buildDividerPadding(),
-                          buildListTileForAboutMe("Password", "123456"),
+                          buildListTileForAboutMe("Password",
+                              "123456".replaceAll(RegExp(r"."), "*")),
                           buildDividerPadding(),
                           buildListTileForAboutMe("Phone Number", "1234567890"),
                           const SizedBox(height: 10),
@@ -139,44 +139,47 @@ class SellMyProfileView extends StatelessWidget {
                       ),
                     ),
                   ),
-                      SizedBox(height: 20,),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                          ),
-                          child: ListView(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            children: [
-                              const SizedBox(height: 10),
-                              _createDrawerItem(
-                                title: 'BREEDER PROFILE'.tr,
-                              ),
-                              buildDividerPadding(),
-                              buildListTileForAboutMe("Business Name", "Perfect Pets"),
-                              buildDividerPadding(),
-                              buildListTileForAboutMe(
-                                  "Breeder Number", "1234567"),
-                              buildDividerPadding(),
-                              buildListTileForAboutMe("Display Name", "Jennifer"),
-                              buildDividerPadding(),
-                              buildListTileForAboutMe("Association No.:", "1234567890"),
-                              buildListTileForAboutMe("", "1234567890"),
-                              buildListTileForAboutMe("", "1234567890"),
-                              buildDividerPadding(),
-                              buildListTileForAboutMe("Post Code", "4163"),
-                              buildDividerPadding(),
-                              buildListTileForAboutMe("Email", "jennifer.mark@gmail.com"),
-                              const SizedBox(height: 10),
-                            ],
-                          ),
-                        ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
                       ),
+                      child: ListView(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        children: [
+                          const SizedBox(height: 10),
+                          _createDrawerItem(
+                            title: 'BREEDER PROFILE'.tr,
+                          ),
+                          buildDividerPadding(),
+                          buildListTileForAboutMe(
+                              "Business Name", "Perfect Pets"),
+                          buildDividerPadding(),
+                          buildListTileForAboutMe("Breeder Number", "1234567"),
+                          buildDividerPadding(),
+                          buildListTileForAboutMe("Display Name", "Jennifer"),
+                          buildDividerPadding(),
+                          buildListTileForAboutMe(
+                              "Association No.:", "1234567890"),
+                          buildListTileForAboutMe("", "1234567890"),
+                          buildListTileForAboutMe("", "1234567890"),
+                          buildDividerPadding(),
+                          buildListTileForAboutMe("Post Code", "4163"),
+                          buildDividerPadding(),
+                          buildListTileForAboutMe(
+                              "Email", "jennifer.mark@gmail.com"),
+                          const SizedBox(height: 10),
+                        ],
+                      ),
+                    ),
+                  ),
                 ]),
               ),
-
             ],
           ),
         ));
@@ -200,8 +203,9 @@ class SellMyProfileView extends StatelessWidget {
               title,
               style: TextStyle(
                 fontSize: 16,
-                fontWeight:
-                    (title == "PROFILE") || (title == "BREEDER PROFILE") ? FontWeight.w600 : FontWeight.w400,
+                fontWeight: (title == "PROFILE") || (title == "BREEDER PROFILE")
+                    ? FontWeight.w600
+                    : FontWeight.w400,
                 fontFamily: 'Gibson',
               ),
             )
@@ -219,8 +223,8 @@ class SellMyProfileView extends StatelessWidget {
 
   ListTile buildListTileForAboutMe(String lbl, String value) {
     return ListTile(
-        dense: true,
-        visualDensity: VisualDensity(vertical: -1),
+      dense: true,
+      visualDensity: VisualDensity(vertical: -1),
       leading: buildAboutMeLbl(lbl),
       trailing: buildAboutMeValue(value),
     );

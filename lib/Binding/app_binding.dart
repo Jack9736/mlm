@@ -17,6 +17,7 @@ import '../Network/http_service.dart';
 import '../Service/StorageService.dart';
 import '../Utils/constant.dart';
 import 'package:mlm/screens/loginScreen/login_controller.dart';
+import '../screens/BuyerScreen/BuyChatWithSellerScreen/buy_chat_with_seller_controller.dart';
 import '../screens/PetProfileScreen/pet_profile_controller.dart';
 import '../screens/RecentlyViewScreen/recently_view_controller.dart';
 import 'package:mlm/screens/MyMessageScreen/my_messages_controller.dart';
@@ -109,6 +110,9 @@ class AppBinding extends Bindings {
         httpService: Get.find(tag: AppConstant.tagHttpService)));
 
     Get.put(SellMyProfileController(
+        httpService: Get.find(tag: AppConstant.tagHttpService)));
+
+    Get.put(BuyChatWithSellerController(
         httpService: Get.find(tag: AppConstant.tagHttpService)));
   }
 }
