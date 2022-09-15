@@ -24,7 +24,7 @@ class MyMessagesScreen extends StatelessWidget {
                 //margin: EdgeInsets.only(top: 20),
                 // padding: const EdgeInsets.only(bottom: 18, right: 18.0, left:78.0, ),
                 child: Container(
-                  // height: 120,
+
                   margin: EdgeInsets.only(top: 20),
                   child: Padding(
                     padding: const EdgeInsets.only(
@@ -48,62 +48,66 @@ class MyMessagesScreen extends StatelessWidget {
                                 elevation: 1,
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 50.0),
-                                  child: Flexible(
-                                    child: Column(
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.center,
-                                        children: [
-                                          Row(
-                                            crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                            children: [
-                                              const Text('Jenifer Mark',
+                                  child: Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                          children: [
+                                            const Text('Jenifer Mark',
+                                                style: TextStyle(
+                                                    fontFamily: 'Gibson',
+                                                    fontWeight: FontWeight.w600,
+                                                  fontSize: 16
+                                                ),
+                                                overflow:
+                                                TextOverflow.ellipsis),
+
+                                          ],
+                                        ),
+
+                                        Row(
+                                          children:[
+                                            Padding(
+                                              padding: EdgeInsets.only(top: 10.0),
+                                              child: Text('Logan \u2022  ',
                                                   style: TextStyle(
                                                       fontFamily: 'Gibson',
-                                                      fontWeight: FontWeight.w600,
-                                                    fontSize: 16
-                                                  ),
+                                                      fontWeight:
+                                                      FontWeight.w300),
                                                   overflow:
                                                   TextOverflow.ellipsis),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsets.only(top: 10.0),
+                                              child: Text('Labrador \u2022  ',
+                                                  style: TextStyle(
+                                                      fontFamily: 'Gibson',
+                                                      fontWeight:
+                                                      FontWeight.w300),
+                                                  overflow:
+                                                  TextOverflow.ellipsis),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsets.only(top: 10.0),
+                                              child: Text('3 months old',
+                                                  style: TextStyle(
+                                                      fontFamily: 'Gibson',
+                                                      fontWeight:
+                                                      FontWeight.w300),
+                                                  overflow:
+                                                  TextOverflow.ellipsis),
+                                            ),
+                                          ]
 
-                                            ],
-                                          ),
+                                        )
 
-                                          const Padding(
-                                            padding: EdgeInsets.only(top: 10.0),
-                                            child: Text('Logan',
-                                                style: TextStyle(
-                                                    fontFamily: 'Gibson',
-                                                    fontWeight:
-                                                    FontWeight.w300),
-                                                overflow:
-                                                TextOverflow.ellipsis),
-                                          ),
-                                          const Padding(
-                                            padding: EdgeInsets.only(top: 3.0),
-                                            child: Text('Labrador',
-                                                style: TextStyle(
-                                                    fontFamily: 'Gibson',
-                                                    fontWeight:
-                                                    FontWeight.w300),
-                                                overflow:
-                                                TextOverflow.ellipsis),
-                                          ),
-                                          const Padding(
-                                            padding: EdgeInsets.only(top: 3.0),
-                                            child: Text('3 months old',
-                                                style: TextStyle(
-                                                    fontFamily: 'Gibson',
-                                                    fontWeight:
-                                                    FontWeight.w300),
-                                                overflow:
-                                                TextOverflow.ellipsis),
-                                          ),
 
-                                        ]),
-                                  ),
+                                      ]),
                                 ),
                               ),
                             ),
