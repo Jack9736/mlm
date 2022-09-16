@@ -6,9 +6,14 @@ import 'package:mlm/Widget/custom_image_widget.dart';
 import 'package:mlm/Widget/widget_appbar.dart';
 import 'package:mlm/screens/MyMessageScreen/my_messages_controller.dart';
 
-class MyMessagesScreen extends StatelessWidget {
-  MyMessagesScreen({Key? key}) : super(key: key);
+class MyMessagesScreen extends StatefulWidget {
+  const MyMessagesScreen({Key? key}) : super(key: key);
 
+  @override
+  State<MyMessagesScreen> createState() => _MyMessagesScreenState();
+}
+
+class _MyMessagesScreenState extends State<MyMessagesScreen> {
   MymessagesController controller = Get.find();
 
   @override
@@ -55,8 +60,8 @@ class MyMessagesScreen extends StatelessWidget {
                                       Row(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
-                                        children: [
-                                          const Text('Jenifer Mark',
+                                        children: const [
+                                          Text('Jenifer Mark',
                                               style: TextStyle(
                                                   fontFamily: 'Gibson',
                                                   fontWeight: FontWeight.w600,

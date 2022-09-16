@@ -41,38 +41,40 @@ class _BuyEditProfileViewState extends State<BuyEditProfileView> {
                   Obx(
                     () => Padding(
                       padding: const EdgeInsets.only(top: 20.0),
-                      child: Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          imageFile.value != null
-                              ? Container(
-                                  width: imageSize,
-                                  height: imageSize,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black,
-                                    image: DecorationImage(
-                                        fit: BoxFit.fill,
-                                        colorFilter: ColorFilter.mode(
-                                            Colors.black.withOpacity(0.8),
-                                            BlendMode.dstATop),
-                                        image: FileImage(
-                                            File(imageFile.value!.path))),
-                                  ),
-                                )
-                              : CustomImageWidget(
-                                  imgUrl:
-                                      'https://i.pinimg.com/736x/55/f9/55/55f955717e64ddbae8e15a781fcd0043.jpg',
-                                  width: imageSize,
-                                  height: imageSize,
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10))),
-                          Positioned(
-                            bottom: -10.5,
-                            right: -10.5,
-                            child: InkWell(
-                              onTap: () {
-                                _showImagePickerDialog(context, 1, imageFile);
-                              },
+                      child: InkWell(
+                        onTap: () {
+                          _showImagePickerDialog(context, 1, imageFile);
+                        },
+                        child: Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            imageFile.value != null
+                                ? Container(
+                                    width: imageSize,
+                                    height: imageSize,
+                                    decoration: BoxDecoration(
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(10)),
+                                      color: Colors.black,
+                                      image: DecorationImage(
+                                          fit: BoxFit.fill,
+                                          colorFilter: ColorFilter.mode(
+                                              Colors.black.withOpacity(0.8),
+                                              BlendMode.dstATop),
+                                          image: FileImage(
+                                              File(imageFile.value!.path))),
+                                    ),
+                                  )
+                                : CustomImageWidget(
+                                    imgUrl:
+                                        'https://i.pinimg.com/736x/55/f9/55/55f955717e64ddbae8e15a781fcd0043.jpg',
+                                    width: imageSize,
+                                    height: imageSize,
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10))),
+                            Positioned(
+                              bottom: -10.5,
+                              right: -10.5,
                               child: Container(
                                 height: 35,
                                 width: 35,
@@ -89,8 +91,8 @@ class _BuyEditProfileViewState extends State<BuyEditProfileView> {
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
