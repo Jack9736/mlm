@@ -131,7 +131,7 @@ class _BuyChatWithSellerViewState extends State<BuyChatWithSellerView> {
                         Expanded(
                           child: Padding(
                             padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
+                                const EdgeInsets.symmetric(horizontal: 18.0, vertical: 20),
                             child: TextField(
                               minLines: 1,
                               maxLines: 5,

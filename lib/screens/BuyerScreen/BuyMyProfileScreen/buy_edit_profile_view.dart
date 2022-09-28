@@ -27,250 +27,255 @@ class _BuyEditProfileViewState extends State<BuyEditProfileView> {
   @override
   Widget build(BuildContext context) {
     var imageSize = 120.0;
-    return Scaffold(
-        backgroundColor: AppColors.appBgColor,
-        appBar: const CustomAppBar(
-          title: "Edit Profile",
-        ),
-        body: CustomScrollView(
-          slivers: [
-            SliverFillRemaining(
-              hasScrollBody: false,
-              child: Column(
-                children: <Widget>[
-                  Obx(
-                    () => Padding(
-                      padding: const EdgeInsets.only(top: 20.0),
-                      child: InkWell(
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+
+      child: Scaffold(
+          backgroundColor: AppColors.appBgColor,
+          appBar: const CustomAppBar(
+            title: "Edit Profile",
+          ),
+          body: CustomScrollView(
+            slivers: [
+              SliverFillRemaining(
+                hasScrollBody: false,
+                child: Column(
+                  children: <Widget>[
+                    Obx(
+                          () => Padding(
+                        padding: const EdgeInsets.only(top: 20.0),
+                        child: InkWell(
                         onTap: () {
                           _showImagePickerDialog(context, 1, imageFile);
                         },
-                        child: Stack(
+                        child:Stack(
                           clipBehavior: Clip.none,
                           children: [
                             imageFile.value != null
                                 ? Container(
-                                    width: imageSize,
-                                    height: imageSize,
-                                    decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(10)),
-                                      color: Colors.black,
-                                      image: DecorationImage(
-                                          fit: BoxFit.fill,
-                                          colorFilter: ColorFilter.mode(
-                                              Colors.black.withOpacity(0.8),
-                                              BlendMode.dstATop),
-                                          image: FileImage(
-                                              File(imageFile.value!.path))),
-                                    ),
-                                  )
+                              width: imageSize,
+                              height: imageSize,
+                              decoration: BoxDecoration(
+                                borderRadius: const BorderRadius.all(
+                                          Radius.circular(10)),color: Colors.black,
+                                image: DecorationImage(
+                                    fit: BoxFit.fill,
+                                    colorFilter: ColorFilter.mode(
+                                        Colors.black.withOpacity(0.8),
+                                        BlendMode.dstATop),
+                                    image: FileImage(
+                                        File(imageFile.value!.path))),
+                              ),
+                            )
                                 : CustomImageWidget(
-                                    imgUrl:
-                                        'https://i.pinimg.com/736x/55/f9/55/55f955717e64ddbae8e15a781fcd0043.jpg',
-                                    width: imageSize,
-                                    height: imageSize,
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(10))),
+                                imgUrl:
+                                'https://i.pinimg.com/736x/55/f9/55/55f955717e64ddbae8e15a781fcd0043.jpg',
+                                width: imageSize,
+                                height: imageSize,
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(10))),
                             Positioned(
                               bottom: -10.5,
                               right: -10.5,
-                              child: Container(
-                                height: 35,
-                                width: 35,
-                                decoration: BoxDecoration(
-                                  color: AppColors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Image.asset(
-                                    "assets/ic_pencil.png",
-                                    fit: BoxFit.contain,
+
+                                child: Container(
+                                  height: 35,
+                                  width: 35,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.white,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Image.asset(
+                                      "assets/ic_pencil.png",
+                                      fit: BoxFit.contain,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                      padding: const EdgeInsets.only(
-                          top: 50, bottom: 00.0, left: 20.0, right: 20.0),
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              top: 00, bottom: 20.0, left: 20.0, right: 20.0),
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              TextFormField(
-                                textCapitalization:
-                                    TextCapitalization.sentences,
-                                textInputAction: TextInputAction.next,
-                                cursorColor: Colors.black,
-                                style: buildTextStyle(),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Enter first name';
-                                  }
-                                  return null;
-                                },
-                                onSaved: (String? value) {
-                                  // firstName = value!;
-                                },
-                                decoration: InputDecoration(
-                                  labelText: 'First Name*',
-                                  labelStyle: buildTextStyle(),
-                                  //labelText: 'First Name'
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              TextFormField(
-                                textCapitalization:
-                                    TextCapitalization.sentences,
-                                textInputAction: TextInputAction.next,
-                                cursorColor: Colors.black,
-                                style: buildTextStyle(),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Enter last name';
-                                  }
-                                  return null;
-                                },
-                                onSaved: (String? value) {
-                                  // firstName = value!;
-                                },
-                                decoration: InputDecoration(
-                                  labelText: 'Last Name*',
-                                  labelStyle: buildTextStyle(),
-
-                                  //labelText: 'First Name'
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              TextFormField(
-                                textCapitalization:
-                                    TextCapitalization.sentences,
-                                textInputAction: TextInputAction.next,
-                                cursorColor: Colors.black,
-                                style: buildTextStyle(),
-                                validator: (value) {
-                                  bool validEmail = RegExp(
-                                          r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
-                                      .hasMatch(value!);
-                                  if (value.isEmpty || !validEmail) {
-                                    return 'Enter your email address';
-                                  }
-                                  return null;
-                                },
-                                onSaved: (String? value) {
-                                  // firstName = value!;
-                                },
-                                decoration: InputDecoration(
-                                  labelText: 'Email*',
-                                  labelStyle: buildTextStyle(),
-
-                                  //labelText: 'First Name'
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              TextFormField(
-                                textCapitalization:
-                                    TextCapitalization.sentences,
-                                textInputAction: TextInputAction.next,
-                                cursorColor: Colors.black,
-                                style: buildTextStyle(),
-                                keyboardType:
-                                    const TextInputType.numberWithOptions(
-                                        signed: true, decimal: true),
-                                inputFormatters: <TextInputFormatter>[
-                                  FilteringTextInputFormatter.allow(
-                                      RegExp(r'[0-9]')),
-                                ],
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Enter phone number';
-                                  }
-                                  return null;
-                                },
-                                onSaved: (String? value) {
-                                  // firstName = value!;
-                                },
-                                decoration: InputDecoration(
-                                  labelText: 'Phone number*',
-                                  labelStyle: buildTextStyle(),
-
-                                  //labelText: 'First Name'
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Obx(() => TextFormField(
-                                    obscureText: _obscureText.value,
-                                    textCapitalization:
-                                        TextCapitalization.sentences,
-                                    textInputAction: TextInputAction.next,
-                                    cursorColor: Colors.black,
-                                    style: buildTextStyle(),
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Enter Password';
-                                      }
-                                      return null;
-                                    },
-                                    onSaved: (String? value) {
-                                      // firstName = value!;
-                                    },
-                                    decoration: InputDecoration(
-                                      suffixIcon: IconButton(
-                                        icon: Icon(
-                                          // Based on passwordVisible state choose the icon
-                                          _obscureText.value
-                                              ? Icons.visibility
-                                              : Icons.visibility_off,
-                                          color: Colors.grey[300],
-                                        ),
-                                        onPressed: () {
-                                          // Update the state i.e. toogle the state of passwordVisible variable
-                                          _obscureText.value =
-                                              !_obscureText.value;
-                                        },
-                                      ),
-                                      labelText: 'Password*',
-                                      labelStyle: buildTextStyle(),
-                                    ),
-                                  ))
                             ],
                           ),
                         ),
-                      )),
-                  Expanded(child: Container()),
-                  nextButton(context)
-                ],
+                      ),
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.only(
+                            top: 50, bottom: 00.0, left: 20.0, right: 20.0),
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                top: 00, bottom: 20.0, left: 20.0, right: 20.0),
+                            child: Column(
+                              children: [
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  textCapitalization:
+                                  TextCapitalization.sentences,
+                                  textInputAction: TextInputAction.next,
+                                  cursorColor: Colors.black,
+                                  style: buildTextStyle(),
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Enter first name';
+                                    }
+                                    return null;
+                                  },
+                                  onSaved: (String? value) {
+                                    // firstName = value!;
+                                  },
+                                  decoration: InputDecoration(
+                                    labelText: 'First Name*',
+                                    labelStyle: buildTextStyle(),
+
+                                    //labelText: 'First Name'
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  textCapitalization:
+                                  TextCapitalization.sentences,
+                                  textInputAction: TextInputAction.next,
+                                  cursorColor: Colors.black,
+                                  style: buildTextStyle(),
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Enter last name';
+                                    }
+                                    return null;
+                                  },
+                                  onSaved: (String? value) {
+                                    // firstName = value!;
+                                  },
+                                  decoration: InputDecoration(
+                                    labelText: 'Last Name*',
+                                    labelStyle: buildTextStyle(),
+
+                                    //labelText: 'First Name'
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  textCapitalization:
+                                  TextCapitalization.sentences,
+                                  textInputAction: TextInputAction.next,
+                                  cursorColor: Colors.black,
+                                  style: buildTextStyle(),
+                                  validator: (value) {
+                                    bool validEmail = RegExp(
+                                        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+                                        .hasMatch(value!);
+                                    if (value.isEmpty || !validEmail) {
+                                      return 'Enter your email address';
+                                    }
+                                    return null;
+                                  },
+                                  onSaved: (String? value) {
+                                    // firstName = value!;
+                                  },
+                                  decoration: InputDecoration(
+                                    labelText: 'Email*',
+                                    labelStyle: buildTextStyle(),
+
+                                    //labelText: 'First Name'
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  textCapitalization:
+                                  TextCapitalization.sentences,
+                                  textInputAction: TextInputAction.next,
+                                  cursorColor: Colors.black,
+                                  style: buildTextStyle(),
+                                  keyboardType:
+                                  const TextInputType.numberWithOptions(
+                                      signed: true, decimal: true),
+                                  inputFormatters: <TextInputFormatter>[
+                                    FilteringTextInputFormatter.allow(
+                                        RegExp(r'[0-9]')),
+                                  ],
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Enter phone number';
+                                    }
+                                    return null;
+                                  },
+                                  onSaved: (String? value) {
+                                    // firstName = value!;
+                                  },
+                                  decoration: InputDecoration(
+                                    labelText: 'Phone number*',
+                                    labelStyle: buildTextStyle(),
+
+                                    //labelText: 'First Name'
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Obx(() => TextFormField(
+                                  obscureText: _obscureText.value,
+                                  textCapitalization:
+                                  TextCapitalization.sentences,
+                                  textInputAction: TextInputAction.next,
+                                  cursorColor: Colors.black,
+                                  style: buildTextStyle(),
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Enter Password';
+                                    }
+                                    return null;
+                                  },
+                                  onSaved: (String? value) {
+                                    // firstName = value!;
+                                  },
+                                  decoration: InputDecoration(
+                                    suffixIcon: IconButton(
+                                      icon: Icon(
+                                        // Based on passwordVisible state choose the icon
+                                        _obscureText.value
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                        color: Colors.grey[300],
+                                      ),
+                                      onPressed: () {
+                                        // Update the state i.e. toogle the state of passwordVisible variable
+                                        _obscureText.value =
+                                        !_obscureText.value;
+                                      },
+                                    ),
+                                    labelText: 'Password*',
+                                    labelStyle: buildTextStyle(),
+                                  ),
+                                ))
+                              ],
+                            ),
+                          ),
+                        )),
+                    Expanded(child: Container()),
+                    nextButton(context)
+                  ],
+                ),
               ),
-            ),
-          ],
-        ));
+            ],
+          )),
+    );
   }
 
   TextStyle buildTextStyle() {
     return const TextStyle(
-        fontSize: 14.0,
+        fontSize: 17.0,
         fontWeight: FontWeight.w400,
         fontFamily: 'Gibson',
         color: AppColors.topHeaderBlueClr);
