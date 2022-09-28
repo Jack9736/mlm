@@ -1,13 +1,19 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+
 import 'package:get/get.dart';
+import 'package:mlm/Widget/Message.dart';
 import 'package:mlm/enum/Method.dart';
 
 import 'package:mlm/Utils/constant.dart';
 import 'package:mlm/screens/BuyerScreen/BuyORSellScreen/buy_sell_controller.dart';
+import 'package:parse_server_sdk/parse_server_sdk.dart';
 
 import '../../../Style/app_colors.dart';
+import '../../../Widget/custom_image_widget.dart';
 
 class BuySellScreen extends StatefulWidget {
   const BuySellScreen({Key? key}) : super(key: key);
@@ -35,9 +41,7 @@ class _BuySellScreenState extends State<BuySellScreen> {
   void initState() {
     super.initState();
 
-    userNmController.addListener(() {
-
-    });
+    userNmController.addListener(() {});
   }
 
   @override
@@ -81,6 +85,12 @@ class _BuySellScreenState extends State<BuySellScreen> {
                     ),
                   ),
                 ),
+                TextButton(
+                    onPressed: () {
+                      facebookLogin();
+                      // doSignInFacebook();
+                    },
+                    child: const Text("FaceBook Login")),
                 buyPetButton(context),
                 const SizedBox(height: 30),
                 sellPetButton(context),
@@ -93,6 +103,66 @@ class _BuySellScreenState extends State<BuySellScreen> {
     );
   }
 
+  facebookLogin() async {
+    print("FaceBook");
+    try {
+      final result =
+          await FacebookAuth.i.login();
+      if (result.status == LoginStatus.success) {
+        final userData = await FacebookAuth.i.getUserData();
+        if (userData.containsKey('email')) {
+          print(userData['email']);
+        }
+
+        if (userData.containsKey('name')) {
+          print(userData['name']);
+        }
+        if (userData["picture"]["data"]["url"] != null) {
+          print(userData["picture"]["data"]["url"]);
+          showCustomDialog(context, userData["picture"]["data"]["url"]);
+        }
+        print(userData);
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
+
+  void showCustomDialog(BuildContext context, String image) {
+    showGeneralDialog(
+      context: context,
+      barrierLabel: "Barrier",
+      barrierDismissible: true,
+      barrierColor: Colors.black.withOpacity(0.5),
+      transitionDuration: Duration(milliseconds: 700),
+      pageBuilder: (_, __, ___) {
+        return Center(
+          child: CustomImageWidget(
+              imgUrl: image,
+              height: 130,
+              width: 130,
+              borderRadius: const BorderRadius.all(Radius.circular(10))),
+        );
+      },
+      transitionBuilder: (_, anim, __, child) {
+        Tween<Offset> tween;
+        if (anim.status == AnimationStatus.reverse) {
+          tween = Tween(begin: Offset(-1, 0), end: Offset.zero);
+        } else {
+          tween = Tween(begin: Offset(1, 0), end: Offset.zero);
+        }
+
+        return SlideTransition(
+          position: tween.animate(anim),
+          child: FadeTransition(
+            opacity: anim,
+            child: child,
+          ),
+        );
+      },
+    );
+  }
+
   void _toggle() {
     setState(() {
       _obscureText = !_obscureText;
@@ -102,7 +172,6 @@ class _BuySellScreenState extends State<BuySellScreen> {
   /* Buy Pet Button */
   SizedBox buyPetButton(BuildContext context) {
     return SizedBox(
-
       width: double.infinity,
       height: AppConstant.appButtonSize,
       child: Obx(() => TextButton(
