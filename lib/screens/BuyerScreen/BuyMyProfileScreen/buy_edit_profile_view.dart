@@ -1,16 +1,18 @@
 import 'dart:io';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:images_picker/images_picker.dart';
 import 'package:mlm/Style/app_colors.dart';
-import 'package:mlm/Utils/helper.dart';
 import 'package:mlm/Widget/custom_image_widget.dart';
 import 'package:mlm/Widget/widget_appbar.dart';
 import 'package:mlm/Utils/constant.dart';
 import 'package:mlm/screens/BuyerScreen/BuyMyProfileScreen/buy_myprofile_controller.dart';
+
+import '../../../Utils/XFile.dart';
 
 class BuyEditProfileView extends StatefulWidget {
   BuyEditProfileView({Key? key}) : super(key: key);
@@ -29,7 +31,6 @@ class _BuyEditProfileViewState extends State<BuyEditProfileView> {
     var imageSize = 120.0;
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-
       child: Scaffold(
           backgroundColor: AppColors.appBgColor,
           appBar: const CustomAppBar(
@@ -42,42 +43,42 @@ class _BuyEditProfileViewState extends State<BuyEditProfileView> {
                 child: Column(
                   children: <Widget>[
                     Obx(
-                          () => Padding(
+                      () => Padding(
                         padding: const EdgeInsets.only(top: 20.0),
                         child: InkWell(
-                        onTap: () {
-                          _showImagePickerDialog(context, 1, imageFile);
-                        },
-                        child:Stack(
-                          clipBehavior: Clip.none,
-                          children: [
-                            imageFile.value != null
-                                ? Container(
-                              width: imageSize,
-                              height: imageSize,
-                              decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.all(
-                                          Radius.circular(10)),color: Colors.black,
-                                image: DecorationImage(
-                                    fit: BoxFit.fill,
-                                    colorFilter: ColorFilter.mode(
-                                        Colors.black.withOpacity(0.8),
-                                        BlendMode.dstATop),
-                                    image: FileImage(
-                                        File(imageFile.value!.path))),
-                              ),
-                            )
-                                : CustomImageWidget(
-                                imgUrl:
-                                'https://i.pinimg.com/736x/55/f9/55/55f955717e64ddbae8e15a781fcd0043.jpg',
-                                width: imageSize,
-                                height: imageSize,
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(10))),
-                            Positioned(
-                              bottom: -10.5,
-                              right: -10.5,
-
+                          onTap: () {
+                            _showImagePickerDialog(context, 1, imageFile);
+                          },
+                          child: Stack(
+                            clipBehavior: Clip.none,
+                            children: [
+                              imageFile.value != null
+                                  ? Container(
+                                      width: imageSize,
+                                      height: imageSize,
+                                      decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(10)),
+                                        color: Colors.black,
+                                        image: DecorationImage(
+                                            fit: BoxFit.fill,
+                                            colorFilter: ColorFilter.mode(
+                                                Colors.black.withOpacity(0.8),
+                                                BlendMode.dstATop),
+                                            image: FileImage(
+                                                File(imageFile.value!.path))),
+                                      ),
+                                    )
+                                  : CustomImageWidget(
+                                      imgUrl:
+                                          'https://i.pinimg.com/736x/55/f9/55/55f955717e64ddbae8e15a781fcd0043.jpg',
+                                      width: imageSize,
+                                      height: imageSize,
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(10))),
+                              Positioned(
+                                bottom: -10.5,
+                                right: -10.5,
                                 child: Container(
                                   height: 35,
                                   width: 35,
@@ -116,7 +117,7 @@ class _BuyEditProfileViewState extends State<BuyEditProfileView> {
                                 ),
                                 TextFormField(
                                   textCapitalization:
-                                  TextCapitalization.sentences,
+                                      TextCapitalization.sentences,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Colors.black,
                                   style: buildTextStyle(),
@@ -141,7 +142,7 @@ class _BuyEditProfileViewState extends State<BuyEditProfileView> {
                                 ),
                                 TextFormField(
                                   textCapitalization:
-                                  TextCapitalization.sentences,
+                                      TextCapitalization.sentences,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Colors.black,
                                   style: buildTextStyle(),
@@ -166,13 +167,13 @@ class _BuyEditProfileViewState extends State<BuyEditProfileView> {
                                 ),
                                 TextFormField(
                                   textCapitalization:
-                                  TextCapitalization.sentences,
+                                      TextCapitalization.sentences,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Colors.black,
                                   style: buildTextStyle(),
                                   validator: (value) {
                                     bool validEmail = RegExp(
-                                        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+                                            r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
                                         .hasMatch(value!);
                                     if (value.isEmpty || !validEmail) {
                                       return 'Enter your email address';
@@ -194,13 +195,13 @@ class _BuyEditProfileViewState extends State<BuyEditProfileView> {
                                 ),
                                 TextFormField(
                                   textCapitalization:
-                                  TextCapitalization.sentences,
+                                      TextCapitalization.sentences,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Colors.black,
                                   style: buildTextStyle(),
                                   keyboardType:
-                                  const TextInputType.numberWithOptions(
-                                      signed: true, decimal: true),
+                                      const TextInputType.numberWithOptions(
+                                          signed: true, decimal: true),
                                   inputFormatters: <TextInputFormatter>[
                                     FilteringTextInputFormatter.allow(
                                         RegExp(r'[0-9]')),
@@ -225,40 +226,40 @@ class _BuyEditProfileViewState extends State<BuyEditProfileView> {
                                   height: 10,
                                 ),
                                 Obx(() => TextFormField(
-                                  obscureText: _obscureText.value,
-                                  textCapitalization:
-                                  TextCapitalization.sentences,
-                                  textInputAction: TextInputAction.next,
-                                  cursorColor: Colors.black,
-                                  style: buildTextStyle(),
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Enter Password';
-                                    }
-                                    return null;
-                                  },
-                                  onSaved: (String? value) {
-                                    // firstName = value!;
-                                  },
-                                  decoration: InputDecoration(
-                                    suffixIcon: IconButton(
-                                      icon: Icon(
-                                        // Based on passwordVisible state choose the icon
-                                        _obscureText.value
-                                            ? Icons.visibility
-                                            : Icons.visibility_off,
-                                        color: Colors.grey[300],
-                                      ),
-                                      onPressed: () {
-                                        // Update the state i.e. toogle the state of passwordVisible variable
-                                        _obscureText.value =
-                                        !_obscureText.value;
+                                      obscureText: _obscureText.value,
+                                      textCapitalization:
+                                          TextCapitalization.sentences,
+                                      textInputAction: TextInputAction.next,
+                                      cursorColor: Colors.black,
+                                      style: buildTextStyle(),
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Enter Password';
+                                        }
+                                        return null;
                                       },
-                                    ),
-                                    labelText: 'Password*',
-                                    labelStyle: buildTextStyle(),
-                                  ),
-                                ))
+                                      onSaved: (String? value) {
+                                        // firstName = value!;
+                                      },
+                                      decoration: InputDecoration(
+                                        suffixIcon: IconButton(
+                                          icon: Icon(
+                                            // Based on passwordVisible state choose the icon
+                                            _obscureText.value
+                                                ? Icons.visibility
+                                                : Icons.visibility_off,
+                                            color: Colors.grey[300],
+                                          ),
+                                          onPressed: () {
+                                            // Update the state i.e. toogle the state of passwordVisible variable
+                                            _obscureText.value =
+                                                !_obscureText.value;
+                                          },
+                                        ),
+                                        labelText: 'Password*',
+                                        labelStyle: buildTextStyle(),
+                                      ),
+                                    ))
                               ],
                             ),
                           ),
@@ -408,14 +409,18 @@ class _BuyEditProfileViewState extends State<BuyEditProfileView> {
   }
 
   void _openGallery(int index) async {
-    final pickedFile = await ImagePicker().pickImage(
-        // getImage(
-        source: ImageSource.gallery,
-        imageQuality: 85,
-        maxHeight: 480,
-        maxWidth: 640);
-    if (pickedFile != null) {
-      loadImages(index, pickedFile);
+    List<Media>? res = await ImagesPicker.pick(
+        count: 1,
+        pickType: PickType.image,
+        language: Language.System,
+        maxSize: 5);
+    if (kDebugMode) {
+      print(res);
+    }
+    if (res != null) {
+      for (int i = 0; i < res.length; i++) {
+        loadImages(index, XFile(res[i].path));
+      }
     }
   }
 
@@ -429,13 +434,15 @@ class _BuyEditProfileViewState extends State<BuyEditProfileView> {
   }
 
   void _openCamera(int index) async {
-    final pickedFile = await ImagePicker().pickImage(
-        source: ImageSource.camera,
-        imageQuality: 85,
-        maxHeight: 480,
-        maxWidth: 640);
-    if (pickedFile != null) {
-      loadImages(index, pickedFile);
+    List<Media>? res = await ImagesPicker.openCamera(
+        pickType: PickType.image, language: Language.System, maxSize: 5);
+    if (kDebugMode) {
+      print(res);
+    }
+    if (res != null) {
+      for (int i = 0; i < res.length; i++) {
+        loadImages(index, XFile(res[i].path));
+      }
     }
   }
 

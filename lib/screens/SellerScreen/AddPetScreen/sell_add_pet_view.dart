@@ -5,8 +5,6 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:images_picker/images_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:mlm/Style/app_colors.dart';
@@ -30,6 +28,7 @@ import 'package:mlm/Utils/helper.dart';
 import 'package:mlm/Utils/helper.dart';
 import 'package:mlm/Utils/helper.dart';
 import 'package:mlm/screens/SellerScreen/AddPetScreen/sell_add_pet_controller.dart';
+import '../../../Utils/XFile.dart';
 import '../../../Utils/constant.dart';
 import '../../../Widget/rounded_cb_widget.dart';
 import '../../../Widget/rounded_form_field_widget.dart';
@@ -49,8 +48,6 @@ class _SellAddPetViewState extends State<SellAddPetView> {
   late String userName, password, sessionName;
   int radioGroup = 1;
   var userType = '';
-
-  final ImagePicker imagePicker = ImagePicker();
 
   XFile? customerLogoImageFile;
 
@@ -486,14 +483,12 @@ class _SellAddPetViewState extends State<SellAddPetView> {
   }
 
   TextEditingController nameController = TextEditingController();
-
   TextEditingController locationController = TextEditingController();
   TextEditingController priceController = TextEditingController();
   TextEditingController microchipController = TextEditingController();
   TextEditingController rehomingNumberController = TextEditingController();
   TextEditingController availableFromController = TextEditingController();
   TextEditingController notesController = TextEditingController();
-
 
   TextStyle buildRadioTextStyle() {
     return const TextStyle(
@@ -579,7 +574,7 @@ class _SellAddPetViewState extends State<SellAddPetView> {
                       if (index == 7) {
                         _openGallery(index);
                       } else {
-                        _openGalleryForImages(index);
+                        _openGalleryForImages(index, 6);
                         // loadAssets();
                       }
                       Navigator.of(context).pop();
@@ -697,18 +692,22 @@ class _SellAddPetViewState extends State<SellAddPetView> {
   }
 
   void _openGallery(int index) async {
-    final pickedFile = await ImagePicker().pickImage(
-        // getImage(
-        source: ImageSource.gallery,
-        imageQuality: 85,
-        maxHeight: 480,
-        maxWidth: 640);
-    if (pickedFile != null) {
-      loadImages(index, pickedFile);
+    List<Media>? res = await ImagesPicker.pick(
+        count: 1,
+        pickType: PickType.image,
+        language: Language.System,
+        maxSize: 5);
+    if (kDebugMode) {
+      print(res);
+    }
+    if (res != null) {
+      for (int i = 0; i < res.length; i++) {
+        loadImages(index, XFile(res[i].path));
+      }
     }
   }
 
-  void _openGalleryForImages(int index) async {
+  void _openGalleryForImages(int index, int imgCount) async {
     ///storage/emulated/0/Android/data/com.example.mlm/files/Pictures/image_picker_crop_df00cfb7-2449-40f9-a05e-8e9a6f9bc759_20220906114226672.jpg
     List<Media>? res = await ImagesPicker.pick(
         count: 6 - imageFileList.length,
@@ -756,13 +755,17 @@ class _SellAddPetViewState extends State<SellAddPetView> {
   }
 
   void _openCamera(int index) async {
-    final pickedFile = await ImagePicker().pickImage(
-        source: ImageSource.camera,
-        imageQuality: 85,
-        maxHeight: 480,
-        maxWidth: 640);
-    if (pickedFile != null) {
-      loadImages(index, pickedFile);
+    List<Media>? res = await ImagesPicker.openCamera(
+        pickType: PickType.image,
+        language: Language.System,
+        maxSize: 5);
+    if (kDebugMode) {
+      print(res);
+    }
+    if (res != null) {
+      for (int i = 0; i < res.length; i++) {
+        loadImages(index, XFile(res[i].path));
+      }
     }
   }
 

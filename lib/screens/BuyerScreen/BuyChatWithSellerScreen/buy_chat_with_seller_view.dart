@@ -1,10 +1,14 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:images_picker/images_picker.dart';
 import 'package:mlm/Style/app_colors.dart';
 import 'package:mlm/Widget/custom_image_widget.dart';
 import 'package:mlm/Widget/widget_appbar.dart';
 import 'package:mlm/Utils/constant.dart';
 import 'package:mlm/screens/BuyerScreen/BuyMyProfileScreen/buy_myprofile_controller.dart';
+
+import '../../../Utils/XFile.dart';
 
 class BuyChatWithSellerView extends StatefulWidget {
   const BuyChatWithSellerView({Key? key}) : super(key: key);
@@ -19,6 +23,8 @@ class _BuyChatWithSellerViewState extends State<BuyChatWithSellerView> {
   TextEditingController msgEditingController = TextEditingController();
 
   bool isObscure = false;
+
+  XFile? customerLogoImageFile;
 
   @override
   Widget build(BuildContext context) {
@@ -121,17 +127,27 @@ class _BuyChatWithSellerViewState extends State<BuyChatWithSellerView> {
                 ),
                 Container(
                   width: double.infinity,
+                  height: 75,
                   decoration: const BoxDecoration(color: AppColors.white),
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Image.asset("assets/ic_attachment.png"),
+                        IconButton(
+                          icon: Image.asset("assets/ic_attachment.png"),
+                          onPressed: () {
+                            showModalBottomSheet(
+                                isScrollControlled: true,
+                                backgroundColor: Colors.transparent,
+                                context: context,
+                                builder: (builder) => bottomSheet());
+                          },
+                        ),
                         Expanded(
                           child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 18.0, vertical: 20),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 18.0, vertical: 20),
                             child: TextField(
                               minLines: 1,
                               maxLines: 5,
@@ -169,6 +185,114 @@ class _BuyChatWithSellerViewState extends State<BuyChatWithSellerView> {
     );
   }
 
+  Widget bottomSheet() {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 70.0),
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: Card(
+          margin: const EdgeInsets.all(10.0),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    InkWell(
+                      child:
+                          iconCreation(Icons.camera_alt, Colors.pink, "Camera"),
+                      onTap: () {
+                        _openCamera(7);
+                      },
+                    ),
+                    const SizedBox(
+                      width: 40,
+                    ),
+                    InkWell(
+                      child: iconCreation(
+                          Icons.insert_photo, Colors.purple, "Gallery"),
+                      onTap: () {
+                        _openGallery(7);
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget iconCreation(IconData icons, Color color, String text) {
+    return Column(
+      children: [
+        CircleAvatar(
+          radius: 30,
+          backgroundColor: color,
+          child: Icon(
+            icons,
+            // semanticLabel: "Help",
+            size: 29,
+            color: Colors.white,
+          ),
+        ),
+        SizedBox(
+          height: 5,
+        ),
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: 12,
+            // fontWeight: FontWeight.w100,
+          ),
+        )
+      ],
+    );
+  }
+
+  void _openCamera(int index) async {
+    List<Media>? res = await ImagesPicker.openCamera(
+        pickType: PickType.image, language: Language.System, maxSize: 5);
+    if (kDebugMode) {
+      print(res);
+    }
+    if (res != null) {
+      for (int i = 0; i < res.length; i++) {
+        loadImages(index, XFile(res[i].path));
+      }
+    }
+  }
+
+  void _openGallery(int index) async {
+    List<Media>? res = await ImagesPicker.pick(
+        count: 1,
+        pickType: PickType.image,
+        language: Language.System,
+        maxSize: 5);
+    if (kDebugMode) {
+      print(res);
+    }
+    if (res != null) {
+      for (int i = 0; i < res.length; i++) {
+        loadImages(index, XFile(res[i].path));
+      }
+    }
+  }
+
+  loadImages(int index, XFile file) {
+    setState(() {
+      if (index == 7) {
+        customerLogoImageFile = file;
+      }
+    });
+  }
+
   var menuItemTextStyle = const TextStyle(
       color: AppColors.popUpMenuTextColor,
       fontSize: 13,
@@ -204,5 +328,4 @@ class _BuyChatWithSellerViewState extends State<BuyChatWithSellerView> {
             )),
         value: title);
   }
-
 }

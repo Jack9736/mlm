@@ -210,7 +210,7 @@ class _BuyFirstRegViewState extends State<BuyFirstRegView> {
                                       color: AppColors.topHeaderBlueClr),
                                   validator: (value) {
                                     bool validEmail = RegExp(
-                                            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+                                            r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
                                         .hasMatch(value!);
                                     if (value.isEmpty || !validEmail) {
                                       return 'Enter your email address';
